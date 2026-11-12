@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- العربية (من اليمين إلى اليسار). الأرقام تبقى لاتينية (0–9) للساعة والنقاط. -->
+<resources>
+    <string name="app_name">24/7</string>
+    <string name="app_slogan">كل ساعة في خطتك</string>
+
+    <string name="action_ok">حسنًا</string>
+    <string name="action_cancel">إلغاء</string>
+    <string name="action_save">حفظ</string>
+    <string name="action_delete">حذف</string>
+    <string name="action_close">إغلاق</string>
+    <string name="action_next">التالي</string>
+    <string name="action_skip">تخطٍّ</string>
+    <string name="action_add">إضافة</string>
+    <string name="action_grant">سماح</string>
+
+    <string name="error_generic">حدث خطأ ما. حاول مرة أخرى.</string>
+    <string name="error_title_required">اكتب الاسم</string>
+    <string name="error_days_required">اختر يومًا واحدًا على الأقل</string>
+    <string name="error_time_same">يجب ألا يتطابق وقت البداية والنهاية</string>
+
+    <string name="cd_app_logo">شعار 24/7</string>
+    <string name="cd_back">رجوع</string>
+    <string name="cd_open">فتح</string>
+    <string name="cd_streak">سلسلة الالتزام</string>
+    <string name="cd_stars">النجوم: %1$s</string>
+    <string name="cd_timeline">شريط اليوم، عدد خطط اليوم: %1$s. اسحب يمينًا أو يسارًا للتصفح.</string>
+    <string name="cd_add_entry">إضافة خطة جديدة</string>
+    <string name="cd_mark_done">وضع علامة «تم»</string>
+    <string name="cd_mark_not_done">إزالة العلامة</string>
+    <string name="cd_previous_month">الشهر السابق</string>
+    <string name="cd_next_month">الشهر التالي</string>
+    <string name="cd_remove_app">إزالة %1$s من القائمة</string>
+    <string name="cd_status_ok">مفعّل</string>
+    <string name="cd_status_missing">غير مفعّل</string>
+    <string name="cd_locked">مقفل</string>
+    <string name="cd_block_video">رسم: تطبيقات التواصل والألعاب تسحب الوقت، بينما يحاول رجل على حافة الجرف التمسك به</string>
+    <string name="cd_block_more">المزيد: وقت الفتح والأزرار</string>
+
+    <string name="nav_today">اليوم</string>
+    <string name="nav_plan">الخطة</string>
+    <string name="nav_results">محاسبة</string>
+    <string name="nav_settings">الإعدادات</string>
+
+    <string name="home_free_time">وقت فراغ</string>
+    <string name="home_time_left">بقي %1$s</string>
+    <string name="home_next">التالي</string>
+    <string name="home_next_routine">بدء النظام</string>
+    <string name="home_no_next">لا خطط أخرى اليوم</string>
+    <string name="home_today_score">تقييم اليوم</string>
+    <string name="banner_blocking_off">الحظر لا يعمل — امنح الإذن</string>
+    <string name="home_viewing_now">الآن</string>
+    <string name="home_time_ago">قبل %1$s</string>
+    <string name="home_time_later">بعد %1$s</string>
+    <string name="home_back_to_now">الآن</string>
+    <string name="home_at_this_time">في هذا الوقت</string>
+    <string name="home_now_label">الآن</string>
+    <string name="timeline_yesterday">أمس</string>
+    <string name="timeline_today">اليوم</string>
+    <string name="timeline_tomorrow">غدًا</string>
+    <string name="home_state_done">انتهى</string>
+    <string name="home_state_starts_in">يبدأ بعد %1$s</string>
+    <string name="home_free_hint">لا شيء مخطط</string>
+
+    <string name="category_work">عمل</string>
+    <string name="category_study">دراسة</string>
+    <string name="category_sport">رياضة</string>
+    <string name="category_family">عائلة</string>
+    <string name="category_reading">قراءة</string>
+    <string name="category_rest">راحة</string>
+    <string name="category_sleep">نوم</string>
+    <string name="category_morning">صباح</string>
+    <string name="category_other">أخرى</string>
+
+    <string name="schedule_title">خطة اليوم</string>
+    <string name="schedule_empty">لا خطط لهذا اليوم. اضغط «+» للإضافة.</string>
+    <string name="mode_day">يوم</string>
+    <string name="mode_week">أسبوع</string>
+    <string name="mode_month">شهر</string>
+    <string name="mode_year">سنة</string>
+    <string name="sleep_block_title">نظام النوم</string>
+    <string name="sleep_block_subtitle">%1$s – %2$s · التطبيقات محظورة</string>
+    <string name="delete_entry_title">حذف الخطة</string>
+    <string name="delete_entry_text">هل تريد حذف «%1$s»؟ لا يمكن التراجع عن ذلك.</string>
+    <string name="week_tasks_done">أُنجز %1$s من %2$s</string>
+    <string name="week_no_score">لا يوجد تقييم بعد</string>
+    <string name="cd_previous_week">الأسبوع السابق</string>
+    <string name="cd_next_week">الأسبوع التالي</string>
+    <string name="week_grid_hint">اضغط على يوم لفتح خطته المفصلة. اسحب الساعات يمينًا أو يسارًا.</string>
+    <string name="week_repeat_hint">خطط لمرة واحدة هذا الأسبوع: %1$s. لن تظهر في الأسبوع القادم.</string>
+    <string name="week_repeat_button">التكرار كل أسبوع</string>
+    <string name="week_repeat_confirm">ستتكرر خطط هذا الأسبوع لمرة واحدة (%1$s) كل أسبوع في يومها. تُحذف النسخ المطابقة التي كُتبت لاحقًا يدويًا. ويمكنك تعديل أي خطة لاحقًا.</string>
+    <string name="week_repeat_ok">تكرار</string>
+    <string name="week_repeat_done">أصبحت تتكرر كل أسبوع: %1$s</string>
+
+    <string name="goals_title">أهداف عام %1$s</string>
+    <string name="goals_add">هدف</string>
+    <string name="goals_edit">تعديل الهدف</string>
+    <string name="goals_empty">لا أهداف بعد. أضف هدفك الأول.</string>
+    <string name="goals_field_title">اسم الهدف</string>
+    <string name="goals_progress">نسبة الإنجاز: %1$s%%</string>
+    <string name="percent_value">%1$s%%</string>
+
+    <string name="editor_title_new">خطة جديدة</string>
+    <string name="editor_title_edit">تعديل الخطة</string>
+    <string name="editor_field_title">الاسم</string>
+    <string name="editor_field_description">ملاحظة (اختياري)</string>
+    <string name="editor_start">البداية</string>
+    <string name="editor_end">النهاية</string>
+    <string name="editor_category">الفئة</string>
+    <string name="editor_repeat">التكرار</string>
+    <string name="editor_date">التاريخ</string>
+    <string name="editor_start_date">ابتداءً من</string>
+    <string name="editor_reminder">التذكير</string>
+    <string name="editor_reminder_off">بدون</string>
+    <string name="repeat_once">مرة واحدة</string>
+    <string name="repeat_daily">كل يوم</string>
+    <string name="repeat_weekdays">أيام العمل</string>
+    <string name="repeat_weekly">أسبوعيًا</string>
+    <string name="repeat_monthly">شهريًا</string>
+    <string name="repeat_yearly">سنويًا</string>
+
+    <string name="results_title">النتائج</string>
+    <string name="results_this_week">هذا الأسبوع</string>
+    <string name="results_streak">سلسلة الالتزام</string>
+    <string name="results_trophy_shelf">رف الجوائز</string>
+    <string name="results_perfect_weeks">الأسابيع المثالية: %1$s</string>
+    <string name="criterion_tasks">الخطط (%1$s/%2$s)</string>
+    <string name="criterion_routine">الالتزام بالنظام</string>
+    <string name="criterion_sleep">النوم في الموعد</string>
+    <string name="criterion_wake">الاستيقاظ في الموعد</string>
+    <string name="criterion_bypass">الدخول الطارئ: %1$s مرة (−30 نقطة لكل مرة)</string>
+    <string name="week_summary">هذا الأسبوع: %1$s/%2$s نقطة، المتوسط %3$s ★</string>
+    <string name="week_close_to_trophy">أنت قريب جدًا من الكأس!</string>
+    <string name="week_keep_going">كل يوم فرصة جديدة. واصل!</string>
+    <string name="streak_current">الحالية</string>
+    <string name="streak_longest">الأطول</string>
+    <string name="trophy_none">لا كأس</string>
+    <string name="trophy_bronze">برونزية</string>
+    <string name="trophy_silver">فضية</string>
+    <string name="trophy_gold">ذهبية</string>
+    <string name="trophy_diamond">ماسية</string>
+    <string name="trophy_congrats_title">تهانينا!</string>
+    <string name="trophy_congrats_text">أُضيفت الكأس «%1$s» إلى رف الجوائز. 100 نقطة كل يوم طوال أسبوع — إنجاز رائع.</string>
+    <string name="trophy_congrats_button">شكرًا!</string>
+    <string name="trophy_notification_text">حصلت على الكأس «%1$s»! افتح التطبيق لتراها.</string>
+
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_language">اللغة</string>
+    <string name="settings_theme">المظهر</string>
+    <string name="settings_background">نمط الخلفية</string>
+    <string name="settings_background_hint">«القوة» داكن، و«الرقة» وردي هادئ. في نمط «النقاء» يُستخدم المظهر الذي اخترته.</string>
+    <string name="theme_light">فاتح</string>
+    <string name="theme_dark">داكن</string>
+    <string name="theme_gray">رمادي</string>
+    <string name="theme_system">حسب النظام</string>
+    <string name="background_power">القوة</string>
+    <string name="background_grace">الرقة</string>
+    <string name="background_pure">النقاء</string>
+    <string name="settings_routine">النظام</string>
+    <string name="settings_routine_active">النظام مفعّل</string>
+    <string name="settings_strict_mode">الوضع الصارم</string>
+    <string name="settings_strict_mode_desc">الدخول الطارئ مرة واحدة فقط في اليوم</string>
+    <string name="settings_reminders">مراحل التذكير</string>
+    <string name="settings_stage_1">المرحلة 1</string>
+    <string name="settings_stage_2">المرحلة 2</string>
+    <string name="settings_stage_3">المرحلة 3</string>
+    <string name="settings_stage_dialog_title">قبل الحظر بكم؟</string>
+    <string name="settings_voice">تذكير صوتي</string>
+    <string name="settings_voice_desc">تُقرأ الرسالة بصوت عالٍ (إن توفر في هاتفك صوت لهذه اللغة)</string>
+    <string name="settings_ringtone">النغمة</string>
+    <string name="settings_ringtone_default">الافتراضية</string>
+    <string name="settings_ringtone_custom">مختارة</string>
+    <string name="settings_blocked_apps">التطبيقات المحظورة</string>
+    <string name="settings_reliability_button">هل يعمل الحظر بشكل موثوق؟</string>
+    <string name="settings_version">الإصدار %1$s</string>
+
+    <string name="routine_block_start">بدء الحظر</string>
+    <string name="routine_block_start_desc">تُغلق التطبيقات المشتتة</string>
+    <string name="routine_sleep">وقت النوم</string>
+    <string name="routine_sleep_desc">الوقت الذي تنوي النوم فيه</string>
+    <string name="routine_wake">الاستيقاظ</string>
+    <string name="routine_wake_desc">تُفتح التطبيقات تلقائيًا</string>
+
+    <string name="apps_title">التطبيقات المحظورة</string>
+    <string name="apps_search">ابحث عن تطبيق</string>
+    <string name="apps_selected_count">المحدد: %1$s</string>
+
+    <string name="reliability_title">موثوقية الحظر</string>
+    <string name="reliability_all_good">كل شيء جاهز — سيعمل الحظر بشكل موثوق.</string>
+    <string name="reliability_has_issues">بعض الأذونات غير مفعّلة. فعّلها أدناه ليعمل الحظر بالكامل.</string>
+    <string name="perm_accessibility_title">مراقبة التطبيقات</string>
+    <string name="perm_accessibility_desc">يعرف فقط أي تطبيق مفتوح. لا يقرأ ما تكتبه.</string>
+    <string name="perm_overlay_title">العرض فوق التطبيقات الأخرى</string>
+    <string name="perm_overlay_desc">لتظهر شاشة الحظر فوق التطبيقات الأخرى.</string>
+    <string name="perm_battery_title">إزالة قيود البطارية</string>
+    <string name="perm_battery_desc">حتى لا يوقف الهاتف التطبيق في الخلفية.</string>
+    <string name="perm_notifications_title">الإشعارات</string>
+    <string name="perm_notifications_desc">لعرض التذكيرات.</string>
+    <string name="perm_exact_alarm_title">تذكيرات في الوقت الدقيق</string>
+    <string name="perm_exact_alarm_desc">لتصل التذكيرات في الدقيقة المحددة تمامًا.</string>
+    <string name="disclosure_title">لماذا نحتاج إلى «مراقبة التطبيقات»؟</string>
+    <string name="disclosure_body">يستخدم 24/7 خدمة «تسهيل الاستخدام» (Accessibility) في أندرويد. تحدد هذه الخدمة التطبيق المفتوح حاليًا لكي تحظر التطبيقات التي اخترتها (مثل Instagram أو YouTube) أثناء وقت النظام.</string>
+    <string name="disclosure_privacy">يقرأ 24/7 اسم التطبيق المفتوح حاليًا فقط. لا تُقرأ كتاباتك أو كلمات مرورك أو رسائلك. لا تغادر أي بيانات جهازك. في الشاشة التالية اختر «24/7» وفعّله.</string>
+    <string name="disclosure_accept">فهمت، متابعة</string>
+    <string name="disclosure_decline">ليس الآن</string>
+    <string name="accessibility_service_label">24/7 — حظر حسب النظام</string>
+    <string name="accessibility_service_description">يحظر التطبيقات المشتتة التي اخترتها أثناء وقت النظام. يقرأ فقط اسم التطبيق المفتوح حاليًا. لا يقرأ نصوص الشاشة أو ما تكتبه أو كلمات المرور أو الرسائل. لا تغادر أي بيانات جهازك.</string>
+
+    <string name="brand_guide_title">إرشادات لـ %1$s</string>
+    <string name="brand_guide_intro">بعض الهواتف توقف التطبيقات العاملة في الخلفية فيتوقف الحظر. نفّذ هذه الخطوات مرة واحدة:</string>
+    <string name="brand_open_settings">فتح الإعدادات</string>
+    <string name="brand_xiaomi">Xiaomi / Redmi / POCO</string>
+    <string name="brand_samsung">Samsung</string>
+    <string name="brand_huawei">Huawei / Honor</string>
+    <string name="brand_oppo">Oppo / Realme</string>
+    <string name="brand_vivo">Vivo</string>
+    <string name="brand_oneplus">OnePlus</string>
+    <string name="brand_other">هاتفك</string>
+
+    <string name="onboarding_welcome_text">اكتب روتينك اليومي — وسيذكّرك 24/7 به ويحميه.</string>
+    <string name="onboarding_problem_title">هل يبدو هذا مألوفًا؟</string>
+    <string name="onboarding_problem_1">في المساء تمسك الهاتف «لخمس دقائق» فتضيع الساعات.</string>
+    <string name="onboarding_problem_2">تنام متأخرًا.</string>
+    <string name="onboarding_problem_3">تستيقظ متأخرًا في اليوم التالي فيختل يومك كله.</string>
+    <string name="onboarding_problem_solution">في الوقت الذي تحدده، يغلق 24/7 التطبيقات المشتتة ثم يفتحها لك صباحًا.</string>
+    <string name="onboarding_language_title">اختر اللغة</string>
+    <string name="onboarding_routine_title">نظامك</string>
+    <string name="onboarding_routine_subtitle">يمكنك تغييره في أي وقت من الإعدادات.</string>
+    <string name="onboarding_apps_title">ما الذي يشتتك؟</string>
+    <string name="onboarding_apps_subtitle">حدد التطبيقات التي ستُحظر أثناء وقت النظام.</string>
+    <string name="onboarding_permissions_title">الأذونات</string>
+    <string name="onboarding_permissions_subtitle">يحتاج الحظر إلى 3 أذونات. كل شيء يبقى داخل هاتفك.</string>
+    <string name="onboarding_start">ابدأ</string>
+
+    <string name="channel_reminders">التذكيرات</string>
+    <string name="channel_reminders_desc">تذكيرات النظام والخطط</string>
+    <string name="channel_reminders_silent">التذكيرات (نغمتك)</string>
+    <string name="channel_reminders_silent_desc">يشغّل 24/7 الصوت بنفسه</string>
+    <string name="channel_monitor">حالة النظام</string>
+    <string name="channel_monitor_desc">إشعار دائم يوضح أن النظام نشط</string>
+    <string name="channel_achievements">الإنجازات</string>
+    <string name="channel_achievements_desc">الكؤوس والإنجازات</string>
+    <string name="monitor_title">24/7 نشط</string>
+    <string name="monitor_text">الحظر: %1$s – %2$s</string>
+    <string name="monitor_text_default">نظامك تحت المتابعة</string>
+
+    <string name="reminder_stage1">باقٍ على وقت النظام: %1$s. ابدأ بإنهاء أعمالك.</string>
+    <string name="reminder_stage2">بقي: %1$s. حان وقت الإنهاء.</string>
+    <string name="reminder_stage3">بقي: %1$s. استعدّ لوضع هاتفك جانبًا.</string>
+    <string name="reminder_final">%1$s! سيتم حظر التطبيقات الآن.</string>
+    <string name="task_reminder">في الساعة %1$s: «%2$s». بقي %3$s، استعدّ.</string>
+    <string name="block_started_title">بدأ النظام</string>
+    <string name="morning_title">صباح الخير</string>
+    <string name="morning_streak">صباح الخير! حافظت على نظامك — %1$s على التوالي.</string>
+    <string name="morning_new_day">يوم جديد، خطة جديدة. هل نبدأ؟</string>
+    <string name="duration_hours_minutes">%1$s و%2$s</string>
+
+    <string name="block_subtitle">هذا التطبيق مغلق أثناء وقت النظام. استرح — كل شيء سيكون في مكانه صباحًا.</string>
+    <string name="block_unlocks_at">يُفتح في</string>
+    <string name="block_time_left">المتبقي</string>
+    <string name="block_streak">سلسلة الالتزام مستمرة: %1$s</string>
+    <string name="block_go_home">العودة إلى الشاشة الرئيسية</string>
+    <string name="block_emergency">دخول طارئ</string>
+
+    <string name="emergency_intro_note">يمكنك استخدامه %1$s مرة أخرى اليوم. كل مرة تمنح 5 دقائق وتخصم 30 نقطة من تقييمك.</string>
+    <string name="emergency_back_to_rest">العودة إلى الراحة</string>
+    <string name="emergency_continue_anyway">سأتابع على أي حال</string>
+    <string name="emergency_countdown_title">انتظر دقيقة</string>
+    <string name="emergency_countdown_hint">فكّر خلال هذا الوقت: هل الأمر ضروري فعلًا؟</string>
+    <string name="emergency_question_title">حلّ المسألة</string>
+    <string name="emergency_wrong_answer">إجابة خاطئة. إليك مسألة جديدة.</string>
+    <string name="emergency_submit">تأكيد</string>
+    <string name="emergency_penalty_note">الإجابة الصحيحة — 5 دقائق من الوصول و−30 نقطة.</string>
+    <string name="emergency_granted_title">مُنحت 5 دقائق</string>
+    <string name="emergency_granted_text">بعدها ستُحظر التطبيقات مجددًا. خُصمت 30 نقطة من تقييم اليوم.</string>
+    <string name="emergency_granted_toast">مُنحت 5 دقائق</string>
+    <string name="emergency_limit_title">انتهى حد اليوم</string>
+    <string name="emergency_limit_text">استخدمت الدخول الطارئ لهذا اليوم. المكالمات والرسائل والساعة متاحة دائمًا.</string>
+
+    <string name="privacy_title">سياسة الخصوصية</string>
+    <string name="privacy_summary">يقرأ 24/7 اسم التطبيق المفتوح حاليًا فقط. لا تُقرأ كتاباتك أو كلمات مرورك أو رسائلك. لا تغادر أي بيانات جهازك، ولا تُرسل إلى أي خادم، ولا تُعطى لأي طرف ثالث.</string>
+    <string name="privacy_section_data_title">ما البيانات المخزنة</string>
+    <string name="privacy_section_data_body">الخطط اليومية التي تدخلها، وأوقات النظام، وقائمة التطبيقات المحظورة، والنقاط، والكؤوس، والإعدادات. تُحفظ كلها في ذاكرة هاتفك فقط. لا يوجد في التطبيق تسجيل حساب ولا إعلانات ولا إذن بالإنترنت.</string>
+    <string name="privacy_section_accessibility_title">خدمة تسهيل الاستخدام (Accessibility)</string>
+    <string name="privacy_section_accessibility_body">تعرف الخدمة شيئًا واحدًا فقط: أي تطبيق فُتح الآن (اسم الحزمة). هذا ضروري لحظر التطبيقات التي اخترتها أثناء وقت النظام. لا تُقرأ نصوص الشاشة أو الكتابة أو كلمات المرور أو الرسائل أو الصور أو أي محتوى آخر، ولا تُحفظ ولا تُرسل إلى أي مكان.</string>
+    <string name="privacy_section_permissions_title">أذونات أخرى</string>
+    <string name="privacy_section_permissions_body">العرض فوق التطبيقات — لشاشة الحظر. الإشعارات والمنبهات الدقيقة — للتذكيرات. إزالة قيود البطارية — حتى لا يوقف الهاتف التطبيق في الخلفية. وقت فتح قفل الهاتف — فقط لنقاط «النوم / الاستيقاظ في الموعد»، داخل هاتفك. الموقع التقريبي — فقط لحساب مواقيت الصلاة داخل الهاتف، ولا يُرسل إلى أي مكان. عند البحث عن مدينة عبر الإنترنت (فقط عند الضغط على «البحث عبر الإنترنت») يُرسل الاسم المكتوب إلى Google عبر خدمة الموقع في الهاتف.</string>
+    <string name="privacy_section_sharing_title">مشاركة البيانات</string>
+    <string name="privacy_section_sharing_body">لا تُباع أي بيانات، ولا تُشارك مع أطراف ثالثة، ولا تُرسل إلى أي خادم. كما لا يضيف التطبيق بيانات إلى النسخ الاحتياطية السحابية.</string>
+    <string name="privacy_section_delete_title">حذف البيانات</string>
+    <string name="privacy_section_delete_body">عند حذف التطبيق أو الضغط على «مسح البيانات» في إعدادات الهاتف، تُحذف جميع البيانات نهائيًا.</string>
+    <string name="privacy_section_contact_title">التواصل</string>
+    <string name="privacy_section_contact_body">إن كانت لديك أسئلة، راسل المطوّر على البريد الإلكتروني المذكور في صفحة Google Play.</string>
+    <string name="privacy_updated">آخر تحديث: سبتمبر 2026</string>
+
+    <plurals name="days_count">
+        <item quantity="zero">%1$s يوم</item>
+        <item quantity="one">يوم واحد</item>
+        <item quantity="two">يومان</item>
+        <item quantity="few">%1$s أيام</item>
+        <item quantity="many">%1$s يومًا</item>
+        <item quantity="other">%1$s يوم</item>
+    </plurals>
+    <plurals name="weeks_count">
+        <item quantity="zero">%1$s أسبوع</item>
+        <item quantity="one">أسبوع واحد</item>
+        <item quantity="two">أسبوعان</item>
+        <item quantity="few">%1$s أسابيع</item>
+        <item quantity="many">%1$s أسبوعًا</item>
+        <item quantity="other">%1$s أسبوع</item>
+    </plurals>
+    <plurals name="duration_hours">
+        <item quantity="zero">%1$s ساعة</item>
+        <item quantity="one">ساعة واحدة</item>
+        <item quantity="two">ساعتان</item>
+        <item quantity="few">%1$s ساعات</item>
+        <item quantity="many">%1$s ساعة</item>
+        <item quantity="other">%1$s ساعة</item>
+    </plurals>
+    <plurals name="duration_minutes">
+        <item quantity="zero">%1$s دقيقة</item>
+        <item quantity="one">دقيقة واحدة</item>
+        <item quantity="two">دقيقتان</item>
+        <item quantity="few">%1$s دقائق</item>
+        <item quantity="many">%1$s دقيقة</item>
+        <item quantity="other">%1$s دقيقة</item>
+    </plurals>
+
+    <string-array name="block_messages">
+        <item>تقدّم إلى الأمام — أنت قادر على ذلك.</item>
+        <item>لا تكسر النظام. غدًا ستشكر نفسك.</item>
+        <item>انضباط اليوم هو نجاح الغد.</item>
+        <item>الهاتف يمكنه الانتظار. النوم لا ينتظر.</item>
+        <item>اتخذت هذا القرار وأنت بكامل صفاء ذهنك. ثق به.</item>
+        <item>كل ساعة في خطتك.</item>
+        <item>العادات الصغيرة تصنع نتائج كبيرة.</item>
+        <item>الاستيقاظ المبكر غدًا يبدأ بالنوم المبكر اليوم.</item>
+        <item>وقتك أثمن ما تملك، وأنت تحميه الآن.</item>
+        <item>الأمر صعب، لكنك أقوى من الصعوبة.</item>
+        <item>الهاتف الذي تضعه الآن يعني يومًا كاملًا غدًا.</item>
+        <item>الانضباط هو الوفاء بالوعد الذي قطعته لنفسك.</item>
+        <item>الأمور العظيمة تبدأ بـ«لا» صغيرة.</item>
+        <item>المنشورات لا تنتهي، لكن يومك ينتهي.</item>
+        <item>النوم ليس كسلًا، بل مصدر قوة الغد.</item>
+        <item>لقد انتصرت على نفسك اليوم، وهذا أصعب انتصار.</item>
+        <item>استيقاظك نشيطًا صباح الغد ثمرة قرار الليلة.</item>
+        <item>كل شيء يمكنه الانتظار، إلا صحتك.</item>
+        <item>احترام الذات يبدأ بالالتزام بخطتك.</item>
+        <item>كل أمسية لبنة، ومن اللبنات تُبنى القلاع.</item>
+        <item>أنت من يتحكم بالتطبيقات، لا العكس.</item>
+        <item>العقل المتعب لا يتخذ قرارات جيدة. استرح.</item>
+        <item>خطط الغد تنتظرك — استعد بطاقتك.</item>
+        <item>النجاح قرارات صغيرة تتكرر كل يوم.</item>
+        <item>الأقوياء يتبعون خطتهم لا مزاجهم.</item>
+        <item>الليل للراحة، والشاشة للنهار.</item>
+        <item>اختيارك اليوم يصنع غدك.</item>
+        <item>الصبر أفضل عادة. اصبر الآن.</item>
+        <item>الوقت الضائع لا يعود.</item>
+        <item>النوم الجيد أفضل دافع.</item>
+    </string-array>
+
+    <string-array name="emergency_messages">
+        <item>توقّف. هل هذا ضروري فعلًا، أم مجرد عادة؟</item>
+        <item>سلسلة التزامك (%1$s) في خطر. هل تتابع؟</item>
+        <item>أنت في الغد يطلب منك اليوم شيئًا واحدًا: اصمد.</item>
+        <item>لقد عقدت اتفاقًا مع نفسك. لا تنقضه.</item>
+        <item>«5 دقائق فقط»؟ عادةً تتحول إلى ساعتين.</item>
+    </string-array>
+
+    <string-array name="completion_messages">
+        <item>تمّ. استمر هكذا!</item>
+        <item>خطوة أخرى إلى الأمام. +%1$s نقطة</item>
+        <item>ليس كثيرًا، لكنه منتظم — وهذا أقوى طريق.</item>
+        <item>فعلت ما قلته في الوقت الذي قلته. هذه هي الشخصية.</item>
+    </string-array>
+
+    <string-array name="task_start_messages">
+        <item>حان وقت «%1$s». ركّز.</item>
+        <item>البداية هي الأصعب، وقد بدأت.</item>
+    </string-array>
+
+    <string-array name="missed_messages">
+        <item>لم تنجح هذه المرة. المرة القادمة لك.</item>
+        <item>يوم واحد ليس كل شيء. واصل.</item>
+        <item>لا يلزم أن تكون مثاليًا. يكفي أن تكون منتظمًا.</item>
+    </string-array>
+
+    <string-array name="brand_steps_xiaomi">
+        <item>الإعدادات ← التطبيقات ← إدارة التطبيقات ← افتح 24/7.</item>
+        <item>فعّل «التشغيل التلقائي» (Autostart).</item>
+        <item>توفير البطارية ← اختر «بلا قيود» (No restrictions).</item>
+        <item>في شاشة التطبيقات الأخيرة اسحب بطاقة 24/7 للأسفل واضغط على القفل.</item>
+    </string-array>
+    <string-array name="brand_steps_samsung">
+        <item>الإعدادات ← البطارية ← حدود الاستخدام في الخلفية.</item>
+        <item>أزل 24/7 من «التطبيقات النائمة» و«التطبيقات في سبات عميق».</item>
+        <item>أضف 24/7 إلى «التطبيقات التي لا تنام أبدًا».</item>
+        <item>الإعدادات ← التطبيقات ← 24/7 ← البطارية ← «غير مقيد».</item>
+    </string-array>
+    <string-array name="brand_steps_huawei">
+        <item>الإعدادات ← البطارية ← تشغيل التطبيقات.</item>
+        <item>ابحث عن 24/7 وأوقف الإدارة التلقائية (إدارة يدوية).</item>
+        <item>في النافذة فعّل الخيارات الثلاثة: التشغيل التلقائي، التشغيل الثانوي، العمل في الخلفية.</item>
+        <item>ثبّت 24/7 في شاشة التطبيقات الأخيرة.</item>
+    </string-array>
+    <string-array name="brand_steps_oppo">
+        <item>الإعدادات ← البطارية ← إعدادات إضافية ← تحسين النشاط في الخلفية.</item>
+        <item>اختر «عدم التحسين» لـ 24/7.</item>
+        <item>الإعدادات ← إدارة التطبيقات ← 24/7 ← اسمح بـ«التشغيل التلقائي».</item>
+        <item>ثبّت 24/7 في شاشة التطبيقات الأخيرة.</item>
+    </string-array>
+    <string-array name="brand_steps_vivo">
+        <item>الإعدادات ← البطارية ← استهلاك طاقة مرتفع في الخلفية.</item>
+        <item>اسمح لـ 24/7 بالعمل في الخلفية.</item>
+        <item>i Manager ← إدارة التطبيقات ← التشغيل التلقائي ← فعّل 24/7.</item>
+        <item>ثبّت 24/7 في شاشة التطبيقات الأخيرة.</item>
+    </string-array>
+    <string-array name="brand_steps_oneplus">
+        <item>الإعدادات ← البطارية ← تحسين البطارية.</item>
+        <item>24/7 ← اختر «عدم التحسين».</item>
+        <item>الإعدادات ← التطبيقات ← 24/7 ← البطارية ← فعّل «السماح بالنشاط في الخلفية».</item>
+        <item>ثبّت 24/7 في شاشة التطبيقات الأخيرة.</item>
+    </string-array>
+    <string-array name="brand_steps_other">
+        <item>الإعدادات ← التطبيقات ← 24/7 ← البطارية.</item>
+        <item>اختر «غير مقيد» أو «عدم التحسين».</item>
+        <item>إن وُجد قسم «التشغيل التلقائي» ففعّله لـ 24/7.</item>
+        <item>تأكد أن كل العناصر في القائمة أعلاه باللون الأخضر.</item>
+    </string-array>
+    <!-- التواريخ -->
+    <string name="date_full">%1$s %2$s %3$s</string>
+    <string name="date_hijri_label">هجري</string>
+    <string name="date_gregorian_label">ميلادي</string>
+    <string-array name="gregorian_months">
+        <item>يناير</item>
+        <item>فبراير</item>
+        <item>مارس</item>
+        <item>أبريل</item>
+        <item>مايو</item>
+        <item>يونيو</item>
+        <item>يوليو</item>
+        <item>أغسطس</item>
+        <item>سبتمبر</item>
+        <item>أكتوبر</item>
+        <item>نوفمبر</item>
+        <item>ديسمبر</item>
+    </string-array>
+    <string-array name="hijri_months">
+        <item>محرم</item>
+        <item>صفر</item>
+        <item>ربيع الأول</item>
+        <item>ربيع الآخر</item>
+        <item>جمادى الأولى</item>
+        <item>جمادى الآخرة</item>
+        <item>رجب</item>
+        <item>شعبان</item>
+        <item>رمضان</item>
+        <item>شوال</item>
+        <item>ذو القعدة</item>
+        <item>ذو الحجة</item>
+    </string-array>
+
+    <!-- مواقيت الصلاة -->
+    <string name="prayer_fajr">الفجر</string>
+    <string name="prayer_sunrise">الشروق</string>
+    <string name="prayer_sunrise_short">الشروق</string>
+    <string name="prayer_dhuhr">الظهر</string>
+    <string name="prayer_asr">العصر</string>
+    <string name="prayer_maghrib">المغرب</string>
+    <string name="prayer_isha">العشاء</string>
+    <string name="method_mwl">رابطة العالم الإسلامي (18° / 17°)</string>
+    <string name="method_egypt">الهيئة المصرية العامة للمساحة (19.5° / 17.5°)</string>
+    <string name="method_makkah">أم القرى، مكة المكرمة (18.5° / 90 دقيقة)</string>
+    <string name="method_karachi">جامعة العلوم الإسلامية، كراتشي (18° / 18°)</string>
+    <string name="method_isna">الجمعية الإسلامية لأمريكا الشمالية (15° / 15°)</string>
+    <string name="method_russia">الإدارة الدينية لمسلمي روسيا (16° / 15°)</string>
+    <string name="method_southeast_asia">جنوب شرق آسيا (20° / 18°)</string>
+    <string name="madhab_hanafi">الحنفي</string>
+    <string name="madhab_shafii">الشافعي والمالكي والحنبلي</string>
+    <string name="prayer_reminder_text">بقي %2$s على صلاة %1$s (%3$s). استعد.</string>
+    <string name="prayer_at_time_text">حان وقت صلاة %1$s — %2$s</string>
+    <string name="home_prayer_title">مواقيت الصلاة</string>
+    <string name="home_prayer_setup">اختر موقعك لتظهر مواقيت الصلاة هنا</string>
+    <string name="home_prayer_next">بقي على صلاة %1$s %2$s</string>
+    <string name="home_prayer_entered">دخل الوقت</string>
+    <string name="prayer_location_coordinates">الموقع الحالي (%1$s، %2$s)</string>
+    <string name="prayer_settings_title">مواقيت الصلاة</string>
+    <string name="prayer_enabled">إظهار مواقيت الصلاة</string>
+    <string name="prayer_enabled_desc">في الشاشة الرئيسية والجدول والتذكيرات</string>
+    <string name="prayer_location">الموقع</string>
+    <string name="prayer_location_unknown">الموقع غير معروف — اختر مدينة</string>
+    <string name="prayer_location_source_detected">حسب موقع الهاتف</string>
+    <string name="prayer_location_source_zone">حسب المنطقة الزمنية للهاتف</string>
+    <string name="prayer_location_source_manual">المدينة التي اخترتها</string>
+    <string name="prayer_location_auto">تلقائي</string>
+    <string name="prayer_location_manual">البحث عن مدينة</string>
+    <string name="prayer_location_auto_desc">يُؤخذ الموقع من الهاتف ويُحدَّث عند فتح التطبيق. عند السفر تتغير المواقيت تلقائيًا.</string>
+    <string name="prayer_location_refresh">تحديث الموقع الآن</string>
+    <string name="prayer_location_refreshing">جارٍ تحديد الموقع…</string>
+    <string name="prayer_location_permission">السماح بالوصول إلى الموقع</string>
+    <string name="prayer_location_permission_desc">يُستخدم الموقع التقريبي فقط، ويبقى في الهاتف ولا يُرسل إلى أي مكان. بدونه تُحسب المواقيت حسب المنطقة الزمنية للهاتف.</string>
+    <string name="prayer_location_updated">تم تحديث الموقع</string>
+    <string name="prayer_location_off">خدمة الموقع متوقفة في الهاتف. شغّلها أو اختر المدينة يدويًا.</string>
+    <string name="prayer_location_not_found">تعذّر تحديد الموقع. حاول لاحقًا أو اختر مدينة.</string>
+    <string name="prayer_city_search">اكتب اسم المدينة</string>
+    <string name="prayer_search_offline_empty">لم يُعثر عليها في القائمة دون إنترنت. جرّب كتابة أخرى أو ابحث عبر الإنترنت.</string>
+    <string name="prayer_search_online">البحث عبر الإنترنت</string>
+    <string name="prayer_search_online_note">يُبحث عن الاسم عبر خدمة الموقع في الهاتف (Google) ويلزم الإنترنت. لا يُرسل إلا عند الضغط على هذا الزر.</string>
+    <string name="prayer_search_searching">جارٍ البحث…</string>
+    <string name="prayer_search_online_failed">لم يُعثر على شيء أو لا يوجد إنترنت. جرّب كتابة أخرى.</string>
+    <string name="prayer_search_online_unavailable">البحث عبر الإنترنت غير متاح في هذا الهاتف.</string>
+    <string name="prayer_data_credit">قاعدة المدن: GeoNames.org (CC BY 4.0)</string>
+    <string name="prayer_today">مواقيت اليوم</string>
+    <string name="prayer_icons_hint">الجرس — تذكير، الساعة — منبّه (يرن عند دخول الوقت حتى توقفه).</string>
+    <string name="prayer_reminder">تذكير قبل الصلاة</string>
+    <string name="prayer_notify_at_time">إشعار عند دخول الوقت</string>
+    <string name="prayer_notify_at_time_desc">إشعار مثل «حان وقت صلاة الظهر»</string>
+    <string name="prayer_alarm_sound">صوت المنبّه</string>
+    <string name="prayer_calculation">الحساب</string>
+    <string name="prayer_method">طريقة الحساب</string>
+    <string name="prayer_auto">تلقائي: %1$s</string>
+    <string name="prayer_auto_plain">تلقائي</string>
+    <string name="prayer_madhab">وقت العصر (المذهب)</string>
+    <string name="prayer_adjust">ضبط بالدقائق</string>
+    <string name="prayer_adjust_desc">إذا اختلف تقويم مسجدك، اضبط كل وقت هنا.</string>
+    <string name="prayer_adjust_value">%1$s دقيقة</string>
+    <string name="hijri_adjust">التاريخ الهجري</string>
+    <string name="hijri_adjust_title">ضبط اليوم</string>
+    <string name="hijri_adjust_value">%1$s يوم</string>
+    <string name="hijri_adjust_desc">التاريخ الهجري حسب تقويم أم القرى. إذا اختلف الإعلان المحلي (رؤية الهلال) بيوم، اضبطه هنا.</string>
+    <string name="prayer_accuracy_note">تُحسب المواقيت دون إنترنت بمعادلة فلكية. قد تضيف التقاويم المحلية بضع دقائق احتياطًا — اضبطها أعلاه.</string>
+    <string name="cd_prayer_notify">%1$s: تذكير</string>
+    <string name="cd_prayer_alarm">%1$s: منبّه</string>
+
+    <!-- المنبّه -->
+    <string name="channel_alarms">المنبّه</string>
+    <string name="channel_alarms_desc">المنبهات التي ضبطتها — ترن حتى توقفها</string>
+    <string name="alarm_stop">إيقاف</string>
+    <string name="alarm_snooze">بعد %1$s دقائق</string>
+    <string name="alarm_sound_default">المنبّه الافتراضي</string>
+    <string name="editor_alarm">المنبّه</string>
+    <string name="editor_alarm_switch">أيقظني بالمنبّه</string>
+    <string name="editor_alarm_desc">عند وقت البداية يرن الصوت المختار حتى توقفه — حتى على شاشة القفل</string>
+    <string name="editor_alarm_sound">الصوت</string>
+
+    <!-- التذكير الصوتي -->
+    <string name="settings_voice_gender">الصوت</string>
+    <string name="voice_female">صوت أنثى</string>
+    <string name="voice_male">صوت ذكر</string>
+    <string name="voice_preview">استماع</string>
+    <string name="voice_previewing">جارٍ القراءة…</string>
+    <string name="voice_preview_text">بقي 15 دقيقة على صلاة الظهر. استعد.</string>
+    <string name="voice_result_language_missing">لا يوجد صوت لهذه اللغة في هاتفك. نزّله من إعدادات الهاتف ← تحويل النص إلى كلام، أو غيّر لغة التطبيق.</string>
+    <string name="voice_result_engine_missing">لم يتم العثور على محرك تحويل النص إلى كلام في الهاتف.</string>
+
+    <!-- Vidjet -->
+    <string name="widget_name">24/7 — خطة اليوم</string>
+    <string name="widget_description">خطط اليوم ووقت الصلاة القادمة</string>
+    <string name="widget_next_prayer">الصلاة القادمة</string>
+    <string name="widget_empty">لا توجد خطط لليوم</string>
+    <string name="widget_more">+%1$s أخرى</string>
+    <string name="widget_all_done">انتهت خطط اليوم</string>
+    <string name="time_mode_dial">قرص الساعة</string>
+    <string name="time_mode_keyboard">كتابة الوقت بالأرقام</string>
+
+    <!-- Rejim qulfi -->
+    <string name="routine_locked_banner">الوضع مقفل حتى %1$s: لا يمكن إيقافه أو تغيير أوقاته. يبدأ القفل قبل الحظر بست ساعات.</string>
+    <string name="routine_locked_toast">لا يمكن تغيير هذا أثناء الوضع — يُفتح في %1$s.</string>
+    <string name="apps_locked_banner">مقفل حتى %1$s: لا يمكن إزالة التطبيقات من القائمة (يبدأ القفل قبل الحظر بست ساعات). يمكن إضافة تطبيقات جديدة.</string>
+
+    <!-- Muhosaba va tungi faqat-kerakli rejim -->
+    <string name="allow_only_section">قوة الوضع الليلي</string>
+    <string name="allow_only_switch">التطبيقات الضرورية فقط ليلًا</string>
+    <string name="allow_only_desc">أثناء الوضع تُغلق كل التطبيقات، ويبقى مفتوحًا فقط الاتصال والرسائل والساعة وما تسمح به.</string>
+    <string name="allow_only_apps_title">التطبيقات المسموح بها</string>
+    <string name="allow_only_apps_hint">التطبيقات المحددة تبقى مفتوحة ليلًا. الاتصال والرسائل والساعة وإعدادات الهاتف مفتوحة دائمًا.</string>
+    <string name="allow_only_locked_banner">مقفل حتى %1$s: لا يمكن السماح بتطبيقات جديدة. يمكن إلغاء السماح.</string>
+    <string name="muhosaba_title">محاسبة النفس</string>
+    <string name="muhosaba_previous_day">اليوم السابق</string>
+    <string name="muhosaba_next_day">اليوم التالي</string>
+    <string name="muhosaba_my_list">محاسبتي</string>
+    <string name="muhosaba_edit">تعديل</string>
+    <string name="muhosaba_edit_done">تم</string>
+    <string name="muhosaba_marked_count">تم التحديد: %1$s / %2$s</string>
+    <string name="muhosaba_empty">على ماذا تريد أن تحاسب نفسك كل يوم؟ أنشئ قائمتك أو ابدأ من النموذج ثم عدّلها.</string>
+    <string name="muhosaba_add_samples">إضافة القائمة النموذجية</string>
+    <string name="muhosaba_add_placeholder">بند جديد</string>
+    <string name="muhosaba_mark_done">%1$s: تم</string>
+    <string name="muhosaba_mark_missed">%1$s: لم يتم</string>
+    <string name="muhosaba_facts">ما سجّله التطبيق</string>
+    <string name="muhosaba_fact_tasks">الخطط المنجزة</string>
+    <string name="muhosaba_fact_night_phone">استُخدم الهاتف بعد وقت النوم</string>
+    <string name="muhosaba_fact_woke">الاستيقاظ في الوقت</string>
+    <string name="muhosaba_fact_bypass">الدخول الطارئ (مرات)</string>
+    <string name="muhosaba_yes">نعم</string>
+    <string name="muhosaba_no">لا</string>
+    <string name="muhosaba_summary">الخلاصة</string>
+    <string name="muhosaba_week">7 أيام</string>
+    <string name="muhosaba_month">30 يومًا</string>
+    <string name="muhosaba_days_of">%1$s / %2$s يوم</string>
+    <string name="muhosaba_summary_hint">الأخضر — أيام أُنجز فيها، البرتقالي — أيام لم يُنجز فيها، الفارغ — أيام بلا محاسبة.</string>
+    <string name="muhosaba_evening_text">حاسب نفسك على يومك واستعد للغد. اليوم ما زال في الوقت متسع — وغدًا قد يفوت الأوان.</string>
+    <string name="muhosaba_evening_start">ابدأ المحاسبة</string>
+    <string name="muhosaba_evening_later">لاحقًا</string>
+    <string name="muhosaba_reminder_suffix">حاسب نفسك على يومك.</string>
+    <string name="home_muhosaba_hint">محاسبة هذا اليوم</string>
+    <string-array name="muhosaba_quotes">
+        <item>حاسبوا أنفسكم قبل أن تحاسبوا، وزنوا أنفسكم قبل أن توزنوا.</item>
+        <item>يا ابن آدم، إنما أنت أيام، كلما ذهب يوم ذهب بعضك.</item>
+        <item>لا يكون العبد تقيًّا حتى يحاسب نفسه كما يحاسب شريكه.</item>
+        <item>المؤمن قوّام على نفسه، يحاسب نفسه لله، وإنما خفّ الحساب يوم القيامة على قوم حاسبوا أنفسهم في الدنيا.</item>
+        <item>إذا أمسيت فلا تنتظر الصباح، وإذا أصبحت فلا تنتظر المساء، وخذ من صحتك لمرضك، ومن حياتك لموتك.</item>
+        <item>نعمتان مغبون فيهما كثير من الناس: الصحة والفراغ.</item>
+        <item>لا تزول قدما عبد يوم القيامة حتى يُسأل عن عمره فيما أفناه، وعن علمه فيم فعل، وعن ماله من أين اكتسبه وفيم أنفقه، وعن جسمه فيم أبلاه.</item>
+        <item>يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ وَلْتَنظُرْ نَفْسٌ مَّا قَدَّمَتْ لِغَدٍ</item>
+        <item>أدركت أقوامًا كانوا على أوقاتهم أشد منكم حرصًا على دراهمكم ودنانيركم.</item>
+    </string-array>
+    <string-array name="muhosaba_quote_sources">
+        <item>عمر بن الخطاب رضي الله عنه (الترمذي، عقب الحديث 2459)</item>
+        <item>الحسن البصري رحمه الله (أبو نعيم، حلية الأولياء)</item>
+        <item>ميمون بن مهران رحمه الله (الترمذي، عقب الحديث 2459)</item>
+        <item>الحسن البصري رحمه الله (ابن المبارك، الزهد)</item>
+        <item>عبد الله بن عمر رضي الله عنهما (البخاري، 6416)</item>
+        <item>رسول الله صلى الله عليه وسلم (البخاري، 6412)</item>
+        <item>رسول الله صلى الله عليه وسلم (الترمذي، 2417)</item>
+        <item>القرآن الكريم، سورة الحشر، الآية 18</item>
+        <item>الحسن البصري رحمه الله (ابن المبارك، الزهد)</item>
+    </string-array>
+    <string-array name="muhosaba_sample_items">
+        <item>صليت الصلوات الخمس في وقتها</item>
+        <item>قرأت القرآن</item>
+        <item>قلت أذكار الصباح والمساء</item>
+        <item>أحسنت إلى والديّ</item>
+        <item>حفظت لساني من الغيبة والكذب</item>
+        <item>تعلمت أو قرأت شيئًا نافعًا</item>
+        <item>لم أضيّع وقتي</item>
+    </string-array>
+</resources>

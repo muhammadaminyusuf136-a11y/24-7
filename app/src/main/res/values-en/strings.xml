@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- English -->
+<resources>
+    <string name="app_name">24/7</string>
+    <string name="app_slogan">Every hour, in your plan</string>
+
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_close">Close</string>
+    <string name="action_next">Next</string>
+    <string name="action_skip">Skip</string>
+    <string name="action_add">Add</string>
+    <string name="action_grant">Allow</string>
+
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="error_title_required">Please enter a name</string>
+    <string name="error_days_required">Choose at least one day</string>
+    <string name="error_time_same">Start and end time can\'t be the same</string>
+
+    <string name="cd_app_logo">24/7 logo</string>
+    <string name="cd_back">Back</string>
+    <string name="cd_open">Open</string>
+    <string name="cd_streak">Streak</string>
+    <string name="cd_stars">%1$s stars</string>
+    <string name="cd_timeline">Day timeline, %1$s plans today. Swipe left or right to explore.</string>
+    <string name="cd_add_entry">Add a new plan</string>
+    <string name="cd_mark_done">Mark as done</string>
+    <string name="cd_mark_not_done">Unmark</string>
+    <string name="cd_previous_month">Previous month</string>
+    <string name="cd_next_month">Next month</string>
+    <string name="cd_remove_app">Remove %1$s from the list</string>
+    <string name="cd_status_ok">On</string>
+    <string name="cd_status_missing">Off</string>
+    <string name="cd_locked">Locked</string>
+    <string name="cd_block_video">Illustration: social media apps and games pulling time away while a person on a cliff edge tries to hold on to it</string>
+    <string name="cd_block_more">More: unlock time and buttons</string>
+
+    <string name="nav_today">Today</string>
+    <string name="nav_plan">Plan</string>
+    <string name="nav_results">Review</string>
+    <string name="nav_settings">Settings</string>
+
+    <string name="home_free_time">Free time</string>
+    <string name="home_time_left">%1$s left</string>
+    <string name="home_next">Next</string>
+    <string name="home_next_routine">Routine starts</string>
+    <string name="home_no_next">Nothing else planned today</string>
+    <string name="home_today_score">Today\'s score</string>
+    <string name="banner_blocking_off">Blocking is off — grant access</string>
+    <string name="home_viewing_now">now</string>
+    <string name="home_time_ago">%1$s ago</string>
+    <string name="home_time_later">in %1$s</string>
+    <string name="home_back_to_now">Now</string>
+    <string name="home_at_this_time">At this time</string>
+    <string name="home_now_label">Now</string>
+    <string name="timeline_yesterday">Yesterday</string>
+    <string name="timeline_today">Today</string>
+    <string name="timeline_tomorrow">Tomorrow</string>
+    <string name="home_state_done">finished</string>
+    <string name="home_state_starts_in">starts in %1$s</string>
+    <string name="home_free_hint">Nothing planned</string>
+
+    <string name="category_work">Work</string>
+    <string name="category_study">Study</string>
+    <string name="category_sport">Sport</string>
+    <string name="category_family">Family</string>
+    <string name="category_reading">Reading</string>
+    <string name="category_rest">Rest</string>
+    <string name="category_sleep">Sleep</string>
+    <string name="category_morning">Morning</string>
+    <string name="category_other">Other</string>
+
+    <string name="schedule_title">Daily plan</string>
+    <string name="schedule_empty">No plans for this day. Tap «+» to add one.</string>
+    <string name="mode_day">Day</string>
+    <string name="mode_week">Week</string>
+    <string name="mode_month">Month</string>
+    <string name="mode_year">Year</string>
+    <string name="sleep_block_title">Sleep routine</string>
+    <string name="sleep_block_subtitle">%1$s – %2$s · apps are blocked</string>
+    <string name="delete_entry_title">Delete plan</string>
+    <string name="delete_entry_text">Delete «%1$s»? This can\'t be undone.</string>
+    <string name="week_tasks_done">%1$s / %2$s plans done</string>
+    <string name="week_no_score">No score yet</string>
+    <string name="cd_previous_week">Previous week</string>
+    <string name="cd_next_week">Next week</string>
+    <string name="week_grid_hint">Tap a day to open its detailed plan. Swipe the hours left or right.</string>
+    <string name="week_repeat_hint">One-time plans this week: %1$s. They will not appear next week.</string>
+    <string name="week_repeat_button">Repeat every week</string>
+    <string name="week_repeat_confirm">This week\'s one-time plans (%1$s) will repeat every week on their day. Identical copies you typed again later are removed. You can still edit any plan afterwards.</string>
+    <string name="week_repeat_ok">Repeat</string>
+    <string name="week_repeat_done">Now repeating every week: %1$s</string>
+
+    <string name="goals_title">Goals for %1$s</string>
+    <string name="goals_add">Goal</string>
+    <string name="goals_edit">Edit goal</string>
+    <string name="goals_empty">No goals yet. Add your first one.</string>
+    <string name="goals_field_title">Goal name</string>
+    <string name="goals_progress">Progress: %1$s%%</string>
+    <string name="percent_value">%1$s%%</string>
+
+    <string name="editor_title_new">New plan</string>
+    <string name="editor_title_edit">Edit plan</string>
+    <string name="editor_field_title">Name</string>
+    <string name="editor_field_description">Note (optional)</string>
+    <string name="editor_start">Starts</string>
+    <string name="editor_end">Ends</string>
+    <string name="editor_category">Category</string>
+    <string name="editor_repeat">Repeat</string>
+    <string name="editor_date">Date</string>
+    <string name="editor_start_date">Starting from</string>
+    <string name="editor_reminder">Reminder</string>
+    <string name="editor_reminder_off">None</string>
+    <string name="repeat_once">Once</string>
+    <string name="repeat_daily">Every day</string>
+    <string name="repeat_weekdays">Weekdays</string>
+    <string name="repeat_weekly">Weekly</string>
+    <string name="repeat_monthly">Monthly</string>
+    <string name="repeat_yearly">Yearly</string>
+
+    <string name="results_title">Results</string>
+    <string name="results_this_week">This week</string>
+    <string name="results_streak">Streak</string>
+    <string name="results_trophy_shelf">Trophy shelf</string>
+    <string name="results_perfect_weeks">Perfect weeks: %1$s</string>
+    <string name="criterion_tasks">Plans (%1$s/%2$s)</string>
+    <string name="criterion_routine">Routine kept</string>
+    <string name="criterion_sleep">Slept on time</string>
+    <string name="criterion_wake">Woke up on time</string>
+    <string name="criterion_bypass">Emergency access: %1$s times (−30 points each)</string>
+    <string name="week_summary">This week: %1$s/%2$s points, average %3$s ★</string>
+    <string name="week_close_to_trophy">You\'re so close to a trophy!</string>
+    <string name="week_keep_going">Every day is a new chance. Keep going!</string>
+    <string name="streak_current">Current</string>
+    <string name="streak_longest">Longest</string>
+    <string name="trophy_none">No trophy</string>
+    <string name="trophy_bronze">Bronze</string>
+    <string name="trophy_silver">Silver</string>
+    <string name="trophy_gold">Gold</string>
+    <string name="trophy_diamond">Diamond</string>
+    <string name="trophy_congrats_title">Congratulations!</string>
+    <string name="trophy_congrats_text">The «%1$s» trophy has been added to your shelf. 100 points every day for a whole week — that\'s impressive.</string>
+    <string name="trophy_congrats_button">Thanks!</string>
+    <string name="trophy_notification_text">You earned the «%1$s» trophy! Open the app to see it.</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_background">Background style</string>
+    <string name="settings_background_hint">«Power» is dark, «Grace» is soft rose. «Pure» follows the theme you picked.</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_gray">Gray</string>
+    <string name="theme_system">System</string>
+    <string name="background_power">Power</string>
+    <string name="background_grace">Grace</string>
+    <string name="background_pure">Pure</string>
+    <string name="settings_routine">Routine</string>
+    <string name="settings_routine_active">Routine enabled</string>
+    <string name="settings_strict_mode">Strict mode</string>
+    <string name="settings_strict_mode_desc">Emergency access only once a day</string>
+    <string name="settings_reminders">Reminder stages</string>
+    <string name="settings_stage_1">Stage 1</string>
+    <string name="settings_stage_2">Stage 2</string>
+    <string name="settings_stage_3">Stage 3</string>
+    <string name="settings_stage_dialog_title">How long before blocking?</string>
+    <string name="settings_voice">Voice reminder</string>
+    <string name="settings_voice_desc">The message is read aloud (if your phone has a voice for this language)</string>
+    <string name="settings_ringtone">Ringtone</string>
+    <string name="settings_ringtone_default">Default</string>
+    <string name="settings_ringtone_custom">Custom</string>
+    <string name="settings_blocked_apps">Blocked apps</string>
+    <string name="settings_reliability_button">Is blocking working reliably?</string>
+    <string name="settings_version">Version %1$s</string>
+
+    <string name="routine_block_start">Blocking starts</string>
+    <string name="routine_block_start_desc">Distracting apps get closed</string>
+    <string name="routine_sleep">Bedtime</string>
+    <string name="routine_sleep_desc">Your goal time to be in bed</string>
+    <string name="routine_wake">Wake up</string>
+    <string name="routine_wake_desc">Apps unlock automatically</string>
+
+    <string name="apps_title">Blocked apps</string>
+    <string name="apps_search">Search apps</string>
+    <string name="apps_selected_count">Selected: %1$s</string>
+
+    <string name="reliability_title">Blocking reliability</string>
+    <string name="reliability_all_good">All set — blocking will work reliably.</string>
+    <string name="reliability_has_issues">Some permissions are missing. Turn them on below so blocking works fully.</string>
+    <string name="perm_accessibility_title">App monitoring</string>
+    <string name="perm_accessibility_desc">Only knows which app is open. It never reads what you type.</string>
+    <string name="perm_overlay_title">Display over other apps</string>
+    <string name="perm_overlay_desc">So the block screen can appear on top of other apps.</string>
+    <string name="perm_battery_title">Remove battery restriction</string>
+    <string name="perm_battery_desc">So your phone doesn\'t shut the app down in the background.</string>
+    <string name="perm_notifications_title">Notifications</string>
+    <string name="perm_notifications_desc">To show reminders.</string>
+    <string name="perm_exact_alarm_title">Exact-time reminders</string>
+    <string name="perm_exact_alarm_desc">So reminders fire right on the minute.</string>
+    <string name="disclosure_title">Why is «App monitoring» needed?</string>
+    <string name="disclosure_body">24/7 uses Android\'s Accessibility service. It detects which app is currently open so it can block the apps you chose (for example Instagram or YouTube) during your routine.</string>
+    <string name="disclosure_privacy">24/7 only reads the name of the app that is currently open. Your typing, passwords and messages are never read. No data ever leaves your device. On the next screen, select «24/7» and turn it on.</string>
+    <string name="disclosure_accept">Got it, continue</string>
+    <string name="disclosure_decline">Not now</string>
+    <string name="accessibility_service_label">24/7 — routine blocking</string>
+    <string name="accessibility_service_description">Blocks the distracting apps you chose during your routine. It only reads the name of the app that is currently open. Screen text, typing, passwords and messages are never read. No data leaves your device.</string>
+
+    <string name="brand_guide_title">Guide for %1$s</string>
+    <string name="brand_guide_intro">Some phones shut down background apps, which stops blocking. Do these steps once:</string>
+    <string name="brand_open_settings">Open settings</string>
+    <string name="brand_xiaomi">Xiaomi / Redmi / POCO</string>
+    <string name="brand_samsung">Samsung</string>
+    <string name="brand_huawei">Huawei / Honor</string>
+    <string name="brand_oppo">Oppo / Realme</string>
+    <string name="brand_vivo">Vivo</string>
+    <string name="brand_oneplus">OnePlus</string>
+    <string name="brand_other">your phone</string>
+
+    <string name="onboarding_welcome_text">Write down your daily routine — 24/7 will remind you and protect it.</string>
+    <string name="onboarding_problem_title">Sound familiar?</string>
+    <string name="onboarding_problem_1">In the evening you pick up your phone «for 5 minutes» and hours disappear.</string>
+    <string name="onboarding_problem_2">You go to bed late.</string>
+    <string name="onboarding_problem_3">The next morning you wake up late and the whole day falls apart.</string>
+    <string name="onboarding_problem_solution">At the time you set, 24/7 closes distracting apps and opens them again in the morning.</string>
+    <string name="onboarding_language_title">Choose your language</string>
+    <string name="onboarding_routine_title">Your routine</string>
+    <string name="onboarding_routine_subtitle">You can change it anytime in settings.</string>
+    <string name="onboarding_apps_title">What distracts you?</string>
+    <string name="onboarding_apps_subtitle">Select the apps to block during your routine.</string>
+    <string name="onboarding_permissions_title">Permissions</string>
+    <string name="onboarding_permissions_subtitle">Blocking needs 3 permissions. Everything stays on your phone.</string>
+    <string name="onboarding_start">Get started</string>
+
+    <string name="channel_reminders">Reminders</string>
+    <string name="channel_reminders_desc">Routine and plan reminders</string>
+    <string name="channel_reminders_silent">Reminders (your ringtone)</string>
+    <string name="channel_reminders_silent_desc">24/7 plays the sound itself</string>
+    <string name="channel_monitor">Routine status</string>
+    <string name="channel_monitor_desc">Ongoing notification showing the routine is active</string>
+    <string name="channel_achievements">Achievements</string>
+    <string name="channel_achievements_desc">Trophies and milestones</string>
+    <string name="monitor_title">24/7 is active</string>
+    <string name="monitor_text">Blocking: %1$s – %2$s</string>
+    <string name="monitor_text_default">Your routine is being kept</string>
+
+    <string name="reminder_stage1">Routine time in %1$s. Start wrapping things up.</string>
+    <string name="reminder_stage2">%1$s left. Time to finish up.</string>
+    <string name="reminder_stage3">%1$s left. Get ready to put your phone down.</string>
+    <string name="reminder_final">%1$s! Apps will be blocked now.</string>
+    <string name="task_reminder">«%2$s» at %1$s — %3$s left, get ready.</string>
+    <string name="block_started_title">Routine started</string>
+    <string name="morning_title">Good morning</string>
+    <string name="morning_streak">Good morning! You kept your routine — %1$s in a row.</string>
+    <string name="morning_new_day">New day, new plan. Shall we start?</string>
+    <string name="duration_hours_minutes">%1$s %2$s</string>
+
+    <string name="block_subtitle">This app is closed during your routine. Rest now — everything will be here in the morning.</string>
+    <string name="block_unlocks_at">Unlocks at</string>
+    <string name="block_time_left">Time left</string>
+    <string name="block_streak">Your %1$s streak is holding</string>
+    <string name="block_go_home">Back to home screen</string>
+    <string name="block_emergency">Emergency access</string>
+
+    <string name="emergency_intro_note">You can use this %1$s more times today. Each one gives 5 minutes and takes 30 points off your score.</string>
+    <string name="emergency_back_to_rest">Back to rest</string>
+    <string name="emergency_continue_anyway">Continue anyway</string>
+    <string name="emergency_countdown_title">Wait one minute</string>
+    <string name="emergency_countdown_hint">Use this time to think: is it really necessary?</string>
+    <string name="emergency_question_title">Solve this</string>
+    <string name="emergency_wrong_answer">Not quite. Here\'s a new one.</string>
+    <string name="emergency_submit">Confirm</string>
+    <string name="emergency_penalty_note">Correct answer — 5 minutes of access and −30 points.</string>
+    <string name="emergency_granted_title">5 minutes granted</string>
+    <string name="emergency_granted_text">After that, apps will be blocked again. 30 points were taken off today\'s score.</string>
+    <string name="emergency_granted_toast">5 minutes granted</string>
+    <string name="emergency_limit_title">Today\'s limit is used up</string>
+    <string name="emergency_limit_text">You\'ve used all emergency access for today. Calls, SMS and the clock are always available.</string>
+
+    <string name="privacy_title">Privacy policy</string>
+    <string name="privacy_summary">24/7 only reads the name of the app that is currently open. Your typing, passwords and messages are never read. No data ever leaves your device, is sent to a server, or is shared with third parties.</string>
+    <string name="privacy_section_data_title">What data is stored</string>
+    <string name="privacy_section_data_body">The daily plans you enter, routine times, the list of blocked apps, scores, trophies and settings. All of it is stored only on your phone. The app has no sign-up, no ads and no internet permission.</string>
+    <string name="privacy_section_accessibility_title">Accessibility service</string>
+    <string name="privacy_section_accessibility_body">The service knows only one thing: which app was just opened (its package name). This is needed to block the apps you chose during your routine. Screen text, typing, passwords, messages, images and other content are never read, stored or sent anywhere.</string>
+    <string name="privacy_section_permissions_title">Other permissions</string>
+    <string name="privacy_section_permissions_body">Display over other apps — for the block screen. Notifications and exact alarms — for reminders. Removing the battery restriction — so your phone doesn\'t stop the app in the background. The time your phone is unlocked — only for the «slept / woke up on time» points, on your phone. Approximate location — only to calculate prayer times on the phone; it is never sent anywhere. If you search for a city online (only when you tap “Search online”), the typed name is sent to Google through your phone’s location service.</string>
+    <string name="privacy_section_sharing_title">Data sharing</string>
+    <string name="privacy_section_sharing_body">No data is sold, shared with third parties or sent to any server. The app does not add data to cloud backups either.</string>
+    <string name="privacy_section_delete_title">Deleting data</string>
+    <string name="privacy_section_delete_body">Uninstalling the app or tapping «Clear data» in your phone settings permanently deletes all data.</string>
+    <string name="privacy_section_contact_title">Contact</string>
+    <string name="privacy_section_contact_body">If you have questions, write to the developer email listed on the Google Play page.</string>
+    <string name="privacy_updated">Last updated: September 2026</string>
+
+    <plurals name="days_count">
+        <item quantity="one">%1$s day</item>
+        <item quantity="other">%1$s days</item>
+    </plurals>
+    <plurals name="weeks_count">
+        <item quantity="one">%1$s week</item>
+        <item quantity="other">%1$s weeks</item>
+    </plurals>
+    <plurals name="duration_hours">
+        <item quantity="one">%1$s hour</item>
+        <item quantity="other">%1$s hours</item>
+    </plurals>
+    <plurals name="duration_minutes">
+        <item quantity="one">%1$s minute</item>
+        <item quantity="other">%1$s minutes</item>
+    </plurals>
+
+    <string-array name="block_messages">
+        <item>Keep going — you\'ve got this.</item>
+        <item>Don\'t break the rhythm. Tomorrow you\'ll thank yourself.</item>
+        <item>Today\'s discipline is tomorrow\'s success.</item>
+        <item>Your phone can wait. Sleep can\'t.</item>
+        <item>You made this decision with a clear head. Trust it.</item>
+        <item>Every hour, in your plan.</item>
+        <item>Small habits bring big results.</item>
+        <item>An early start tomorrow begins with an early night today.</item>
+        <item>Your time is your most valuable asset. You\'re protecting it.</item>
+        <item>This is hard. But you\'re stronger than hard.</item>
+        <item>A phone put down now means a full day tomorrow.</item>
+        <item>Discipline is keeping the promise you made to yourself.</item>
+        <item>Great things start with small «no»s.</item>
+        <item>The feed never ends. Your day does.</item>
+        <item>Sleep isn\'t laziness — it\'s where tomorrow\'s strength comes from.</item>
+        <item>You beat yourself today. That\'s the hardest win.</item>
+        <item>Waking up fresh tomorrow is the result of tonight\'s choice.</item>
+        <item>Everything else can wait. Your health can\'t.</item>
+        <item>Self-respect starts with sticking to your own plan.</item>
+        <item>Every evening is a brick. Bricks build a fortress.</item>
+        <item>You run the apps — not the other way around.</item>
+        <item>A tired mind makes poor decisions. Rest.</item>
+        <item>Tomorrow\'s plans are waiting for you — recharge.</item>
+        <item>Success is small choices repeated every day.</item>
+        <item>Strong people follow their plan, not their mood.</item>
+        <item>Night is for recovery. Screens are for the day.</item>
+        <item>The choice you make today is who you are tomorrow.</item>
+        <item>Patience is the best habit. Be patient now.</item>
+        <item>Time wasted never comes back.</item>
+        <item>Good sleep is the best motivation.</item>
+    </string-array>
+
+    <string-array name="emergency_messages">
+        <item>Stop. Is this really necessary, or just a habit?</item>
+        <item>Your streak of %1$s is at risk. Continue anyway?</item>
+        <item>Tomorrow\'s you is asking today\'s you for one thing: hold on.</item>
+        <item>You made a deal with yourself. Don\'t break it.</item>
+        <item>«Just 5 minutes»? It usually turns into 2 hours.</item>
+    </string-array>
+
+    <string-array name="completion_messages">
+        <item>Done. Keep it up!</item>
+        <item>One more step forward. +%1$s points</item>
+        <item>Not much, but steady — that\'s the strongest way.</item>
+        <item>You did what you said, when you said. That\'s character.</item>
+    </string-array>
+
+    <string-array name="task_start_messages">
+        <item>Time for «%1$s». Focus up.</item>
+        <item>Starting is the hardest part. You\'ve started.</item>
+    </string-array>
+
+    <string-array name="missed_messages">
+        <item>It didn\'t work out this time. The next one is yours.</item>
+        <item>One day isn\'t everything. Keep going.</item>
+        <item>You don\'t have to be perfect. Being consistent is enough.</item>
+    </string-array>
+
+    <string-array name="brand_steps_xiaomi">
+        <item>Settings → Apps → Manage apps → open 24/7.</item>
+        <item>Turn on «Autostart».</item>
+        <item>Battery saver → choose «No restrictions».</item>
+        <item>On the recent apps screen, pull the 24/7 card down and tap the lock icon.</item>
+    </string-array>
+    <string-array name="brand_steps_samsung">
+        <item>Settings → Battery → Background usage limits.</item>
+        <item>Remove 24/7 from «Sleeping apps» and «Deep sleeping apps».</item>
+        <item>Add 24/7 to «Never sleeping apps».</item>
+        <item>Settings → Apps → 24/7 → Battery → choose «Unrestricted».</item>
+    </string-array>
+    <string-array name="brand_steps_huawei">
+        <item>Settings → Battery → App launch.</item>
+        <item>Find 24/7 and switch off automatic management (Manage manually).</item>
+        <item>In the dialog, turn on all three: Auto-launch, Secondary launch, Run in background.</item>
+        <item>Lock 24/7 on the recent apps screen.</item>
+    </string-array>
+    <string-array name="brand_steps_oppo">
+        <item>Settings → Battery → More settings → Optimize background activity.</item>
+        <item>Choose «Don\'t optimize» for 24/7.</item>
+        <item>Settings → App management → 24/7 → allow «Auto launch».</item>
+        <item>Lock 24/7 on the recent apps screen.</item>
+    </string-array>
+    <string-array name="brand_steps_vivo">
+        <item>Settings → Battery → High background power consumption.</item>
+        <item>Allow 24/7 to run in the background.</item>
+        <item>i Manager → App manager → Autostart → turn on 24/7.</item>
+        <item>Lock 24/7 on the recent apps screen.</item>
+    </string-array>
+    <string-array name="brand_steps_oneplus">
+        <item>Settings → Battery → Battery optimization.</item>
+        <item>24/7 → choose «Don\'t optimize».</item>
+        <item>Settings → Apps → 24/7 → Battery → turn on «Allow background activity».</item>
+        <item>Lock 24/7 on the recent apps screen.</item>
+    </string-array>
+    <string-array name="brand_steps_other">
+        <item>Settings → Apps → 24/7 → Battery.</item>
+        <item>Choose «Unrestricted» or «Don\'t optimize».</item>
+        <item>If there is an «Autostart» section, turn it on for 24/7.</item>
+        <item>Check that every item in the list above is green.</item>
+    </string-array>
+    <!-- Dates -->
+    <string name="date_full">%2$s %1$s, %3$s</string>
+    <string name="date_hijri_label">Hijri</string>
+    <string name="date_gregorian_label">Gregorian</string>
+    <string-array name="gregorian_months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string-array name="hijri_months">
+        <item>Muharram</item>
+        <item>Safar</item>
+        <item>Rabi al-Awwal</item>
+        <item>Rabi al-Thani</item>
+        <item>Jumada al-Ula</item>
+        <item>Jumada al-Akhirah</item>
+        <item>Rajab</item>
+        <item>Shaban</item>
+        <item>Ramadan</item>
+        <item>Shawwal</item>
+        <item>Dhu al-Qadah</item>
+        <item>Dhu al-Hijjah</item>
+    </string-array>
+
+    <!-- Prayer times -->
+    <string name="prayer_fajr">Fajr</string>
+    <string name="prayer_sunrise">Sunrise</string>
+    <string name="prayer_sunrise_short">Sunrise</string>
+    <string name="prayer_dhuhr">Dhuhr</string>
+    <string name="prayer_asr">Asr</string>
+    <string name="prayer_maghrib">Maghrib</string>
+    <string name="prayer_isha">Isha</string>
+    <string name="method_mwl">Muslim World League (18° / 17°)</string>
+    <string name="method_egypt">Egyptian General Authority (19.5° / 17.5°)</string>
+    <string name="method_makkah">Umm al-Qura, Makkah (18.5° / 90 min)</string>
+    <string name="method_karachi">University of Islamic Sciences, Karachi (18° / 18°)</string>
+    <string name="method_isna">ISNA, North America (15° / 15°)</string>
+    <string name="method_russia">Spiritual Administration of Muslims of Russia (16° / 15°)</string>
+    <string name="method_southeast_asia">Southeast Asia (20° / 18°)</string>
+    <string name="madhab_hanafi">Hanafi</string>
+    <string name="madhab_shafii">Shafi\'i, Maliki, Hanbali</string>
+    <string name="prayer_reminder_text">%2$s until %1$s (%3$s). Get ready.</string>
+    <string name="prayer_at_time_text">It\'s time for %1$s — %2$s</string>
+    <string name="home_prayer_title">Prayer times</string>
+    <string name="home_prayer_setup">Choose your location to see prayer times here</string>
+    <string name="home_prayer_next">%2$s until %1$s</string>
+    <string name="home_prayer_entered">time has begun</string>
+    <string name="prayer_location_coordinates">Current location (%1$s, %2$s)</string>
+    <string name="prayer_settings_title">Prayer times</string>
+    <string name="prayer_enabled">Show prayer times</string>
+    <string name="prayer_enabled_desc">On the home screen, in your schedule and in reminders</string>
+    <string name="prayer_location">Location</string>
+    <string name="prayer_location_unknown">Location unknown — choose a city</string>
+    <string name="prayer_location_source_detected">Based on your phone\'s location</string>
+    <string name="prayer_location_source_zone">Based on your phone\'s time zone</string>
+    <string name="prayer_location_source_manual">City you chose</string>
+    <string name="prayer_location_auto">Automatic</string>
+    <string name="prayer_location_manual">Search city</string>
+    <string name="prayer_location_auto_desc">Your location is taken from the phone and updated when you open the app. When you travel, the times follow you.</string>
+    <string name="prayer_location_refresh">Update location now</string>
+    <string name="prayer_location_refreshing">Finding location…</string>
+    <string name="prayer_location_permission">Allow location</string>
+    <string name="prayer_location_permission_desc">Only your approximate location is used. It stays on the phone and is never sent anywhere. Without it, times follow your phone\'s time zone.</string>
+    <string name="prayer_location_updated">Location updated</string>
+    <string name="prayer_location_off">Location is turned off on your phone. Turn it on or choose a city.</string>
+    <string name="prayer_location_not_found">Couldn\'t find your location. Try again later or choose a city.</string>
+    <string name="prayer_city_search">Type a city name</string>
+    <string name="prayer_search_offline_empty">Not found in the offline list. Try another spelling or search online.</string>
+    <string name="prayer_search_online">Search online</string>
+    <string name="prayer_search_online_note">The name is looked up through your phone’s location service (Google); internet is required. It is sent only when you tap this button.</string>
+    <string name="prayer_search_searching">Searching…</string>
+    <string name="prayer_search_online_failed">Nothing found or no internet. Try another spelling.</string>
+    <string name="prayer_search_online_unavailable">Online search is not available on this phone.</string>
+    <string name="prayer_data_credit">City data: GeoNames.org (CC BY 4.0)</string>
+    <string name="prayer_today">Today\'s times</string>
+    <string name="prayer_icons_hint">Bell — reminder, clock — alarm (rings when the prayer time begins until you stop it).</string>
+    <string name="prayer_reminder">Reminder before prayer</string>
+    <string name="prayer_notify_at_time">Notify when the time begins</string>
+    <string name="prayer_notify_at_time_desc">A notification when each prayer time begins</string>
+    <string name="prayer_alarm_sound">Alarm sound</string>
+    <string name="prayer_calculation">Calculation</string>
+    <string name="prayer_method">Calculation method</string>
+    <string name="prayer_auto">Automatic: %1$s</string>
+    <string name="prayer_auto_plain">Automatic</string>
+    <string name="prayer_madhab">Asr time (school)</string>
+    <string name="prayer_adjust">Fine-tune by minutes</string>
+    <string name="prayer_adjust_desc">If your mosque\'s timetable differs, adjust each time here.</string>
+    <string name="prayer_adjust_value">%1$s min</string>
+    <string name="hijri_adjust">Hijri date</string>
+    <string name="hijri_adjust_title">Day offset</string>
+    <string name="hijri_adjust_value">%1$s</string>
+    <string name="hijri_adjust_desc">The Hijri date follows the Umm al-Qura calendar. If your local announcement (moon sighting) differs by a day, adjust it here.</string>
+    <string name="prayer_accuracy_note">Times are calculated offline with an astronomical formula. Local timetables may add a few minutes of caution — fine-tune above.</string>
+    <string name="cd_prayer_notify">%1$s: reminder</string>
+    <string name="cd_prayer_alarm">%1$s: alarm</string>
+
+    <!-- Alarm -->
+    <string name="channel_alarms">Alarms</string>
+    <string name="channel_alarms_desc">Alarms you set — they ring until you stop them</string>
+    <string name="alarm_stop">Stop</string>
+    <string name="alarm_snooze">Snooze %1$s min</string>
+    <string name="alarm_sound_default">Default alarm</string>
+    <string name="editor_alarm">Alarm</string>
+    <string name="editor_alarm_switch">Wake me with an alarm</string>
+    <string name="editor_alarm_desc">At the start time your chosen sound rings until you stop it — even on the lock screen</string>
+    <string name="editor_alarm_sound">Sound</string>
+
+    <!-- Voice reminders -->
+    <string name="settings_voice_gender">Voice</string>
+    <string name="voice_female">Female voice</string>
+    <string name="voice_male">Male voice</string>
+    <string name="voice_preview">Preview</string>
+    <string name="voice_previewing">Speaking…</string>
+    <string name="voice_preview_text">15 minutes until Dhuhr. Get ready.</string>
+    <string name="voice_result_language_missing">Your phone has no voice for this language. Download one in phone Settings → Text-to-speech, or change the app language.</string>
+    <string name="voice_result_engine_missing">No text-to-speech engine was found on this phone.</string>
+
+    <!-- Vidjet -->
+    <string name="widget_name">24/7 — Day plan</string>
+    <string name="widget_description">Today\'s plans and the next prayer time</string>
+    <string name="widget_next_prayer">Next prayer</string>
+    <string name="widget_empty">No plans for today</string>
+    <string name="widget_more">+%1$s more</string>
+    <string name="widget_all_done">Today\'s plans are done</string>
+    <string name="time_mode_dial">Clock dial</string>
+    <string name="time_mode_keyboard">Type the time</string>
+
+    <!-- Rejim qulfi -->
+    <string name="routine_locked_banner">Routine is locked until %1$s: it can’t be turned off or rescheduled. The lock starts 6 hours before blocking.</string>
+    <string name="routine_locked_toast">You can\'t change this during the routine — unlocks at %1$s.</string>
+    <string name="apps_locked_banner">Locked until %1$s: apps can’t be removed from the list (the lock starts 6 hours before blocking). You can still add new ones.</string>
+
+    <!-- Muhosaba va tungi faqat-kerakli rejim -->
+    <string name="allow_only_section">Night mode strength</string>
+    <string name="allow_only_switch">Only essential apps at night</string>
+    <string name="allow_only_desc">During the routine every app is closed. Only calls, SMS, the clock and the apps you allow stay open.</string>
+    <string name="allow_only_apps_title">Allowed apps</string>
+    <string name="allow_only_apps_hint">Checked apps stay open at night. Calls, SMS, the clock and phone settings are always open.</string>
+    <string name="allow_only_locked_banner">Locked until %1$s: you can’t allow new apps. You can still remove an allowance.</string>
+    <string name="muhosaba_title">Self-reckoning</string>
+    <string name="muhosaba_previous_day">Previous day</string>
+    <string name="muhosaba_next_day">Next day</string>
+    <string name="muhosaba_my_list">My reckoning</string>
+    <string name="muhosaba_edit">Edit</string>
+    <string name="muhosaba_edit_done">Done</string>
+    <string name="muhosaba_marked_count">Marked: %1$s / %2$s</string>
+    <string name="muhosaba_empty">What do you want to hold yourself to account for every day? Build your own list or start from the sample — you can change it later.</string>
+    <string name="muhosaba_add_samples">Add the sample list</string>
+    <string name="muhosaba_add_placeholder">New item</string>
+    <string name="muhosaba_mark_done">%1$s: done</string>
+    <string name="muhosaba_mark_missed">%1$s: missed</string>
+    <string name="muhosaba_facts">Recorded by the app</string>
+    <string name="muhosaba_fact_tasks">Plans completed</string>
+    <string name="muhosaba_fact_night_phone">Phone used after bedtime</string>
+    <string name="muhosaba_fact_woke">Woke up on time</string>
+    <string name="muhosaba_fact_bypass">Emergency access (times)</string>
+    <string name="muhosaba_yes">Yes</string>
+    <string name="muhosaba_no">No</string>
+    <string name="muhosaba_summary">Summary</string>
+    <string name="muhosaba_week">7 days</string>
+    <string name="muhosaba_month">30 days</string>
+    <string name="muhosaba_days_of">%1$s / %2$s days</string>
+    <string name="muhosaba_summary_hint">Green — days done, orange — days missed, empty — days not reviewed.</string>
+    <string name="muhosaba_evening_text">Take account of your day and prepare for tomorrow. Today there is still time — tomorrow may be too late.</string>
+    <string name="muhosaba_evening_start">Start the reckoning</string>
+    <string name="muhosaba_evening_later">Later</string>
+    <string name="muhosaba_reminder_suffix">Take account of your day.</string>
+    <string name="home_muhosaba_hint">Take account of today</string>
+    <string-array name="muhosaba_quotes">
+        <item>Take account of yourselves before you are taken to account, and weigh your deeds before they are weighed for you.</item>
+        <item>O son of Adam, you are but a number of days. Whenever a day passes, a part of you passes with it.</item>
+        <item>A servant will not be God-fearing until he takes account of himself the way he takes account of his business partner.</item>
+        <item>The believer watches over his own soul and takes it to account for the sake of Allah. The reckoning on the Day of Resurrection will be light for those who took account of themselves in this world.</item>
+        <item>When evening comes, do not wait for the morning; when morning comes, do not wait for the evening. Take from your health for your illness, and from your life for your death.</item>
+        <item>There are two blessings in which many people are cheated: health and free time.</item>
+        <item>The feet of a servant will not move on the Day of Resurrection until he is asked about his life and how he spent it, his knowledge and what he did with it, his wealth — where he earned it and how he spent it — and his body and how he wore it out.</item>
+        <item>O you who believe! Fear Allah, and let every soul look to what it has sent ahead for tomorrow.</item>
+        <item>I met people who were more careful with their time than you are with your dirhams and dinars.</item>
+    </string-array>
+    <string-array name="muhosaba_quote_sources">
+        <item>Umar ibn al-Khattab, may Allah be pleased with him (at-Tirmidhi, under hadith 2459)</item>
+        <item>Al-Hasan al-Basri (Abu Nu‘aym, Hilyat al-Awliya)</item>
+        <item>Maymun ibn Mihran (at-Tirmidhi, under hadith 2459)</item>
+        <item>Al-Hasan al-Basri (Ibn al-Mubarak, az-Zuhd)</item>
+        <item>Abdullah ibn Umar, may Allah be pleased with them both (al-Bukhari, 6416)</item>
+        <item>The Messenger of Allah, peace and blessings be upon him (al-Bukhari, 6412)</item>
+        <item>The Messenger of Allah, peace and blessings be upon him (at-Tirmidhi, 2417)</item>
+        <item>The Qur’an, Surah al-Hashr 59:18 (translation of the meaning)</item>
+        <item>Al-Hasan al-Basri (Ibn al-Mubarak, az-Zuhd)</item>
+    </string-array>
+    <string-array name="muhosaba_sample_items">
+        <item>I prayed the five prayers on time</item>
+        <item>I recited Qur’an</item>
+        <item>I said the morning and evening adhkar</item>
+        <item>I was good to my parents</item>
+        <item>I kept my tongue from backbiting and lying</item>
+        <item>I learned or read something useful</item>
+        <item>I did not waste my time</item>
+    </string-array>
+</resources>

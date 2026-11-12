@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        RUXSATLAR. INTERNET ruxsati YO'Q — ilova to'liq offline ishlaydi,
+        hech qanday ma'lumot telefondan chiqmaydi.
+    -->
+    <!-- Eslatmalar -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!--
+        Aniq vaqtdagi budilnik. Android 13+ da USE_EXACT_ALARM o'rnatilganda avtomatik beriladi
+        (budilnik va taqvim ilovalari uchun) — Android 14+ da SCHEDULE_EXACT_ALARM yangi o'rnatilgan
+        ilovalarga berilmaydi va budilnik bir necha daqiqa kechikishi mumkin edi.
+        Android 12 (API 31–32) da esa SCHEDULE_EXACT_ALARM ishlatiladi.
+    -->
+    <uses-permission
+        android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Budilnik: qulflangan ekranda ham to'liq oyna ochiladi, ovoz o'chirilguncha chaladi -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!--
+        Namoz vaqtlari: faqat TAXMINIY joy (1-3 km). Joy telefonda hisoblash uchun ishlatiladi,
+        hech qayerga yuborilmaydi. Fonda joylashuv (ACCESS_BACKGROUND_LOCATION) so'ralmaydi.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Joylashuv yo'q qurilmalarda ham ilova o'rnatilsin (shahar qo'lda tanlanadi) -->
+    <uses-feature android:name="android.hardware.location" android:required="false" />
+    <uses-feature android:name="android.hardware.location.network" android:required="false" />
+    <!-- Bloklash: blok ekranini boshqa ilovalar ustida ko'rsatish -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Kuzatuv xizmati telefon tomonidan o'chirilmasligi uchun -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission
+        android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"
+        tools:ignore="BatteryLife" />
+
+    <!--
+        Bloklanadigan ilovalarni tanlash uchun faqat bosh ekrandagi ilovalar ko'rinadi.
+        QUERY_ALL_PACKAGES ishlatilmaydi (Google Play talabi va maxfiylik).
+    -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <!-- Bosh ekran ilovasini aniqlash (u hech qachon bloklanmasligi uchun) -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.HOME" />
+        </intent>
+        <intent>
+            <action android:name="android.speech.tts.TTS_SERVICE" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".RejaApp"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:localeConfig="@xml/locales_config"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Reja24"
+        tools:targetApi="36">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Favqulodda kirish — alohida, "So'nggi ilovalar"da ko'rinmaydi -->
+        <activity
+            android:name=".presentation.emergency.EmergencyActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Bosh ekran vidjeti: bugungi rejalar va keyingi namoz -->
+        <receiver
+            android:name=".widget.DayPlanWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/day_plan_widget_info" />
+        </receiver>
+
+        <!-- Budilnik oynasi — qulflangan ekran ustida ochiladi -->
+        <activity
+            android:name=".presentation.alarm.AlarmActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:taskAffinity="" />
+
+        <!-- Budilnik ovozi (o'chirilguncha chaladi) -->
+        <service
+            android:name=".service.alarm.AlarmRingService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Plays the alarm sound the user set for their own schedule entry or prayer time until the user stops or snoozes it." />
+        </service>
+
+        <!-- Bloklash xizmati (faqat faol ilova nomini ko'radi, ekran matnini o'qimaydi) -->
+        <service
+            android:name=".service.blocking.BlockingAccessibilityService"
+            android:exported="false"
+            android:label="@string/accessibility_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <!-- Kuzatuv xizmati (doimiy bildirishnoma bilan) -->
+        <service
+            android:name=".service.blocking.BlockingMonitorService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Keeps the user's self-configured bedtime routine and app-blocking schedule running reliably. No data is collected." />
+        </service>
+
+        <!-- Eslatmalar (budilnik chalinganda) -->
+        <receiver
+            android:name=".service.alarm.AlarmReceiver"
+            android:exported="false" />
+
+        <!-- Telefon yoqilganda / vaqt o'zgarganda eslatmalarni tiklash -->
+        <receiver
+            android:name=".service.alarm.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Android 12 va undan pastda tanlangan tilni AppCompat o'zi saqlab qoladi -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
+
+        <!-- WorkManager Hilt orqali ishga tushadi (RejaApp.workManagerConfiguration) -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
+
+    </application>
+
+</manifest>

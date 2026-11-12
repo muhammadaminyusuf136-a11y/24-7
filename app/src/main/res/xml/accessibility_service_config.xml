@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    MAXFIYLIK: faqat "oyna holati o'zgardi" hodisasi (qaysi ilova ochildi) olinadi.
+    canRetrieveWindowContent="false" — ekrandagi matn, yozuvlar, parollar O'QILMAYDI.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault"
+    android:canRetrieveWindowContent="false"
+    android:description="@string/accessibility_service_description"
+    android:isAccessibilityTool="false"
+    android:notificationTimeout="100" />

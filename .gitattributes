@@ -1,0 +1,6 @@
+# gradlew Linux'da (GitHub Actions) ishlashi uchun qator oxirlari LF bo'lishi shart
+gradlew text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.jar binary
+*.ttf binary

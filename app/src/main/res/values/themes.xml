@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Asosiy XML mavzu. Ekrandagi hamma narsa Compose (RejaTheme) orqali chiziladi,
+        bu mavzu faqat ilova ochilayotgandagi birinchi fon rangi uchun.
+        AppCompat asosida — til almashtirish (AppCompatDelegate) ishlashi uchun.
+    -->
+    <style name="Theme.Reja24" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/reja_window_background</item>
+        <item name="colorPrimary">@color/reja_accent</item>
+        <item name="colorAccent">@color/reja_accent</item>
+    </style>
+</resources>

@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Русский -->
+<resources>
+    <string name="app_name">24/7</string>
+    <string name="app_slogan">Каждый час — в твоём плане</string>
+
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_delete">Удалить</string>
+    <string name="action_close">Закрыть</string>
+    <string name="action_next">Далее</string>
+    <string name="action_skip">Пропустить</string>
+    <string name="action_add">Добавить</string>
+    <string name="action_grant">Разрешить</string>
+
+    <string name="error_generic">Что-то пошло не так. Попробуй ещё раз.</string>
+    <string name="error_title_required">Введи название</string>
+    <string name="error_days_required">Выбери хотя бы один день</string>
+    <string name="error_time_same">Время начала и конца не должно совпадать</string>
+
+    <string name="cd_app_logo">Логотип 24/7</string>
+    <string name="cd_back">Назад</string>
+    <string name="cd_open">Открыть</string>
+    <string name="cd_streak">Серия</string>
+    <string name="cd_stars">Звёзд: %1$s</string>
+    <string name="cd_timeline">Лента дня, планов сегодня: %1$s. Листай влево и вправо.</string>
+    <string name="cd_add_entry">Добавить план</string>
+    <string name="cd_mark_done">Отметить выполненным</string>
+    <string name="cd_mark_not_done">Снять отметку</string>
+    <string name="cd_previous_month">Предыдущий месяц</string>
+    <string name="cd_next_month">Следующий месяц</string>
+    <string name="cd_remove_app">Убрать %1$s из списка</string>
+    <string name="cd_status_ok">Включено</string>
+    <string name="cd_status_missing">Не включено</string>
+    <string name="cd_locked">Заблокировано</string>
+    <string name="cd_block_video">Рисунок: соцсети и игры отнимают время, а человек на краю обрыва пытается его удержать</string>
+    <string name="cd_block_more">Подробнее: время открытия и кнопки</string>
+
+    <string name="nav_today">Сегодня</string>
+    <string name="nav_plan">План</string>
+    <string name="nav_results">Отчёт</string>
+    <string name="nav_settings">Настройки</string>
+
+    <string name="home_free_time">Свободное время</string>
+    <string name="home_time_left">Осталось %1$s</string>
+    <string name="home_next">Далее</string>
+    <string name="home_next_routine">Начало режима</string>
+    <string name="home_no_next">На сегодня больше ничего нет</string>
+    <string name="home_today_score">Оценка за сегодня</string>
+    <string name="banner_blocking_off">Блокировка не работает — дай разрешение</string>
+    <string name="home_viewing_now">сейчас</string>
+    <string name="home_time_ago">%1$s назад</string>
+    <string name="home_time_later">через %1$s</string>
+    <string name="home_back_to_now">Сейчас</string>
+    <string name="home_at_this_time">В это время</string>
+    <string name="home_now_label">Сейчас</string>
+    <string name="timeline_yesterday">Вчера</string>
+    <string name="timeline_today">Сегодня</string>
+    <string name="timeline_tomorrow">Завтра</string>
+    <string name="home_state_done">завершено</string>
+    <string name="home_state_starts_in">начнётся через %1$s</string>
+    <string name="home_free_hint">Ничего не запланировано</string>
+
+    <string name="category_work">Работа</string>
+    <string name="category_study">Учёба</string>
+    <string name="category_sport">Спорт</string>
+    <string name="category_family">Семья</string>
+    <string name="category_reading">Чтение</string>
+    <string name="category_rest">Отдых</string>
+    <string name="category_sleep">Сон</string>
+    <string name="category_morning">Утро</string>
+    <string name="category_other">Другое</string>
+
+    <string name="schedule_title">План на день</string>
+    <string name="schedule_empty">На этот день планов нет. Нажми «+», чтобы добавить.</string>
+    <string name="mode_day">День</string>
+    <string name="mode_week">Неделя</string>
+    <string name="mode_month">Месяц</string>
+    <string name="mode_year">Год</string>
+    <string name="sleep_block_title">Режим сна</string>
+    <string name="sleep_block_subtitle">%1$s – %2$s · приложения блокируются</string>
+    <string name="delete_entry_title">Удалить план</string>
+    <string name="delete_entry_text">Удалить «%1$s»? Это действие нельзя отменить.</string>
+    <string name="week_tasks_done">Выполнено: %1$s из %2$s</string>
+    <string name="week_no_score">Оценки пока нет</string>
+    <string name="cd_previous_week">Предыдущая неделя</string>
+    <string name="cd_next_week">Следующая неделя</string>
+    <string name="week_grid_hint">Нажми на день — откроется подробный план. Листай часы влево и вправо.</string>
+    <string name="week_repeat_hint">Разовых планов на этой неделе: %1$s. На следующей неделе их не будет.</string>
+    <string name="week_repeat_button">Повторять каждую неделю</string>
+    <string name="week_repeat_confirm">Разовые планы этой недели (%1$s) будут повторяться каждую неделю в свой день. Позже введённые вручную точные копии будут удалены. Любой план потом можно изменить отдельно.</string>
+    <string name="week_repeat_ok">Повторять</string>
+    <string name="week_repeat_done">Теперь повторяются каждую неделю: %1$s</string>
+
+    <string name="goals_title">Цели на %1$s год</string>
+    <string name="goals_add">Цель</string>
+    <string name="goals_edit">Изменить цель</string>
+    <string name="goals_empty">Целей пока нет. Добавь первую.</string>
+    <string name="goals_field_title">Название цели</string>
+    <string name="goals_progress">Выполнено: %1$s%%</string>
+    <string name="percent_value">%1$s%%</string>
+
+    <string name="editor_title_new">Новый план</string>
+    <string name="editor_title_edit">Изменить план</string>
+    <string name="editor_field_title">Название</string>
+    <string name="editor_field_description">Заметка (необязательно)</string>
+    <string name="editor_start">Начало</string>
+    <string name="editor_end">Конец</string>
+    <string name="editor_category">Категория</string>
+    <string name="editor_repeat">Повтор</string>
+    <string name="editor_date">Дата</string>
+    <string name="editor_start_date">Начиная с</string>
+    <string name="editor_reminder">Напоминание</string>
+    <string name="editor_reminder_off">Нет</string>
+    <string name="repeat_once">Один раз</string>
+    <string name="repeat_daily">Каждый день</string>
+    <string name="repeat_weekdays">По будням</string>
+    <string name="repeat_weekly">Еженедельно</string>
+    <string name="repeat_monthly">Ежемесячно</string>
+    <string name="repeat_yearly">Ежегодно</string>
+
+    <string name="results_title">Итоги</string>
+    <string name="results_this_week">Эта неделя</string>
+    <string name="results_streak">Серия</string>
+    <string name="results_trophy_shelf">Полка наград</string>
+    <string name="results_perfect_weeks">Идеальных недель: %1$s</string>
+    <string name="criterion_tasks">Планы (%1$s/%2$s)</string>
+    <string name="criterion_routine">Режим соблюдён</string>
+    <string name="criterion_sleep">Сон вовремя</string>
+    <string name="criterion_wake">Подъём вовремя</string>
+    <string name="criterion_bypass">Экстренный доступ: %1$s раз(а) (−30 баллов за каждый)</string>
+    <string name="week_summary">На этой неделе: %1$s/%2$s баллов, в среднем %3$s ★</string>
+    <string name="week_close_to_trophy">До кубка совсем чуть-чуть!</string>
+    <string name="week_keep_going">Каждый день — новый шанс. Продолжай!</string>
+    <string name="streak_current">Текущая</string>
+    <string name="streak_longest">Самая длинная</string>
+    <string name="trophy_none">Нет кубка</string>
+    <string name="trophy_bronze">Бронза</string>
+    <string name="trophy_silver">Серебро</string>
+    <string name="trophy_gold">Золото</string>
+    <string name="trophy_diamond">Алмаз</string>
+    <string name="trophy_congrats_title">Поздравляем!</string>
+    <string name="trophy_congrats_text">Кубок «%1$s» добавлен на полку наград. 100 баллов каждый день целую неделю — это сильный результат.</string>
+    <string name="trophy_congrats_button">Спасибо!</string>
+    <string name="trophy_notification_text">Получен кубок «%1$s»! Открой приложение, чтобы посмотреть.</string>
+
+    <string name="settings_title">Настройки</string>
+    <string name="settings_language">Язык</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_background">Стиль фона</string>
+    <string name="settings_background_hint">«Сила» — тёмный, «Изящество» — мягкий розовый. В стиле «Чистый» работает выбранная тема.</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="theme_gray">Серая</string>
+    <string name="theme_system">Как в системе</string>
+    <string name="background_power">Сила</string>
+    <string name="background_grace">Изящество</string>
+    <string name="background_pure">Чистый</string>
+    <string name="settings_routine">Режим</string>
+    <string name="settings_routine_active">Режим включён</string>
+    <string name="settings_strict_mode">Строгий режим</string>
+    <string name="settings_strict_mode_desc">Экстренный доступ только 1 раз в день</string>
+    <string name="settings_reminders">Этапы напоминаний</string>
+    <string name="settings_stage_1">Этап 1</string>
+    <string name="settings_stage_2">Этап 2</string>
+    <string name="settings_stage_3">Этап 3</string>
+    <string name="settings_stage_dialog_title">За сколько до блокировки?</string>
+    <string name="settings_voice">Голосовое напоминание</string>
+    <string name="settings_voice_desc">Сообщение читается вслух (если на телефоне есть голос для этого языка)</string>
+    <string name="settings_ringtone">Мелодия</string>
+    <string name="settings_ringtone_default">По умолчанию</string>
+    <string name="settings_ringtone_custom">Выбранная</string>
+    <string name="settings_blocked_apps">Блокируемые приложения</string>
+    <string name="settings_reliability_button">Блокировка работает надёжно?</string>
+    <string name="settings_version">Версия %1$s</string>
+
+    <string name="routine_block_start">Начало блокировки</string>
+    <string name="routine_block_start_desc">Отвлекающие приложения закрываются</string>
+    <string name="routine_sleep">Время сна</string>
+    <string name="routine_sleep_desc">Во сколько ты хочешь ложиться</string>
+    <string name="routine_wake">Подъём</string>
+    <string name="routine_wake_desc">Приложения открываются автоматически</string>
+
+    <string name="apps_title">Блокируемые приложения</string>
+    <string name="apps_search">Поиск приложения</string>
+    <string name="apps_selected_count">Выбрано: %1$s</string>
+
+    <string name="reliability_title">Надёжность блокировки</string>
+    <string name="reliability_all_good">Всё в порядке — блокировка будет работать надёжно.</string>
+    <string name="reliability_has_issues">Некоторых разрешений нет. Включи их ниже, чтобы блокировка работала полностью.</string>
+    <string name="perm_accessibility_title">Отслеживание приложений</string>
+    <string name="perm_accessibility_desc">Знает только, какое приложение открыто. Не читает то, что ты пишешь.</string>
+    <string name="perm_overlay_title">Поверх других приложений</string>
+    <string name="perm_overlay_desc">Чтобы экран блокировки появлялся поверх других приложений.</string>
+    <string name="perm_battery_title">Снять ограничение батареи</string>
+    <string name="perm_battery_desc">Чтобы телефон не выключал приложение в фоне.</string>
+    <string name="perm_notifications_title">Уведомления</string>
+    <string name="perm_notifications_desc">Чтобы показывать напоминания.</string>
+    <string name="perm_exact_alarm_title">Точные напоминания</string>
+    <string name="perm_exact_alarm_desc">Чтобы напоминания срабатывали минута в минуту.</string>
+    <string name="disclosure_title">Зачем нужно «Отслеживание приложений»?</string>
+    <string name="disclosure_body">24/7 использует службу «Специальные возможности» (Accessibility) Android. Она определяет, какое приложение сейчас открыто, чтобы блокировать выбранные тобой приложения (например, Instagram или YouTube) во время режима.</string>
+    <string name="disclosure_privacy">24/7 читает только название открытого сейчас приложения. Твой текст, пароли и сообщения не читаются. Никакие данные не покидают устройство. На следующем экране выбери «24/7» и включи службу.</string>
+    <string name="disclosure_accept">Понятно, продолжить</string>
+    <string name="disclosure_decline">Не сейчас</string>
+    <string name="accessibility_service_label">24/7 — блокировка по режиму</string>
+    <string name="accessibility_service_description">Блокирует выбранные тобой отвлекающие приложения во время режима. Читает только название открытого сейчас приложения. Текст на экране, ввод, пароли и сообщения не читаются. Никакие данные не покидают устройство.</string>
+
+    <string name="brand_guide_title">Инструкция для %1$s</string>
+    <string name="brand_guide_intro">Некоторые телефоны выключают фоновые приложения, и блокировка перестаёт работать. Выполни эти шаги один раз:</string>
+    <string name="brand_open_settings">Открыть настройки</string>
+    <string name="brand_xiaomi">Xiaomi / Redmi / POCO</string>
+    <string name="brand_samsung">Samsung</string>
+    <string name="brand_huawei">Huawei / Honor</string>
+    <string name="brand_oppo">Oppo / Realme</string>
+    <string name="brand_vivo">Vivo</string>
+    <string name="brand_oneplus">OnePlus</string>
+    <string name="brand_other">твоего телефона</string>
+
+    <string name="onboarding_welcome_text">Запиши свой распорядок дня — 24/7 напомнит и защитит его.</string>
+    <string name="onboarding_problem_title">Знакомо?</string>
+    <string name="onboarding_problem_1">Вечером берёшь телефон «на 5 минут» — и пропадают часы.</string>
+    <string name="onboarding_problem_2">Ложишься спать поздно.</string>
+    <string name="onboarding_problem_3">Утром поздний подъём — и весь день идёт наперекосяк.</string>
+    <string name="onboarding_problem_solution">В заданное время 24/7 закрывает отвлекающие приложения, а утром сам открывает их.</string>
+    <string name="onboarding_language_title">Выбери язык</string>
+    <string name="onboarding_routine_title">Твой режим</string>
+    <string name="onboarding_routine_subtitle">Его можно изменить в настройках в любой момент.</string>
+    <string name="onboarding_apps_title">Что отвлекает?</string>
+    <string name="onboarding_apps_subtitle">Отметь приложения, которые будут блокироваться во время режима.</string>
+    <string name="onboarding_permissions_title">Разрешения</string>
+    <string name="onboarding_permissions_subtitle">Для блокировки нужны 3 разрешения. Всё остаётся на твоём телефоне.</string>
+    <string name="onboarding_start">Начать</string>
+
+    <string name="channel_reminders">Напоминания</string>
+    <string name="channel_reminders_desc">Напоминания о режиме и планах</string>
+    <string name="channel_reminders_silent">Напоминания (своя мелодия)</string>
+    <string name="channel_reminders_silent_desc">Звук воспроизводит сам 24/7</string>
+    <string name="channel_monitor">Статус режима</string>
+    <string name="channel_monitor_desc">Постоянное уведомление о том, что режим активен</string>
+    <string name="channel_achievements">Награды</string>
+    <string name="channel_achievements_desc">Кубки и достижения</string>
+    <string name="monitor_title">24/7 активен</string>
+    <string name="monitor_text">Блокировка: %1$s – %2$s</string>
+    <string name="monitor_text_default">Режим под контролем</string>
+
+    <string name="reminder_stage1">До режима: %1$s. Начинай завершать дела.</string>
+    <string name="reminder_stage2">Осталось: %1$s. Пора заканчивать.</string>
+    <string name="reminder_stage3">Осталось: %1$s. Готовься отложить телефон.</string>
+    <string name="reminder_final">%1$s! Сейчас приложения заблокируются.</string>
+    <string name="task_reminder">В %1$s — «%2$s». Осталось: %3$s, готовься.</string>
+    <string name="block_started_title">Режим начался</string>
+    <string name="morning_title">Доброе утро</string>
+    <string name="morning_streak">Доброе утро! Режим соблюдён — %1$s подряд.</string>
+    <string name="morning_new_day">Новый день — новый план. Начнём?</string>
+    <string name="duration_hours_minutes">%1$s %2$s</string>
+
+    <string name="block_subtitle">Во время режима это приложение закрыто. Отдыхай — утром всё будет на месте.</string>
+    <string name="block_unlocks_at">Откроется в</string>
+    <string name="block_time_left">Осталось</string>
+    <string name="block_streak">Серия продолжается: %1$s</string>
+    <string name="block_go_home">На главный экран</string>
+    <string name="block_emergency">Экстренный доступ</string>
+
+    <string name="emergency_intro_note">Сегодня можно воспользоваться ещё раз: %1$s. Каждый раз даёт 5 минут и отнимает 30 баллов.</string>
+    <string name="emergency_back_to_rest">Вернуться к отдыху</string>
+    <string name="emergency_continue_anyway">Всё равно продолжить</string>
+    <string name="emergency_countdown_title">Подожди минуту</string>
+    <string name="emergency_countdown_hint">Подумай за это время: это правда нужно?</string>
+    <string name="emergency_question_title">Реши пример</string>
+    <string name="emergency_wrong_answer">Неверно. Вот новый пример.</string>
+    <string name="emergency_submit">Подтвердить</string>
+    <string name="emergency_penalty_note">Верный ответ — 5 минут доступа и −30 баллов.</string>
+    <string name="emergency_granted_title">Доступ на 5 минут</string>
+    <string name="emergency_granted_text">Потом приложения снова заблокируются. Из сегодняшней оценки вычтено 30 баллов.</string>
+    <string name="emergency_granted_toast">Доступ на 5 минут открыт</string>
+    <string name="emergency_limit_title">Лимит на сегодня исчерпан</string>
+    <string name="emergency_limit_text">Экстренный доступ на сегодня использован. Звонки, SMS и часы доступны всегда.</string>
+
+    <string name="privacy_title">Политика конфиденциальности</string>
+    <string name="privacy_summary">24/7 читает только название открытого сейчас приложения. Твой текст, пароли и сообщения не читаются. Никакие данные не покидают устройство, не отправляются на сервер и не передаются третьим лицам.</string>
+    <string name="privacy_section_data_title">Какие данные хранятся</string>
+    <string name="privacy_section_data_body">Введённые тобой планы, время режима, список блокируемых приложений, баллы, кубки и настройки. Всё хранится только в памяти телефона. В приложении нет регистрации, рекламы и разрешения на интернет.</string>
+    <string name="privacy_section_accessibility_title">Служба специальных возможностей (Accessibility)</string>
+    <string name="privacy_section_accessibility_body">Служба знает только одно: какое приложение только что открылось (имя пакета). Это нужно, чтобы блокировать выбранные приложения во время режима. Текст на экране, ввод, пароли, сообщения, изображения и другое содержимое не читаются, не сохраняются и никуда не отправляются.</string>
+    <string name="privacy_section_permissions_title">Другие разрешения</string>
+    <string name="privacy_section_permissions_body">Поверх других приложений — для экрана блокировки. Уведомления и точные будильники — для напоминаний. Снятие ограничения батареи — чтобы телефон не останавливал приложение в фоне. Время разблокировки телефона — только для баллов «сон / подъём вовремя», внутри телефона. Приблизительное местоположение — только для расчёта времени намаза на телефоне; никуда не отправляется. При онлайн-поиске города (только по кнопке «Искать онлайн») введённое название отправляется в Google через службу геолокации телефона.</string>
+    <string name="privacy_section_sharing_title">Передача данных</string>
+    <string name="privacy_section_sharing_body">Никакие данные не продаются, не передаются третьим лицам и не отправляются на сервер. Приложение не добавляет данные и в облачные резервные копии.</string>
+    <string name="privacy_section_delete_title">Удаление данных</string>
+    <string name="privacy_section_delete_body">Если удалить приложение или нажать «Очистить данные» в настройках телефона, все данные удаляются полностью.</string>
+    <string name="privacy_section_contact_title">Связь</string>
+    <string name="privacy_section_contact_body">Если есть вопросы, напиши на почту разработчика, указанную на странице в Google Play.</string>
+    <string name="privacy_updated">Последнее обновление: сентябрь 2026</string>
+
+    <plurals name="days_count">
+        <item quantity="one">%1$s день</item>
+        <item quantity="few">%1$s дня</item>
+        <item quantity="many">%1$s дней</item>
+        <item quantity="other">%1$s дня</item>
+    </plurals>
+    <plurals name="weeks_count">
+        <item quantity="one">%1$s неделя</item>
+        <item quantity="few">%1$s недели</item>
+        <item quantity="many">%1$s недель</item>
+        <item quantity="other">%1$s недели</item>
+    </plurals>
+    <plurals name="duration_hours">
+        <item quantity="one">%1$s час</item>
+        <item quantity="few">%1$s часа</item>
+        <item quantity="many">%1$s часов</item>
+        <item quantity="other">%1$s часа</item>
+    </plurals>
+    <plurals name="duration_minutes">
+        <item quantity="one">%1$s минута</item>
+        <item quantity="few">%1$s минуты</item>
+        <item quantity="many">%1$s минут</item>
+        <item quantity="other">%1$s минуты</item>
+    </plurals>
+
+    <string-array name="block_messages">
+        <item>Двигайся вперёд — у тебя получится.</item>
+        <item>Не сбивай ритм. Завтра скажешь себе спасибо.</item>
+        <item>Сегодняшняя дисциплина — завтрашний успех.</item>
+        <item>Телефон подождёт. Сон — нет.</item>
+        <item>Это решение было принято на свежую голову. Доверься ему.</item>
+        <item>Каждый час — в твоём плане.</item>
+        <item>Маленькие привычки дают большие результаты.</item>
+        <item>Ранний подъём завтра начинается с раннего сна сегодня.</item>
+        <item>Время — твоё главное богатство. Сейчас ты его бережёшь.</item>
+        <item>Это непросто. Но ты сильнее трудностей.</item>
+        <item>Телефон, отложенный сейчас, — это полноценный день завтра.</item>
+        <item>Дисциплина — это выполнять обещание, данное себе.</item>
+        <item>Большие дела начинаются с маленьких «нет».</item>
+        <item>Лента не заканчивается. А твой день — да.</item>
+        <item>Сон — не лень, а источник завтрашних сил.</item>
+        <item>Сегодня — победа над собой. Это самая трудная победа.</item>
+        <item>Бодрое утро завтра — результат сегодняшнего выбора.</item>
+        <item>Всё остальное подождёт. Здоровье — нет.</item>
+        <item>Уважение к себе начинается с верности своему плану.</item>
+        <item>Каждый вечер — один кирпич. Из кирпичей строят крепость.</item>
+        <item>Не приложения управляют тобой, а ты — ими.</item>
+        <item>Уставший мозг плохо принимает решения. Отдохни.</item>
+        <item>Завтрашние планы ждут тебя — набирайся сил.</item>
+        <item>Успех — это маленькие решения, повторяемые каждый день.</item>
+        <item>Сильные следуют плану, а не настроению.</item>
+        <item>Ночь — для восстановления. Экран — для дня.</item>
+        <item>Сегодняшний выбор определяет твоё завтра.</item>
+        <item>Терпение — лучшая привычка. Потерпи сейчас.</item>
+        <item>Потраченное впустую время не вернётся.</item>
+        <item>Хороший сон — лучшая мотивация.</item>
+    </string-array>
+
+    <string-array name="emergency_messages">
+        <item>Стоп. Это правда нужно или просто привычка?</item>
+        <item>Твоя серия в %1$s под угрозой. Продолжить?</item>
+        <item>Завтрашний ты просит сегодняшнего тебя об одном: продержись.</item>
+        <item>У тебя уговор с собой. Не нарушай его.</item>
+        <item>«Всего 5 минут»? Обычно это превращается в 2 часа.</item>
+    </string-array>
+
+    <string-array name="completion_messages">
+        <item>Готово. Так держать!</item>
+        <item>Ещё шаг вперёд. Баллы: +%1$s</item>
+        <item>Немного, но регулярно — это самый сильный путь.</item>
+        <item>Сказано — сделано, и точно в срок. Это характер.</item>
+    </string-array>
+
+    <string-array name="task_start_messages">
+        <item>Время для «%1$s». Сосредоточься.</item>
+        <item>Начать — самое трудное. Ты уже начинаешь.</item>
+    </string-array>
+
+    <string-array name="missed_messages">
+        <item>В этот раз не вышло. Следующий — твой.</item>
+        <item>Один день — это ещё не всё. Продолжай.</item>
+        <item>Идеал не обязателен. Достаточно регулярности.</item>
+    </string-array>
+
+    <string-array name="brand_steps_xiaomi">
+        <item>Настройки → Приложения → Все приложения → откройте 24/7.</item>
+        <item>Включите «Автозапуск».</item>
+        <item>«Контроль активности» (Экономия батареи) → выберите «Нет ограничений».</item>
+        <item>На экране недавних приложений потяните карточку 24/7 вниз и нажмите на замок.</item>
+    </string-array>
+    <string-array name="brand_steps_samsung">
+        <item>Настройки → Батарея → Ограничения на использование в фоне.</item>
+        <item>Уберите 24/7 из «Спящих приложений» и «Приложений в глубоком сне».</item>
+        <item>Добавьте 24/7 в «Приложения, которые никогда не спят».</item>
+        <item>Настройки → Приложения → 24/7 → Батарея → «Без ограничений».</item>
+    </string-array>
+    <string-array name="brand_steps_huawei">
+        <item>Настройки → Батарея → Запуск приложений.</item>
+        <item>Найдите 24/7 и отключите автоматическое управление (Управлять вручную).</item>
+        <item>В окне включите все три пункта: автозапуск, косвенный запуск, работа в фоне.</item>
+        <item>Закрепите 24/7 на экране недавних приложений.</item>
+    </string-array>
+    <string-array name="brand_steps_oppo">
+        <item>Настройки → Батарея → Другие настройки → Оптимизация фоновой активности.</item>
+        <item>Для 24/7 выберите «Не оптимизировать».</item>
+        <item>Настройки → Управление приложениями → 24/7 → разрешите «Автозапуск».</item>
+        <item>Закрепите 24/7 на экране недавних приложений.</item>
+    </string-array>
+    <string-array name="brand_steps_vivo">
+        <item>Настройки → Батарея → Высокое энергопотребление в фоне.</item>
+        <item>Разрешите 24/7 работать в фоне.</item>
+        <item>i Manager → Диспетчер приложений → Автозапуск → включите 24/7.</item>
+        <item>Закрепите 24/7 на экране недавних приложений.</item>
+    </string-array>
+    <string-array name="brand_steps_oneplus">
+        <item>Настройки → Батарея → Оптимизация батареи.</item>
+        <item>24/7 → выберите «Не оптимизировать».</item>
+        <item>Настройки → Приложения → 24/7 → Батарея → включите «Разрешить фоновую активность».</item>
+        <item>Закрепите 24/7 на экране недавних приложений.</item>
+    </string-array>
+    <string-array name="brand_steps_other">
+        <item>Настройки → Приложения → 24/7 → Батарея.</item>
+        <item>Выберите «Без ограничений» или «Не оптимизировать».</item>
+        <item>Если есть раздел «Автозапуск», включите его для 24/7.</item>
+        <item>Проверьте, что все пункты в списке выше зелёные.</item>
+    </string-array>
+    <!-- Даты -->
+    <string name="date_full">%1$s %2$s %3$s года</string>
+    <string name="date_hijri_label">Хиджри</string>
+    <string name="date_gregorian_label">Милади</string>
+    <string-array name="gregorian_months">
+        <item>января</item>
+        <item>февраля</item>
+        <item>марта</item>
+        <item>апреля</item>
+        <item>мая</item>
+        <item>июня</item>
+        <item>июля</item>
+        <item>августа</item>
+        <item>сентября</item>
+        <item>октября</item>
+        <item>ноября</item>
+        <item>декабря</item>
+    </string-array>
+    <string-array name="hijri_months">
+        <item>Мухаррам</item>
+        <item>Сафар</item>
+        <item>Раби аль-авваль</item>
+        <item>Раби ас-сани</item>
+        <item>Джумада аль-уля</item>
+        <item>Джумада ас-сания</item>
+        <item>Раджаб</item>
+        <item>Шаабан</item>
+        <item>Рамадан</item>
+        <item>Шавваль</item>
+        <item>Зуль-када</item>
+        <item>Зуль-хиджа</item>
+    </string-array>
+
+    <!-- Время намаза -->
+    <string name="prayer_fajr">Фаджр</string>
+    <string name="prayer_sunrise">Восход солнца</string>
+    <string name="prayer_sunrise_short">Восход</string>
+    <string name="prayer_dhuhr">Зухр</string>
+    <string name="prayer_asr">Аср</string>
+    <string name="prayer_maghrib">Магриб</string>
+    <string name="prayer_isha">Иша</string>
+    <string name="method_mwl">Всемирная исламская лига (18° / 17°)</string>
+    <string name="method_egypt">Египетское управление (19,5° / 17,5°)</string>
+    <string name="method_makkah">Умм аль-Кура, Мекка (18,5° / 90 мин)</string>
+    <string name="method_karachi">Университет исламских наук, Карачи (18° / 18°)</string>
+    <string name="method_isna">ISNA, Северная Америка (15° / 15°)</string>
+    <string name="method_russia">Духовное управление мусульман России (16° / 15°)</string>
+    <string name="method_southeast_asia">Юго-Восточная Азия (20° / 18°)</string>
+    <string name="madhab_hanafi">Ханафитский</string>
+    <string name="madhab_shafii">Шафиитский, маликитский, ханбалитский</string>
+    <string name="prayer_reminder_text">До намаза %1$s осталось %2$s (%3$s). Готовьтесь.</string>
+    <string name="prayer_at_time_text">Наступило время намаза %1$s — %2$s</string>
+    <string name="home_prayer_title">Время намаза</string>
+    <string name="home_prayer_setup">Выберите место — здесь появится время намаза</string>
+    <string name="home_prayer_next">До намаза %1$s — %2$s</string>
+    <string name="home_prayer_entered">время наступило</string>
+    <string name="prayer_location_coordinates">Текущее место (%1$s, %2$s)</string>
+    <string name="prayer_settings_title">Время намаза</string>
+    <string name="prayer_enabled">Показывать время намаза</string>
+    <string name="prayer_enabled_desc">На главной, в расписании и в напоминаниях</string>
+    <string name="prayer_location">Местоположение</string>
+    <string name="prayer_location_unknown">Место неизвестно — выберите город</string>
+    <string name="prayer_location_source_detected">По местоположению телефона</string>
+    <string name="prayer_location_source_zone">По часовому поясу телефона</string>
+    <string name="prayer_location_source_manual">Выбранный вами город</string>
+    <string name="prayer_location_auto">Автоматически</string>
+    <string name="prayer_location_manual">Поиск города</string>
+    <string name="prayer_location_auto_desc">Место берётся с телефона и обновляется при открытии приложения. В поездке время подстроится под новое место.</string>
+    <string name="prayer_location_refresh">Обновить место сейчас</string>
+    <string name="prayer_location_refreshing">Определяю место…</string>
+    <string name="prayer_location_permission">Разрешить доступ к местоположению</string>
+    <string name="prayer_location_permission_desc">Используется только приблизительное место. Оно остаётся на телефоне и никуда не отправляется. Без разрешения время считается по часовому поясу телефона.</string>
+    <string name="prayer_location_updated">Место обновлено</string>
+    <string name="prayer_location_off">Местоположение на телефоне выключено. Включите его или выберите город вручную.</string>
+    <string name="prayer_location_not_found">Не удалось определить место. Попробуйте позже или выберите город.</string>
+    <string name="prayer_city_search">Введите название города</string>
+    <string name="prayer_search_offline_empty">В офлайн-базе не найдено. Попробуйте другое написание или поиск онлайн.</string>
+    <string name="prayer_search_online">Искать онлайн</string>
+    <string name="prayer_search_online_note">Название ищется через службу геолокации телефона (Google), нужен интернет. Отправляется только при нажатии этой кнопки.</string>
+    <string name="prayer_search_searching">Поиск…</string>
+    <string name="prayer_search_online_failed">Ничего не найдено или нет интернета. Попробуйте другое написание.</string>
+    <string name="prayer_search_online_unavailable">На этом телефоне нет службы онлайн-поиска.</string>
+    <string name="prayer_data_credit">База городов: GeoNames.org (CC BY 4.0)</string>
+    <string name="prayer_today">Время на сегодня</string>
+    <string name="prayer_icons_hint">Колокольчик — напоминание, часы — будильник (звонит в начале времени намаза, пока вы его не выключите).</string>
+    <string name="prayer_reminder">Напоминание перед намазом</string>
+    <string name="prayer_notify_at_time">Сообщать о наступлении времени</string>
+    <string name="prayer_notify_at_time_desc">Уведомление вида «Наступило время намаза Зухр»</string>
+    <string name="prayer_alarm_sound">Звук будильника</string>
+    <string name="prayer_calculation">Расчёт</string>
+    <string name="prayer_method">Метод расчёта</string>
+    <string name="prayer_auto">Автоматически: %1$s</string>
+    <string name="prayer_auto_plain">Автоматически</string>
+    <string name="prayer_madhab">Время Аср (мазхаб)</string>
+    <string name="prayer_adjust">Поправка в минутах</string>
+    <string name="prayer_adjust_desc">Если расписание вашей мечети отличается, поправьте каждое время здесь.</string>
+    <string name="prayer_adjust_value">%1$s мин</string>
+    <string name="hijri_adjust">Дата по хиджре</string>
+    <string name="hijri_adjust_title">Поправка дня</string>
+    <string name="hijri_adjust_value">%1$s дн.</string>
+    <string name="hijri_adjust_desc">Дата по хиджре — по календарю Умм аль-Кура. Если местное объявление (по видимости луны) отличается на день, поправьте здесь.</string>
+    <string name="prayer_accuracy_note">Время рассчитывается без интернета по астрономической формуле. Местные расписания могут добавлять несколько минут для осторожности — поправьте выше.</string>
+    <string name="cd_prayer_notify">%1$s: напоминание</string>
+    <string name="cd_prayer_alarm">%1$s: будильник</string>
+
+    <!-- Будильник -->
+    <string name="channel_alarms">Будильник</string>
+    <string name="channel_alarms_desc">Установленные вами будильники — звонят, пока вы их не выключите</string>
+    <string name="alarm_stop">Выключить</string>
+    <string name="alarm_snooze">Через %1$s мин</string>
+    <string name="alarm_sound_default">Стандартный будильник</string>
+    <string name="editor_alarm">Будильник</string>
+    <string name="editor_alarm_switch">Разбудить будильником</string>
+    <string name="editor_alarm_desc">В начале будет звонить выбранный сигнал, пока вы его не выключите — даже на заблокированном экране</string>
+    <string name="editor_alarm_sound">Сигнал</string>
+
+    <!-- Голосовые напоминания -->
+    <string name="settings_voice_gender">Голос</string>
+    <string name="voice_female">Женский голос</string>
+    <string name="voice_male">Мужской голос</string>
+    <string name="voice_preview">Прослушать</string>
+    <string name="voice_previewing">Читаю…</string>
+    <string name="voice_preview_text">До намаза Зухр осталось 15 минут. Готовьтесь.</string>
+    <string name="voice_result_language_missing">На телефоне нет голоса для этого языка. Скачайте его в настройках телефона → «Синтез речи» или смените язык приложения.</string>
+    <string name="voice_result_engine_missing">На телефоне не найден синтезатор речи.</string>
+
+    <!-- Vidjet -->
+    <string name="widget_name">24/7 — План дня</string>
+    <string name="widget_description">Планы на сегодня и время следующего намаза</string>
+    <string name="widget_next_prayer">Следующий намаз</string>
+    <string name="widget_empty">На сегодня планов нет</string>
+    <string name="widget_more">ещё %1$s</string>
+    <string name="widget_all_done">Планы на сегодня выполнены</string>
+    <string name="time_mode_dial">Циферблат</string>
+    <string name="time_mode_keyboard">Ввести цифрами</string>
+
+    <!-- Rejim qulfi -->
+    <string name="routine_locked_banner">Режим заблокирован до %1$s: его нельзя выключить или изменить время. Блокировка настроек начинается за 6 часов до закрытия приложений.</string>
+    <string name="routine_locked_toast">Во время режима это нельзя изменить — откроется в %1$s.</string>
+    <string name="apps_locked_banner">Заблокировано до %1$s: приложения нельзя убрать из списка (блокировка начинается за 6 часов до закрытия приложений). Добавлять новые можно.</string>
+
+    <!-- Muhosaba va tungi faqat-kerakli rejim -->
+    <string name="allow_only_section">Сила ночного режима</string>
+    <string name="allow_only_switch">Ночью только нужные приложения</string>
+    <string name="allow_only_desc">Во время режима закрываются все приложения. Открыты только звонки, SMS, часы и те, что вы разрешили.</string>
+    <string name="allow_only_apps_title">Разрешённые приложения</string>
+    <string name="allow_only_apps_hint">Отмеченные приложения остаются открытыми ночью. Звонки, SMS, часы и настройки телефона открыты всегда.</string>
+    <string name="allow_only_locked_banner">Заблокировано до %1$s: нельзя разрешать новые приложения. Убрать разрешение можно.</string>
+    <string name="muhosaba_title">Самоотчёт</string>
+    <string name="muhosaba_previous_day">Предыдущий день</string>
+    <string name="muhosaba_next_day">Следующий день</string>
+    <string name="muhosaba_my_list">Мой отчёт</string>
+    <string name="muhosaba_edit">Изменить</string>
+    <string name="muhosaba_edit_done">Готово</string>
+    <string name="muhosaba_marked_count">Отмечено: %1$s / %2$s</string>
+    <string name="muhosaba_empty">За что вы хотите спрашивать с себя каждый день? Составьте свой список или начните с образца — потом измените.</string>
+    <string name="muhosaba_add_samples">Добавить образец списка</string>
+    <string name="muhosaba_add_placeholder">Новый пункт</string>
+    <string name="muhosaba_mark_done">%1$s: выполнено</string>
+    <string name="muhosaba_mark_missed">%1$s: не выполнено</string>
+    <string name="muhosaba_facts">Что отметило приложение</string>
+    <string name="muhosaba_fact_tasks">Выполнено планов</string>
+    <string name="muhosaba_fact_night_phone">Телефон использовался после отбоя</string>
+    <string name="muhosaba_fact_woke">Подъём вовремя</string>
+    <string name="muhosaba_fact_bypass">Экстренный доступ (раз)</string>
+    <string name="muhosaba_yes">Да</string>
+    <string name="muhosaba_no">Нет</string>
+    <string name="muhosaba_summary">Итог</string>
+    <string name="muhosaba_week">7 дней</string>
+    <string name="muhosaba_month">30 дней</string>
+    <string name="muhosaba_days_of">%1$s / %2$s дн.</string>
+    <string name="muhosaba_summary_hint">Зелёный — выполненные дни, оранжевый — невыполненные, пусто — дни без отчёта.</string>
+    <string name="muhosaba_evening_text">Отчитайтесь перед собой за сегодняшний день и приготовьтесь к завтрашнему. Сегодня ещё есть возможность — завтра может быть поздно.</string>
+    <string name="muhosaba_evening_start">Начать отчёт</string>
+    <string name="muhosaba_evening_later">Позже</string>
+    <string name="muhosaba_reminder_suffix">Отчитайтесь за день.</string>
+    <string name="home_muhosaba_hint">Отчитаться за сегодняшний день</string>
+    <string-array name="muhosaba_quotes">
+        <item>Отчитывайте себя сами, прежде чем с вас спросят отчёт, и взвешивайте свои дела, прежде чем они будут взвешены.</item>
+        <item>О сын Адама! Ты — это дни. Когда уходит день, уходит часть тебя.</item>
+        <item>Раб не станет богобоязненным, пока не будет спрашивать отчёт с самого себя так, как спрашивает со своего компаньона.</item>
+        <item>Верующий — надзиратель над своей душой, он спрашивает с неё отчёт ради Аллаха. Лёгким будет расчёт в День воскресения для тех, кто спрашивал с себя в этом мире.</item>
+        <item>Когда наступит вечер, не жди утра, а когда наступит утро, не жди вечера. Бери от своего здоровья для своей болезни и от своей жизни для своей смерти.</item>
+        <item>Многие люди обделены в двух милостях: в здоровье и свободном времени.</item>
+        <item>Не сдвинутся стопы раба в День воскресения, пока он не будет спрошен о своей жизни — на что он её потратил, о своём знании — как поступал согласно ему, о своём имуществе — откуда приобрёл и на что израсходовал, и о своём теле — как его использовал.</item>
+        <item>О те, которые уверовали! Бойтесь Аллаха, и пусть каждая душа посмотрит, что она приготовила на завтрашний день.</item>
+        <item>Я застал людей, которые берегли своё время сильнее, чем вы бережёте свои дирхемы и динары.</item>
+    </string-array>
+    <string-array name="muhosaba_quote_sources">
+        <item>Умар ибн аль-Хаттаб, да будет доволен им Аллах (ат-Тирмизи, под хадисом 2459)</item>
+        <item>Аль-Хасан аль-Басри (Абу Нуайм, «Хильят аль-аулия»)</item>
+        <item>Маймун ибн Михран (ат-Тирмизи, под хадисом 2459)</item>
+        <item>Аль-Хасан аль-Басри (Ибн аль-Мубарак, «Аз-Зухд»)</item>
+        <item>Абдуллах ибн Умар, да будет доволен Аллах ими обоими (аль-Бухари, 6416)</item>
+        <item>Посланник Аллаха, мир ему и благословение Аллаха (аль-Бухари, 6412)</item>
+        <item>Посланник Аллаха, мир ему и благословение Аллаха (ат-Тирмизи, 2417)</item>
+        <item>Коран, сура «Аль-Хашр», аят 18 (смысловой перевод)</item>
+        <item>Аль-Хасан аль-Басри (Ибн аль-Мубарак, «Аз-Зухд»)</item>
+    </string-array>
+    <string-array name="muhosaba_sample_items">
+        <item>Совершил пять намазов вовремя</item>
+        <item>Читал Коран</item>
+        <item>Произнёс утренние и вечерние зикры</item>
+        <item>Сделал добро родителям</item>
+        <item>Берёг язык от сплетен и лжи</item>
+        <item>Получал знания или читал полезное</item>
+        <item>Не тратил время впустую</item>
+    </string-array>
+</resources>

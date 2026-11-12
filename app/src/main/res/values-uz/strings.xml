@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Oʻzbek (values/ bilan bir xil). Raqamlar joyiga %1$s qoʻyiladi (arab tilida ham lotin raqamlari chiqishi uchun). -->
+<resources>
+    <!-- Ilova -->
+    <string name="app_name">24/7</string>
+    <string name="app_slogan">Har soating, rejangda</string>
+
+    <!-- Tillar (har biri oʻz tilida, tarjima qilinmaydi) -->
+
+    <!-- Umumiy tugmalar -->
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Bekor qilish</string>
+    <string name="action_save">Saqlash</string>
+    <string name="action_delete">Oʻchirish</string>
+    <string name="action_close">Yopish</string>
+    <string name="action_next">Keyingi</string>
+    <string name="action_skip">Oʻtkazib yuborish</string>
+    <string name="action_add">Qoʻshish</string>
+    <string name="action_grant">Ruxsat berish</string>
+
+    <!-- Xatolar -->
+    <string name="error_generic">Nimadir notoʻgʻri ketdi. Qaytadan urinib koʻring.</string>
+    <string name="error_title_required">Nomini yozing</string>
+    <string name="error_days_required">Kamida bitta kunni tanlang</string>
+    <string name="error_time_same">Boshlanish va tugash vaqti bir xil boʻlmasin</string>
+
+    <!-- Ekran oʻquvchi uchun tavsiflar -->
+    <string name="cd_app_logo">24/7 logotipi</string>
+    <string name="cd_back">Orqaga</string>
+    <string name="cd_open">Ochish</string>
+    <string name="cd_streak">Ketma-ketlik</string>
+    <string name="cd_stars">%1$s yulduz</string>
+    <string name="cd_timeline">Kun tartibi lentasi, bugun %1$s ta reja. Chapga-oʻngga surib koʻring.</string>
+    <string name="cd_add_entry">Yangi reja qoʻshish</string>
+    <string name="cd_mark_done">Bajarildi deb belgilash</string>
+    <string name="cd_mark_not_done">Belgini olib tashlash</string>
+    <string name="cd_previous_month">Oldingi oy</string>
+    <string name="cd_next_month">Keyingi oy</string>
+    <string name="cd_remove_app">%1$s ni roʻyxatdan olib tashlash</string>
+    <string name="cd_status_ok">Yoqilgan</string>
+    <string name="cd_status_missing">Yoqilmagan</string>
+    <string name="cd_locked">Qulflangan</string>
+    <string name="cd_block_video">Rasm: ijtimoiy tarmoqlar va oʻyinlar vaqtni tortib olmoqda, jar yoqasidagi odam esa uni qaytarishga urinmoqda</string>
+    <string name="cd_block_more">Batafsil: ochilish vaqti va tugmalar</string>
+
+    <!-- Pastki menyu -->
+    <string name="nav_today">Bugun</string>
+    <string name="nav_plan">Reja</string>
+    <string name="nav_results">Hisob</string>
+    <string name="nav_settings">Sozlama</string>
+
+    <!-- Bosh sahifa -->
+    <string name="home_free_time">Boʻsh vaqt</string>
+    <string name="home_time_left">%1$s qoldi</string>
+    <string name="home_next">Keyingi</string>
+    <string name="home_next_routine">Rejim boshlanadi</string>
+    <string name="home_no_next">Bugun boshqa reja yoʻq</string>
+    <string name="home_today_score">Bugungi baho</string>
+    <string name="banner_blocking_off">Bloklash ishlamayapti — ruxsat bering</string>
+    <string name="home_viewing_now">hozir</string>
+    <string name="home_time_ago">%1$s oldin</string>
+    <string name="home_time_later">%1$s keyin</string>
+    <string name="home_back_to_now">Hozirga</string>
+    <string name="home_at_this_time">Shu vaqtda</string>
+    <string name="home_now_label">Hozir</string>
+    <string name="timeline_yesterday">Kecha</string>
+    <string name="timeline_today">Bugun</string>
+    <string name="timeline_tomorrow">Ertaga</string>
+    <string name="home_state_done">tugagan</string>
+    <string name="home_state_starts_in">%1$sdan keyin boshlanadi</string>
+    <string name="home_free_hint">Rejalashtirilmagan vaqt</string>
+
+    <!-- Toifalar -->
+    <string name="category_work">Ish</string>
+    <string name="category_study">Dars</string>
+    <string name="category_sport">Sport</string>
+    <string name="category_family">Oila</string>
+    <string name="category_reading">Mutolaa</string>
+    <string name="category_rest">Dam olish</string>
+    <string name="category_sleep">Uyqu</string>
+    <string name="category_morning">Tong</string>
+    <string name="category_other">Boshqa</string>
+
+    <!-- Kunlik reja -->
+    <string name="schedule_title">Kunlik reja</string>
+    <string name="schedule_empty">Bu kunga reja yoʻq. «+» tugmasi bilan qoʻshing.</string>
+    <string name="mode_day">Kun</string>
+    <string name="mode_week">Hafta</string>
+    <string name="mode_month">Oy</string>
+    <string name="mode_year">Yil</string>
+    <string name="sleep_block_title">Uyqu rejimi</string>
+    <string name="sleep_block_subtitle">%1$s – %2$s · ilovalar bloklanadi</string>
+    <string name="delete_entry_title">Rejani oʻchirish</string>
+    <string name="delete_entry_text">«%1$s» oʻchirilsinmi? Bu amalni qaytarib boʻlmaydi.</string>
+    <string name="week_tasks_done">%1$s / %2$s reja bajarildi</string>
+    <string name="week_no_score">Hali baho yoʻq</string>
+    <string name="cd_previous_week">Oldingi hafta</string>
+    <string name="cd_next_week">Keyingi hafta</string>
+    <string name="week_grid_hint">Kunni bosing — oʻsha kunning batafsil rejasi ochiladi. Soatlarni chapga-oʻngga suring.</string>
+    <string name="week_repeat_hint">Bu haftada %1$s ta «bir marta» reja bor. Ular keyingi haftada chiqmaydi.</string>
+    <string name="week_repeat_button">Har haftaga takrorlash</string>
+    <string name="week_repeat_confirm">Bu haftadagi %1$s ta reja har hafta oʻz kunida takrorlanadi. Keyinroq qoʻlda qayta yozilgan aynan bir xil nusxalari oʻchiriladi. Keyin istalgan rejani alohida oʻzgartirishingiz mumkin.</string>
+    <string name="week_repeat_ok">Takrorlash</string>
+    <string name="week_repeat_done">%1$s ta reja endi har hafta takrorlanadi</string>
+
+    <!-- Yillik maqsadlar -->
+    <string name="goals_title">%1$s-yil maqsadlari</string>
+    <string name="goals_add">Maqsad</string>
+    <string name="goals_edit">Maqsadni tahrirlash</string>
+    <string name="goals_empty">Hali maqsad yoʻq. Birinchisini qoʻshing.</string>
+    <string name="goals_field_title">Maqsad nomi</string>
+    <string name="goals_progress">Bajarilishi: %1$s%%</string>
+    <string name="percent_value">%1$s%%</string>
+
+    <!-- Reja tahrirlash -->
+    <string name="editor_title_new">Yangi reja</string>
+    <string name="editor_title_edit">Rejani tahrirlash</string>
+    <string name="editor_field_title">Nomi</string>
+    <string name="editor_field_description">Izoh (ixtiyoriy)</string>
+    <string name="editor_start">Boshlanishi</string>
+    <string name="editor_end">Tugashi</string>
+    <string name="editor_category">Toifa</string>
+    <string name="editor_repeat">Takrorlanish</string>
+    <string name="editor_date">Sana</string>
+    <string name="editor_start_date">Qaysi kundan</string>
+    <string name="editor_reminder">Eslatma</string>
+    <string name="editor_reminder_off">Yoʻq</string>
+    <string name="repeat_once">Bir marta</string>
+    <string name="repeat_daily">Har kuni</string>
+    <string name="repeat_weekdays">Ish kunlari</string>
+    <string name="repeat_weekly">Haftalik</string>
+    <string name="repeat_monthly">Oylik</string>
+    <string name="repeat_yearly">Yillik</string>
+
+    <!-- Natija -->
+    <string name="results_title">Natija</string>
+    <string name="results_this_week">Bu hafta</string>
+    <string name="results_streak">Ketma-ketlik</string>
+    <string name="results_trophy_shelf">Mukofotlar javoni</string>
+    <string name="results_perfect_weeks">Mukammal haftalar: %1$s</string>
+    <string name="criterion_tasks">Rejalar (%1$s/%2$s)</string>
+    <string name="criterion_routine">Rejim saqlandi</string>
+    <string name="criterion_sleep">Vaqtida uxlash</string>
+    <string name="criterion_wake">Vaqtida uygʻonish</string>
+    <string name="criterion_bypass">Favqulodda kirish: %1$s marta (har biri −30 ball)</string>
+    <string name="week_summary">Bu hafta: %1$s/%2$s ball, oʻrtacha %3$s ★</string>
+    <string name="week_close_to_trophy">Kubokgacha ozgina qoldi!</string>
+    <string name="week_keep_going">Har bir kun — yangi imkoniyat. Davom et!</string>
+    <string name="streak_current">Joriy</string>
+    <string name="streak_longest">Eng uzun</string>
+    <string name="trophy_none">Kubok yoʻq</string>
+    <string name="trophy_bronze">Bronza</string>
+    <string name="trophy_silver">Kumush</string>
+    <string name="trophy_gold">Oltin</string>
+    <string name="trophy_diamond">Olmos</string>
+    <string name="trophy_congrats_title">Tabriklaymiz!</string>
+    <string name="trophy_congrats_text">«%1$s» kubogi Mukofotlar javoniga qoʻshildi. Bir hafta davomida har kuni 100 ball — bu kuchli natija.</string>
+    <string name="trophy_congrats_button">Rahmat!</string>
+    <string name="trophy_notification_text">Siz «%1$s» kubogini qoʻlga kiritdingiz! Ilovani ochib koʻring.</string>
+
+    <!-- Sozlamalar -->
+    <string name="settings_title">Sozlamalar</string>
+    <string name="settings_language">Til</string>
+    <string name="settings_theme">Mavzu</string>
+    <string name="settings_background">Orqa fon uslubi</string>
+    <string name="settings_background_hint">«Kuch» — qorongʻi, «Nafosat» — yumshoq pushti. «Sof» uslubida tanlangan mavzu ishlaydi.</string>
+    <string name="theme_light">Oq</string>
+    <string name="theme_dark">Qora</string>
+    <string name="theme_gray">Kulrang</string>
+    <string name="theme_system">Tizim boʻyicha</string>
+    <string name="background_power">Kuch</string>
+    <string name="background_grace">Nafosat</string>
+    <string name="background_pure">Sof</string>
+    <string name="settings_routine">Rejim</string>
+    <string name="settings_routine_active">Rejim yoqilgan</string>
+    <string name="settings_strict_mode">Qattiq rejim</string>
+    <string name="settings_strict_mode_desc">Favqulodda kirish kuniga faqat 1 marta</string>
+    <string name="settings_reminders">Eslatma bosqichlari</string>
+    <string name="settings_stage_1">1-bosqich</string>
+    <string name="settings_stage_2">2-bosqich</string>
+    <string name="settings_stage_3">3-bosqich</string>
+    <string name="settings_stage_dialog_title">Bloklashdan qancha oldin?</string>
+    <string name="settings_voice">Ovozli eslatma</string>
+    <string name="settings_voice_desc">Xabar ovoz chiqarib oʻqiladi (telefonda shu til ovozi boʻlsa)</string>
+    <string name="settings_ringtone">Rington</string>
+    <string name="settings_ringtone_default">Standart</string>
+    <string name="settings_ringtone_custom">Tanlangan</string>
+    <string name="settings_blocked_apps">Bloklanadigan ilovalar</string>
+    <string name="settings_reliability_button">Bloklash ishonchli ishlayaptimi?</string>
+    <string name="settings_version">Versiya %1$s</string>
+
+    <!-- Rejim vaqtlari -->
+    <string name="routine_block_start">Bloklash boshlanadi</string>
+    <string name="routine_block_start_desc">Chalgʻituvchi ilovalar yopiladi</string>
+    <string name="routine_sleep">Uyqu vaqti</string>
+    <string name="routine_sleep_desc">Shu vaqtda yotishni maqsad qilasiz</string>
+    <string name="routine_wake">Uygʻonish</string>
+    <string name="routine_wake_desc">Ilovalar avtomatik ochiladi</string>
+
+    <!-- Ilovalarni tanlash -->
+    <string name="apps_title">Bloklanadigan ilovalar</string>
+    <string name="apps_search">Ilova nomini qidiring</string>
+    <string name="apps_selected_count">Tanlangan: %1$s</string>
+
+    <!-- Ruxsatlar -->
+    <string name="reliability_title">Bloklash ishonchliligi</string>
+    <string name="reliability_all_good">Hammasi joyida — bloklash ishonchli ishlaydi.</string>
+    <string name="reliability_has_issues">Baʼzi ruxsatlar yoʻq. Quyidagilarni yoqing — bloklash toʻliq ishlaydi.</string>
+    <string name="perm_accessibility_title">Ilovalarni kuzatish</string>
+    <string name="perm_accessibility_desc">Faqat qaysi ilova ochiqligini biladi. Yozuvlaringizni oʻqimaydi.</string>
+    <string name="perm_overlay_title">Ekran ustida koʻrsatish</string>
+    <string name="perm_overlay_desc">Blok ekrani boshqa ilovalar ustida chiqishi uchun.</string>
+    <string name="perm_battery_title">Batareya cheklovini olib tashlash</string>
+    <string name="perm_battery_desc">Telefon ilovani fonda oʻchirib qoʻymasligi uchun.</string>
+    <string name="perm_notifications_title">Bildirishnomalar</string>
+    <string name="perm_notifications_desc">Eslatmalarni koʻrsatish uchun.</string>
+    <string name="perm_exact_alarm_title">Aniq vaqtdagi eslatmalar</string>
+    <string name="perm_exact_alarm_desc">Eslatmalar daqiqasi-daqiqasiga chalinishi uchun.</string>
+    <string name="disclosure_title">«Ilovalarni kuzatish» nima uchun kerak?</string>
+    <string name="disclosure_body">24/7 Android’ning «Maxsus imkoniyatlar» (Accessibility) xizmatidan foydalanadi. U siz tanlagan ilovalarni (masalan Instagram, YouTube) rejim vaqtida bloklash uchun hozir qaysi ilova ochiq turganini aniqlaydi.</string>
+    <string name="disclosure_privacy">24/7 faqat hozir ochiq turgan ilovaning nomini oʻqiydi. Yozuvlaringiz, parollaringiz yoki xabarlaringiz oʻqilmaydi. Hech qanday maʼlumot qurilmadan chiqmaydi. Keyingi oynada «24/7» ni tanlab, uni yoqing.</string>
+    <string name="disclosure_accept">Tushundim, davom etish</string>
+    <string name="disclosure_decline">Hozir emas</string>
+    <string name="accessibility_service_label">24/7 — rejim bloklash</string>
+    <string name="accessibility_service_description">Rejim vaqtida siz tanlagan chalgʻituvchi ilovalarni bloklaydi. Faqat hozir ochiq turgan ilovaning nomini oʻqiydi. Ekrandagi matnlar, yozuvlar, parollar va xabarlar oʻqilmaydi. Hech qanday maʼlumot qurilmadan chiqmaydi.</string>
+
+    <!-- Telefon brendlari -->
+    <string name="brand_guide_title">%1$s uchun yoʻriqnoma</string>
+    <string name="brand_guide_intro">Baʼzi telefonlar fonda ishlaydigan ilovalarni oʻchirib qoʻyadi va bloklash toʻxtaydi. Quyidagi qadamlarni bir marta bajaring:</string>
+    <string name="brand_open_settings">Sozlamani ochish</string>
+    <string name="brand_xiaomi">Xiaomi / Redmi / POCO</string>
+    <string name="brand_samsung">Samsung</string>
+    <string name="brand_huawei">Huawei / Honor</string>
+    <string name="brand_oppo">Oppo / Realme</string>
+    <string name="brand_vivo">Vivo</string>
+    <string name="brand_oneplus">OnePlus</string>
+    <string name="brand_other">telefoningiz</string>
+
+    <!-- Tanishuv -->
+    <string name="onboarding_welcome_text">Kun tartibingizni yozing — qolganini 24/7 eslatadi va himoya qiladi.</string>
+    <string name="onboarding_problem_title">Tanish holatmi?</string>
+    <string name="onboarding_problem_1">Kechqurun telefon «5 daqiqa» deb qoʻlga olinadi, soatlar oʻtib ketadi.</string>
+    <string name="onboarding_problem_2">Uyquga kech yotiladi.</string>
+    <string name="onboarding_problem_3">Ertasi kun kech uygʻonib, butun tartib buziladi.</string>
+    <string name="onboarding_problem_solution">24/7 belgilangan vaqtda chalgʻituvchi ilovalarni yopadi va ertalab oʻzi ochib beradi.</string>
+    <string name="onboarding_language_title">Tilni tanlang</string>
+    <string name="onboarding_routine_title">Rejimingiz</string>
+    <string name="onboarding_routine_subtitle">Keyin sozlamalardan istalgan vaqtda oʻzgartirish mumkin.</string>
+    <string name="onboarding_apps_title">Nimalar chalgʻitadi?</string>
+    <string name="onboarding_apps_subtitle">Rejim vaqtida bloklanadigan ilovalarni belgilang.</string>
+    <string name="onboarding_permissions_title">Ruxsatlar</string>
+    <string name="onboarding_permissions_subtitle">Bloklash ishlashi uchun 3 ta ruxsat kerak. Hammasi telefoningiz ichida qoladi.</string>
+    <string name="onboarding_start">Boshlash</string>
+
+    <!-- Bildirishnoma kanallari -->
+    <string name="channel_reminders">Eslatmalar</string>
+    <string name="channel_reminders_desc">Rejim va rejalar haqida eslatmalar</string>
+    <string name="channel_reminders_silent">Eslatmalar (oʻz ringtoningiz)</string>
+    <string name="channel_reminders_silent_desc">Ovozni 24/7 oʻzi chaladi</string>
+    <string name="channel_monitor">Rejim holati</string>
+    <string name="channel_monitor_desc">Rejim faol ekanini koʻrsatuvchi doimiy bildirishnoma</string>
+    <string name="channel_achievements">Mukofotlar</string>
+    <string name="channel_achievements_desc">Kuboklar va yutuqlar</string>
+    <string name="monitor_title">24/7 faol</string>
+    <string name="monitor_text">Bloklash: %1$s – %2$s</string>
+    <string name="monitor_text_default">Rejimingiz kuzatilmoqda</string>
+
+    <!-- Eslatmalar -->
+    <string name="reminder_stage1">%1$sdan keyin rejim vaqti. Ishlaringni yakunlay boshla.</string>
+    <string name="reminder_stage2">%1$s qoldi. Yakunlash vaqti keldi.</string>
+    <string name="reminder_stage3">%1$s qoldi. Telefonni qoʻyishga tayyorlan.</string>
+    <string name="reminder_final">%1$s! Ilovalar hozir bloklanadi.</string>
+    <string name="task_reminder">%1$s da «%2$s» — %3$s qoldi, tayyorlan.</string>
+    <string name="block_started_title">Rejim boshlandi</string>
+    <string name="morning_title">Xayrli tong</string>
+    <string name="morning_streak">Xayrli tong! Rejimni saqlading — %1$s ketma-ket.</string>
+    <string name="morning_new_day">Yangi kun, yangi reja. Boshladikmi?</string>
+    <string name="duration_hours_minutes">%1$s %2$s</string>
+
+    <!-- Blok ekrani -->
+    <string name="block_subtitle">Bu ilova rejim vaqtida yopiq. Dam oling — ertalab hammasi oʻz joyida boʻladi.</string>
+    <string name="block_unlocks_at">Ochiladi</string>
+    <string name="block_time_left">Qoldi</string>
+    <string name="block_streak">%1$slik ketma-ketlik saqlanmoqda</string>
+    <string name="block_go_home">Bosh ekranga qaytish</string>
+    <string name="block_emergency">Favqulodda kirish</string>
+
+    <!-- Favqulodda kirish -->
+    <string name="emergency_intro_note">Bugun yana %1$s marta foydalanish mumkin. Har biri 5 daqiqa beradi va bahodan 30 ball ayiradi.</string>
+    <string name="emergency_back_to_rest">Dam olishga qaytish</string>
+    <string name="emergency_continue_anyway">Baribir davom etaman</string>
+    <string name="emergency_countdown_title">Bir daqiqa kuting</string>
+    <string name="emergency_countdown_hint">Shu vaqt ichida oʻylab koʻring: bu chindan zarurmi?</string>
+    <string name="emergency_question_title">Misolni yeching</string>
+    <string name="emergency_wrong_answer">Notoʻgʻri. Mana yangi misol.</string>
+    <string name="emergency_submit">Tasdiqlash</string>
+    <string name="emergency_penalty_note">Toʻgʻri javob — 5 daqiqalik ruxsat va −30 ball.</string>
+    <string name="emergency_granted_title">5 daqiqa ruxsat berildi</string>
+    <string name="emergency_granted_text">Keyin ilovalar yana bloklanadi. Bugungi bahodan 30 ball ayirildi.</string>
+    <string name="emergency_granted_toast">5 daqiqa ruxsat berildi</string>
+    <string name="emergency_limit_title">Bugungi limit tugadi</string>
+    <string name="emergency_limit_text">Bugun favqulodda kirishdan foydalanib boʻldingiz. Qoʻngʻiroq, SMS va soat har doim ochiq.</string>
+
+    <!-- Maxfiylik siyosati -->
+    <string name="privacy_title">Maxfiylik siyosati</string>
+    <string name="privacy_summary">24/7 faqat hozir ochiq turgan ilovaning nomini oʻqiydi. Yozuvlaringiz, parollaringiz yoki xabarlaringiz oʻqilmaydi. Hech qanday maʼlumot qurilmadan chiqmaydi, serverga yuborilmaydi, uchinchi shaxslarga berilmaydi.</string>
+    <string name="privacy_section_data_title">Qanday maʼlumot saqlanadi</string>
+    <string name="privacy_section_data_body">Siz kiritgan kunlik rejalar, rejim vaqtlari, bloklanadigan ilovalar roʻyxati, ballar, kuboklar va sozlamalar. Ularning barchasi faqat telefoningiz xotirasida saqlanadi. Ilovada roʻyxatdan oʻtish, reklama va internet ruxsati yoʻq.</string>
+    <string name="privacy_section_accessibility_title">Maxsus imkoniyatlar (Accessibility) xizmati</string>
+    <string name="privacy_section_accessibility_body">Xizmat faqat bitta narsani biladi: hozir qaysi ilova ochildi (ilovaning paket nomi). Bu siz tanlagan ilovalarni rejim vaqtida bloklash uchun kerak. Ekrandagi matn, yozuvlar, parollar, xabarlar, rasm va boshqa kontent oʻqilmaydi, saqlanmaydi va hech qayerga yuborilmaydi.</string>
+    <string name="privacy_section_permissions_title">Boshqa ruxsatlar</string>
+    <string name="privacy_section_permissions_body">Ekran ustida koʻrsatish — blok ekrani uchun. Bildirishnomalar va aniq budilnik — eslatmalar uchun. Batareya cheklovini olib tashlash — telefon ilovani fonda oʻchirib qoʻymasligi uchun. Telefon qulfdan ochilgan vaqt — faqat «vaqtida uxlash / uygʻonish» ballari uchun, telefon ichida. Taxminiy joylashuv — faqat namoz vaqtlarini telefon ichida hisoblash uchun; hech qayerga yuborilmaydi. Shaharni onlayn qidirsangiz (faqat «Onlayn qidirish» tugmasi bosilganda), yozilgan nom telefonning joy xizmati orqali Googlega yuboriladi.</string>
+    <string name="privacy_section_sharing_title">Maʼlumot almashish</string>
+    <string name="privacy_section_sharing_body">Hech qanday maʼlumot sotilmaydi, uchinchi shaxslarga berilmaydi va serverga yuborilmaydi. Ilova bulutli zaxira nusxaga ham maʼlumot qoʻshmaydi.</string>
+    <string name="privacy_section_delete_title">Maʼlumotni oʻchirish</string>
+    <string name="privacy_section_delete_body">Ilovani oʻchirsangiz yoki telefon sozlamalarida «Maʼlumotlarni tozalash»ni bossangiz, barcha maʼlumot butunlay oʻchadi.</string>
+    <string name="privacy_section_contact_title">Bogʻlanish</string>
+    <string name="privacy_section_contact_body">Savollar boʻlsa, Google Play sahifasidagi dasturchi elektron manzili orqali yozing.</string>
+    <string name="privacy_updated">Oxirgi yangilanish: 2026-yil sentabr</string>
+
+    <!-- Koʻplik shakllari -->
+    <plurals name="days_count">
+        <item quantity="one">%1$s kun</item>
+        <item quantity="other">%1$s kun</item>
+    </plurals>
+    <plurals name="weeks_count">
+        <item quantity="one">%1$s hafta</item>
+        <item quantity="other">%1$s hafta</item>
+    </plurals>
+    <plurals name="duration_hours">
+        <item quantity="one">%1$s soat</item>
+        <item quantity="other">%1$s soat</item>
+    </plurals>
+    <plurals name="duration_minutes">
+        <item quantity="one">%1$s daqiqa</item>
+        <item quantity="other">%1$s daqiqa</item>
+    </plurals>
+
+    <!-- ========== MOTIVATSION XABARLAR ========== -->
+
+    <!-- Blok ekrani (tinch, qoʻllab-quvvatlovchi) -->
+    <string-array name="block_messages">
+        <item>Olgʻa intil — sen uddalaysan.</item>
+        <item>Tartibni buzma. Ertaga oʻzingga rahmat aytasan.</item>
+        <item>Bugungi intizom — ertangi muvaffaqiyat.</item>
+        <item>Telefon kutadi. Uyqu kutmaydi.</item>
+        <item>Sen bu qarorni tetik holatda qabul qilgansan. Unga ishonch bildir.</item>
+        <item>Har soating — rejangda.</item>
+        <item>Kichik odatlar katta natijalar beradi.</item>
+        <item>Ertaga erta turish — bugun erta yotishdan boshlanadi.</item>
+        <item>Vaqting eng qimmatli boyliging. Uni himoya qilyapsan.</item>
+        <item>Bu qiyin. Ammo sen qiyinchilikdan kuchliroqsan.</item>
+        <item>Hozir qoʻyilgan telefon — ertangi toʻliq kun.</item>
+        <item>Intizom — oʻzingga bergan vaʼdangni bajarish.</item>
+        <item>Buyuk ishlar kichik «yoʻq»lardan boshlanadi.</item>
+        <item>Lenta tugamaydi. Sening kuning esa tugaydi.</item>
+        <item>Uyqu — dangasalik emas, ertangi kuchning manbai.</item>
+        <item>Bugun oʻzingni yengding. Bu eng qiyin gʻalaba.</item>
+        <item>Ertalab tetik uygʻonishing — bugungi qaroring natijasi.</item>
+        <item>Hamma narsa kutadi. Sogʻligʻing kutmaydi.</item>
+        <item>Oʻzingni hurmat qilish — oʻz rejangga amal qilishdan boshlanadi.</item>
+        <item>Har oqshom — bitta gʻisht. Gʻishtlardan qasr quriladi.</item>
+        <item>Ilovani sen boshqar, ilova seni emas.</item>
+        <item>Charchagan miya yaxshi qaror qabul qilmaydi. Dam ol.</item>
+        <item>Ertangi rejalaring seni kutyapti — kuch toʻpla.</item>
+        <item>Muvaffaqiyat — har kuni takrorlangan kichik tanlovlar.</item>
+        <item>Kuchli odam kayfiyatiga emas, rejasiga ergashadi.</item>
+        <item>Tun — tiklanish uchun. Ekran — kunduz uchun.</item>
+        <item>Bugungi tanloving — ertangi oʻzing.</item>
+        <item>Sabr — eng yaxshi odat. Hozir sabr qil.</item>
+        <item>Behuda oʻtgan vaqt qaytib kelmaydi.</item>
+        <item>Yaxshi uyqu — eng yaxshi motivatsiya.</item>
+    </string-array>
+
+    <!-- Favqulodda kirishga urinilganda. 2-element (%1$s) — streak, oʻrni oʻzgarmasin. -->
+    <string-array name="emergency_messages">
+        <item>Toʻxta. Bu chindan zarurmi, yoki shunchaki odatmi?</item>
+        <item>%1$slik ketma-ketliging xavf ostida. Davom etasanmi?</item>
+        <item>Ertangi sen bugungi sendan shuni soʻraydi: chidab tur.</item>
+        <item>Sen oʻzing bilan kelishuv tuzgansan. Kelishuvni buzma.</item>
+        <item>5 daqiqa deysanmi? Odatda 2 soatga aylanadi.</item>
+    </string-array>
+
+    <!-- Reja bajarilganda (%1$s — ball) -->
+    <string-array name="completion_messages">
+        <item>Bajarildi. Ana shunday davom et!</item>
+        <item>Yana bir qadam oldinga. +%1$s ball</item>
+        <item>Koʻp emas, lekin muntazam — eng kuchli yoʻl shu.</item>
+        <item>Sen aytgan vaqtda, sen aytgan ishni qilding. Bu — xarakter.</item>
+    </string-array>
+
+    <!-- Yangi reja boshlanganda (%1$s — reja nomi) -->
+    <string-array name="task_start_messages">
+        <item>«%1$s» vaqti keldi. Diqqatni jamla.</item>
+        <item>Boshlash — eng qiyini. Sen boshlading.</item>
+    </string-array>
+
+    <!-- Reja oʻtkazib yuborilganda (yumshoq, ayblamaydigan) -->
+    <string-array name="missed_messages">
+        <item>Bu safar boʻlmadi. Keyingisi seniki.</item>
+        <item>Bir kun — bu hammasi emas. Davom et.</item>
+        <item>Mukammal boʻlish shart emas. Muntazam boʻlish yetarli.</item>
+    </string-array>
+
+    <!-- ========== BREND YOʻRIQNOMALARI ========== -->
+    <string-array name="brand_steps_xiaomi">
+        <item>Sozlamalar → Ilovalar → Ilovalarni boshqarish → 24/7 ni oching.</item>
+        <item>«Avtomatik ishga tushirish» (Autostart) ni yoqing.</item>
+        <item>«Batareya tejash» → «Cheklovlarsiz» (No restrictions) ni tanlang.</item>
+        <item>Soʻnggi ilovalar ekranida 24/7 kartasini pastga torting va qulf belgisini bosing.</item>
+    </string-array>
+    <string-array name="brand_steps_samsung">
+        <item>Sozlamalar → Batareya → Fondagi foydalanish cheklovlari.</item>
+        <item>«Uxlayotgan ilovalar» va «Chuqur uxlayotgan ilovalar» roʻyxatidan 24/7 ni olib tashlang.</item>
+        <item>«Hech qachon uxlamaydigan ilovalar» roʻyxatiga 24/7 ni qoʻshing.</item>
+        <item>Sozlamalar → Ilovalar → 24/7 → Batareya → «Cheklanmagan» ni tanlang.</item>
+    </string-array>
+    <string-array name="brand_steps_huawei">
+        <item>Sozlamalar → Batareya → Ilovalarni ishga tushirish.</item>
+        <item>24/7 ni toping va «Avtomatik boshqarish» ni oʻchiring (Manage manually).</item>
+        <item>Ochilgan oynada uchala belgini yoqing: avto-ishga tushirish, ikkilamchi ishga tushirish, fonda ishlash.</item>
+        <item>Soʻnggi ilovalar ekranida 24/7 ni qulflang.</item>
+    </string-array>
+    <string-array name="brand_steps_oppo">
+        <item>Sozlamalar → Batareya → Qoʻshimcha sozlamalar → Fonda ishlashni optimallashtirish.</item>
+        <item>24/7 uchun «Optimallashtirmaslik» ni tanlang.</item>
+        <item>Sozlamalar → Ilovalarni boshqarish → 24/7 → «Avtomatik ishga tushirish» ga ruxsat bering.</item>
+        <item>Soʻnggi ilovalar ekranida 24/7 ni qulflang.</item>
+    </string-array>
+    <string-array name="brand_steps_vivo">
+        <item>Sozlamalar → Batareya → Fonda yuqori quvvat sarfi.</item>
+        <item>24/7 uchun fonda ishlashga ruxsat bering.</item>
+        <item>i Manager → Ilovalar boshqaruvi → Avtomatik ishga tushirish → 24/7 ni yoqing.</item>
+        <item>Soʻnggi ilovalar ekranida 24/7 ni qulflang.</item>
+    </string-array>
+    <string-array name="brand_steps_oneplus">
+        <item>Sozlamalar → Batareya → Batareyani optimallashtirish.</item>
+        <item>24/7 → «Optimallashtirmaslik» ni tanlang.</item>
+        <item>Sozlamalar → Ilovalar → 24/7 → Batareya → «Fonda ishlashga ruxsat» ni yoqing.</item>
+        <item>Soʻnggi ilovalar ekranida 24/7 ni qulflang.</item>
+    </string-array>
+    <string-array name="brand_steps_other">
+        <item>Sozlamalar → Ilovalar → 24/7 → Batareya.</item>
+        <item>«Cheklanmagan» yoki «Optimallashtirmaslik» ni tanlang.</item>
+        <item>Agar «Avtomatik ishga tushirish» boʻlimi boʻlsa — 24/7 uchun yoqing.</item>
+        <item>Yuqoridagi roʻyxatda hamma belgilar yashil boʻlganini tekshiring.</item>
+    </string-array>
+    <!-- Sanalar -->
+    <string name="date_full">%1$s %2$s %3$s-yil</string>
+    <string name="date_hijri_label">Hijriy</string>
+    <string name="date_gregorian_label">Milodiy</string>
+    <string-array name="gregorian_months">
+        <item>yanvar</item>
+        <item>fevral</item>
+        <item>mart</item>
+        <item>aprel</item>
+        <item>may</item>
+        <item>iyun</item>
+        <item>iyul</item>
+        <item>avgust</item>
+        <item>sentabr</item>
+        <item>oktabr</item>
+        <item>noyabr</item>
+        <item>dekabr</item>
+    </string-array>
+    <string-array name="hijri_months">
+        <item>Muharram</item>
+        <item>Safar</item>
+        <item>Rabiul avval</item>
+        <item>Rabiul oxir</item>
+        <item>Jumodul avval</item>
+        <item>Jumodul oxir</item>
+        <item>Rajab</item>
+        <item>Shaʼbon</item>
+        <item>Ramazon</item>
+        <item>Shavvol</item>
+        <item>Zulqaʼda</item>
+        <item>Zulhijja</item>
+    </string-array>
+
+    <!-- Namoz vaqtlari -->
+    <string name="prayer_fajr">Bomdod</string>
+    <string name="prayer_sunrise">Quyosh chiqishi</string>
+    <string name="prayer_sunrise_short">Quyosh</string>
+    <string name="prayer_dhuhr">Peshin</string>
+    <string name="prayer_asr">Asr</string>
+    <string name="prayer_maghrib">Shom</string>
+    <string name="prayer_isha">Xufton</string>
+    <string name="method_mwl">Musulmon olami ligasi (18° / 17°)</string>
+    <string name="method_egypt">Misr bosh tashkiloti (19,5° / 17,5°)</string>
+    <string name="method_makkah">Ummul-Quro, Makka (18,5° / 90 daqiqa)</string>
+    <string name="method_karachi">Karachi islom universiteti (18° / 18°)</string>
+    <string name="method_isna">Shimoliy Amerika — ISNA (15° / 15°)</string>
+    <string name="method_russia">Rossiya musulmonlari idorasi (16° / 15°)</string>
+    <string name="method_southeast_asia">Janubi-Sharqiy Osiyo (20° / 18°)</string>
+    <string name="madhab_hanafi">Hanafiy</string>
+    <string name="madhab_shafii">Shofeiy, Molikiy, Hanbaliy</string>
+    <string name="prayer_reminder_text">%1$s namoziga %2$s qoldi (%3$s). Tayyorlaning.</string>
+    <string name="prayer_at_time_text">%1$s vaqti kirdi — %2$s</string>
+    <string name="home_prayer_title">Namoz vaqtlari</string>
+    <string name="home_prayer_setup">Joylashuvni tanlang — namoz vaqtlari shu yerda chiqadi</string>
+    <string name="home_prayer_next">%1$s namozigacha %2$s</string>
+    <string name="home_prayer_entered">vaqti kirgan</string>
+    <string name="prayer_location_coordinates">Joriy joylashuv (%1$s, %2$s)</string>
+    <string name="prayer_settings_title">Namoz vaqtlari</string>
+    <string name="prayer_enabled">Namoz vaqtlarini koʻrsatish</string>
+    <string name="prayer_enabled_desc">Bosh sahifada, kun tartibida va eslatmalarda</string>
+    <string name="prayer_location">Joylashuv</string>
+    <string name="prayer_location_unknown">Joy nomaʼlum — shaharni tanlang</string>
+    <string name="prayer_location_source_detected">Telefon joylashuvi boʻyicha</string>
+    <string name="prayer_location_source_zone">Telefon vaqt zonasi boʻyicha</string>
+    <string name="prayer_location_source_manual">Siz tanlagan shahar</string>
+    <string name="prayer_location_auto">Avtomatik</string>
+    <string name="prayer_location_manual">Shahar qidirish</string>
+    <string name="prayer_location_auto_desc">Joy telefondan olinadi va ilova ochilganda yangilanadi. Safarga chiqsangiz, vaqtlar yangi joyga moslashadi.</string>
+    <string name="prayer_location_refresh">Joyni hozir yangilash</string>
+    <string name="prayer_location_refreshing">Joy aniqlanmoqda…</string>
+    <string name="prayer_location_permission">Joylashuvga ruxsat berish</string>
+    <string name="prayer_location_permission_desc">Faqat taxminiy joy olinadi. U telefonda qoladi va hech qayerga yuborilmaydi. Ruxsatsiz vaqtlar telefon vaqt zonasi boʻyicha hisoblanadi.</string>
+    <string name="prayer_location_updated">Joy yangilandi</string>
+    <string name="prayer_location_off">Telefonda joylashuv oʻchirilgan. Uni yoqing yoki shaharni qoʻlda tanlang.</string>
+    <string name="prayer_location_not_found">Joy aniqlanmadi. Birozdan keyin qayta urinib koʻring yoki shaharni tanlang.</string>
+    <string name="prayer_city_search">Shahar nomini yozing</string>
+    <string name="prayer_search_offline_empty">Internetsiz bazada topilmadi. Nomini boshqacha yozib koʻring yoki onlayn qidiring.</string>
+    <string name="prayer_search_online">Onlayn qidirish</string>
+    <string name="prayer_search_online_note">Nom telefonning joy xizmati (Google) orqali qidiriladi, internet kerak. Faqat shu tugmani bosganingizda yuboriladi.</string>
+    <string name="prayer_search_searching">Qidirilmoqda…</string>
+    <string name="prayer_search_online_failed">Topilmadi yoki internet yoʻq. Nomini boshqacha yozib koʻring.</string>
+    <string name="prayer_search_online_unavailable">Bu telefonda onlayn qidiruv xizmati yoʻq.</string>
+    <string name="prayer_data_credit">Shaharlar bazasi: GeoNames.org (CC BY 4.0)</string>
+    <string name="prayer_today">Bugungi vaqtlar</string>
+    <string name="prayer_icons_hint">Qoʻngʻiroqcha — eslatma, soat — budilnik (vaqt kirganda oʻchirmaguningizcha chaladi).</string>
+    <string name="prayer_reminder">Namozdan oldin eslatma</string>
+    <string name="prayer_notify_at_time">Vaqt kirganda xabar</string>
+    <string name="prayer_notify_at_time_desc">«Peshin vaqti kirdi» kabi bildirishnoma</string>
+    <string name="prayer_alarm_sound">Budilnik ovozi</string>
+    <string name="prayer_calculation">Hisoblash</string>
+    <string name="prayer_method">Hisoblash usuli</string>
+    <string name="prayer_auto">Avtomatik: %1$s</string>
+    <string name="prayer_auto_plain">Avtomatik</string>
+    <string name="prayer_madhab">Asr vaqti (mazhab)</string>
+    <string name="prayer_adjust">Daqiqaga toʻgʻrilash</string>
+    <string name="prayer_adjust_desc">Masjidingiz yoki muftiyat taqvimi bilan farq boʻlsa, har bir vaqtni shu yerda toʻgʻrilang.</string>
+    <string name="prayer_adjust_value">%1$s daqiqa</string>
+    <string name="hijri_adjust">Hijriy sana</string>
+    <string name="hijri_adjust_title">Kunni toʻgʻrilash</string>
+    <string name="hijri_adjust_value">%1$s kun</string>
+    <string name="hijri_adjust_desc">Hijriy sana Ummul-Quro taqvimi boʻyicha. Mahalliy eʼlon (oy koʻrinishi) bilan 1 kun farq qilsa, shu yerda toʻgʻrilang.</string>
+    <string name="prayer_accuracy_note">Vaqtlar internetsiz, astronomik formula bilan hisoblanadi. Mahalliy taqvimlar ehtiyot uchun bir necha daqiqa qoʻshishi mumkin — yuqorida toʻgʻrilang.</string>
+    <string name="cd_prayer_notify">%1$s: eslatma</string>
+    <string name="cd_prayer_alarm">%1$s: budilnik</string>
+
+    <!-- Budilnik -->
+    <string name="channel_alarms">Budilnik</string>
+    <string name="channel_alarms_desc">Siz qoʻygan budilniklar — oʻchirmaguningizcha chaladi</string>
+    <string name="alarm_stop">Oʻchirish</string>
+    <string name="alarm_snooze">%1$s daqiqadan keyin</string>
+    <string name="alarm_sound_default">Standart budilnik</string>
+    <string name="editor_alarm">Budilnik</string>
+    <string name="editor_alarm_switch">Budilnik bilan uygʻotish</string>
+    <string name="editor_alarm_desc">Boshlanish vaqtida tanlangan signal oʻchirmaguningizcha chaladi — qulflangan ekranda ham</string>
+    <string name="editor_alarm_sound">Signal</string>
+
+    <!-- Ovozli eslatma -->
+    <string name="settings_voice_gender">Ovoz</string>
+    <string name="voice_female">Ayol ovozi</string>
+    <string name="voice_male">Erkak ovozi</string>
+    <string name="voice_preview">Eshitib koʻrish</string>
+    <string name="voice_previewing">Oʻqilmoqda…</string>
+    <string name="voice_preview_text">Peshin namoziga 15 daqiqa qoldi. Tayyorlaning.</string>
+    <string name="voice_result_language_missing">Telefoningizda bu til uchun ovoz yoʻq. Telefon sozlamalari → «Matnni nutqqa aylantirish» boʻlimidan ovoz yuklab oling yoki ilova tilini oʻzgartiring.</string>
+    <string name="voice_result_engine_missing">Telefonda ovozli oʻqish dasturi topilmadi.</string>
+
+    <!-- Vidjet -->
+    <string name="widget_name">24/7 — kun tartibi</string>
+    <string name="widget_description">Bugungi rejalar va keyingi namoz vaqti</string>
+    <string name="widget_next_prayer">Keyingi namoz</string>
+    <string name="widget_empty">Bugunga reja yoʻq</string>
+    <string name="widget_more">+%1$s yana</string>
+    <string name="widget_all_done">Bugungi rejalar tugadi</string>
+    <string name="time_mode_dial">Aylanadigan soat</string>
+    <string name="time_mode_keyboard">Raqam bilan yozish</string>
+
+    <!-- Rejim qulfi -->
+    <string name="routine_locked_banner">Rejim qulflangan: %1$s gacha rejimni oʻchirib, vaqtlarini oʻzgartirib boʻlmaydi. Qulf bloklashdan 6 soat oldin boshlanadi.</string>
+    <string name="routine_locked_toast">Rejim vaqtida buni oʻzgartirib boʻlmaydi — %1$s da ochiladi.</string>
+    <string name="apps_locked_banner">Qulf: %1$s gacha ilovani roʻyxatdan chiqarib boʻlmaydi (qulf bloklashdan 6 soat oldin boshlanadi). Yangisini qoʻshish mumkin.</string>
+
+    <!-- Muhosaba va tungi faqat-kerakli rejim -->
+    <string name="allow_only_section">Tungi rejim kuchi</string>
+    <string name="allow_only_switch">Kechasi faqat kerakli ilovalar</string>
+    <string name="allow_only_desc">Rejim vaqtida hamma ilova yopiladi. Faqat qoʻngʻiroq, SMS, soat va siz ruxsat berganlar ochiq qoladi.</string>
+    <string name="allow_only_apps_title">Ruxsat etilgan ilovalar</string>
+    <string name="allow_only_apps_hint">Belgilangan ilovalar kechasi ham ochiq qoladi. Qoʻngʻiroq, SMS, soat va telefon sozlamalari har doim ochiq.</string>
+    <string name="allow_only_locked_banner">Qulf: %1$s gacha yangi ilovaga ruxsat berib boʻlmaydi. Ruxsatni olib tashlash mumkin.</string>
+    <string name="muhosaba_title">Muhosaba</string>
+    <string name="muhosaba_previous_day">Oldingi kun</string>
+    <string name="muhosaba_next_day">Keyingi kun</string>
+    <string name="muhosaba_my_list">Mening hisobim</string>
+    <string name="muhosaba_edit">Tahrirlash</string>
+    <string name="muhosaba_edit_done">Tayyor</string>
+    <string name="muhosaba_marked_count">Belgilandi: %1$s / %2$s</string>
+    <string name="muhosaba_empty">Har kuni oʻzingizni nimalar boʻyicha hisob qilmoqchisiz? Roʻyxatni oʻzingiz tuzing yoki namunadan boshlang — keyin oʻzgartirasiz.</string>
+    <string name="muhosaba_add_samples">Namuna roʻyxatni qoʻshish</string>
+    <string name="muhosaba_add_placeholder">Yangi band</string>
+    <string name="muhosaba_mark_done">%1$s: bajarildi</string>
+    <string name="muhosaba_mark_missed">%1$s: bajarilmadi</string>
+    <string name="muhosaba_facts">Ilova qayd etganlari</string>
+    <string name="muhosaba_fact_tasks">Bajarilgan rejalar</string>
+    <string name="muhosaba_fact_night_phone">Uyqu vaqtidan keyin telefon ishlatildi</string>
+    <string name="muhosaba_fact_woke">Vaqtida uygʻonildi</string>
+    <string name="muhosaba_fact_bypass">Favqulodda kirish (marta)</string>
+    <string name="muhosaba_yes">Ha</string>
+    <string name="muhosaba_no">Yoʻq</string>
+    <string name="muhosaba_summary">Xulosa</string>
+    <string name="muhosaba_week">7 kun</string>
+    <string name="muhosaba_month">30 kun</string>
+    <string name="muhosaba_days_of">%1$s / %2$s kun</string>
+    <string name="muhosaba_summary_hint">Yashil — bajarilgan kunlar, toʻq sariq — bajarilmagan, boʻsh joy — hisob qilinmagan kunlar.</string>
+    <string name="muhosaba_evening_text">Bugungi kuningizni hisob qiling va ertangi kunga tayyorlaning. Bugun hali imkon bor — ertaga kech boʻlishi mumkin.</string>
+    <string name="muhosaba_evening_start">Hisobni boshlash</string>
+    <string name="muhosaba_evening_later">Keyinroq</string>
+    <string name="muhosaba_reminder_suffix">Kunni hisob qiling.</string>
+    <string name="home_muhosaba_hint">Bugungi kunni hisob qilish</string>
+    <string-array name="muhosaba_quotes">
+        <item>Hisob-kitob qilinishingizdan oldin oʻzingizni hisob-kitob qiling. Amallaringiz tortilishidan oldin ularni oʻzingiz tortib koʻring.</item>
+        <item>Ey Odam farzandi! Sen kunlardan iboratsan. Bir kun oʻtsa, sening bir boʻlaging ketadi.</item>
+        <item>Banda sherigini qanday hisob-kitob qilsa, oʻzini ham shunday hisob-kitob qilmaguncha taqvodor boʻlmaydi.</item>
+        <item>Moʻmin oʻz nafsi ustidan nazoratchidir, uni Alloh uchun hisob-kitob qiladi. Dunyoda oʻzini hisob-kitob qilganlarga qiyomat kuni hisob yengil boʻladi.</item>
+        <item>Kech kirsa, tongni kutma. Tong otsa, kechni kutma. Sogʻligingdan kasalliging uchun, hayotingdan oʻliming uchun olib qol.</item>
+        <item>Ikki neʼmat borki, koʻp odamlar ularda aldanib qoladi: sogʻlik va boʻsh vaqt.</item>
+        <item>Qiyomat kuni banda umrini nimaga sarflagani, ilmiga qanday amal qilgani, molini qayerdan topib, nimaga sarflagani va badanini nimada toliqtirgani haqida soʻralmaguncha qadamini siljita olmaydi.</item>
+        <item>Ey iymon keltirganlar! Allohdan qoʻrqinglar va har bir jon ertangi kun uchun nima tayyorlaganiga nazar solsin.</item>
+        <item>Men shunday kishilarni koʻrdimki, ular oʻz vaqtlariga sizlar dirham va dinorlaringizga boʻlgan ehtiyotkorlikdan ham koʻra qattiqroq ehtiyot boʻlar edilar.</item>
+    </string-array>
+    <string-array name="muhosaba_quote_sources">
+        <item>Umar ibn Xattob roziyallohu anhu (Termiziy, 2459-hadis ostida)</item>
+        <item>Hasan Basriy rahimahulloh (Abu Nuaym, «Hilyatul-avliyo»)</item>
+        <item>Maymun ibn Mehron rahimahulloh (Termiziy, 2459-hadis ostida)</item>
+        <item>Hasan Basriy rahimahulloh (Ibn Muborak, «Zuhd»)</item>
+        <item>Abdulloh ibn Umar roziyallohu anhumo (Buxoriy, 6416)</item>
+        <item>Rasululloh sollallohu alayhi vasallam (Buxoriy, 6412)</item>
+        <item>Rasululloh sollallohu alayhi vasallam (Termiziy, 2417)</item>
+        <item>Qurʼoni karim, Hashr surasi, 18-oyat (maʼno tarjimasi)</item>
+        <item>Hasan Basriy rahimahulloh (Ibn Muborak, «Zuhd»)</item>
+    </string-array>
+    <string-array name="muhosaba_sample_items">
+        <item>Besh vaqt namozni vaqtida oʻqidim</item>
+        <item>Qurʼon tilovat qildim</item>
+        <item>Tonggi va kechki zikrlarni aytdim</item>
+        <item>Ota-onamga yaxshilik qildim</item>
+        <item>Tilimni gʻiybat va yolgʻondan saqladim</item>
+        <item>Ilm oldim yoki mutolaa qildim</item>
+        <item>Vaqtimni behuda oʻtkazmadim</item>
+    </string-array>
+</resources>

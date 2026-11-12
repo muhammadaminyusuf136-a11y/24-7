@@ -1,0 +1,10 @@
+GeoNames — shaharlar bazasi (app/src/main/assets/cities.tsv)
+==============================================================
+
+Manba: https://download.geonames.org/export/dump/cities15000.zip (aholisi 15 000 dan ortiq shaharlar)
+Litsenziya: Creative Commons Attribution 4.0 (CC BY 4.0) — https://creativecommons.org/licenses/by/4.0/
+Mualliflik: GeoNames (https://www.geonames.org)
+
+O'zgartirishlar: faqat kerakli ustunlar qoldirildi (nom, koordinata, davlat kodi, aholi, ruscha va
+arabcha nom) va qidiruv uchun normallashtirilgan muqobil nomlar qo'shildi.
+Ilova ichida manba "Shahar qidirish" oynasining pastida ko'rsatiladi.
