@@ -74,4 +74,17 @@ val GraceRejaColors = RejaColors(
     isDark = false
 )
 
+val NavyRejaColors = RejaColors(
+    background = NavyBackground,
+    surface = NavySurface,
+    border = NavyBorder,
+    textPrimary = NavyTextPrimary,
+    textSecondary = NavyTextSecondary,
+    textMuted = NavyTextMuted,
+    accent = NavyAccent,
+    accentText = NavyAccentText,
+    timelineEmpty = NavyTimelineEmpty,
+    isDark = true
+)
+
 val LocalRejaColors =staticCompositionLocalOf { LightRejaColors }

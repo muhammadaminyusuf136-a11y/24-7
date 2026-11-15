@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.outlined.StarOutline
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -51,7 +49,6 @@ import androidx.compose.ui.window.Dialog
 import androidx.core.graphics.toColorInt
 import uz.reja24.app.R
 import uz.reja24.app.domain.model.Category
-import uz.reja24.app.domain.model.TrophyLevel
 import uz.reja24.app.presentation.theme.CategoryOther
 import uz.reja24.app.presentation.theme.RejaTheme
 import java.time.LocalTime
@@ -75,23 +72,6 @@ fun categoryNameRes(category: Category): Int = when (category) {
     Category.SLEEP -> R.string.category_sleep
     Category.MORNING -> R.string.category_morning
     Category.OTHER -> R.string.category_other
-}
-
-@StringRes
-fun trophyNameRes(level: TrophyLevel): Int = when (level) {
-    TrophyLevel.NONE -> R.string.trophy_none
-    TrophyLevel.BRONZE -> R.string.trophy_bronze
-    TrophyLevel.SILVER -> R.string.trophy_silver
-    TrophyLevel.GOLD -> R.string.trophy_gold
-    TrophyLevel.DIAMOND -> R.string.trophy_diamond
-}
-
-fun trophyColor(level: TrophyLevel): Color = when (level) {
-    TrophyLevel.NONE -> CategoryOther
-    TrophyLevel.BRONZE -> Color(0xFFB0703C)
-    TrophyLevel.SILVER -> Color(0xFF8E9AA6)
-    TrophyLevel.GOLD -> Color(0xFFD4A72C)
-    TrophyLevel.DIAMOND -> Color(0xFF4FA3C7)
 }
 
 /** Oq (yoki mavzuga mos) karta — chegara bilan. */
@@ -127,26 +107,6 @@ fun SectionLabel(text: String, modifier: Modifier = Modifier) {
         color = RejaTheme.colors.textMuted,
         modifier = modifier
     )
-}
-
-/** 5 ta yulduzcha. */
-@Composable
-fun StarsRow(stars: Int, modifier: Modifier = Modifier, size: Dp = 18.dp) {
-    val description = stringResource(R.string.cd_stars, stars.toString())
-    Row(
-        modifier = modifier.semantics { contentDescription = description },
-        horizontalArrangement = Arrangement.spacedBy(2.dp)
-    ) {
-        repeat(5) { index ->
-            val filled = index < stars
-            Icon(
-                imageVector = if (filled) Icons.Filled.Star else Icons.Outlined.StarOutline,
-                contentDescription = null,
-                tint = if (filled) Color(0xFFE0A44A) else RejaTheme.colors.textMuted,
-                modifier = Modifier.size(size)
-            )
-        }
-    }
 }
 
 /**

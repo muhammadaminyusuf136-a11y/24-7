@@ -24,11 +24,11 @@ import uz.reja24.app.domain.model.Goal
 import uz.reja24.app.domain.model.RoutineSettings
 import uz.reja24.app.domain.model.ScheduleEntry
 import uz.reja24.app.domain.model.WeekRepeat
-import uz.reja24.app.domain.model.ScoreCalculator
 import uz.reja24.app.domain.model.WeeklyEvaluator
 import uz.reja24.app.domain.prayer.PrayerDay
 import uz.reja24.app.domain.prayer.PrayerOverview
 import uz.reja24.app.domain.repository.GoalRepository
+import uz.reja24.app.domain.repository.MuhosabaRepository
 import uz.reja24.app.domain.repository.PrayerSettingsRepository
 import uz.reja24.app.domain.repository.ReminderScheduler
 import uz.reja24.app.domain.repository.RoutineSettingsRepository
@@ -52,7 +52,8 @@ data class DaySummary(
 
 sealed interface ScheduleEvent {
     /** Reja bajarildi — motivatsion xabar ko'rsatish uchun. */
-    data class TaskCompleted(val pointsGained: Int) : ScheduleEvent
+    /** Reja bajarildi — rag'batlantiruvchi xabar (ball yo'q). */
+    data object TaskCompleted : ScheduleEvent
     /** Haftadagi bir martalik rejalar har haftaga aylantirildi. */
     data class WeekRepeated(val count: Int) : ScheduleEvent
     data object Error : ScheduleEvent
@@ -64,6 +65,7 @@ class ScheduleViewModel @Inject constructor(
     private val scheduleRepository: ScheduleRepository,
     private val scoreRepository: ScoreRepository,
     private val goalRepository: GoalRepository,
+    private val muhosabaRepository: MuhosabaRepository,
     private val reminderScheduler: ReminderScheduler,
     routineSettingsRepository: RoutineSettingsRepository,
     prayerSettingsRepository: PrayerSettingsRepository,
@@ -173,14 +175,10 @@ class ScheduleViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val completing = !task.isCompleted
-                val tasks = dayTasks.value
-                val completedBefore = tasks.count { it.isCompleted }
                 scheduleRepository.setTaskCompleted(task.entry.id, task.date, completing)
-                if (completing) {
-                    val gained = ScoreCalculator.taskPoints(completedBefore + 1, tasks.size) -
-                        ScoreCalculator.taskPoints(completedBefore, tasks.size)
-                    _events.emit(ScheduleEvent.TaskCompleted(gained.coerceAtLeast(0)))
-                }
+                // Muhosabada ✗ qo'yilgan bo'lsa — ✓ bilan almashadi (ikkalasi birga turmaydi)
+                if (completing) muhosabaRepository.setTaskMissed(task.entry.id, task.date, false)
+                if (completing) _events.emit(ScheduleEvent.TaskCompleted)
                 reminderScheduler.rescheduleAll()
             } catch (e: Exception) {
                 _events.emit(ScheduleEvent.Error)

@@ -66,6 +66,7 @@ import uz.reja24.app.domain.repository.MuhosabaItem
 import uz.reja24.app.presentation.components.FullDateText
 import uz.reja24.app.presentation.components.RejaCard
 import uz.reja24.app.presentation.components.SectionLabel
+import uz.reja24.app.presentation.components.toComposeColor
 import uz.reja24.app.presentation.schedule.RejaChip
 import uz.reja24.app.presentation.theme.RejaTheme
 import uz.reja24.app.presentation.theme.SuccessGreen
@@ -73,6 +74,9 @@ import java.time.LocalDate
 
 /** «Bajarilmadi» rangi — ikkala mavzuda ham oq belgi aniq ko'rinadi. */
 private val MissedRed = Color(0xFFB3261E)
+
+/** Daftarda aralash kun (✓ ham, ✗ ham bor) — oq raqam ustida o'qiladigan to'q sariq. */
+private val PartialAmber = Color(0xFFB7791F)
 
 /** Kunning hikmati: har kuni navbat bilan (sana bo'yicha), matn va manba alohida massivlarda. */
 @Composable
@@ -100,6 +104,7 @@ fun MuhosabaScreen(viewModel: MuhosabaViewModel = hiltViewModel()) {
         onPreviousDay = viewModel::previousDay,
         onNextDay = viewModel::nextDay,
         onMark = viewModel::setMark,
+        onPlanMark = viewModel::setPlanMark,
         onRemove = viewModel::removeItem,
         onAdd = viewModel::addItem,
         onAddSamples = { viewModel.addItems(resources.getStringArray(R.array.muhosaba_sample_items).toList()) }
@@ -112,6 +117,7 @@ internal fun MuhosabaContent(
     onPreviousDay: () -> Unit,
     onNextDay: () -> Unit,
     onMark: (Long, Boolean) -> Unit,
+    onPlanMark: (Long, Boolean) -> Unit,
     onRemove: (Long) -> Unit,
     onAdd: (String) -> Unit,
     onAddSamples: () -> Unit
@@ -170,6 +176,34 @@ internal fun MuhosabaContent(
             }
         }
 
+        // Kun tartibi: Reja bo'limidagi rejalar, har biriga ✓ yoki ✗
+        SectionLabel(stringResource(R.string.muhosaba_plans))
+        if (current.plans.isEmpty()) {
+            RejaCard(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = stringResource(R.string.muhosaba_plans_empty),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = colors.textSecondary
+                )
+            }
+        } else {
+            RejaCard(modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(vertical = 4.dp)) {
+                current.plans.forEachIndexed { index, plan ->
+                    if (index > 0) HorizontalDivider(color = colors.border, modifier = Modifier.padding(horizontal = 16.dp))
+                    PlanRow(plan = plan, onMark = { done -> onPlanMark(plan.task.entry.id, done) })
+                }
+            }
+            Text(
+                text = stringResource(
+                    R.string.muhosaba_marked_count,
+                    current.plans.count { it.mark != null }.toString(),
+                    current.plans.size.toString()
+                ),
+                style = MaterialTheme.typography.bodySmall,
+                color = colors.textMuted
+            )
+        }
+
         // O'z ro'yxati
         Row(verticalAlignment = Alignment.CenterVertically) {
             SectionLabel(stringResource(R.string.muhosaba_my_list), modifier = Modifier.weight(1f))
@@ -207,20 +241,53 @@ internal fun MuhosabaContent(
         SectionLabel(stringResource(R.string.muhosaba_facts))
         FactsCard(current.facts)
 
-        // Hafta / oy xulosasi
-        if (current.items.isNotEmpty()) {
+        // Hafta / oy xulosasi va daftar
+        val planSummary = if (monthly) current.planMonth else current.planWeek
+        if (current.items.isNotEmpty() || planSummary.isNotEmpty()) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 SectionLabel(stringResource(R.string.muhosaba_summary), modifier = Modifier.weight(1f))
                 RejaChip(selected = !monthly, label = stringResource(R.string.muhosaba_week), onClick = { monthly = false })
                 RejaChip(selected = monthly, label = stringResource(R.string.muhosaba_month), onClick = { monthly = true })
             }
-            RejaCard(modifier = Modifier.fillMaxWidth()) {
-                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    (if (monthly) current.month else current.week).forEach { SummaryRow(it) }
+            if (planSummary.isNotEmpty()) {
+                RejaCard(modifier = Modifier.fillMaxWidth()) {
+                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        SectionLabel(stringResource(R.string.muhosaba_plans))
+                        planSummary.forEach {
+                            SummaryBar(
+                                title = it.title,
+                                barColor = it.colorHex.toComposeColor(),
+                                done = it.done,
+                                missed = it.missed,
+                                total = it.scheduled
+                            )
+                        }
+                    }
+                }
+            }
+            if (current.items.isNotEmpty()) {
+                RejaCard(modifier = Modifier.fillMaxWidth()) {
+                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        SectionLabel(stringResource(R.string.muhosaba_my_list))
+                        (if (monthly) current.month else current.week).forEach {
+                            SummaryBar(title = it.item.title, barColor = null, done = it.done, missed = it.missed, total = it.days)
+                        }
+                    }
                 }
             }
             Text(
                 text = stringResource(R.string.muhosaba_summary_hint),
+                style = MaterialTheme.typography.bodySmall,
+                color = colors.textMuted
+            )
+
+            // Daftar: kunma-kun ✓ va ✗ (kundalik daftar kabi to'lib boradi)
+            SectionLabel(stringResource(R.string.muhosaba_ledger))
+            RejaCard(modifier = Modifier.fillMaxWidth()) {
+                if (monthly) LedgerMonth(current.ledger) else LedgerWeek(current.ledger.takeLast(MuhosabaViewModel.WEEK_DAYS))
+            }
+            Text(
+                text = stringResource(R.string.muhosaba_ledger_hint),
                 style = MaterialTheme.typography.bodySmall,
                 color = colors.textMuted
             )
@@ -351,11 +418,6 @@ private fun FactsCard(facts: DailyScore) {
     RejaCard(modifier = Modifier.fillMaxWidth()) {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             FactRow(
-                label = stringResource(R.string.muhosaba_fact_tasks),
-                value = "${facts.completedTasks} / ${facts.totalTasks}",
-                good = facts.totalTasks > 0 && facts.completedTasks == facts.totalTasks
-            )
-            FactRow(
                 label = stringResource(R.string.muhosaba_fact_night_phone),
                 value = stringResource(if (facts.usedPhoneAfterSleep) R.string.muhosaba_yes else R.string.muhosaba_no),
                 good = !facts.usedPhoneAfterSleep
@@ -367,7 +429,8 @@ private fun FactsCard(facts: DailyScore) {
             )
             FactRow(
                 label = stringResource(R.string.muhosaba_fact_bypass),
-                value = facts.bypassCount.toString(),
+                // Ball o'rniga belgi: har bir favqulodda kirish — bitta ✗
+                value = if (facts.bypassCount == 0) stringResource(R.string.muhosaba_no) else "✗".repeat(facts.bypassCount),
                 good = facts.bypassCount == 0
             )
         }
@@ -389,48 +452,178 @@ private fun FactRow(label: String, value: String, good: Boolean) {
     }
 }
 
+/** Kun tartibidagi bitta reja: rang chizig'i, vaqt, nomi va ✓ / ✗ tugmalari. */
 @Composable
-private fun SummaryRow(summary: ItemSummary) {
+private fun PlanRow(plan: PlanMark, onMark: (Boolean) -> Unit) {
+    val colors = RejaTheme.colors
+    val entry = plan.task.entry
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 60.dp)
+            .padding(start = 16.dp, end = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            Modifier
+                .width(4.dp)
+                .height(30.dp)
+                .background(entry.colorHex.toComposeColor(), RoundedCornerShape(2.dp))
+        )
+        Spacer(Modifier.width(10.dp))
+        Column(
+            Modifier
+                .weight(1f)
+                .padding(end = 12.dp)
+        ) {
+            Text(text = entry.title, style = MaterialTheme.typography.bodyLarge, color = colors.textPrimary)
+            Text(
+                text = TimeFormat.time(entry.startTime) + " – " + TimeFormat.time(entry.endTime),
+                style = MaterialTheme.typography.bodySmall,
+                color = colors.textMuted
+            )
+        }
+        MarkButton(
+            selected = plan.mark == true,
+            color = SuccessGreen,
+            description = stringResource(R.string.muhosaba_mark_done, entry.title),
+            onClick = { onMark(true) }
+        ) { tint -> Icon(Icons.Outlined.Check, contentDescription = null, tint = tint, modifier = Modifier.size(20.dp)) }
+        Spacer(Modifier.width(8.dp))
+        MarkButton(
+            selected = plan.mark == false,
+            color = MissedRed,
+            description = stringResource(R.string.muhosaba_mark_missed, entry.title),
+            onClick = { onMark(false) }
+        ) { tint -> Icon(Icons.Outlined.Close, contentDescription = null, tint = tint, modifier = Modifier.size(20.dp)) }
+        Spacer(Modifier.width(4.dp))
+    }
+}
+
+/** Xulosa qatori: nomi, "✓ soni / jami kun" va yashil-qizil chiziq. barColor — rejaning o'z rangi (nuqta). */
+@Composable
+private fun SummaryBar(title: String, barColor: Color?, done: Int, missed: Int, total: Int) {
     val colors = RejaTheme.colors
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
+            if (barColor != null) {
+                Box(
+                    Modifier
+                        .size(8.dp)
+                        .background(barColor, CircleShape)
+                )
+                Spacer(Modifier.width(8.dp))
+            }
             Text(
-                text = summary.item.title,
+                text = title,
                 style = MaterialTheme.typography.bodyMedium,
                 color = colors.textPrimary,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 8.dp)
             )
             Text(
-                text = stringResource(R.string.muhosaba_days_of, summary.done.toString(), summary.days.toString()),
+                text = stringResource(R.string.muhosaba_days_of, done.toString(), total.toString()),
                 style = MaterialTheme.typography.titleSmall,
                 color = colors.textPrimary
             )
         }
-        // Yashil — bajarilgan kunlar, to'q sariq — bajarilmagan, bo'sh — belgilanmagan
+        // Yashil — ✓ kunlar, qizil — ✗ kunlar, bo'sh — belgilanmagan
         Row(
             Modifier
                 .fillMaxWidth()
                 .height(8.dp)
                 .background(colors.timelineEmpty, RoundedCornerShape(4.dp))
         ) {
-            if (summary.done > 0) {
+            if (done > 0) {
                 Box(
                     Modifier
-                        .weight(summary.done.toFloat())
+                        .weight(done.toFloat())
                         .height(8.dp)
                         .background(SuccessGreen, RoundedCornerShape(4.dp))
                 )
             }
-            if (summary.missed > 0) {
+            if (missed > 0) {
                 Box(
                     Modifier
-                        .weight(summary.missed.toFloat())
+                        .weight(missed.toFloat())
                         .height(8.dp)
-                        .background(colors.accent.copy(alpha = 0.7f), RoundedCornerShape(4.dp))
+                        .background(MissedRed, RoundedCornerShape(4.dp))
                 )
             }
-            val rest = summary.days - summary.done - summary.missed
+            val rest = total - done - missed
             if (rest > 0) Spacer(Modifier.weight(rest.toFloat()))
+        }
+    }
+}
+
+/** Kunning rangi daftarda: hammasi ✓ — yashil, hammasi ✗ — qizil, aralash — sariq, belgisiz — bo'sh. */
+@Composable
+private fun ledgerColor(day: DayLedger): Color = when {
+    day.done == 0 && day.missed == 0 -> RejaTheme.colors.timelineEmpty
+    day.missed == 0 -> SuccessGreen
+    day.done == 0 -> MissedRed
+    else -> PartialAmber
+}
+
+/** Haftalik daftar: 7 qator — kun, ✓ soni, ✗ soni. */
+@Composable
+private fun LedgerWeek(days: List<DayLedger>) {
+    val colors = RejaTheme.colors
+    val locale = LocalConfiguration.current.locales[0]
+    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        days.forEach { day ->
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(
+                    Modifier
+                        .size(12.dp)
+                        .background(ledgerColor(day), CircleShape)
+                )
+                Spacer(Modifier.width(10.dp))
+                Text(
+                    text = TimeFormat.weekday(day.date, locale).replaceFirstChar { it.titlecase(locale) } +
+                        ", " + day.date.dayOfMonth,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = colors.textPrimary,
+                    modifier = Modifier.weight(1f)
+                )
+                Text("✓ " + day.done, style = MaterialTheme.typography.titleSmall, color = SuccessGreen)
+                Spacer(Modifier.width(14.dp))
+                Text(
+                    "✗ " + day.missed,
+                    style = MaterialTheme.typography.titleSmall,
+                    color = if (day.missed > 0) MissedRed else colors.textMuted
+                )
+            }
+        }
+    }
+}
+
+/** Oylik daftar: 30 ta katak, har biri bir kun (eskisi chapda-tepada). */
+@Composable
+private fun LedgerMonth(days: List<DayLedger>) {
+    val colors = RejaTheme.colors
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+        maxItemsInEachRow = 7
+    ) {
+        days.forEach { day ->
+            val fill = ledgerColor(day)
+            val marked = day.done > 0 || day.missed > 0
+            Box(
+                modifier = Modifier
+                    .size(36.dp)
+                    .background(fill, RoundedCornerShape(9.dp))
+                    .semantics { contentDescription = day.date.toString() + ": ✓ " + day.done + ", ✗ " + day.missed },
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = day.date.dayOfMonth.toString(),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = if (marked) Color.White else colors.textMuted
+                )
+            }
         }
     }
 }

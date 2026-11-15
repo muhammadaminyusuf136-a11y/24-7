@@ -23,7 +23,6 @@
     <string name="cd_back">رجوع</string>
     <string name="cd_open">فتح</string>
     <string name="cd_streak">سلسلة الالتزام</string>
-    <string name="cd_stars">النجوم: %1$s</string>
     <string name="cd_timeline">شريط اليوم، عدد خطط اليوم: %1$s. اسحب يمينًا أو يسارًا للتصفح.</string>
     <string name="cd_add_entry">إضافة خطة جديدة</string>
     <string name="cd_mark_done">وضع علامة «تم»</string>
@@ -39,7 +38,6 @@
 
     <string name="nav_today">اليوم</string>
     <string name="nav_plan">الخطة</string>
-    <string name="nav_results">محاسبة</string>
     <string name="nav_settings">الإعدادات</string>
 
     <string name="home_free_time">وقت فراغ</string>
@@ -47,7 +45,6 @@
     <string name="home_next">التالي</string>
     <string name="home_next_routine">بدء النظام</string>
     <string name="home_no_next">لا خطط أخرى اليوم</string>
-    <string name="home_today_score">تقييم اليوم</string>
     <string name="banner_blocking_off">الحظر لا يعمل — امنح الإذن</string>
     <string name="home_viewing_now">الآن</string>
     <string name="home_time_ago">قبل %1$s</string>
@@ -83,7 +80,6 @@
     <string name="delete_entry_title">حذف الخطة</string>
     <string name="delete_entry_text">هل تريد حذف «%1$s»؟ لا يمكن التراجع عن ذلك.</string>
     <string name="week_tasks_done">أُنجز %1$s من %2$s</string>
-    <string name="week_no_score">لا يوجد تقييم بعد</string>
     <string name="cd_previous_week">الأسبوع السابق</string>
     <string name="cd_next_week">الأسبوع التالي</string>
     <string name="week_grid_hint">اضغط على يوم لفتح خطته المفصلة. اسحب الساعات يمينًا أو يسارًا.</string>
@@ -120,43 +116,14 @@
     <string name="repeat_monthly">شهريًا</string>
     <string name="repeat_yearly">سنويًا</string>
 
-    <string name="results_title">النتائج</string>
-    <string name="results_this_week">هذا الأسبوع</string>
-    <string name="results_streak">سلسلة الالتزام</string>
-    <string name="results_trophy_shelf">رف الجوائز</string>
-    <string name="results_perfect_weeks">الأسابيع المثالية: %1$s</string>
-    <string name="criterion_tasks">الخطط (%1$s/%2$s)</string>
-    <string name="criterion_routine">الالتزام بالنظام</string>
-    <string name="criterion_sleep">النوم في الموعد</string>
-    <string name="criterion_wake">الاستيقاظ في الموعد</string>
-    <string name="criterion_bypass">الدخول الطارئ: %1$s مرة (−30 نقطة لكل مرة)</string>
-    <string name="week_summary">هذا الأسبوع: %1$s/%2$s نقطة، المتوسط %3$s ★</string>
-    <string name="week_close_to_trophy">أنت قريب جدًا من الكأس!</string>
-    <string name="week_keep_going">كل يوم فرصة جديدة. واصل!</string>
-    <string name="streak_current">الحالية</string>
-    <string name="streak_longest">الأطول</string>
-    <string name="trophy_none">لا كأس</string>
-    <string name="trophy_bronze">برونزية</string>
-    <string name="trophy_silver">فضية</string>
-    <string name="trophy_gold">ذهبية</string>
-    <string name="trophy_diamond">ماسية</string>
-    <string name="trophy_congrats_title">تهانينا!</string>
-    <string name="trophy_congrats_text">أُضيفت الكأس «%1$s» إلى رف الجوائز. 100 نقطة كل يوم طوال أسبوع — إنجاز رائع.</string>
-    <string name="trophy_congrats_button">شكرًا!</string>
-    <string name="trophy_notification_text">حصلت على الكأس «%1$s»! افتح التطبيق لتراها.</string>
-
     <string name="settings_title">الإعدادات</string>
     <string name="settings_language">اللغة</string>
     <string name="settings_theme">المظهر</string>
     <string name="settings_background">نمط الخلفية</string>
-    <string name="settings_background_hint">«القوة» داكن، و«الرقة» وردي هادئ. في نمط «النقاء» يُستخدم المظهر الذي اخترته.</string>
     <string name="theme_light">فاتح</string>
     <string name="theme_dark">داكن</string>
     <string name="theme_gray">رمادي</string>
     <string name="theme_system">حسب النظام</string>
-    <string name="background_power">القوة</string>
-    <string name="background_grace">الرقة</string>
-    <string name="background_pure">النقاء</string>
     <string name="settings_routine">النظام</string>
     <string name="settings_routine_active">النظام مفعّل</string>
     <string name="settings_strict_mode">الوضع الصارم</string>
@@ -239,8 +206,6 @@
     <string name="channel_reminders_silent_desc">يشغّل 24/7 الصوت بنفسه</string>
     <string name="channel_monitor">حالة النظام</string>
     <string name="channel_monitor_desc">إشعار دائم يوضح أن النظام نشط</string>
-    <string name="channel_achievements">الإنجازات</string>
-    <string name="channel_achievements_desc">الكؤوس والإنجازات</string>
     <string name="monitor_title">24/7 نشط</string>
     <string name="monitor_text">الحظر: %1$s – %2$s</string>
     <string name="monitor_text_default">نظامك تحت المتابعة</string>
@@ -263,7 +228,6 @@
     <string name="block_go_home">العودة إلى الشاشة الرئيسية</string>
     <string name="block_emergency">دخول طارئ</string>
 
-    <string name="emergency_intro_note">يمكنك استخدامه %1$s مرة أخرى اليوم. كل مرة تمنح 5 دقائق وتخصم 30 نقطة من تقييمك.</string>
     <string name="emergency_back_to_rest">العودة إلى الراحة</string>
     <string name="emergency_continue_anyway">سأتابع على أي حال</string>
     <string name="emergency_countdown_title">انتظر دقيقة</string>
@@ -271,9 +235,7 @@
     <string name="emergency_question_title">حلّ المسألة</string>
     <string name="emergency_wrong_answer">إجابة خاطئة. إليك مسألة جديدة.</string>
     <string name="emergency_submit">تأكيد</string>
-    <string name="emergency_penalty_note">الإجابة الصحيحة — 5 دقائق من الوصول و−30 نقطة.</string>
     <string name="emergency_granted_title">مُنحت 5 دقائق</string>
-    <string name="emergency_granted_text">بعدها ستُحظر التطبيقات مجددًا. خُصمت 30 نقطة من تقييم اليوم.</string>
     <string name="emergency_granted_toast">مُنحت 5 دقائق</string>
     <string name="emergency_limit_title">انتهى حد اليوم</string>
     <string name="emergency_limit_text">استخدمت الدخول الطارئ لهذا اليوم. المكالمات والرسائل والساعة متاحة دائمًا.</string>
@@ -281,11 +243,11 @@
     <string name="privacy_title">سياسة الخصوصية</string>
     <string name="privacy_summary">يقرأ 24/7 اسم التطبيق المفتوح حاليًا فقط. لا تُقرأ كتاباتك أو كلمات مرورك أو رسائلك. لا تغادر أي بيانات جهازك، ولا تُرسل إلى أي خادم، ولا تُعطى لأي طرف ثالث.</string>
     <string name="privacy_section_data_title">ما البيانات المخزنة</string>
-    <string name="privacy_section_data_body">الخطط اليومية التي تدخلها، وأوقات النظام، وقائمة التطبيقات المحظورة، والنقاط، والكؤوس، والإعدادات. تُحفظ كلها في ذاكرة هاتفك فقط. لا يوجد في التطبيق تسجيل حساب ولا إعلانات ولا إذن بالإنترنت.</string>
+    <string name="privacy_section_data_body">الخطط اليومية التي تدخلها، وأوقات النظام، وقائمة التطبيقات المحظورة، وعلامات المحاسبة، والإعدادات. تُحفظ كلها في ذاكرة هاتفك فقط. لا يوجد في التطبيق تسجيل حساب ولا إعلانات ولا إذن بالإنترنت.</string>
     <string name="privacy_section_accessibility_title">خدمة تسهيل الاستخدام (Accessibility)</string>
     <string name="privacy_section_accessibility_body">تعرف الخدمة شيئًا واحدًا فقط: أي تطبيق فُتح الآن (اسم الحزمة). هذا ضروري لحظر التطبيقات التي اخترتها أثناء وقت النظام. لا تُقرأ نصوص الشاشة أو الكتابة أو كلمات المرور أو الرسائل أو الصور أو أي محتوى آخر، ولا تُحفظ ولا تُرسل إلى أي مكان.</string>
     <string name="privacy_section_permissions_title">أذونات أخرى</string>
-    <string name="privacy_section_permissions_body">العرض فوق التطبيقات — لشاشة الحظر. الإشعارات والمنبهات الدقيقة — للتذكيرات. إزالة قيود البطارية — حتى لا يوقف الهاتف التطبيق في الخلفية. وقت فتح قفل الهاتف — فقط لنقاط «النوم / الاستيقاظ في الموعد»، داخل هاتفك. الموقع التقريبي — فقط لحساب مواقيت الصلاة داخل الهاتف، ولا يُرسل إلى أي مكان. عند البحث عن مدينة عبر الإنترنت (فقط عند الضغط على «البحث عبر الإنترنت») يُرسل الاسم المكتوب إلى Google عبر خدمة الموقع في الهاتف.</string>
+    <string name="privacy_section_permissions_body">العرض فوق التطبيقات — لشاشة الحظر. الإشعارات والمنبهات الدقيقة — للتذكيرات. إزالة قيود البطارية — حتى لا يوقف الهاتف التطبيق في الخلفية. وقت فتح قفل الهاتف — فقط لعلامة «الاستيقاظ في الموعد»، داخل هاتفك. الموقع التقريبي — فقط لحساب مواقيت الصلاة داخل الهاتف، ولا يُرسل إلى أي مكان. عند البحث عن مدينة عبر الإنترنت (فقط عند الضغط على «البحث عبر الإنترنت») يُرسل الاسم المكتوب إلى Google عبر خدمة الموقع في الهاتف.</string>
     <string name="privacy_section_sharing_title">مشاركة البيانات</string>
     <string name="privacy_section_sharing_body">لا تُباع أي بيانات، ولا تُشارك مع أطراف ثالثة، ولا تُرسل إلى أي خادم. كما لا يضيف التطبيق بيانات إلى النسخ الاحتياطية السحابية.</string>
     <string name="privacy_section_delete_title">حذف البيانات</string>
@@ -370,7 +332,7 @@
 
     <string-array name="completion_messages">
         <item>تمّ. استمر هكذا!</item>
-        <item>خطوة أخرى إلى الأمام. +%1$s نقطة</item>
+        <item>خطوة أخرى إلى الأمام.</item>
         <item>ليس كثيرًا، لكنه منتظم — وهذا أقوى طريق.</item>
         <item>فعلت ما قلته في الوقت الذي قلته. هذه هي الشخصية.</item>
     </string-array>
@@ -576,7 +538,6 @@
     <string name="allow_only_apps_title">التطبيقات المسموح بها</string>
     <string name="allow_only_apps_hint">التطبيقات المحددة تبقى مفتوحة ليلًا. الاتصال والرسائل والساعة وإعدادات الهاتف مفتوحة دائمًا.</string>
     <string name="allow_only_locked_banner">مقفل حتى %1$s: لا يمكن السماح بتطبيقات جديدة. يمكن إلغاء السماح.</string>
-    <string name="muhosaba_title">محاسبة النفس</string>
     <string name="muhosaba_previous_day">اليوم السابق</string>
     <string name="muhosaba_next_day">اليوم التالي</string>
     <string name="muhosaba_my_list">محاسبتي</string>
@@ -589,17 +550,15 @@
     <string name="muhosaba_mark_done">%1$s: تم</string>
     <string name="muhosaba_mark_missed">%1$s: لم يتم</string>
     <string name="muhosaba_facts">ما سجّله التطبيق</string>
-    <string name="muhosaba_fact_tasks">الخطط المنجزة</string>
     <string name="muhosaba_fact_night_phone">استُخدم الهاتف بعد وقت النوم</string>
     <string name="muhosaba_fact_woke">الاستيقاظ في الوقت</string>
-    <string name="muhosaba_fact_bypass">الدخول الطارئ (مرات)</string>
     <string name="muhosaba_yes">نعم</string>
     <string name="muhosaba_no">لا</string>
     <string name="muhosaba_summary">الخلاصة</string>
     <string name="muhosaba_week">7 أيام</string>
     <string name="muhosaba_month">30 يومًا</string>
     <string name="muhosaba_days_of">%1$s / %2$s يوم</string>
-    <string name="muhosaba_summary_hint">الأخضر — أيام أُنجز فيها، البرتقالي — أيام لم يُنجز فيها، الفارغ — أيام بلا محاسبة.</string>
+    <string name="muhosaba_summary_hint">الأخضر — أيام أُنجزت، الأحمر — أيام لم تُنجز، الفارغ — أيام بلا علامة.</string>
     <string name="muhosaba_evening_text">حاسب نفسك على يومك واستعد للغد. اليوم ما زال في الوقت متسع — وغدًا قد يفوت الأوان.</string>
     <string name="muhosaba_evening_start">ابدأ المحاسبة</string>
     <string name="muhosaba_evening_later">لاحقًا</string>
@@ -636,4 +595,19 @@
         <item>تعلمت أو قرأت شيئًا نافعًا</item>
         <item>لم أضيّع وقتي</item>
     </string-array>
+    <string name="nav_results">المحاسبة</string>
+    <string name="muhosaba_title">المحاسبة</string>
+    <string name="emergency_intro_note">يمكنك استخدامه %1$s مرة أخرى اليوم. كل مرة تمنح 5 دقائق وتُسجَّل ✗ في المحاسبة.</string>
+    <string name="emergency_penalty_note">الإجابة الصحيحة — 5 دقائق من الوصول. وتبقى علامة ✗ في المحاسبة.</string>
+    <string name="emergency_granted_text">بعدها ستُحظر التطبيقات مجددًا. أُضيفت علامة ✗ إلى محاسبة اليوم.</string>
+    <string name="background_power">أزرق داكن</string>
+    <string name="background_grace">وردي</string>
+    <string name="background_pure">كريمي</string>
+    <string name="settings_background_hint">مع خلفية «كريمي» يُطبَّق المظهر أعلاه (فاتح، داكن، رمادي). أما «أزرق داكن» و«وردي» فلهما ألوانهما الخاصة.</string>
+    <string name="muhosaba_fact_bypass">الدخول الطارئ</string>
+    <string name="widget_earlier">السابقة: %1$s</string>
+    <string name="muhosaba_plans">جدول اليوم</string>
+    <string name="muhosaba_plans_empty">لا توجد خطط لهذا اليوم. أضفها في قسم «الخطة».</string>
+    <string name="muhosaba_ledger">الدفتر</string>
+    <string name="muhosaba_ledger_hint">الأخضر — أُنجز كل شيء، الأحمر — لم يُنجز شيء، الأصفر — جزئيًا، الفارغ — لم يُحدَّد بعد.</string>
 </resources>

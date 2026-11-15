@@ -7,6 +7,7 @@ import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 import uz.reja24.app.data.local.db.entity.MuhosabaItemEntity
 import uz.reja24.app.data.local.db.entity.MuhosabaMarkEntity
+import uz.reja24.app.data.local.db.entity.TaskMissEntity
 import java.time.LocalDate
 
 @Dao
@@ -32,4 +33,13 @@ interface MuhosabaDao {
 
     @Query("DELETE FROM muhosaba_marks WHERE itemId = :itemId AND date = :date")
     suspend fun deleteMark(itemId: Long, date: LocalDate)
+
+    @Query("SELECT * FROM task_misses WHERE date BETWEEN :from AND :to")
+    fun observeTaskMisses(from: LocalDate, to: LocalDate): Flow<List<TaskMissEntity>>
+
+    @Upsert
+    suspend fun upsertTaskMiss(miss: TaskMissEntity)
+
+    @Query("DELETE FROM task_misses WHERE entryId = :entryId AND date = :date")
+    suspend fun deleteTaskMiss(entryId: Long, date: LocalDate)
 }

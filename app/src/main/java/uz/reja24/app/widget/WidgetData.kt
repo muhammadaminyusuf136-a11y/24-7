@@ -34,8 +34,13 @@ data class WidgetItem(
     val color: Int,
     val isNow: Boolean,
     val isDone: Boolean,
-    val isPrayer: Boolean
+    val isPrayer: Boolean,
+    /** Vaqti o'tib ketgan — ro'yxatdan o'chmaydi, kulrang ko'rsatiladi. */
+    val isPast: Boolean = false
 )
+
+/** Vidjetda ko'rinadigan qism: tepada yashirilgan o'tganlar soni, ko'rinadiganlar, pastda yashirilganlar soni. */
+data class WidgetWindow(val hiddenBefore: Int, val shown: List<WidgetItem>, val hiddenAfter: Int)
 
 data class WidgetData(
     val weekday: String,
@@ -46,7 +51,8 @@ data class WidgetData(
     val items: List<WidgetItem>,
     val emptyText: String,
     /** "+%d yana" — sig'magan qatorlar soni uchun (String.format). */
-    val moreText: String = "+%d"
+    val moreText: String = "+%d",
+    val earlierText: String = "%d"
 )
 
 @EntryPoint
@@ -61,7 +67,7 @@ interface WidgetEntryPoint {
 /** Vidjet uchun ma'lumot: bugungi hozirgi va kelgusi rejalar hamda namozlar (tugaganlari ko'rsatilmaydi). */
 object WidgetDataLoader {
 
-    private const val MAX_ITEMS = 12
+    private const val MAX_ITEMS = 24
 
     suspend fun load(context: Context): WidgetData {
         val entry = EntryPointAccessors.fromApplication(context.applicationContext, WidgetEntryPoint::class.java)
@@ -90,11 +96,15 @@ object WidgetDataLoader {
             nextPrayer = nextText,
             items = buildItems(tasks, todayPrayers, now) { localized.getString(prayerNameRes(it)) },
             emptyText = localized.getString(if (tasks.isEmpty()) R.string.widget_empty else R.string.widget_all_done),
-            moreText = localized.getString(R.string.widget_more).replace("%1\$s", "%d")
+            moreText = localized.getString(R.string.widget_more).replace("%1\$s", "%d"),
+            earlierText = localized.getString(R.string.widget_earlier).replace("%1\$s", "%d")
         )
     }
 
-    /** Hozir davom etayotgan va hali boshlanmagan rejalar + kelgusi namozlar, vaqt bo'yicha. */
+    /**
+     * Bugungi barcha rejalar va namozlar, vaqt bo'yicha. O'tib ketganlari ham qoladi (isPast) —
+     * vidjetda kulrang ko'rinadi, kun tartibidan o'chib ketmaydi.
+     */
     internal fun buildItems(
         tasks: List<DailyTask>,
         prayers: PrayerDay?,
@@ -109,8 +119,7 @@ object WidgetDataLoader {
             // Bugun boshlanadigan nusxa: yarim tundan o'tadigani (23:00–06:00) bugun kechqurun boshlanadi
             val started = !nowTime.isBefore(start)
             val ended = started && !e.crossesMidnight && !e.endTime.isAfter(nowTime)
-            if (ended) return@forEach
-            val running = started
+            val running = started && !ended
             items += start to WidgetItem(
                 id = e.id,
                 time = TimeFormat.time(start),
@@ -118,14 +127,15 @@ object WidgetDataLoader {
                 color = e.colorHex.toComposeColor().toArgb(),
                 isNow = running,
                 isDone = task.isCompleted,
-                isPrayer = false
+                isPrayer = false,
+                isPast = ended
             )
         }
         prayers?.let { day ->
             Prayer.OBLIGATORY.forEach { prayer ->
                 val at = day.time(prayer)
-                if (at.plusMinutes(TimelineModel.PRAYER_MINUTES.toLong()).isBefore(now)) return@forEach
-                val running = !at.isAfter(now)
+                val ended = at.plusMinutes(TimelineModel.PRAYER_MINUTES.toLong()).isBefore(now)
+                val running = !ended && !at.isAfter(now)
                 items += at.toLocalTime() to WidgetItem(
                     id = -1L - prayer.ordinal,
                     time = TimeFormat.time(at.toLocalTime()),
@@ -133,11 +143,31 @@ object WidgetDataLoader {
                     color = PRAYER_ARGB,
                     isNow = running,
                     isDone = false,
-                    isPrayer = true
+                    isPrayer = true,
+                    isPast = ended
                 )
             }
         }
         return items.sortedBy { it.first }.map { it.second }.take(MAX_ITEMS)
+    }
+
+    /**
+     * Vidjetga sig'maganda qaysi qatorlar ko'rinishini tanlaydi: hozirgi va keyingi rejalar doim
+     * ko'rinadi, ulardan oldin eng yaqin o'tgan reja (agar joy bo'lsa, ko'proq o'tganlar).
+     * rowsFor(n) — n ta "yana ..." qatori bo'lganda nechta reja qatori sig'adi.
+     */
+    internal fun window(items: List<WidgetItem>, rowsFor: (Int) -> Int): WidgetWindow {
+        if (items.size <= rowsFor(0)) return WidgetWindow(0, items, 0)
+        val firstActive = items.indexOfFirst { !it.isPast }.let { if (it < 0) items.size else it }
+        fun build(lines: Int): WidgetWindow {
+            val rows = rowsFor(lines).coerceAtLeast(1)
+            val start = (firstActive - 1).coerceAtMost(items.size - rows).coerceAtLeast(0)
+            val end = (start + rows).coerceAtMost(items.size)
+            return WidgetWindow(start, items.subList(start, end), items.size - end)
+        }
+        val both = build(2)
+        val lines = (if (both.hiddenBefore > 0) 1 else 0) + (if (both.hiddenAfter > 0) 1 else 0)
+        return if (lines < 2) build(lines) else both
     }
 
     private const val PRAYER_ARGB = 0xFF2B7A5E.toInt()

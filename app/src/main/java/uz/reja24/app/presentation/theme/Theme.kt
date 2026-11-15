@@ -85,12 +85,13 @@ fun RejaTheme(
 
 /**
  * Ranglar to'plamini tanlaydi.
- * Orqa fon uslubi o'z ranglariga ega: "Kuch" — to'q (qorong'i), "Nafosat" — yumshoq pushti.
- * "Sof" uslubida foydalanuvchi tanlagan mavzu (Oq / Qora / Kulrang / Tizim) ishlatiladi.
+ * Orqa fon o'z ranglariga ega: POWER — "To'q ko'k", GRACE — "Pushti".
+ * PURE — "Qaymoq": unda foydalanuvchi tanlagan mavzu (Oq / Qora / Kulrang / Tizim) ishlatiladi.
+ * (Nomlar bazada saqlangani uchun enum nomlari o'zgartirilmagan.)
  */
 fun resolveRejaColors(themeMode: ThemeMode, backgroundStyle: BackgroundStyle, systemDark: Boolean): RejaColors =
     when (backgroundStyle) {
-        BackgroundStyle.POWER -> DarkRejaColors
+        BackgroundStyle.POWER -> NavyRejaColors
         BackgroundStyle.GRACE -> GraceRejaColors
         BackgroundStyle.PURE -> when (themeMode) {
             ThemeMode.LIGHT -> LightRejaColors

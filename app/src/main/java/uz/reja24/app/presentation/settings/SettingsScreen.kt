@@ -8,7 +8,6 @@ import android.media.RingtoneManager
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -85,9 +84,8 @@ import uz.reja24.app.presentation.components.RejaTimePickerDialog
 import uz.reja24.app.presentation.components.SectionLabel
 import uz.reja24.app.presentation.schedule.RejaChip
 import uz.reja24.app.presentation.theme.DarkBackground
-import uz.reja24.app.presentation.theme.GraceBackgroundBottom
 import uz.reja24.app.presentation.theme.GraceBackgroundTop
-import uz.reja24.app.presentation.theme.GraceSurface
+import uz.reja24.app.presentation.theme.NavyBackground
 import uz.reja24.app.presentation.theme.GrayBackground
 import uz.reja24.app.presentation.theme.LightBackground
 import uz.reja24.app.presentation.theme.PrayerGreen
@@ -595,9 +593,9 @@ private fun ThemeChips(selected: ThemeMode, onSelect: (ThemeMode) -> Unit) {
 @Composable
 private fun BackgroundChips(selected: BackgroundStyle, onSelect: (BackgroundStyle) -> Unit) {
     val options = listOf(
+        BackgroundStyle.PURE to R.string.background_pure,
         BackgroundStyle.POWER to R.string.background_power,
-        BackgroundStyle.GRACE to R.string.background_grace,
-        BackgroundStyle.PURE to R.string.background_pure
+        BackgroundStyle.GRACE to R.string.background_grace
     )
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -614,22 +612,15 @@ private fun BackgroundChips(selected: BackgroundStyle, onSelect: (BackgroundStyl
     }
 }
 
-/** Orqa fon uslubining kichik namunasi. */
+/** Orqa fonning kichik namunasi — o'sha fonning o'z rangi. */
 @Composable
 private fun BackgroundPreview(style: BackgroundStyle) {
-    Canvas(Modifier.fillMaxSize()) {
-        when (style) {
-            BackgroundStyle.POWER -> {
-                drawRect(Brush.verticalGradient(listOf(Color(0xFF17202B), Color(0xFF1F2B3A))))
-                drawLine(Color(0x55E2703A), start = androidx.compose.ui.geometry.Offset(size.width * 0.3f, size.height), end = androidx.compose.ui.geometry.Offset(size.width, size.height * 0.2f), strokeWidth = 3.dp.toPx())
-            }
-            BackgroundStyle.GRACE -> {
-                drawRect(Brush.verticalGradient(listOf(GraceBackgroundTop, GraceBackgroundBottom)))
-                drawCircle(GraceSurface.copy(alpha = 0.4f), radius = size.width * 0.5f, center = androidx.compose.ui.geometry.Offset(size.width * 0.2f, size.height * 1.1f))
-            }
-            BackgroundStyle.PURE -> drawRect(LightBackground)
-        }
+    val color = when (style) {
+        BackgroundStyle.POWER -> NavyBackground
+        BackgroundStyle.GRACE -> GraceBackgroundTop
+        BackgroundStyle.PURE -> LightBackground
     }
+    Box(Modifier.fillMaxSize().background(color))
 }
 
 @Composable

@@ -26,14 +26,14 @@ object NotificationHelper {
     const val CHANNEL_REMINDERS = "reminders"
     const val CHANNEL_REMINDERS_SILENT = "reminders_silent"
     const val CHANNEL_MONITOR = "monitor"
-    const val CHANNEL_ACHIEVEMENTS = "achievements"
+    /** Eski (o'chirilgan) kanal nomi — faqat telefondan o'chirish uchun. */
+    private const val CHANNEL_ACHIEVEMENTS = "achievements"
     /** Budilnik: ovozni xizmat o'zi chaladi (kanal ovozsiz), ekran to'liq ochiladi. */
     const val CHANNEL_ALARMS = "alarms"
 
     const val ID_MONITOR = 1
     const val ID_ROUTINE = 2
     const val ID_MORNING = 3
-    const val ID_TROPHY = 4
     const val ID_ALARM = 5
     private const val ID_PRAYER_BASE = 500
     private const val ID_TASK_BASE = 1000
@@ -71,11 +71,6 @@ object NotificationHelper {
                 setShowBadge(false)
             },
             NotificationChannel(
-                CHANNEL_ACHIEVEMENTS,
-                context.getString(R.string.channel_achievements),
-                NotificationManager.IMPORTANCE_DEFAULT
-            ).apply { description = context.getString(R.string.channel_achievements_desc) },
-            NotificationChannel(
                 CHANNEL_ALARMS,
                 context.getString(R.string.channel_alarms),
                 NotificationManager.IMPORTANCE_HIGH
@@ -88,6 +83,8 @@ object NotificationHelper {
         )
         try {
             manager.createNotificationChannels(channels)
+            // Kuboklar olib tashlangan — eski "Mukofotlar" kanali telefon sozlamalarida qolmasin
+            manager.deleteNotificationChannel(CHANNEL_ACHIEVEMENTS)
         } catch (e: Exception) {
             // kanal yaratilmasa ham ilova ishlashda davom etadi
         }

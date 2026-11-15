@@ -120,20 +120,24 @@ private fun WidgetContent(data: WidgetData) {
             }
         } else {
             // Oddiy ro'yxat (aylantirilmaydi) — har qanday telefon va launcher'da ishonchli ishlaydi.
-            // Vidjet balandligiga qancha qator sig'sa, shuncha; qolgani "+N yana".
+            // O'tgan rejalar o'chmaydi (kulrang). Sig'masa: hozirgi va keyingilari doim ko'rinadi,
+            // tepada "O'tgan: N", pastda "+N yana".
             val height = LocalSize.current.height
-            val fitsAll = ((height - HEADER_HEIGHT) / ROW_HEIGHT).toInt()
-            val shown = if (data.items.size <= fitsAll) {
-                data.items
-            } else {
-                data.items.take(((height - HEADER_HEIGHT - MORE_HEIGHT) / ROW_HEIGHT).toInt().coerceAtLeast(1))
+            val view = WidgetDataLoader.window(data.items) { lines ->
+                ((height - HEADER_HEIGHT - MORE_HEIGHT * lines) / ROW_HEIGHT).toInt()
             }
             Column(modifier = GlanceModifier.fillMaxWidth()) {
-                shown.forEach { item -> ItemRow(item) }
-                val hidden = data.items.size - shown.size
-                if (hidden > 0) {
+                if (view.hiddenBefore > 0) {
                     Text(
-                        text = data.moreText.format(hidden),
+                        text = data.earlierText.format(view.hiddenBefore),
+                        style = TextStyle(color = TextMuted, fontSize = 11.sp),
+                        modifier = GlanceModifier.padding(start = 6.dp, bottom = 2.dp)
+                    )
+                }
+                view.shown.forEach { item -> ItemRow(item) }
+                if (view.hiddenAfter > 0) {
+                    Text(
+                        text = data.moreText.format(view.hiddenAfter),
                         style = TextStyle(color = TextMuted, fontSize = 11.sp),
                         modifier = GlanceModifier.padding(start = 6.dp, top = 2.dp)
                     )
@@ -146,9 +150,12 @@ private fun WidgetContent(data: WidgetData) {
 @Composable
 private fun ItemRow(item: WidgetItem) {
     val titleColor = when {
+        item.isPast -> TextMuted
         item.isPrayer -> PrayerColor
         else -> TextPrimary
     }
+    // O'tgan reja — rang chizig'i xira, o'zi kulrang (o'chib ketmaydi)
+    val barColor = if (item.isPast) Color(item.color).copy(alpha = 0.35f) else Color(item.color)
     Row(
         modifier = GlanceModifier
             .fillMaxWidth()
@@ -162,7 +169,7 @@ private fun ItemRow(item: WidgetItem) {
             modifier = GlanceModifier
                 .width(4.dp)
                 .height(18.dp)
-                .background(ColorProvider(Color(item.color)))
+                .background(ColorProvider(barColor))
                 .cornerRadius(2.dp)
         ) {}
         Spacer(GlanceModifier.width(8.dp))
@@ -181,7 +188,7 @@ private fun ItemRow(item: WidgetItem) {
             style = TextStyle(
                 color = titleColor,
                 fontSize = 13.sp,
-                fontWeight = if (item.isNow) FontWeight.Bold else FontWeight.Medium,
+                fontWeight = if (item.isNow) FontWeight.Bold else if (item.isPast) FontWeight.Normal else FontWeight.Medium,
                 textDecoration = if (item.isDone) TextDecoration.LineThrough else TextDecoration.None
             ),
             maxLines = 1,

@@ -41,5 +41,18 @@ object DatabaseMigrations {
         }
     }
 
-    val ALL: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3)
+    /** 3 → 4: rejaning "bajarilmadi" (✗) belgisi — muhosabadagi kun tartibi uchun. */
+    val MIGRATION_3_4 = object : Migration(3, 4) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL(
+                "CREATE TABLE IF NOT EXISTS `task_misses` (`entryId` INTEGER NOT NULL, `date` INTEGER NOT NULL, " +
+                    "PRIMARY KEY(`entryId`, `date`), " +
+                    "FOREIGN KEY(`entryId`) REFERENCES `schedule_entries`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )"
+            )
+            db.execSQL("CREATE INDEX IF NOT EXISTS `index_task_misses_entryId` ON `task_misses` (`entryId`)")
+            db.execSQL("CREATE INDEX IF NOT EXISTS `index_task_misses_date` ON `task_misses` (`date`)")
+        }
+    }
+
+    val ALL: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
 }

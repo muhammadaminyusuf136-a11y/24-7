@@ -17,4 +17,9 @@ interface MuhosabaRepository {
 
     /** done = null — belgini olib tashlash. */
     suspend fun setMark(itemId: Long, date: LocalDate, done: Boolean?)
+
+    /** Kun tartibidagi "bajarilmadi" (✗) belgilari: sana → reja id'lari. */
+    fun observeTaskMisses(from: LocalDate, to: LocalDate): Flow<Map<LocalDate, Set<Long>>>
+
+    suspend fun setTaskMissed(entryId: Long, date: LocalDate, missed: Boolean)
 }

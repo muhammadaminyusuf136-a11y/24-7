@@ -92,7 +92,6 @@ import uz.reja24.app.presentation.theme.RejaTheme
 import uz.reja24.app.presentation.theme.SuccessGreen
 import java.time.LocalDate
 import java.time.LocalTime
-import java.util.Locale
 
 @Composable
 fun ScheduleScreen(
@@ -109,10 +108,8 @@ fun ScheduleScreen(
     LaunchedEffect(Unit) {
         viewModel.events.collect { event ->
             val message = when (event) {
-                is ScheduleEvent.TaskCompleted -> {
-                    val template = context.resources.getStringArray(R.array.completion_messages).random()
-                    String.format(Locale.ROOT, template, event.pointsGained.toString())
-                }
+                ScheduleEvent.TaskCompleted ->
+                    context.resources.getStringArray(R.array.completion_messages).random()
                 is ScheduleEvent.WeekRepeated -> context.getString(R.string.week_repeat_done, event.count.toString())
                 ScheduleEvent.Error -> context.getString(R.string.error_generic)
             }

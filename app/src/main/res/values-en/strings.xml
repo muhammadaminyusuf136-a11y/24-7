@@ -23,7 +23,6 @@
     <string name="cd_back">Back</string>
     <string name="cd_open">Open</string>
     <string name="cd_streak">Streak</string>
-    <string name="cd_stars">%1$s stars</string>
     <string name="cd_timeline">Day timeline, %1$s plans today. Swipe left or right to explore.</string>
     <string name="cd_add_entry">Add a new plan</string>
     <string name="cd_mark_done">Mark as done</string>
@@ -39,7 +38,6 @@
 
     <string name="nav_today">Today</string>
     <string name="nav_plan">Plan</string>
-    <string name="nav_results">Review</string>
     <string name="nav_settings">Settings</string>
 
     <string name="home_free_time">Free time</string>
@@ -47,7 +45,6 @@
     <string name="home_next">Next</string>
     <string name="home_next_routine">Routine starts</string>
     <string name="home_no_next">Nothing else planned today</string>
-    <string name="home_today_score">Today\'s score</string>
     <string name="banner_blocking_off">Blocking is off — grant access</string>
     <string name="home_viewing_now">now</string>
     <string name="home_time_ago">%1$s ago</string>
@@ -83,7 +80,6 @@
     <string name="delete_entry_title">Delete plan</string>
     <string name="delete_entry_text">Delete «%1$s»? This can\'t be undone.</string>
     <string name="week_tasks_done">%1$s / %2$s plans done</string>
-    <string name="week_no_score">No score yet</string>
     <string name="cd_previous_week">Previous week</string>
     <string name="cd_next_week">Next week</string>
     <string name="week_grid_hint">Tap a day to open its detailed plan. Swipe the hours left or right.</string>
@@ -120,43 +116,14 @@
     <string name="repeat_monthly">Monthly</string>
     <string name="repeat_yearly">Yearly</string>
 
-    <string name="results_title">Results</string>
-    <string name="results_this_week">This week</string>
-    <string name="results_streak">Streak</string>
-    <string name="results_trophy_shelf">Trophy shelf</string>
-    <string name="results_perfect_weeks">Perfect weeks: %1$s</string>
-    <string name="criterion_tasks">Plans (%1$s/%2$s)</string>
-    <string name="criterion_routine">Routine kept</string>
-    <string name="criterion_sleep">Slept on time</string>
-    <string name="criterion_wake">Woke up on time</string>
-    <string name="criterion_bypass">Emergency access: %1$s times (−30 points each)</string>
-    <string name="week_summary">This week: %1$s/%2$s points, average %3$s ★</string>
-    <string name="week_close_to_trophy">You\'re so close to a trophy!</string>
-    <string name="week_keep_going">Every day is a new chance. Keep going!</string>
-    <string name="streak_current">Current</string>
-    <string name="streak_longest">Longest</string>
-    <string name="trophy_none">No trophy</string>
-    <string name="trophy_bronze">Bronze</string>
-    <string name="trophy_silver">Silver</string>
-    <string name="trophy_gold">Gold</string>
-    <string name="trophy_diamond">Diamond</string>
-    <string name="trophy_congrats_title">Congratulations!</string>
-    <string name="trophy_congrats_text">The «%1$s» trophy has been added to your shelf. 100 points every day for a whole week — that\'s impressive.</string>
-    <string name="trophy_congrats_button">Thanks!</string>
-    <string name="trophy_notification_text">You earned the «%1$s» trophy! Open the app to see it.</string>
-
     <string name="settings_title">Settings</string>
     <string name="settings_language">Language</string>
     <string name="settings_theme">Theme</string>
     <string name="settings_background">Background style</string>
-    <string name="settings_background_hint">«Power» is dark, «Grace» is soft rose. «Pure» follows the theme you picked.</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_gray">Gray</string>
     <string name="theme_system">System</string>
-    <string name="background_power">Power</string>
-    <string name="background_grace">Grace</string>
-    <string name="background_pure">Pure</string>
     <string name="settings_routine">Routine</string>
     <string name="settings_routine_active">Routine enabled</string>
     <string name="settings_strict_mode">Strict mode</string>
@@ -239,8 +206,6 @@
     <string name="channel_reminders_silent_desc">24/7 plays the sound itself</string>
     <string name="channel_monitor">Routine status</string>
     <string name="channel_monitor_desc">Ongoing notification showing the routine is active</string>
-    <string name="channel_achievements">Achievements</string>
-    <string name="channel_achievements_desc">Trophies and milestones</string>
     <string name="monitor_title">24/7 is active</string>
     <string name="monitor_text">Blocking: %1$s – %2$s</string>
     <string name="monitor_text_default">Your routine is being kept</string>
@@ -263,7 +228,6 @@
     <string name="block_go_home">Back to home screen</string>
     <string name="block_emergency">Emergency access</string>
 
-    <string name="emergency_intro_note">You can use this %1$s more times today. Each one gives 5 minutes and takes 30 points off your score.</string>
     <string name="emergency_back_to_rest">Back to rest</string>
     <string name="emergency_continue_anyway">Continue anyway</string>
     <string name="emergency_countdown_title">Wait one minute</string>
@@ -271,9 +235,7 @@
     <string name="emergency_question_title">Solve this</string>
     <string name="emergency_wrong_answer">Not quite. Here\'s a new one.</string>
     <string name="emergency_submit">Confirm</string>
-    <string name="emergency_penalty_note">Correct answer — 5 minutes of access and −30 points.</string>
     <string name="emergency_granted_title">5 minutes granted</string>
-    <string name="emergency_granted_text">After that, apps will be blocked again. 30 points were taken off today\'s score.</string>
     <string name="emergency_granted_toast">5 minutes granted</string>
     <string name="emergency_limit_title">Today\'s limit is used up</string>
     <string name="emergency_limit_text">You\'ve used all emergency access for today. Calls, SMS and the clock are always available.</string>
@@ -281,11 +243,11 @@
     <string name="privacy_title">Privacy policy</string>
     <string name="privacy_summary">24/7 only reads the name of the app that is currently open. Your typing, passwords and messages are never read. No data ever leaves your device, is sent to a server, or is shared with third parties.</string>
     <string name="privacy_section_data_title">What data is stored</string>
-    <string name="privacy_section_data_body">The daily plans you enter, routine times, the list of blocked apps, scores, trophies and settings. All of it is stored only on your phone. The app has no sign-up, no ads and no internet permission.</string>
+    <string name="privacy_section_data_body">The daily plans you enter, routine times, the list of blocked apps, reckoning marks and settings. All of it is stored only on your phone. The app has no sign-up, no ads and no internet permission.</string>
     <string name="privacy_section_accessibility_title">Accessibility service</string>
     <string name="privacy_section_accessibility_body">The service knows only one thing: which app was just opened (its package name). This is needed to block the apps you chose during your routine. Screen text, typing, passwords, messages, images and other content are never read, stored or sent anywhere.</string>
     <string name="privacy_section_permissions_title">Other permissions</string>
-    <string name="privacy_section_permissions_body">Display over other apps — for the block screen. Notifications and exact alarms — for reminders. Removing the battery restriction — so your phone doesn\'t stop the app in the background. The time your phone is unlocked — only for the «slept / woke up on time» points, on your phone. Approximate location — only to calculate prayer times on the phone; it is never sent anywhere. If you search for a city online (only when you tap “Search online”), the typed name is sent to Google through your phone’s location service.</string>
+    <string name="privacy_section_permissions_body">Display over other apps — for the block screen. Notifications and exact alarms — for reminders. Removing the battery restriction — so your phone doesn\'t stop the app in the background. The time your phone is unlocked — only for the «woke up on time» mark, on your phone. Approximate location — only to calculate prayer times on the phone; it is never sent anywhere. If you search for a city online (only when you tap “Search online”), the typed name is sent to Google through your phone’s location service.</string>
     <string name="privacy_section_sharing_title">Data sharing</string>
     <string name="privacy_section_sharing_body">No data is sold, shared with third parties or sent to any server. The app does not add data to cloud backups either.</string>
     <string name="privacy_section_delete_title">Deleting data</string>
@@ -354,7 +316,7 @@
 
     <string-array name="completion_messages">
         <item>Done. Keep it up!</item>
-        <item>One more step forward. +%1$s points</item>
+        <item>One more step forward.</item>
         <item>Not much, but steady — that\'s the strongest way.</item>
         <item>You did what you said, when you said. That\'s character.</item>
     </string-array>
@@ -560,7 +522,6 @@
     <string name="allow_only_apps_title">Allowed apps</string>
     <string name="allow_only_apps_hint">Checked apps stay open at night. Calls, SMS, the clock and phone settings are always open.</string>
     <string name="allow_only_locked_banner">Locked until %1$s: you can’t allow new apps. You can still remove an allowance.</string>
-    <string name="muhosaba_title">Self-reckoning</string>
     <string name="muhosaba_previous_day">Previous day</string>
     <string name="muhosaba_next_day">Next day</string>
     <string name="muhosaba_my_list">My reckoning</string>
@@ -573,17 +534,15 @@
     <string name="muhosaba_mark_done">%1$s: done</string>
     <string name="muhosaba_mark_missed">%1$s: missed</string>
     <string name="muhosaba_facts">Recorded by the app</string>
-    <string name="muhosaba_fact_tasks">Plans completed</string>
     <string name="muhosaba_fact_night_phone">Phone used after bedtime</string>
     <string name="muhosaba_fact_woke">Woke up on time</string>
-    <string name="muhosaba_fact_bypass">Emergency access (times)</string>
     <string name="muhosaba_yes">Yes</string>
     <string name="muhosaba_no">No</string>
     <string name="muhosaba_summary">Summary</string>
     <string name="muhosaba_week">7 days</string>
     <string name="muhosaba_month">30 days</string>
     <string name="muhosaba_days_of">%1$s / %2$s days</string>
-    <string name="muhosaba_summary_hint">Green — days done, orange — days missed, empty — days not reviewed.</string>
+    <string name="muhosaba_summary_hint">Green — days done, red — days missed, empty — days not marked.</string>
     <string name="muhosaba_evening_text">Take account of your day and prepare for tomorrow. Today there is still time — tomorrow may be too late.</string>
     <string name="muhosaba_evening_start">Start the reckoning</string>
     <string name="muhosaba_evening_later">Later</string>
@@ -620,4 +579,19 @@
         <item>I learned or read something useful</item>
         <item>I did not waste my time</item>
     </string-array>
+    <string name="nav_results">Reckoning</string>
+    <string name="muhosaba_title">Reckoning</string>
+    <string name="emergency_intro_note">You can use this %1$s more times today. Each one gives 5 minutes and is marked ✗ in Reckoning.</string>
+    <string name="emergency_penalty_note">Correct answer — 5 minutes of access. A ✗ stays in Reckoning.</string>
+    <string name="emergency_granted_text">After that, apps will be blocked again. A ✗ was added to today\'s Reckoning.</string>
+    <string name="background_power">Navy</string>
+    <string name="background_grace">Pink</string>
+    <string name="background_pure">Cream</string>
+    <string name="settings_background_hint">With «Cream», the theme above (light, dark, gray) applies. «Navy» and «Pink» use their own colors.</string>
+    <string name="muhosaba_fact_bypass">Emergency access</string>
+    <string name="widget_earlier">Earlier: %1$s</string>
+    <string name="muhosaba_plans">Daily schedule</string>
+    <string name="muhosaba_plans_empty">No plans for this day. Add them in Plan.</string>
+    <string name="muhosaba_ledger">Diary</string>
+    <string name="muhosaba_ledger_hint">Green — all done, red — nothing done, yellow — partly, empty — not marked yet.</string>
 </resources>

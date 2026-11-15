@@ -21,6 +21,7 @@ import uz.reja24.app.data.local.db.entity.RoutineSettingsEntity
 import uz.reja24.app.data.local.db.entity.ScheduleEntryEntity
 import uz.reja24.app.data.local.db.entity.StreakRecordEntity
 import uz.reja24.app.data.local.db.entity.TaskCompletionEntity
+import uz.reja24.app.data.local.db.entity.TaskMissEntity
 import uz.reja24.app.data.local.db.entity.WeeklyAwardEntity
 
 /**
@@ -39,7 +40,8 @@ import uz.reja24.app.data.local.db.entity.WeeklyAwardEntity
         StreakRecordEntity::class,
         GoalEntity::class,
         MuhosabaItemEntity::class,
-        MuhosabaMarkEntity::class
+        MuhosabaMarkEntity::class,
+        TaskMissEntity::class
     ],
     version = RejaDatabase.VERSION,
     exportSchema = true
@@ -58,6 +60,6 @@ abstract class RejaDatabase : RoomDatabase() {
 
     companion object {
         const val NAME = "reja24.db"
-        const val VERSION = 3
+        const val VERSION = 4
     }
 }

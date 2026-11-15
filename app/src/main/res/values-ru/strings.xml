@@ -23,7 +23,6 @@
     <string name="cd_back">Назад</string>
     <string name="cd_open">Открыть</string>
     <string name="cd_streak">Серия</string>
-    <string name="cd_stars">Звёзд: %1$s</string>
     <string name="cd_timeline">Лента дня, планов сегодня: %1$s. Листай влево и вправо.</string>
     <string name="cd_add_entry">Добавить план</string>
     <string name="cd_mark_done">Отметить выполненным</string>
@@ -39,7 +38,6 @@
 
     <string name="nav_today">Сегодня</string>
     <string name="nav_plan">План</string>
-    <string name="nav_results">Отчёт</string>
     <string name="nav_settings">Настройки</string>
 
     <string name="home_free_time">Свободное время</string>
@@ -47,7 +45,6 @@
     <string name="home_next">Далее</string>
     <string name="home_next_routine">Начало режима</string>
     <string name="home_no_next">На сегодня больше ничего нет</string>
-    <string name="home_today_score">Оценка за сегодня</string>
     <string name="banner_blocking_off">Блокировка не работает — дай разрешение</string>
     <string name="home_viewing_now">сейчас</string>
     <string name="home_time_ago">%1$s назад</string>
@@ -83,7 +80,6 @@
     <string name="delete_entry_title">Удалить план</string>
     <string name="delete_entry_text">Удалить «%1$s»? Это действие нельзя отменить.</string>
     <string name="week_tasks_done">Выполнено: %1$s из %2$s</string>
-    <string name="week_no_score">Оценки пока нет</string>
     <string name="cd_previous_week">Предыдущая неделя</string>
     <string name="cd_next_week">Следующая неделя</string>
     <string name="week_grid_hint">Нажми на день — откроется подробный план. Листай часы влево и вправо.</string>
@@ -120,43 +116,14 @@
     <string name="repeat_monthly">Ежемесячно</string>
     <string name="repeat_yearly">Ежегодно</string>
 
-    <string name="results_title">Итоги</string>
-    <string name="results_this_week">Эта неделя</string>
-    <string name="results_streak">Серия</string>
-    <string name="results_trophy_shelf">Полка наград</string>
-    <string name="results_perfect_weeks">Идеальных недель: %1$s</string>
-    <string name="criterion_tasks">Планы (%1$s/%2$s)</string>
-    <string name="criterion_routine">Режим соблюдён</string>
-    <string name="criterion_sleep">Сон вовремя</string>
-    <string name="criterion_wake">Подъём вовремя</string>
-    <string name="criterion_bypass">Экстренный доступ: %1$s раз(а) (−30 баллов за каждый)</string>
-    <string name="week_summary">На этой неделе: %1$s/%2$s баллов, в среднем %3$s ★</string>
-    <string name="week_close_to_trophy">До кубка совсем чуть-чуть!</string>
-    <string name="week_keep_going">Каждый день — новый шанс. Продолжай!</string>
-    <string name="streak_current">Текущая</string>
-    <string name="streak_longest">Самая длинная</string>
-    <string name="trophy_none">Нет кубка</string>
-    <string name="trophy_bronze">Бронза</string>
-    <string name="trophy_silver">Серебро</string>
-    <string name="trophy_gold">Золото</string>
-    <string name="trophy_diamond">Алмаз</string>
-    <string name="trophy_congrats_title">Поздравляем!</string>
-    <string name="trophy_congrats_text">Кубок «%1$s» добавлен на полку наград. 100 баллов каждый день целую неделю — это сильный результат.</string>
-    <string name="trophy_congrats_button">Спасибо!</string>
-    <string name="trophy_notification_text">Получен кубок «%1$s»! Открой приложение, чтобы посмотреть.</string>
-
     <string name="settings_title">Настройки</string>
     <string name="settings_language">Язык</string>
     <string name="settings_theme">Тема</string>
     <string name="settings_background">Стиль фона</string>
-    <string name="settings_background_hint">«Сила» — тёмный, «Изящество» — мягкий розовый. В стиле «Чистый» работает выбранная тема.</string>
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Тёмная</string>
     <string name="theme_gray">Серая</string>
     <string name="theme_system">Как в системе</string>
-    <string name="background_power">Сила</string>
-    <string name="background_grace">Изящество</string>
-    <string name="background_pure">Чистый</string>
     <string name="settings_routine">Режим</string>
     <string name="settings_routine_active">Режим включён</string>
     <string name="settings_strict_mode">Строгий режим</string>
@@ -239,8 +206,6 @@
     <string name="channel_reminders_silent_desc">Звук воспроизводит сам 24/7</string>
     <string name="channel_monitor">Статус режима</string>
     <string name="channel_monitor_desc">Постоянное уведомление о том, что режим активен</string>
-    <string name="channel_achievements">Награды</string>
-    <string name="channel_achievements_desc">Кубки и достижения</string>
     <string name="monitor_title">24/7 активен</string>
     <string name="monitor_text">Блокировка: %1$s – %2$s</string>
     <string name="monitor_text_default">Режим под контролем</string>
@@ -263,7 +228,6 @@
     <string name="block_go_home">На главный экран</string>
     <string name="block_emergency">Экстренный доступ</string>
 
-    <string name="emergency_intro_note">Сегодня можно воспользоваться ещё раз: %1$s. Каждый раз даёт 5 минут и отнимает 30 баллов.</string>
     <string name="emergency_back_to_rest">Вернуться к отдыху</string>
     <string name="emergency_continue_anyway">Всё равно продолжить</string>
     <string name="emergency_countdown_title">Подожди минуту</string>
@@ -271,9 +235,7 @@
     <string name="emergency_question_title">Реши пример</string>
     <string name="emergency_wrong_answer">Неверно. Вот новый пример.</string>
     <string name="emergency_submit">Подтвердить</string>
-    <string name="emergency_penalty_note">Верный ответ — 5 минут доступа и −30 баллов.</string>
     <string name="emergency_granted_title">Доступ на 5 минут</string>
-    <string name="emergency_granted_text">Потом приложения снова заблокируются. Из сегодняшней оценки вычтено 30 баллов.</string>
     <string name="emergency_granted_toast">Доступ на 5 минут открыт</string>
     <string name="emergency_limit_title">Лимит на сегодня исчерпан</string>
     <string name="emergency_limit_text">Экстренный доступ на сегодня использован. Звонки, SMS и часы доступны всегда.</string>
@@ -281,11 +243,11 @@
     <string name="privacy_title">Политика конфиденциальности</string>
     <string name="privacy_summary">24/7 читает только название открытого сейчас приложения. Твой текст, пароли и сообщения не читаются. Никакие данные не покидают устройство, не отправляются на сервер и не передаются третьим лицам.</string>
     <string name="privacy_section_data_title">Какие данные хранятся</string>
-    <string name="privacy_section_data_body">Введённые тобой планы, время режима, список блокируемых приложений, баллы, кубки и настройки. Всё хранится только в памяти телефона. В приложении нет регистрации, рекламы и разрешения на интернет.</string>
+    <string name="privacy_section_data_body">Введённые тобой планы, время режима, список блокируемых приложений, отметки самоотчёта и настройки. Всё хранится только в памяти телефона. В приложении нет регистрации, рекламы и разрешения на интернет.</string>
     <string name="privacy_section_accessibility_title">Служба специальных возможностей (Accessibility)</string>
     <string name="privacy_section_accessibility_body">Служба знает только одно: какое приложение только что открылось (имя пакета). Это нужно, чтобы блокировать выбранные приложения во время режима. Текст на экране, ввод, пароли, сообщения, изображения и другое содержимое не читаются, не сохраняются и никуда не отправляются.</string>
     <string name="privacy_section_permissions_title">Другие разрешения</string>
-    <string name="privacy_section_permissions_body">Поверх других приложений — для экрана блокировки. Уведомления и точные будильники — для напоминаний. Снятие ограничения батареи — чтобы телефон не останавливал приложение в фоне. Время разблокировки телефона — только для баллов «сон / подъём вовремя», внутри телефона. Приблизительное местоположение — только для расчёта времени намаза на телефоне; никуда не отправляется. При онлайн-поиске города (только по кнопке «Искать онлайн») введённое название отправляется в Google через службу геолокации телефона.</string>
+    <string name="privacy_section_permissions_body">Поверх других приложений — для экрана блокировки. Уведомления и точные будильники — для напоминаний. Снятие ограничения батареи — чтобы телефон не останавливал приложение в фоне. Время разблокировки телефона — только для отметки «подъём вовремя», внутри телефона. Приблизительное местоположение — только для расчёта времени намаза на телефоне; никуда не отправляется. При онлайн-поиске города (только по кнопке «Искать онлайн») введённое название отправляется в Google через службу геолокации телефона.</string>
     <string name="privacy_section_sharing_title">Передача данных</string>
     <string name="privacy_section_sharing_body">Никакие данные не продаются, не передаются третьим лицам и не отправляются на сервер. Приложение не добавляет данные и в облачные резервные копии.</string>
     <string name="privacy_section_delete_title">Удаление данных</string>
@@ -362,7 +324,7 @@
 
     <string-array name="completion_messages">
         <item>Готово. Так держать!</item>
-        <item>Ещё шаг вперёд. Баллы: +%1$s</item>
+        <item>Ещё шаг вперёд.</item>
         <item>Немного, но регулярно — это самый сильный путь.</item>
         <item>Сказано — сделано, и точно в срок. Это характер.</item>
     </string-array>
@@ -581,17 +543,15 @@
     <string name="muhosaba_mark_done">%1$s: выполнено</string>
     <string name="muhosaba_mark_missed">%1$s: не выполнено</string>
     <string name="muhosaba_facts">Что отметило приложение</string>
-    <string name="muhosaba_fact_tasks">Выполнено планов</string>
     <string name="muhosaba_fact_night_phone">Телефон использовался после отбоя</string>
     <string name="muhosaba_fact_woke">Подъём вовремя</string>
-    <string name="muhosaba_fact_bypass">Экстренный доступ (раз)</string>
     <string name="muhosaba_yes">Да</string>
     <string name="muhosaba_no">Нет</string>
     <string name="muhosaba_summary">Итог</string>
     <string name="muhosaba_week">7 дней</string>
     <string name="muhosaba_month">30 дней</string>
     <string name="muhosaba_days_of">%1$s / %2$s дн.</string>
-    <string name="muhosaba_summary_hint">Зелёный — выполненные дни, оранжевый — невыполненные, пусто — дни без отчёта.</string>
+    <string name="muhosaba_summary_hint">Зелёный — выполненные дни, красный — невыполненные, пусто — неотмеченные дни.</string>
     <string name="muhosaba_evening_text">Отчитайтесь перед собой за сегодняшний день и приготовьтесь к завтрашнему. Сегодня ещё есть возможность — завтра может быть поздно.</string>
     <string name="muhosaba_evening_start">Начать отчёт</string>
     <string name="muhosaba_evening_later">Позже</string>
@@ -628,4 +588,18 @@
         <item>Получал знания или читал полезное</item>
         <item>Не тратил время впустую</item>
     </string-array>
+    <string name="nav_results">Самоотчёт</string>
+    <string name="emergency_intro_note">Сегодня можно воспользоваться ещё раз: %1$s. Каждый раз даёт 5 минут и отмечается ✗ в самоотчёте.</string>
+    <string name="emergency_penalty_note">Верный ответ — 5 минут доступа. В самоотчёте останется ✗.</string>
+    <string name="emergency_granted_text">Потом приложения снова заблокируются. В сегодняшний самоотчёт добавлен ✗.</string>
+    <string name="background_power">Тёмно-синий</string>
+    <string name="background_grace">Розовый</string>
+    <string name="background_pure">Сливочный</string>
+    <string name="settings_background_hint">С фоном «Сливочный» работает тема выше (светлая, тёмная, серая). «Тёмно-синий» и «Розовый» — со своими цветами.</string>
+    <string name="muhosaba_fact_bypass">Экстренный доступ</string>
+    <string name="widget_earlier">Прошло: %1$s</string>
+    <string name="muhosaba_plans">Распорядок дня</string>
+    <string name="muhosaba_plans_empty">На этот день планов нет. Добавьте их в разделе «План».</string>
+    <string name="muhosaba_ledger">Дневник</string>
+    <string name="muhosaba_ledger_hint">Зелёный — всё выполнено, красный — ничего, жёлтый — частично, пусто — ещё не отмечено.</string>
 </resources>

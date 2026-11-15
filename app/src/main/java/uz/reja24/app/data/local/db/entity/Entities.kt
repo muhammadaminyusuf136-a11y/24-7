@@ -158,3 +158,25 @@ data class MuhosabaMarkEntity(
     val date: LocalDate,
     val done: Boolean
 )
+
+/**
+ * Reja muayyan kuni BAJARILMADI (muhosabada ✗ bosilgan). 4-versiyada qo'shilgan.
+ * "Bajarildi" belgisi task_completions jadvalida; ikkalasi bir vaqtda bo'lmaydi.
+ */
+@Entity(
+    tableName = "task_misses",
+    primaryKeys = ["entryId", "date"],
+    foreignKeys = [
+        ForeignKey(
+            entity = ScheduleEntryEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["entryId"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ],
+    indices = [Index("entryId"), Index("date")]
+)
+data class TaskMissEntity(
+    val entryId: Long,
+    val date: LocalDate
+)

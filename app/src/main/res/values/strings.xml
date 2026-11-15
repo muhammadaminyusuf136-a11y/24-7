@@ -33,7 +33,6 @@
     <string name="cd_back">Orqaga</string>
     <string name="cd_open">Ochish</string>
     <string name="cd_streak">Ketma-ketlik</string>
-    <string name="cd_stars">%1$s yulduz</string>
     <string name="cd_timeline">Kun tartibi lentasi, bugun %1$s ta reja. Chapga-oʻngga surib koʻring.</string>
     <string name="cd_add_entry">Yangi reja qoʻshish</string>
     <string name="cd_mark_done">Bajarildi deb belgilash</string>
@@ -50,7 +49,6 @@
     <!-- Pastki menyu -->
     <string name="nav_today">Bugun</string>
     <string name="nav_plan">Reja</string>
-    <string name="nav_results">Hisob</string>
     <string name="nav_settings">Sozlama</string>
 
     <!-- Bosh sahifa -->
@@ -59,7 +57,6 @@
     <string name="home_next">Keyingi</string>
     <string name="home_next_routine">Rejim boshlanadi</string>
     <string name="home_no_next">Bugun boshqa reja yoʻq</string>
-    <string name="home_today_score">Bugungi baho</string>
     <string name="banner_blocking_off">Bloklash ishlamayapti — ruxsat bering</string>
     <string name="home_viewing_now">hozir</string>
     <string name="home_time_ago">%1$s oldin</string>
@@ -97,7 +94,6 @@
     <string name="delete_entry_title">Rejani oʻchirish</string>
     <string name="delete_entry_text">«%1$s» oʻchirilsinmi? Bu amalni qaytarib boʻlmaydi.</string>
     <string name="week_tasks_done">%1$s / %2$s reja bajarildi</string>
-    <string name="week_no_score">Hali baho yoʻq</string>
     <string name="cd_previous_week">Oldingi hafta</string>
     <string name="cd_next_week">Keyingi hafta</string>
     <string name="week_grid_hint">Kunni bosing — oʻsha kunning batafsil rejasi ochiladi. Soatlarni chapga-oʻngga suring.</string>
@@ -137,44 +133,16 @@
     <string name="repeat_yearly">Yillik</string>
 
     <!-- Natija -->
-    <string name="results_title">Natija</string>
-    <string name="results_this_week">Bu hafta</string>
-    <string name="results_streak">Ketma-ketlik</string>
-    <string name="results_trophy_shelf">Mukofotlar javoni</string>
-    <string name="results_perfect_weeks">Mukammal haftalar: %1$s</string>
-    <string name="criterion_tasks">Rejalar (%1$s/%2$s)</string>
-    <string name="criterion_routine">Rejim saqlandi</string>
-    <string name="criterion_sleep">Vaqtida uxlash</string>
-    <string name="criterion_wake">Vaqtida uygʻonish</string>
-    <string name="criterion_bypass">Favqulodda kirish: %1$s marta (har biri −30 ball)</string>
-    <string name="week_summary">Bu hafta: %1$s/%2$s ball, oʻrtacha %3$s ★</string>
-    <string name="week_close_to_trophy">Kubokgacha ozgina qoldi!</string>
-    <string name="week_keep_going">Har bir kun — yangi imkoniyat. Davom et!</string>
-    <string name="streak_current">Joriy</string>
-    <string name="streak_longest">Eng uzun</string>
-    <string name="trophy_none">Kubok yoʻq</string>
-    <string name="trophy_bronze">Bronza</string>
-    <string name="trophy_silver">Kumush</string>
-    <string name="trophy_gold">Oltin</string>
-    <string name="trophy_diamond">Olmos</string>
-    <string name="trophy_congrats_title">Tabriklaymiz!</string>
-    <string name="trophy_congrats_text">«%1$s» kubogi Mukofotlar javoniga qoʻshildi. Bir hafta davomida har kuni 100 ball — bu kuchli natija.</string>
-    <string name="trophy_congrats_button">Rahmat!</string>
-    <string name="trophy_notification_text">Siz «%1$s» kubogini qoʻlga kiritdingiz! Ilovani ochib koʻring.</string>
 
     <!-- Sozlamalar -->
     <string name="settings_title">Sozlamalar</string>
     <string name="settings_language">Til</string>
     <string name="settings_theme">Mavzu</string>
     <string name="settings_background">Orqa fon uslubi</string>
-    <string name="settings_background_hint">«Kuch» — qorongʻi, «Nafosat» — yumshoq pushti. «Sof» uslubida tanlangan mavzu ishlaydi.</string>
     <string name="theme_light">Oq</string>
     <string name="theme_dark">Qora</string>
     <string name="theme_gray">Kulrang</string>
     <string name="theme_system">Tizim boʻyicha</string>
-    <string name="background_power">Kuch</string>
-    <string name="background_grace">Nafosat</string>
-    <string name="background_pure">Sof</string>
     <string name="settings_routine">Rejim</string>
     <string name="settings_routine_active">Rejim yoqilgan</string>
     <string name="settings_strict_mode">Qattiq rejim</string>
@@ -263,8 +231,6 @@
     <string name="channel_reminders_silent_desc">Ovozni 24/7 oʻzi chaladi</string>
     <string name="channel_monitor">Rejim holati</string>
     <string name="channel_monitor_desc">Rejim faol ekanini koʻrsatuvchi doimiy bildirishnoma</string>
-    <string name="channel_achievements">Mukofotlar</string>
-    <string name="channel_achievements_desc">Kuboklar va yutuqlar</string>
     <string name="monitor_title">24/7 faol</string>
     <string name="monitor_text">Bloklash: %1$s – %2$s</string>
     <string name="monitor_text_default">Rejimingiz kuzatilmoqda</string>
@@ -290,7 +256,6 @@
     <string name="block_emergency">Favqulodda kirish</string>
 
     <!-- Favqulodda kirish -->
-    <string name="emergency_intro_note">Bugun yana %1$s marta foydalanish mumkin. Har biri 5 daqiqa beradi va bahodan 30 ball ayiradi.</string>
     <string name="emergency_back_to_rest">Dam olishga qaytish</string>
     <string name="emergency_continue_anyway">Baribir davom etaman</string>
     <string name="emergency_countdown_title">Bir daqiqa kuting</string>
@@ -298,9 +263,7 @@
     <string name="emergency_question_title">Misolni yeching</string>
     <string name="emergency_wrong_answer">Notoʻgʻri. Mana yangi misol.</string>
     <string name="emergency_submit">Tasdiqlash</string>
-    <string name="emergency_penalty_note">Toʻgʻri javob — 5 daqiqalik ruxsat va −30 ball.</string>
     <string name="emergency_granted_title">5 daqiqa ruxsat berildi</string>
-    <string name="emergency_granted_text">Keyin ilovalar yana bloklanadi. Bugungi bahodan 30 ball ayirildi.</string>
     <string name="emergency_granted_toast">5 daqiqa ruxsat berildi</string>
     <string name="emergency_limit_title">Bugungi limit tugadi</string>
     <string name="emergency_limit_text">Bugun favqulodda kirishdan foydalanib boʻldingiz. Qoʻngʻiroq, SMS va soat har doim ochiq.</string>
@@ -309,11 +272,11 @@
     <string name="privacy_title">Maxfiylik siyosati</string>
     <string name="privacy_summary">24/7 faqat hozir ochiq turgan ilovaning nomini oʻqiydi. Yozuvlaringiz, parollaringiz yoki xabarlaringiz oʻqilmaydi. Hech qanday maʼlumot qurilmadan chiqmaydi, serverga yuborilmaydi, uchinchi shaxslarga berilmaydi.</string>
     <string name="privacy_section_data_title">Qanday maʼlumot saqlanadi</string>
-    <string name="privacy_section_data_body">Siz kiritgan kunlik rejalar, rejim vaqtlari, bloklanadigan ilovalar roʻyxati, ballar, kuboklar va sozlamalar. Ularning barchasi faqat telefoningiz xotirasida saqlanadi. Ilovada roʻyxatdan oʻtish, reklama va internet ruxsati yoʻq.</string>
+    <string name="privacy_section_data_body">Siz kiritgan kunlik rejalar, rejim vaqtlari, bloklanadigan ilovalar roʻyxati, muhosaba belgilari va sozlamalar. Ularning barchasi faqat telefoningiz xotirasida saqlanadi. Ilovada roʻyxatdan oʻtish, reklama va internet ruxsati yoʻq.</string>
     <string name="privacy_section_accessibility_title">Maxsus imkoniyatlar (Accessibility) xizmati</string>
     <string name="privacy_section_accessibility_body">Xizmat faqat bitta narsani biladi: hozir qaysi ilova ochildi (ilovaning paket nomi). Bu siz tanlagan ilovalarni rejim vaqtida bloklash uchun kerak. Ekrandagi matn, yozuvlar, parollar, xabarlar, rasm va boshqa kontent oʻqilmaydi, saqlanmaydi va hech qayerga yuborilmaydi.</string>
     <string name="privacy_section_permissions_title">Boshqa ruxsatlar</string>
-    <string name="privacy_section_permissions_body">Ekran ustida koʻrsatish — blok ekrani uchun. Bildirishnomalar va aniq budilnik — eslatmalar uchun. Batareya cheklovini olib tashlash — telefon ilovani fonda oʻchirib qoʻymasligi uchun. Telefon qulfdan ochilgan vaqt — faqat «vaqtida uxlash / uygʻonish» ballari uchun, telefon ichida. Taxminiy joylashuv — faqat namoz vaqtlarini telefon ichida hisoblash uchun; hech qayerga yuborilmaydi. Shaharni onlayn qidirsangiz (faqat «Onlayn qidirish» tugmasi bosilganda), yozilgan nom telefonning joy xizmati orqali Googlega yuboriladi.</string>
+    <string name="privacy_section_permissions_body">Ekran ustida koʻrsatish — blok ekrani uchun. Bildirishnomalar va aniq budilnik — eslatmalar uchun. Batareya cheklovini olib tashlash — telefon ilovani fonda oʻchirib qoʻymasligi uchun. Telefon qulfdan ochilgan vaqt — faqat «vaqtida uygʻonildi» belgisi uchun, telefon ichida. Taxminiy joylashuv — faqat namoz vaqtlarini telefon ichida hisoblash uchun; hech qayerga yuborilmaydi. Shaharni onlayn qidirsangiz (faqat «Onlayn qidirish» tugmasi bosilganda), yozilgan nom telefonning joy xizmati orqali Googlega yuboriladi.</string>
     <string name="privacy_section_sharing_title">Maʼlumot almashish</string>
     <string name="privacy_section_sharing_body">Hech qanday maʼlumot sotilmaydi, uchinchi shaxslarga berilmaydi va serverga yuborilmaydi. Ilova bulutli zaxira nusxaga ham maʼlumot qoʻshmaydi.</string>
     <string name="privacy_section_delete_title">Maʼlumotni oʻchirish</string>
@@ -385,10 +348,9 @@
         <item>5 daqiqa deysanmi? Odatda 2 soatga aylanadi.</item>
     </string-array>
 
-    <!-- Reja bajarilganda (%1$s — ball) -->
     <string-array name="completion_messages">
         <item>Bajarildi. Ana shunday davom et!</item>
-        <item>Yana bir qadam oldinga. +%1$s ball</item>
+        <item>Yana bir qadam oldinga.</item>
         <item>Koʻp emas, lekin muntazam — eng kuchli yoʻl shu.</item>
         <item>Sen aytgan vaqtda, sen aytgan ishni qilding. Bu — xarakter.</item>
     </string-array>
@@ -610,17 +572,15 @@
     <string name="muhosaba_mark_done">%1$s: bajarildi</string>
     <string name="muhosaba_mark_missed">%1$s: bajarilmadi</string>
     <string name="muhosaba_facts">Ilova qayd etganlari</string>
-    <string name="muhosaba_fact_tasks">Bajarilgan rejalar</string>
     <string name="muhosaba_fact_night_phone">Uyqu vaqtidan keyin telefon ishlatildi</string>
     <string name="muhosaba_fact_woke">Vaqtida uygʻonildi</string>
-    <string name="muhosaba_fact_bypass">Favqulodda kirish (marta)</string>
     <string name="muhosaba_yes">Ha</string>
     <string name="muhosaba_no">Yoʻq</string>
     <string name="muhosaba_summary">Xulosa</string>
     <string name="muhosaba_week">7 kun</string>
     <string name="muhosaba_month">30 kun</string>
     <string name="muhosaba_days_of">%1$s / %2$s kun</string>
-    <string name="muhosaba_summary_hint">Yashil — bajarilgan kunlar, toʻq sariq — bajarilmagan, boʻsh joy — hisob qilinmagan kunlar.</string>
+    <string name="muhosaba_summary_hint">Yashil — bajarilgan kunlar, qizil — bajarilmagan, boʻsh joy — belgilanmagan kunlar.</string>
     <string name="muhosaba_evening_text">Bugungi kuningizni hisob qiling va ertangi kunga tayyorlaning. Bugun hali imkon bor — ertaga kech boʻlishi mumkin.</string>
     <string name="muhosaba_evening_start">Hisobni boshlash</string>
     <string name="muhosaba_evening_later">Keyinroq</string>
@@ -657,4 +617,18 @@
         <item>Ilm oldim yoki mutolaa qildim</item>
         <item>Vaqtimni behuda oʻtkazmadim</item>
     </string-array>
+    <string name="nav_results">Muhosaba</string>
+    <string name="emergency_intro_note">Bugun yana %1$s marta foydalanish mumkin. Har biri 5 daqiqa beradi va Muhosabada ✗ boʻlib qayd etiladi.</string>
+    <string name="emergency_penalty_note">Toʻgʻri javob — 5 daqiqalik ruxsat. Muhosabada ✗ belgisi qoladi.</string>
+    <string name="emergency_granted_text">Keyin ilovalar yana bloklanadi. Bugungi Muhosabaga ✗ belgisi qoʻyildi.</string>
+    <string name="background_power">Toʻq koʻk</string>
+    <string name="background_grace">Pushti</string>
+    <string name="background_pure">Qaymoq</string>
+    <string name="settings_background_hint">«Qaymoq» fonida yuqoridagi mavzu (oq, qora, kulrang) ishlaydi. «Toʻq koʻk» va «Pushti» — oʻz ranglari bilan.</string>
+    <string name="muhosaba_fact_bypass">Favqulodda kirish</string>
+    <string name="widget_earlier">Oʻtgan: %1$s</string>
+    <string name="muhosaba_plans">Kun tartibi</string>
+    <string name="muhosaba_plans_empty">Bu kunga reja yoʻq. Rejalarni «Reja» boʻlimida qoʻshasiz.</string>
+    <string name="muhosaba_ledger">Daftar</string>
+    <string name="muhosaba_ledger_hint">Yashil — hammasi bajarilgan, qizil — hech biri bajarilmagan, sariq — qisman, boʻsh — hali belgilanmagan.</string>
 </resources>
