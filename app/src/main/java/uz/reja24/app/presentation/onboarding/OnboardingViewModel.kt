@@ -89,6 +89,9 @@ class OnboardingViewModel @Inject constructor(
         save { userPreferencesRepository.setTaskVoice(on) }
     }
 
+    /** Bloklash kerak emas (o'zi tartibli uxlaydiganlar) — kun tartibi, namoz va eslatmalar baribir ishlaydi. */
+    fun setRoutineActive(on: Boolean) = _state.update { it.copy(routine = it.routine.copy(isRoutineActive = on)) }
+
     fun setStrict(on: Boolean) = _state.update { it.copy(routine = it.routine.copy(isStrictModeOn = on)) }
 
     private fun save(block: suspend () -> Unit) {

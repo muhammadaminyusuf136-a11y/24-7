@@ -706,4 +706,7 @@
         <item>«Tilingiz doimo Allohning zikri bilan hoʻl boʻlib tursin.» — Imom Termiziy rivoyati (3375)</item>
         <item>«Zikr qalb uchun xuddi baliq uchun suv kabidir. Baliq suvdan ajralsa, uning holi ne kechadi?» — Shayxulislom Ibn Taymiyya (Ibn Qayyim, «al-Vobil as-sayyib»)</item>
     </string-array>
+    <string name="onboarding_routine_switch">Kechasi ilovalarni bloklash</string>
+    <string name="onboarding_routine_switch_on">Belgilangan vaqtda chalgʻituvchi ilovalar yopiladi. Kechasi ishlasangiz, vaqtlarni oʻzingizga moslang (masalan 09:00 – 16:00).</string>
+    <string name="onboarding_routine_switch_off">Bloklash oʻchiq. Kun tartibi, namoz vaqtlari, Muhosaba va eslatmalar baribir ishlaydi. Keyin Sozlamalardan yoqsa boʻladi.</string>
 </resources>

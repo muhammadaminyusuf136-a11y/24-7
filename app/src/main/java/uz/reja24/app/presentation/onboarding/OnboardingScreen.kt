@@ -130,6 +130,8 @@ fun OnboardingScreen(
                 OnboardingStep.PROBLEM -> ProblemStep()
                 OnboardingStep.LANGUAGE -> LanguageStep(selected = state.language, onSelect = viewModel::selectLanguage)
                 OnboardingStep.ROUTINE -> RoutineStep(
+                    active = state.routine.isRoutineActive,
+                    onActive = viewModel::setRoutineActive,
                     blockStart = state.routine.blockStartTime,
                     sleep = state.routine.sleepTime,
                     wake = state.routine.wakeTime,
@@ -316,6 +318,8 @@ private fun LanguageStep(selected: AppLanguage?, onSelect: (AppLanguage) -> Unit
 
 @Composable
 private fun RoutineStep(
+    active: Boolean,
+    onActive: (Boolean) -> Unit,
     blockStart: LocalTime,
     sleep: LocalTime,
     wake: LocalTime,
@@ -331,7 +335,17 @@ private fun RoutineStep(
     )
     Column(Modifier.verticalScroll(rememberScrollState())) {
         StepTitle(stringResource(R.string.onboarding_routine_title), stringResource(R.string.onboarding_routine_subtitle))
-        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        // Bloklash hammaga ham kerak emas: o'zi tartibli uxlaydiganlar o'chirib qo'yadi, kun tartibi baribir ishlaydi
+        RejaCard(modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(0.dp)) {
+            SwitchRow(
+                title = stringResource(R.string.onboarding_routine_switch),
+                subtitle = stringResource(if (active) R.string.onboarding_routine_switch_on else R.string.onboarding_routine_switch_off),
+                checked = active,
+                onChange = onActive
+            )
+        }
+        Spacer(Modifier.height(10.dp))
+        if (active) Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             items.forEachIndexed { index, (title, desc, time) ->
                 RejaCard(onClick = { editing = index }, modifier = Modifier.fillMaxWidth()) {
                     Row(verticalAlignment = Alignment.CenterVertically) {

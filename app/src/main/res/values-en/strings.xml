@@ -673,4 +673,7 @@
         <item>«Let your tongue remain moist with the remembrance of Allah.» — at-Tirmidhi (3375)</item>
         <item>«Remembrance is to the heart what water is to a fish. How would a fish be if it left the water?» — Ibn Taymiyyah (in Ibn al-Qayyim, al-Wabil as-Sayyib)</item>
     </string-array>
+    <string name="onboarding_routine_switch">Block apps at night</string>
+    <string name="onboarding_routine_switch_on">Distracting apps close at the set time. If you work at night, adjust the times to suit you (e.g. 09:00 – 16:00).</string>
+    <string name="onboarding_routine_switch_off">Blocking is off. The schedule, prayer times, Reckoning and reminders still work. You can turn it on later in Settings.</string>
 </resources>
