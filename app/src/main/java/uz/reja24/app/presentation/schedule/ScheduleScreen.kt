@@ -2,6 +2,8 @@
 
 package uz.reja24.app.presentation.schedule
 
+import androidx.compose.material.icons.outlined.Schedule
+import uz.reja24.app.domain.repository.PrayerStatus
 import androidx.compose.material.icons.outlined.AutoAwesome
 import uz.reja24.app.domain.prayer.AzkarTime
 import uz.reja24.app.presentation.components.dayNumbers
@@ -237,6 +239,8 @@ private fun DayView(viewModel: ScheduleViewModel, onEditEntry: (Long) -> Unit) {
     val prayers by viewModel.dayPrayers.collectAsStateWithLifecycle()
     val misses by viewModel.dayMisses.collectAsStateWithLifecycle()
     val azkarOn by viewModel.azkarOn.collectAsStateWithLifecycle()
+    val prayerMarks by viewModel.dayPrayerMarks.collectAsStateWithLifecycle()
+    var markingPrayer by remember { mutableStateOf<Prayer?>(null) }
     var toDelete by remember { mutableStateOf<DailyTask?>(null) }
     val today = viewModel.today
     val now = LocalTime.now()
@@ -276,12 +280,31 @@ private fun DayView(viewModel: ScheduleViewModel, onEditEntry: (Long) -> Unit) {
                         onLongClick = { toDelete = row.task }
                     )
                     is DayRow.Sleep -> SleepRow(row.start, row.end)
-                    is DayRow.PrayerTime -> PrayerRow(row.prayer, row.time)
+                    is DayRow.PrayerTime -> PrayerRow(
+                        prayer = row.prayer,
+                        time = row.time,
+                        status = prayerMarks[row.prayer],
+                        // Vaqti kirgan namozni belgilash mumkin (kelajakdagini emas)
+                        canMark = selectedDate.isBefore(today) || (selectedDate == today && !now.isBefore(row.time)),
+                        onMark = { markingPrayer = row.prayer }
+                    )
                     is DayRow.Azkar -> AzkarRow(row.time, row.start)
                     DayRow.Now -> NowLine()
                 }
             }
         }
+    }
+
+    markingPrayer?.let { prayer ->
+        PrayerMarkDialog(
+            prayer = prayer,
+            current = prayerMarks[prayer],
+            onDismiss = { markingPrayer = null },
+            onSelect = { status ->
+                viewModel.setPrayerMark(prayer, status)
+                markingPrayer = null
+            }
+        )
     }
 
     toDelete?.let { task ->
@@ -571,8 +594,49 @@ private fun AzkarRow(time: AzkarTime, start: LocalTime) {
     }
 }
 
+/** Namozni belgilash: vaqtida / kechikib / qazo (yoki belgini olib tashlash). */
 @Composable
-private fun PrayerRow(prayer: Prayer, time: LocalTime) {
+private fun PrayerMarkDialog(prayer: Prayer, current: PrayerStatus?, onDismiss: () -> Unit, onSelect: (PrayerStatus?) -> Unit) {
+    val colors = RejaTheme.colors
+    androidx.compose.material3.AlertDialog(
+        onDismissRequest = onDismiss,
+        containerColor = colors.surface,
+        title = { Text(stringResource(prayerNameRes(prayer)), color = colors.textPrimary) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                listOf(
+                    PrayerStatus.ON_TIME to R.string.prayer_status_on_time,
+                    PrayerStatus.LATE to R.string.prayer_status_late,
+                    PrayerStatus.MISSED to R.string.prayer_status_missed
+                ).forEach { (status, label) ->
+                    RejaChip(
+                        selected = current == status,
+                        label = stringResource(label),
+                        onClick = { onSelect(status) },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            if (current != null) {
+                androidx.compose.material3.TextButton(onClick = { onSelect(null) }) { Text(stringResource(R.string.prayer_mark_clear)) }
+            }
+        },
+        dismissButton = {
+            androidx.compose.material3.TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
+        }
+    )
+}
+
+@Composable
+private fun PrayerRow(
+    prayer: Prayer,
+    time: LocalTime,
+    status: PrayerStatus? = null,
+    canMark: Boolean = false,
+    onMark: () -> Unit = {}
+) {
     val colors = RejaTheme.colors
     Row(verticalAlignment = Alignment.CenterVertically) {
         Text(
@@ -594,8 +658,21 @@ private fun PrayerRow(prayer: Prayer, time: LocalTime) {
             Text(
                 text = stringResource(prayerNameRes(prayer)),
                 style = MaterialTheme.typography.titleSmall,
-                color = colors.textPrimary
+                color = colors.textPrimary,
+                modifier = Modifier.weight(1f)
             )
+            if (canMark || status != null) {
+                // Holat: bo'sh doira — belgilanmagan; bosilsa vaqtida / kechikib / qazo tanlanadi
+                val (icon, tint) = when (status) {
+                    PrayerStatus.ON_TIME -> Icons.Outlined.CheckCircle to SuccessGreen
+                    PrayerStatus.LATE -> Icons.Outlined.Schedule to Color(0xFFB7791F)
+                    PrayerStatus.MISSED -> Icons.Outlined.Cancel to (if (colors.isDark) MissedRedOnDark else MissedRed)
+                    null -> Icons.Outlined.RadioButtonUnchecked to colors.textMuted
+                }
+                IconButton(onClick = onMark, enabled = canMark, modifier = Modifier.size(36.dp)) {
+                    Icon(icon, contentDescription = stringResource(R.string.prayer_mark_cd, stringResource(prayerNameRes(prayer))), tint = tint)
+                }
+            }
         }
     }
 }

@@ -688,4 +688,12 @@
     <string name="onboarding_routine_switch">حظر التطبيقات ليلًا</string>
     <string name="onboarding_routine_switch_on">تُغلق التطبيقات المشتتة في الوقت المحدد. إن كنت تعمل ليلًا فاضبط الأوقات بما يناسبك (مثلًا 09:00 – 16:00).</string>
     <string name="onboarding_routine_switch_off">الحظر متوقف. الجدول ومواقيت الصلاة والمحاسبة والتذكيرات تعمل مع ذلك، ويمكنك تفعيله لاحقًا من الإعدادات.</string>
+    <string name="contact_section">تواصل معنا</string>
+    <string name="contact_row">اكتب اقتراحًا أو أبلغ عن خطأ</string>
+    <string name="contact_row_desc">قناتنا على تيليجرام</string>
+    <string name="contact_dialog_text">السلام عليكم! يسعدنا استخدامك لتطبيق 24/7. إن لاحظت خطأً أو كانت لديك فكرة مفيدة فاكتب لنا — كل رأي يساعد على تحسين التطبيق. بارك الله في أوقاتنا جميعًا.</string>
+    <string name="contact_open">فتح في تيليجرام</string>
+    <string name="contact_soon">سيُضاف رابط القناة قريبًا</string>
+    <string name="prayer_mark_clear">إزالة العلامة</string>
+    <string name="prayer_mark_cd">%1$s: تحديد</string>
 </resources>

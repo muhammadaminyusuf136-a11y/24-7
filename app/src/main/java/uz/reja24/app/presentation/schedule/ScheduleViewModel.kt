@@ -1,5 +1,7 @@
 package uz.reja24.app.presentation.schedule
 
+import uz.reja24.app.domain.repository.PrayerStatus
+import uz.reja24.app.domain.prayer.Prayer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -93,6 +95,17 @@ class ScheduleViewModel @Inject constructor(
     val dayPrayers: StateFlow<PrayerDay?> = combine(prayerSettingsRepository.settings, _selectedDate) { s, date ->
         PrayerOverview.build(s, timeProvider.zone(), listOf(date)).days[date]
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    /** Tanlangan kundagi namoz belgilari (Muhosaba bilan bir xil ma'lumot). */
+    val dayPrayerMarks: StateFlow<Map<Prayer, PrayerStatus>> = _selectedDate
+        .flatMapLatest { date -> muhosabaRepository.observePrayerMarks(date, date).map { it[date].orEmpty() } }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
+
+    /** Namozga belgi (status = null — olib tashlash). Muhosabada ham shu belgi ko'rinadi. */
+    fun setPrayerMark(prayer: Prayer, status: PrayerStatus?) {
+        val date = _selectedDate.value
+        viewModelScope.launch { runCatching { muhosabaRepository.setPrayerMark(date, prayer, status) } }
+    }
 
     /** Ertalabki/kechki zikr kun tartibida ko'rsatiladimi. */
     val azkarOn: StateFlow<Boolean> = prayerSettingsRepository.settings.map { it.isEnabled && it.azkarOn }

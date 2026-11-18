@@ -682,4 +682,12 @@
     <string name="onboarding_routine_switch">Блокировать приложения ночью</string>
     <string name="onboarding_routine_switch_on">В заданное время отвлекающие приложения закрываются. Если работаете ночью — настройте время под себя (например, 09:00 – 16:00).</string>
     <string name="onboarding_routine_switch_off">Блокировка выключена. Распорядок, время намазов, самоотчёт и напоминания всё равно работают. Включить можно позже в Настройках.</string>
+    <string name="contact_section">Связаться с нами</string>
+    <string name="contact_row">Напишите предложение или об ошибке</string>
+    <string name="contact_row_desc">Наш Telegram-канал</string>
+    <string name="contact_dialog_text">Ассаляму алейкум! Мы рады, что вы пользуетесь 24/7. Если заметили ошибку или у вас есть полезная идея, напишите нам — каждая мысль помогает сделать приложение лучше. Пусть Аллах сделает наше время благословенным.</string>
+    <string name="contact_open">Открыть в Telegram</string>
+    <string name="contact_soon">Ссылка на канал скоро появится</string>
+    <string name="prayer_mark_clear">Убрать отметку</string>
+    <string name="prayer_mark_cd">%1$s: отметить</string>
 </resources>

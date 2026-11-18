@@ -709,4 +709,12 @@
     <string name="onboarding_routine_switch">Kechasi ilovalarni bloklash</string>
     <string name="onboarding_routine_switch_on">Belgilangan vaqtda chalgʻituvchi ilovalar yopiladi. Kechasi ishlasangiz, vaqtlarni oʻzingizga moslang (masalan 09:00 – 16:00).</string>
     <string name="onboarding_routine_switch_off">Bloklash oʻchiq. Kun tartibi, namoz vaqtlari, Muhosaba va eslatmalar baribir ishlaydi. Keyin Sozlamalardan yoqsa boʻladi.</string>
+    <string name="contact_section">Biz bilan bogʻlanish</string>
+    <string name="contact_row">Taklif yoki xato haqida yozing</string>
+    <string name="contact_row_desc">Telegram kanalimiz</string>
+    <string name="contact_dialog_text">Assalomu alaykum! 24/7 ni ishlatayotganingizdan xursandmiz. Ilovada xato koʻrsangiz yoki foydali gʻoyangiz boʻlsa, bizga yozing — har bir fikr ilovani yaxshilashga yordam beradi. Alloh barchamizga vaqtimizni barakali oʻtkazishni nasib etsin.</string>
+    <string name="contact_open">Telegramʼda ochish</string>
+    <string name="contact_soon">Kanal manzili tez orada qoʻshiladi</string>
+    <string name="prayer_mark_clear">Belgini olib tashlash</string>
+    <string name="prayer_mark_cd">%1$s: belgilash</string>
 </resources>

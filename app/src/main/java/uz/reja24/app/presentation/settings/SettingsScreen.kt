@@ -425,6 +425,10 @@ fun SettingsScreen(
                     Icon(Icons.AutoMirrored.Outlined.KeyboardArrowRight, contentDescription = null, tint = RejaTheme.colors.textMuted)
                 }
             }
+            // ---------- Biz bilan bog'lanish (eng pastda) ----------
+            Section(stringResource(R.string.contact_section)) {
+                ContactSection()
+            }
             Text(
                 text = stringResource(R.string.settings_version, BuildConfig.VERSION_NAME),
                 style = MaterialTheme.typography.bodySmall,
