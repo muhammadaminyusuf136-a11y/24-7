@@ -1,5 +1,8 @@
 package uz.reja24.app.presentation.onboarding
 
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.requiredSize
 import uz.reja24.app.presentation.settings.VoiceGenderRow
 import uz.reja24.app.presentation.settings.SwitchRow
 import uz.reja24.app.presentation.settings.DateDisplayChips
@@ -221,29 +224,19 @@ private fun WelcomeStep() {
 /** Logotip: 24 soatlik doira + soat millari (Canvas — rasm ishlatilmaydi). */
 @Composable
 fun LogoMark(modifier: Modifier = Modifier) {
-    val colors = RejaTheme.colors
+    // Ilova ikonkasining o'zi: to'q yashil fonda kaftdagi oltin qum soat
     val description = stringResource(R.string.cd_app_logo)
-    Canvas(
+    Box(
         modifier = modifier
             .size(104.dp)
-            .semantics { contentDescription = description }
+            .background(androidx.compose.ui.graphics.Color(0xFF0F2219), RoundedCornerShape(28.dp))
+            .semantics { contentDescription = description },
+        contentAlignment = Alignment.Center
     ) {
-        val strokeWidth = 9.dp.toPx()
-        val radius = size.minDimension / 2 - strokeWidth
-        drawCircle(color = colors.accent, radius = radius, style = Stroke(width = strokeWidth))
-        drawLine(
-            color = colors.textPrimary,
-            start = center,
-            end = androidx.compose.ui.geometry.Offset(center.x, center.y - radius * 0.55f),
-            strokeWidth = strokeWidth * 0.8f,
-            cap = StrokeCap.Round
-        )
-        drawLine(
-            color = colors.textPrimary,
-            start = center,
-            end = androidx.compose.ui.geometry.Offset(center.x + radius * 0.4f, center.y + radius * 0.25f),
-            strokeWidth = strokeWidth * 0.8f,
-            cap = StrokeCap.Round
+        Image(
+            painter = painterResource(R.drawable.ic_launcher_foreground),
+            contentDescription = null,
+            modifier = Modifier.requiredSize(150.dp)
         )
     }
 }

@@ -1,22 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Android 13+ "mavzuli belgilar" uchun bir rangli variant: halqa, millar va oy. -->
+<!-- Android 13+ "mavzuli belgilar" uchun bir rangli variant: shakli asosiy ikonka bilan bir xil. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <path
-        android:fillColor="#00000000"
-        android:strokeWidth="6"
-        android:strokeColor="#FFFFFFFF"
-        android:pathData="M54,54m-25,0a25,25 0 1,1 50,0a25,25 0 1,1 -50,0" />
-    <path
-        android:fillColor="#00000000"
-        android:strokeWidth="4"
-        android:strokeLineCap="round"
-        android:strokeColor="#FFFFFFFF"
-        android:pathData="M54,54L44.2,48.3M54,54L67.6,46.2" />
-    <path
-        android:fillColor="#FFFFFFFF"
-        android:pathData="M69.2,37m-4.6,0a4.6,4.6 0 1,1 9.2,0a4.6,4.6 0 1,1 -9.2,0" />
+    <group
+        android:pivotX="60"
+        android:pivotY="64"
+        android:scaleX="0.58"
+        android:scaleY="0.58"
+        android:translateX="-6"
+        android:translateY="-10">
+
+        <!-- Qum soat -->
+        <group
+            android:scaleX="0.72"
+            android:scaleY="0.72"
+            android:translateX="16.8"
+            android:translateY="6">
+            <!-- Tepa va past tayanch (oltin) -->
+            <path
+                android:pathData="M38,24h44M38,96h44"
+                android:strokeColor="#FFFFFFFF"
+                android:strokeWidth="6"
+                android:strokeLineCap="round" />
+            <!-- Shisha -->
+            <path
+                android:pathData="M42,28c0,18 14,24 18,32 4,-8 18,-14 18,-32Z"
+                android:strokeColor="#FFFFFFFF"
+                android:strokeWidth="4"
+                android:strokeLineJoin="round" />
+            <path
+                android:pathData="M42,92c0,-18 14,-24 18,-32 4,8 18,14 18,32Z"
+                android:strokeColor="#FFFFFFFF"
+                android:strokeWidth="4"
+                android:strokeLineJoin="round" />
+            <!-- Oltin qum: tepada qolgani, oqayotgan ip va pastda yig'ilgani -->
+            <path
+                android:fillColor="#FFFFFFFF"
+                android:pathData="M50,36h20c-2,6 -7,10 -10,14 -3,-4 -8,-8 -10,-14Z" />
+            <path
+                android:pathData="M60,62v18"
+                android:strokeColor="#FFFFFFFF"
+                android:strokeWidth="2.5" />
+            <path
+                android:fillColor="#FFFFFFFF"
+                android:pathData="M48,88c3,-8 8,-11 12,-12 4,1 9,4 12,12Z" />
+        </group>
+
+        <!-- Kaft -->
+        <path
+            android:pathData="M22,84c10,0 18,2 26,8h26c6,0 6,8 0,8H52M22,104c14,0 24,0 34,0 10,0 24,-8 36,-18 4,-4 0,-9 -5,-6l-16,9"
+            android:strokeColor="#FFFFFFFF"
+            android:strokeWidth="5"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+    </group>
 </vector>

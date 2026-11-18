@@ -1,116 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Ilova ikonkasi: yaltiroq soat (to'q sariq → qizg'ish halqa, oq siferblat, 10:10 millar)
-    va burchakda yashil nishondagi oy — namoz vaqtlari belgisi.
-    Hammasi vektor: har qanday ekranda tiniq, hajmi kichik.
+    Ilova ikonkasi: kaft ustidagi qum soat, oltin qumi oqmoqda.
+    Ma'nosi: vaqt qadrli, u oqib ketmoqda — faqat uni tartiblagan odam avaylab ushlab qola oladi.
+    Hamma narsa xavfsiz hududda (66dp doira) — har qanday telefon niqobida (doira, kvadrat) kesilmaydi.
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- 90% — barcha telefon niqoblarida (doira, yumaloq kvadrat) xavfsiz hududda qoladi -->
     <group
-        android:pivotX="54"
-        android:pivotY="54"
-        android:scaleX="0.9"
-        android:scaleY="0.9">
+        android:pivotX="60"
+        android:pivotY="64"
+        android:scaleX="0.58"
+        android:scaleY="0.58"
+        android:translateX="-6"
+        android:translateY="-10">
 
-    <!-- Yumshoq soya -->
-    <path
-        android:fillColor="#1F2F5A8A"
-        android:pathData="M54,80.5m-19,0a19,3.5 0 1,1 38,0a19,3.5 0 1,1 -38,0" />
+        <!-- Qum soat -->
+        <group
+            android:scaleX="0.72"
+            android:scaleY="0.72"
+            android:translateX="16.8"
+            android:translateY="6">
+            <!-- Tepa va past tayanch (oltin) -->
+            <path
+                android:pathData="M38,24h44M38,96h44"
+                android:strokeColor="#FFE8C77A"
+                android:strokeWidth="6"
+                android:strokeLineCap="round" />
+            <!-- Shisha -->
+            <path
+                android:pathData="M42,28c0,18 14,24 18,32 4,-8 18,-14 18,-32Z"
+                android:strokeColor="#FFEDF4EF"
+                android:strokeWidth="4"
+                android:strokeLineJoin="round" />
+            <path
+                android:pathData="M42,92c0,-18 14,-24 18,-32 4,8 18,14 18,32Z"
+                android:strokeColor="#FFEDF4EF"
+                android:strokeWidth="4"
+                android:strokeLineJoin="round" />
+            <!-- Oltin qum: tepada qolgani, oqayotgan ip va pastda yig'ilgani -->
+            <path
+                android:fillColor="#FFE8C77A"
+                android:pathData="M50,36h20c-2,6 -7,10 -10,14 -3,-4 -8,-8 -10,-14Z" />
+            <path
+                android:pathData="M60,62v18"
+                android:strokeColor="#FFE8C77A"
+                android:strokeWidth="2.5" />
+            <path
+                android:fillColor="#FFE8C77A"
+                android:pathData="M48,88c3,-8 8,-11 12,-12 4,1 9,4 12,12Z" />
+        </group>
 
-    <!-- Siferblat -->
-    <path android:pathData="M54,54m-22.5,0a22.5,22.5 0 1,1 45,0a22.5,22.5 0 1,1 -45,0">
-        <aapt:attr name="android:fillColor">
-            <gradient
-                android:type="linear"
-                android:startX="40"
-                android:startY="32"
-                android:endX="68"
-                android:endY="76">
-                <item android:offset="0" android:color="#FFFFFFFF" />
-                <item android:offset="1" android:color="#FFFFF1E6" />
-            </gradient>
-        </aapt:attr>
-    </path>
-
-    <!-- Halqa -->
-    <path
-        android:fillColor="#00000000"
-        android:strokeWidth="6.5"
-        android:pathData="M54,54m-25.5,0a25.5,25.5 0 1,1 51,0a25.5,25.5 0 1,1 -51,0">
-        <aapt:attr name="android:strokeColor">
-            <gradient
-                android:type="linear"
-                android:startX="36"
-                android:startY="26"
-                android:endX="72"
-                android:endY="82">
-                <item android:offset="0" android:color="#FFFFA940" />
-                <item android:offset="0.5" android:color="#FFFF7A3D" />
-                <item android:offset="1" android:color="#FFE8433F" />
-            </gradient>
-        </aapt:attr>
-    </path>
-
-    <!-- Halqadagi yaltiroq (chap-yuqori) -->
-    <path
-        android:fillColor="#00000000"
-        android:strokeWidth="2"
-        android:strokeLineCap="round"
-        android:strokeColor="#B3FFFFFF"
-        android:pathData="M33.5,45.5A22.5,22.5 0 0,1 45.5,33.2" />
-
-    <!-- Soat belgilari: 12, 3, 6, 9 -->
-    <path
-        android:fillColor="#00000000"
-        android:strokeWidth="2.4"
-        android:strokeLineCap="round"
-        android:strokeColor="#FFF4A27C"
-        android:pathData="M54,34.5v3.5M73.5,54h-3.5M54,73.5v-3.5M34.5,54h3.5" />
-
-    <!-- Millar: 10:10 -->
-    <path
-        android:fillColor="#00000000"
-        android:strokeWidth="4"
-        android:strokeLineCap="round"
-        android:strokeColor="#FF1F2A44"
-        android:pathData="M54,54L44.2,48.3" />
-    <path
-        android:fillColor="#00000000"
-        android:strokeWidth="3.2"
-        android:strokeLineCap="round"
-        android:strokeColor="#FF1F2A44"
-        android:pathData="M54,54L67.6,46.2" />
-    <path
-        android:fillColor="#FFE8433F"
-        android:pathData="M54,54m-3.2,0a3.2,3.2 0 1,1 6.4,0a3.2,3.2 0 1,1 -6.4,0" />
-
-    <!-- Namoz nishoni: yashil doira va oq oy -->
-    <path
-        android:strokeWidth="1.8"
-        android:strokeColor="#FFFFFFFF"
-        android:pathData="M70,37m-8,0a8,8 0 1,1 16,0a8,8 0 1,1 -16,0">
-        <aapt:attr name="android:fillColor">
-            <gradient
-                android:type="linear"
-                android:startX="64"
-                android:startY="30"
-                android:endX="76"
-                android:endY="44">
-                <item android:offset="0" android:color="#FF3FB984" />
-                <item android:offset="1" android:color="#FF1F7A58" />
-            </gradient>
-        </aapt:attr>
-    </path>
-    <path
-        android:fillColor="#FFFFFFFF"
-        android:pathData="M69.2,37m-4.4,0a4.4,4.4 0 1,1 8.8,0a4.4,4.4 0 1,1 -8.8,0" />
-    <path
-        android:fillColor="#FF2E9A6C"
-        android:pathData="M71.2,35.6m-3.8,0a3.8,3.8 0 1,1 7.6,0a3.8,3.8 0 1,1 -7.6,0" />
+        <!-- Kaft -->
+        <path
+            android:pathData="M22,84c10,0 18,2 26,8h26c6,0 6,8 0,8H52M22,104c14,0 24,0 34,0 10,0 24,-8 36,-18 4,-4 0,-9 -5,-6l-16,9"
+            android:strokeColor="#FFEDF4EF"
+            android:strokeWidth="5"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
     </group>
 </vector>
