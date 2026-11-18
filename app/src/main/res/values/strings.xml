@@ -135,8 +135,8 @@
     <string name="settings_stage_2">2-bosqich</string>
     <string name="settings_stage_3">3-bosqich</string>
     <string name="settings_stage_dialog_title">Bloklashdan qancha oldin?</string>
-    <string name="settings_voice">Ovozli eslatma</string>
-    <string name="settings_voice_desc">Xabar ovoz chiqarib oʻqiladi (telefonda shu til ovozi boʻlsa)</string>
+    <string name="settings_voice">Eslatmalarni ovoz bilan oʻqish</string>
+    <string name="settings_voice_desc">Rejim eslatmalari («Bloklashga 30 daqiqa qoldi») ham, har bir reja eslatmasi («Sport boshlanishiga 10 daqiqa qoldi») ham ovoz chiqarib oʻqiladi.</string>
     <string name="settings_ringtone">Rington</string>
     <string name="settings_ringtone_default">Standart</string>
     <string name="settings_ringtone_custom">Tanlangan</string>
@@ -512,8 +512,7 @@
     <string name="voice_male">Erkak ovozi</string>
     <string name="voice_preview">Eshitib koʻrish</string>
     <string name="voice_previewing">Oʻqilmoqda…</string>
-    <string name="voice_preview_text">Peshin namoziga 15 daqiqa qoldi. Tayyorlaning.</string>
-    <string name="voice_result_language_missing">Telefoningizda bu til uchun ovoz yoʻq. Telefon sozlamalari → «Matnni nutqqa aylantirish» boʻlimidan ovoz yuklab oling yoki ilova tilini oʻzgartiring.</string>
+    <string name="voice_result_language_missing">Telefoningizda ovozli oʻqish dasturi topilmadi. Telefon sozlamalari → «Matnni nutqqa aylantirish» boʻlimida Google ovozini yoqing (turkcha ovozni yuklab olsangiz, oʻzbekcha matnni ham oʻqiydi).</string>
     <string name="voice_result_engine_missing">Telefonda ovozli oʻqish dasturi topilmadi.</string>
 
     <!-- Vidjet -->
@@ -611,8 +610,6 @@
     <string name="muhosaba_ledger">Daftar</string>
     <string name="muhosaba_ledger_hint">Yashil — hammasi bajarilgan, qizil — hech biri bajarilmagan, sariq — qisman, boʻsh — hali belgilanmagan.</string>
     <string name="settings_task_reminders">Reja eslatmalari</string>
-    <string name="settings_task_voice">Ovoz bilan eslatish</string>
-    <string name="settings_task_voice_desc">Har bir reja eslatmasi ovoz chiqarib oʻqiladi, masalan: «Sport boshlanishiga 10 daqiqa qoldi. Tayyorlaning.»</string>
     <string name="settings_task_second">Ikkinchi eslatma</string>
     <string name="settings_task_second_dialog">Boshlanishidan qancha oldin?</string>
     <string name="settings_task_reminders_hint">Birinchi eslatma vaqti har bir rejaning oʻzida tanlanadi. Reja izohiga yozilgan gap (masalan «Yoʻlga chiq») ovozda ham oʻqiladi.</string>
@@ -679,4 +676,38 @@
     <string name="backup_restored">Maʼlumotlar tiklandi. Ilova qayta ochilmoqda…</string>
     <string name="backup_invalid">Bu 24/7 zaxira fayli emas yoki fayl buzilgan.</string>
     <string name="backup_newer">Bu fayl ilovaning yangiroq versiyasidan. Avval ilovani yangilang.</string>
+    <string name="settings_voice_section">Ovozli eslatmalar</string>
+    <string name="month_legend_done">hammasi bajarildi</string>
+    <string name="month_legend_partial">qisman</string>
+    <string name="month_legend_missed">bajarilmadi</string>
+    <string name="azkar_morning">Ertalabki zikrlar</string>
+    <string name="azkar_evening">Kechki zikrlar</string>
+    <string name="azkar_morning_title">Ertalabki zikrlar vaqti</string>
+    <string name="azkar_evening_title">Kechki zikrlar vaqti</string>
+    <string name="azkar_now">zikr vaqti</string>
+    <string name="azkar_setting">Ertalabki va kechki zikrlar</string>
+    <string name="azkar_setting_desc">Bomdod va asrdan keyin kun tartibiga oʻzi qoʻshiladi. Vaqti kelganda zikr haqidagi oyat yoki hadis bilan eslatma keladi.</string>
+    <string name="grayscale_switch">Kechasi oq-qora ekran</string>
+    <string name="grayscale_desc">Rejim vaqtida ekran rangsiz boʻladi — telefon zerikarli koʻrinib, qoʻlga olgingiz kelmaydi. Uygʻonish vaqtida ranglar qaytadi.</string>
+    <string name="grayscale_no_permission">Buning uchun telefonga oʻrnatishda bitta maxsus ruxsat beriladi — kompyuter orqali oʻrnatganda uni biz beramiz.</string>
+    <string name="onboarding_look_title">Koʻrinish</string>
+    <string name="onboarding_look_subtitle">Ilova rangini va sanalar qanday koʻrinishini tanlang.</string>
+    <string name="onboarding_voice_title">Ovozli eslatmalar</string>
+    <string name="onboarding_voice_subtitle">Eslatmani oʻqishga ulgurmasangiz ham eshitasiz — ilova uni ovoz chiqarib aytadi.</string>
+    <string name="onboarding_night_title">Tungi himoya</string>
+    <string name="onboarding_night_subtitle">Kechasi oʻzingizni chalgʻitmaslik uchun himoya qanchalik qattiq boʻlsin?</string>
+    <string name="onboarding_prayer_title">Namoz va zikrlar</string>
+    <string name="onboarding_prayer_subtitle">Namoz vaqtlari joyingizga qarab avtomatik hisoblanadi va kun tartibida koʻrinadi.</string>
+    <string name="onboarding_prayer_switch">Namoz vaqtlari</string>
+    <string name="onboarding_prayer_switch_desc">Kun tartibida, bosh sahifada va eslatma sifatida</string>
+    <string-array name="azkar_quotes">
+        <item>«Meni eslanglar, Men ham sizlarni eslayman.» — Baqara surasi, 152-oyat</item>
+        <item>«Ogoh boʻlinglar, Allohning zikri bilan qalblar orom topur.» — Raʼd surasi, 28-oyat</item>
+        <item>«Ey iymon keltirganlar, Allohni koʻp zikr qilinglar va Uni ertayu kech poklab yod etinglar.» — Ahzob surasi, 41–42-oyatlar</item>
+        <item>«Robbingga quyosh chiqishidan oldin va botishidan oldin hamd ila tasbeh ayt.» — Toho surasi, 130-oyat</item>
+        <item>«Robbisini zikr qiladigan kishi bilan zikr qilmaydigan kishining misoli tirik bilan oʻlikning misolidir.» — Imom Buxoriy rivoyati (6407)</item>
+        <item>«Kim kuniga yuz marta “Subhanallohi va bihamdihi” desa, xatolari dengiz koʻpigicha boʻlsa ham kechiriladi.» — Imom Buxoriy va Muslim rivoyati</item>
+        <item>«Tilingiz doimo Allohning zikri bilan hoʻl boʻlib tursin.» — Imom Termiziy rivoyati (3375)</item>
+        <item>«Zikr qalb uchun xuddi baliq uchun suv kabidir. Baliq suvdan ajralsa, uning holi ne kechadi?» — Shayxulislom Ibn Taymiyya (Ibn Qayyim, «al-Vobil as-sayyib»)</item>
+    </string-array>
 </resources>

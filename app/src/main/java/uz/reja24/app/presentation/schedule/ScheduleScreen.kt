@@ -2,6 +2,8 @@
 
 package uz.reja24.app.presentation.schedule
 
+import androidx.compose.material.icons.outlined.AutoAwesome
+import uz.reja24.app.domain.prayer.AzkarTime
 import uz.reja24.app.presentation.components.dayNumbers
 import uz.reja24.app.presentation.theme.MissedRed
 import uz.reja24.app.presentation.theme.MissedRedOnDark
@@ -224,6 +226,7 @@ private sealed interface DayRow {
     data class Sleep(val start: LocalTime, val end: LocalTime) : DayRow
     data class PrayerTime(val prayer: Prayer, val time: LocalTime) : DayRow
     data object Now : DayRow
+    data class Azkar(val time: AzkarTime, val start: LocalTime) : DayRow
 }
 
 @Composable
@@ -233,6 +236,7 @@ private fun DayView(viewModel: ScheduleViewModel, onEditEntry: (Long) -> Unit) {
     val settings by viewModel.settings.collectAsStateWithLifecycle()
     val prayers by viewModel.dayPrayers.collectAsStateWithLifecycle()
     val misses by viewModel.dayMisses.collectAsStateWithLifecycle()
+    val azkarOn by viewModel.azkarOn.collectAsStateWithLifecycle()
     var toDelete by remember { mutableStateOf<DailyTask?>(null) }
     val today = viewModel.today
     val now = LocalTime.now()
@@ -240,7 +244,7 @@ private fun DayView(viewModel: ScheduleViewModel, onEditEntry: (Long) -> Unit) {
     Column(Modifier.fillMaxSize()) {
         WeekDayChips(selected = selectedDate, today = today, onSelect = viewModel::selectDate)
         DayDateHeader(selectedDate)
-        val rows = buildDayRows(tasks, settings, prayers, isToday = selectedDate == today, now = now)
+        val rows = buildDayRows(tasks, settings, prayers, azkarOn, isToday = selectedDate == today, now = now)
         if (tasks.isEmpty()) {
             Text(
                 text = stringResource(R.string.schedule_empty),
@@ -258,6 +262,7 @@ private fun DayView(viewModel: ScheduleViewModel, onEditEntry: (Long) -> Unit) {
                     is DayRow.Task -> "task-${row.task.entry.id}"
                     is DayRow.Sleep -> "sleep"
                     is DayRow.PrayerTime -> "prayer-${row.prayer}"
+                    is DayRow.Azkar -> "azkar-${row.time.name}"
                     DayRow.Now -> "now"
                 }
             }) { row ->
@@ -272,6 +277,7 @@ private fun DayView(viewModel: ScheduleViewModel, onEditEntry: (Long) -> Unit) {
                     )
                     is DayRow.Sleep -> SleepRow(row.start, row.end)
                     is DayRow.PrayerTime -> PrayerRow(row.prayer, row.time)
+                    is DayRow.Azkar -> AzkarRow(row.time, row.start)
                     DayRow.Now -> NowLine()
                 }
             }
@@ -304,6 +310,7 @@ private fun buildDayRows(
     tasks: List<DailyTask>,
     settings: RoutineSettings,
     prayers: PrayerDay?,
+    azkarOn: Boolean,
     isToday: Boolean,
     now: LocalTime
 ): List<DayRow> {
@@ -313,6 +320,12 @@ private fun buildDayRows(
         Prayer.OBLIGATORY.forEach { prayer ->
             val time = day.time(prayer).toLocalTime()
             timed += time to DayRow.PrayerTime(prayer, time)
+        }
+        if (azkarOn) {
+            AzkarTime.entries.forEach { azkar ->
+                val start = azkar.startAt(day).toLocalTime()
+                timed += start to DayRow.Azkar(azkar, start)
+            }
         }
     }
     if (settings.isRoutineActive) {
@@ -529,6 +542,35 @@ private fun SleepRow(start: LocalTime, end: LocalTime) {
     }
 }
 
+/** Ertalabki / kechki zikr — namoz kabi avtomatik qator. */
+@Composable
+private fun AzkarRow(time: AzkarTime, start: LocalTime) {
+    val colors = RejaTheme.colors
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text = TimeFormat.time(start),
+            style = MaterialTheme.typography.labelLarge,
+            color = PrayerGreen,
+            modifier = Modifier.width(52.dp)
+        )
+        Row(
+            modifier = Modifier
+                .weight(1f)
+                .border(1.dp, PrayerGreen.copy(alpha = 0.45f), RoundedCornerShape(14.dp))
+                .padding(horizontal = 14.dp, vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(Icons.Outlined.AutoAwesome, contentDescription = null, tint = PrayerGreen, modifier = Modifier.size(20.dp))
+            Spacer(Modifier.width(10.dp))
+            Text(
+                text = stringResource(if (time == AzkarTime.MORNING) R.string.azkar_morning else R.string.azkar_evening),
+                style = MaterialTheme.typography.titleSmall,
+                color = colors.textPrimary
+            )
+        }
+    }
+}
+
 @Composable
 private fun PrayerRow(prayer: Prayer, time: LocalTime) {
     val colors = RejaTheme.colors
@@ -587,19 +629,29 @@ private fun NowLine() {
 
 // ============================ OYLIK ============================
 
-/** Baho darajasiga qarab kun rangi. */
-@Composable
-fun scoreLevelColor(stars: Int?): Color {
-    val colors = RejaTheme.colors
-    return when (stars) {
-        null -> Color.Transparent
-        5 -> SuccessGreen.copy(alpha = 0.55f)
-        4 -> SuccessGreen.copy(alpha = 0.35f)
-        3 -> colors.accent.copy(alpha = 0.25f)
-        2 -> colors.accent.copy(alpha = 0.40f)
-        else -> colors.accent.copy(alpha = 0.55f)
-    }
+/**
+ * Kun katagi rangi: hammasi bajarildi — yashil, qisman — sariq, hech biri — qizil.
+ * Kelajak kunlar va rejasiz kunlar — rangsiz. Bugun hali tugamagan: bajarilmaganlar qizil emas.
+ */
+internal enum class DayStatus { NONE, DONE, PARTIAL, MISSED }
+
+internal fun dayStatus(taskCount: Int, completed: Int, isPast: Boolean, isToday: Boolean): DayStatus = when {
+    taskCount == 0 || (!isPast && !isToday) -> DayStatus.NONE
+    completed >= taskCount -> DayStatus.DONE
+    completed > 0 -> DayStatus.PARTIAL
+    isToday -> DayStatus.NONE
+    else -> DayStatus.MISSED
 }
+
+private val DayPartialAmber = Color(0xFFB7791F)
+
+private fun DayStatus.fill(): Color? = when (this) {
+    DayStatus.DONE -> SuccessGreen
+    DayStatus.PARTIAL -> DayPartialAmber
+    DayStatus.MISSED -> MissedRed
+    DayStatus.NONE -> null
+}
+
 
 @Composable
 private fun MonthView(viewModel: ScheduleViewModel) {
@@ -631,6 +683,8 @@ private fun MonthView(viewModel: ScheduleViewModel) {
                 Icon(Icons.AutoMirrored.Outlined.KeyboardArrowRight, contentDescription = stringResource(R.string.cd_next_month))
             }
         }
+        MonthLegend()
+        Spacer(Modifier.height(8.dp))
         // Hafta kunlari sarlavhasi (dushanbadan)
         Row(Modifier.fillMaxWidth()) {
             val monday = WeeklyEvaluator.weekStartOf(today)
@@ -659,7 +713,7 @@ private fun MonthView(viewModel: ScheduleViewModel) {
                 if (day == null) {
                     Spacer(Modifier.aspectRatio(1f))
                 } else {
-                    MonthCell(day, isToday = day.date == today, onClick = { viewModel.openDay(day.date) })
+                    MonthCell(day, isToday = day.date == today, isPast = day.date.isBefore(today), onClick = { viewModel.openDay(day.date) })
                 }
             }
         }
@@ -667,15 +721,18 @@ private fun MonthView(viewModel: ScheduleViewModel) {
 }
 
 @Composable
-private fun MonthCell(day: DaySummary, isToday: Boolean, onClick: () -> Unit) {
+private fun MonthCell(day: DaySummary, isToday: Boolean, isPast: Boolean, onClick: () -> Unit) {
     val colors = RejaTheme.colors
+    val fill = dayStatus(day.taskCount, day.completedCount, isPast, isToday).fill()
+    // Rangli katakda raqamlar oq (rang to'q, o'qilishi aniq)
+    val textColor = if (fill != null) Color.White else colors.textPrimary
     Column(
         modifier = Modifier
             .aspectRatio(1f)
-            .background(scoreLevelColor(day.score?.starsEarned), RoundedCornerShape(12.dp))
+            .background(fill ?: colors.surface, RoundedCornerShape(12.dp))
             .border(
-                width = if (isToday) 1.5.dp else 1.dp,
-                color = if (isToday) colors.textPrimary else colors.border,
+                width = if (isToday) 2.dp else 1.dp,
+                color = if (isToday) colors.textPrimary else (fill ?: colors.border),
                 shape = RoundedCornerShape(12.dp)
             )
             .clickable(onClick = onClick),
@@ -686,24 +743,36 @@ private fun MonthCell(day: DaySummary, isToday: Boolean, onClick: () -> Unit) {
         Text(
             text = numbers.main,
             style = MaterialTheme.typography.labelLarge,
-            color = colors.textPrimary
+            color = textColor
         )
         numbers.hijriSmall?.let { hijriDay ->
             Text(
                 text = hijriDay,
                 style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp, lineHeight = 11.sp),
-                color = colors.hijri,
+                color = if (fill != null) Color.White.copy(alpha = 0.85f) else colors.hijri,
                 maxLines = 1
             )
         }
-        // Nuqtalar: rejalar soni (ko'pi bilan 3 ta)
-        Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.height(6.dp)) {
-            repeat(day.taskCount.coerceAtMost(3)) {
+    }
+}
+
+/** Oy kalendari ranglarining izohi. */
+@Composable
+private fun MonthLegend() {
+    Row(horizontalArrangement = Arrangement.spacedBy(14.dp), verticalAlignment = Alignment.CenterVertically) {
+        listOf(
+            SuccessGreen to R.string.month_legend_done,
+            DayPartialAmber to R.string.month_legend_partial,
+            MissedRed to R.string.month_legend_missed
+        ).forEach { (color, label) ->
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(
                     Modifier
-                        .size(4.dp)
-                        .background(colors.accent, CircleShape)
+                        .size(10.dp)
+                        .background(color, RoundedCornerShape(3.dp))
                 )
+                Spacer(Modifier.width(5.dp))
+                Text(stringResource(label), style = MaterialTheme.typography.labelSmall, color = RejaTheme.colors.textSecondary)
             }
         }
     }

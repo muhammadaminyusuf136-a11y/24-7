@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import uz.reja24.app.core.util.InstalledAppsProvider
+import uz.reja24.app.core.util.NightGrayscale
 import uz.reja24.app.core.util.SystemWhitelist
 import uz.reja24.app.core.util.TimeProvider
 import uz.reja24.app.domain.model.AppLanguage
@@ -79,6 +80,7 @@ class BlockingAccessibilityService : AccessibilityService() {
     private var language: AppLanguage? = null
     private var backgroundStyle = BackgroundStyle.PURE
     private var allowOnly = false
+    private var grayscaleOn = false
     private var allowedPackages: Set<String> = emptySet()
     private var launchablePackages: Set<String> = emptySet()
     private var streakDays = 0
@@ -108,6 +110,8 @@ class BlockingAccessibilityService : AccessibilityService() {
     private val periodicCheck = object : Runnable {
         override fun run() {
             accountUsage(persist = true)
+            refreshLock(timeProvider.now())
+            updateGrayscale()
             lastPackage?.let { evaluate(it, justOpened = false) }
             handler.postDelayed(this, CHECK_INTERVAL_MS)
         }
@@ -153,6 +157,8 @@ class BlockingAccessibilityService : AccessibilityService() {
                 language = if (prefs.isLanguageChosen) prefs.language else null
                 backgroundStyle = prefs.backgroundStyle
                 allowOnly = prefs.nightAllowOnly
+                grayscaleOn = prefs.nightGrayscale
+                updateGrayscale()
                 allowedPackages = prefs.allowedPackages
             }
         }
@@ -371,6 +377,13 @@ class BlockingAccessibilityService : AccessibilityService() {
         lastPackage?.let { evaluate(it, justOpened = false) }
     }
 
+    /** Rejim vaqtida (soat surilgan bo'lsa ham) ekran oq-qora; uyg'onishda — avvalgi holatga. */
+    private fun updateGrayscale() {
+        val night = settings.isInBlockWindow(timeProvider.now().toLocalTime()) ||
+            (settings.isRoutineActive && ClockGuard.isLocked(lockUntilElapsed, SystemClock.elapsedRealtime()))
+        NightGrayscale.apply(this, guardPrefs, grayscaleOn && night)
+    }
+
     // ------------------------------------------------------------------
 
     private fun showOverlay() {
@@ -421,6 +434,8 @@ class BlockingAccessibilityService : AccessibilityService() {
         if (cleanedUp) return
         cleanedUp = true
         accountUsage(persist = true)
+        // Xizmat to'xtasa — ekran oq-qora holda qolib ketmasin
+        NightGrayscale.apply(this, guardPrefs, false)
         handler.removeCallbacks(periodicCheck)
         runCatching { unregisterReceiver(systemReceiver) }
         overlay?.hide()

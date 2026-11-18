@@ -116,8 +116,8 @@
     <string name="settings_stage_2">المرحلة 2</string>
     <string name="settings_stage_3">المرحلة 3</string>
     <string name="settings_stage_dialog_title">قبل الحظر بكم؟</string>
-    <string name="settings_voice">تذكير صوتي</string>
-    <string name="settings_voice_desc">تُقرأ الرسالة بصوت عالٍ (إن توفر في هاتفك صوت لهذه اللغة)</string>
+    <string name="settings_voice">قراءة التذكيرات بصوت عالٍ</string>
+    <string name="settings_voice_desc">تُقرأ بصوت عالٍ تذكيرات النظام («بقي 30 دقيقة على الحظر») وتذكيرات كل خطة («بقي 10 دقائق على الرياضة»).</string>
     <string name="settings_ringtone">النغمة</string>
     <string name="settings_ringtone_default">الافتراضية</string>
     <string name="settings_ringtone_custom">مختارة</string>
@@ -487,8 +487,7 @@
     <string name="voice_male">صوت ذكر</string>
     <string name="voice_preview">استماع</string>
     <string name="voice_previewing">جارٍ القراءة…</string>
-    <string name="voice_preview_text">بقي 15 دقيقة على صلاة الظهر. استعد.</string>
-    <string name="voice_result_language_missing">لا يوجد صوت لهذه اللغة في هاتفك. نزّله من إعدادات الهاتف ← تحويل النص إلى كلام، أو غيّر لغة التطبيق.</string>
+    <string name="voice_result_language_missing">لم يُعثر على محرك تحويل النص إلى كلام في هاتفك. فعّل صوت Google من إعدادات الهاتف ← تحويل النص إلى كلام.</string>
     <string name="voice_result_engine_missing">لم يتم العثور على محرك تحويل النص إلى كلام في الهاتف.</string>
 
     <!-- Vidjet -->
@@ -586,8 +585,6 @@
     <string name="muhosaba_ledger">الدفتر</string>
     <string name="muhosaba_ledger_hint">الأخضر — أُنجز كل شيء، الأحمر — لم يُنجز شيء، الأصفر — جزئيًا، الفارغ — لم يُحدَّد بعد.</string>
     <string name="settings_task_reminders">تذكيرات الخطط</string>
-    <string name="settings_task_voice">قراءة التذكيرات بصوت</string>
-    <string name="settings_task_voice_desc">يُقرأ كل تذكير بصوت مسموع، مثل: «الرياضة بعد 10 دقائق. استعد.»</string>
     <string name="settings_task_second">تذكير ثانٍ</string>
     <string name="settings_task_second_dialog">قبل البداية بكم؟</string>
     <string name="settings_task_reminders_hint">يُحدَّد وقت التذكير الأول في كل خطة. وتُقرأ ملاحظة الخطة (مثل «حان وقت الخروج») بصوت أيضًا.</string>
@@ -654,4 +651,38 @@
     <string name="backup_restored">تمت الاستعادة. يُعاد تشغيل التطبيق…</string>
     <string name="backup_invalid">هذا ليس ملف نسخة احتياطية لـ 24/7 أو أن الملف تالف.</string>
     <string name="backup_newer">هذا الملف من إصدار أحدث من التطبيق. حدّث التطبيق أولًا.</string>
+    <string name="settings_voice_section">التذكيرات الصوتية</string>
+    <string name="month_legend_done">أُنجز كله</string>
+    <string name="month_legend_partial">جزئيًا</string>
+    <string name="month_legend_missed">لم يُنجز</string>
+    <string name="azkar_morning">أذكار الصباح</string>
+    <string name="azkar_evening">أذكار المساء</string>
+    <string name="azkar_morning_title">حان وقت أذكار الصباح</string>
+    <string name="azkar_evening_title">حان وقت أذكار المساء</string>
+    <string name="azkar_now">وقت الذكر</string>
+    <string name="azkar_setting">أذكار الصباح والمساء</string>
+    <string name="azkar_setting_desc">تُضاف تلقائيًا إلى الجدول بعد الفجر والعصر، وعند حلول وقتها يصلك تذكير بآية أو حديث عن الذكر.</string>
+    <string name="grayscale_switch">شاشة بالأبيض والأسود ليلًا</string>
+    <string name="grayscale_desc">أثناء النظام تفقد الشاشة ألوانها فيبدو الهاتف مملًا ولا ترغب في حمله، وتعود الألوان وقت الاستيقاظ.</string>
+    <string name="grayscale_no_permission">يتطلب ذلك إذنًا خاصًا يُمنح عند التثبيت — سنمنحه عند التثبيت من الحاسوب.</string>
+    <string name="onboarding_look_title">المظهر</string>
+    <string name="onboarding_look_subtitle">اختر لون التطبيق وطريقة عرض التواريخ.</string>
+    <string name="onboarding_voice_title">التذكيرات الصوتية</string>
+    <string name="onboarding_voice_subtitle">حتى لو لم تقرأ التذكير في وقته فستسمعه — التطبيق يقوله بصوت عالٍ.</string>
+    <string name="onboarding_night_title">الحماية الليلية</string>
+    <string name="onboarding_night_subtitle">ما مدى صرامة الحماية حتى لا تنشغل ليلًا؟</string>
+    <string name="onboarding_prayer_title">الصلاة والأذكار</string>
+    <string name="onboarding_prayer_subtitle">تُحسب مواقيت الصلاة تلقائيًا حسب موقعك وتظهر في جدولك.</string>
+    <string name="onboarding_prayer_switch">مواقيت الصلاة</string>
+    <string name="onboarding_prayer_switch_desc">في الجدول والشاشة الرئيسية وكتذكيرات</string>
+    <string-array name="azkar_quotes">
+        <item>«فَاذْكُرُونِي أَذْكُرْكُمْ» — البقرة: 152</item>
+        <item>«أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ» — الرعد: 28</item>
+        <item>«يَا أَيُّهَا الَّذِينَ آمَنُوا اذْكُرُوا اللَّهَ ذِكْرًا كَثِيرًا وَسَبِّحُوهُ بُكْرَةً وَأَصِيلًا» — الأحزاب: 41–42</item>
+        <item>«وَسَبِّحْ بِحَمْدِ رَبِّكَ قَبْلَ طُلُوعِ الشَّمْسِ وَقَبْلَ غُرُوبِهَا» — طه: 130</item>
+        <item>«مَثَلُ الَّذِي يَذْكُرُ رَبَّهُ وَالَّذِي لَا يَذْكُرُ رَبَّهُ مَثَلُ الْحَيِّ وَالْمَيِّتِ» — رواه البخاري (6407)</item>
+        <item>«مَنْ قَالَ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، فِي يَوْمٍ مِائَةَ مَرَّةٍ، حُطَّتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ الْبَحْرِ» — متفق عليه</item>
+        <item>«لَا يَزَالُ لِسَانُكَ رَطْبًا مِنْ ذِكْرِ اللَّهِ» — رواه الترمذي (3375)</item>
+        <item>«الذِّكْرُ لِلْقَلْبِ مِثْلُ الْمَاءِ لِلسَّمَكِ، فَكَيْفَ يَكُونُ حَالُ السَّمَكِ إِذَا فَارَقَ الْمَاءَ؟» — شيخ الإسلام ابن تيمية (الوابل الصيب لابن القيم)</item>
+    </string-array>
 </resources>

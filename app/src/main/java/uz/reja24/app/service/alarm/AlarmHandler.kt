@@ -200,6 +200,19 @@ class AlarmHandler @Inject constructor(
             PrayerAlarmKind.ALARM -> AlarmRingService.start(
                 appContext, name, context.getString(R.string.prayer_at_time_text, name, time), prayerSettings.alarmSoundUri
             )
+            PrayerAlarmKind.AZKAR -> {
+                if (!prayerSettings.azkarOn) return
+                val title = context.getString(
+                    if (prayer == Prayer.FAJR) R.string.azkar_morning_title else R.string.azkar_evening_title
+                )
+                // Har safar boshqa oyat / hadis / ulamolar so'zi
+                val quotes = context.resources.getStringArray(R.array.azkar_quotes)
+                val quote = quotes[Math.floorMod((atMillis / 86_400_000L).toInt() * 2 + prayer.ordinal, quotes.size)]
+                alert(
+                    speech, routine, NotificationHelper.prayerNotificationId(prayer.ordinal) + AZKAR_ID_SHIFT, title, quote,
+                    voice = title.takeIf { routine.isVoiceReminderOn }
+                )
+            }
         }
     }
 
@@ -233,5 +246,10 @@ class AlarmHandler @Inject constructor(
         )
         if (customSound) ReminderSound.playRingtone(context, settings.ringtoneUri)
         if (voice != null) ReminderSound.speak(context, voice, speech.locale, speech.gender)
+    }
+
+    private companion object {
+        /** Zikr bildirishnomasi namoz bildirishnomasini almashtirib yubormasin. */
+        const val AZKAR_ID_SHIFT = 50
     }
 }

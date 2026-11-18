@@ -1,5 +1,6 @@
 package uz.reja24.app.presentation.home
 
+import uz.reja24.app.domain.prayer.AzkarTime
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -45,7 +46,7 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 
 /** Jadval qatorining turi. */
-enum class TableRowKind { TASK, PRAYER, SLEEP }
+enum class TableRowKind { TASK, PRAYER, SLEEP, AZKAR }
 
 /** Jadval qatorining holati: o'tgan, hozir davom etayotgan, hali boshlanmagan. */
 enum class TableRowState { PAST, NOW, LATER }
@@ -63,7 +64,8 @@ data class TableRow(
     val colorHex: String?,
     val prayer: Prayer? = null,
     val isDone: Boolean = false,
-    val state: TableRowState
+    val state: TableRowState,
+    val azkar: AzkarTime? = null
 ) {
     val startTime: LocalTime get() = LocalTime.of(Math.floorMod(startMinute, DAY) / 60, Math.floorMod(startMinute, DAY) % 60)
     val endTime: LocalTime get() = LocalTime.of(Math.floorMod(endMinute, DAY) / 60, Math.floorMod(endMinute, DAY) % 60)
@@ -82,7 +84,8 @@ object TodayTableModel {
         tasks: List<DailyTask>,
         settings: RoutineSettings,
         prayers: PrayerDay?,
-        now: LocalDateTime
+        now: LocalDateTime,
+        azkarOn: Boolean = false
     ): List<TableRow> {
         val nowMinute = now.hour * 60 + now.minute
         fun state(start: Int, end: Int) = when {
@@ -115,6 +118,15 @@ object TodayTableModel {
                 val end = start + TimelineModel.PRAYER_MINUTES
                 rows += TableRow("prayer-$prayer", TableRowKind.PRAYER, start, end, null, null, prayer, state = state(start, end))
             }
+            if (azkarOn) {
+                AzkarTime.entries.forEach { azkar ->
+                    val at = azkar.startAt(day)
+                    if (at.toLocalDate() != now.toLocalDate()) return@forEach
+                    val start = at.hour * 60 + at.minute
+                    val end = start + AzkarTime.DURATION_MINUTES.toInt()
+                    rows += TableRow("azkar-${azkar.name}", TableRowKind.AZKAR, start, end, null, null, state = state(start, end), azkar = azkar)
+                }
+            }
         }
 
         if (settings.isRoutineActive) {
@@ -141,7 +153,10 @@ object TodayTableModel {
 @Composable
 fun TodayTable(state: HomeUiState, onOpenPlan: () -> Unit, modifier: Modifier = Modifier) {
     val colors = RejaTheme.colors
-    val rows = TodayTableModel.rows(state.tasks, state.settings, state.prayer.days[state.today], state.now)
+    val rows = TodayTableModel.rows(
+        state.tasks, state.settings, state.prayer.days[state.today], state.now,
+        azkarOn = state.prayer.settings.isEnabled && state.prayer.settings.azkarOn
+    )
     val nowMinute = state.now.hour * 60 + state.now.minute
 
     Column(modifier) {
@@ -201,15 +216,17 @@ private fun TableRowView(row: TableRow, nowMinute: Int, onClick: () -> Unit) {
         TableRowKind.TASK -> row.title.orEmpty()
         TableRowKind.PRAYER -> stringResource(prayerNameRes(row.prayer ?: Prayer.FAJR))
         TableRowKind.SLEEP -> stringResource(R.string.sleep_block_title)
+        TableRowKind.AZKAR -> stringResource(if (row.azkar == AzkarTime.EVENING) R.string.azkar_evening else R.string.azkar_morning)
     }
     val barColor = when (row.kind) {
         TableRowKind.TASK -> row.colorHex.orEmpty().toComposeColor()
-        TableRowKind.PRAYER -> PrayerGreen
+        TableRowKind.PRAYER, TableRowKind.AZKAR -> PrayerGreen
         TableRowKind.SLEEP -> CategorySleep
     }
     val status = when {
         row.kind == TableRowKind.TASK && row.isDone -> "✓"
         isNow && row.kind == TableRowKind.PRAYER -> stringResource(R.string.home_prayer_entered)
+        isNow && row.kind == TableRowKind.AZKAR -> stringResource(R.string.azkar_now)
         isNow -> stringResource(R.string.home_time_left, TimeFormat.hoursMinutes((row.endMinute - nowMinute).toLong()))
         row.state == TableRowState.PAST -> stringResource(R.string.home_state_done)
         else -> ""
@@ -253,7 +270,7 @@ private fun TableRowView(row: TableRow, nowMinute: Int, onClick: () -> Unit) {
             style = MaterialTheme.typography.bodyMedium,
             fontWeight = if (isNow) FontWeight.SemiBold else FontWeight.Normal,
             // Qorong'i fonda to'q yashil o'qilmaydi — ochroq yashil
-            color = if (row.kind == TableRowKind.PRAYER) (if (colors.isDark) PrayerGreenOnDark else PrayerGreen) else colors.textPrimary,
+            color = if (row.kind == TableRowKind.PRAYER || row.kind == TableRowKind.AZKAR) (if (colors.isDark) PrayerGreenOnDark else PrayerGreen) else colors.textPrimary,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.weight(1f)

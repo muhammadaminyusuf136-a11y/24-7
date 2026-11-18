@@ -59,6 +59,8 @@ data class UserPreferences(
     val voiceGender: VoiceGender = VoiceGender.FEMALE,
     /** Tungi "faqat kerakli" rejim: bloklash vaqtida faqat allowedPackages ochiq (tizim ilovalaridan tashqari). */
     val nightAllowOnly: Boolean = false,
+    /** Rejim vaqtida ekran oq-qora bo'ladi. */
+    val nightGrayscale: Boolean = false,
     val allowedPackages: Set<String> = emptySet(),
     /** Rejalar eslatmasi ovoz chiqarib o'qiladi ("Sport boshlanishiga 10 daqiqa qoldi"). */
     val taskVoiceOn: Boolean = false,

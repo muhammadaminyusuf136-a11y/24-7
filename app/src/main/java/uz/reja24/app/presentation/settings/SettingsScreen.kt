@@ -73,6 +73,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import uz.reja24.app.BuildConfig
 import uz.reja24.app.R
 import uz.reja24.app.core.util.DurationText
+import uz.reja24.app.core.util.NightGrayscale
 import uz.reja24.app.core.util.TimeFormat
 import uz.reja24.app.domain.model.AppLanguage
 import uz.reja24.app.domain.model.BackgroundStyle
@@ -247,6 +248,27 @@ fun SettingsScreen(
                 }
             }
 
+            // ---------- Ovozli eslatmalar (rejim va rejalar uchun bitta) ----------
+            Section(stringResource(R.string.settings_voice_section)) {
+                RejaCard(modifier = Modifier.fillMaxWidth(), contentPadding = androidx.compose.foundation.layout.PaddingValues(0.dp)) {
+                    val voiceOn = routine.isVoiceReminderOn || prefs.taskVoiceOn
+                    SwitchRow(
+                        title = stringResource(R.string.settings_voice),
+                        subtitle = stringResource(R.string.settings_voice_desc),
+                        checked = voiceOn,
+                        onChange = viewModel::setVoiceAll
+                    )
+                    if (voiceOn) {
+                        VoiceGenderRow(
+                            selected = prefs.voiceGender,
+                            previewing = previewing,
+                            onSelect = viewModel::setVoiceGender,
+                            onPreview = { previewVoice(R.string.task_voice_preview_text) }
+                        )
+                    }
+                }
+            }
+
             // ---------- Eslatmalar ----------
             Section(stringResource(R.string.settings_reminders)) {
                 RejaCard(modifier = Modifier.fillMaxWidth(), contentPadding = androidx.compose.foundation.layout.PaddingValues(0.dp)) {
@@ -255,21 +277,6 @@ fun SettingsScreen(
                     ValueRow(stringResource(R.string.settings_stage_2), DurationText.format(context.resources, routine.reminderStage2Minutes)) { stageTarget = StageTarget.STAGE_2 }
                     Divider()
                     ValueRow(stringResource(R.string.settings_stage_3), DurationText.format(context.resources, routine.reminderStage3Minutes)) { stageTarget = StageTarget.STAGE_3 }
-                    Divider()
-                    SwitchRow(
-                        title = stringResource(R.string.settings_voice),
-                        subtitle = stringResource(R.string.settings_voice_desc),
-                        checked = routine.isVoiceReminderOn,
-                        onChange = { on -> viewModel.updateRoutine { it.copy(isVoiceReminderOn = on) } }
-                    )
-                    if (routine.isVoiceReminderOn) {
-                        VoiceGenderRow(
-                            selected = prefs.voiceGender,
-                            previewing = previewing,
-                            onSelect = viewModel::setVoiceGender,
-                            onPreview = { previewVoice(R.string.voice_preview_text) }
-                        )
-                    }
                     Divider()
                     ValueRow(
                         title = stringResource(R.string.settings_ringtone),
@@ -291,21 +298,6 @@ fun SettingsScreen(
             // ---------- Reja eslatmalari ----------
             Section(stringResource(R.string.settings_task_reminders)) {
                 RejaCard(modifier = Modifier.fillMaxWidth(), contentPadding = androidx.compose.foundation.layout.PaddingValues(0.dp)) {
-                    SwitchRow(
-                        title = stringResource(R.string.settings_task_voice),
-                        subtitle = stringResource(R.string.settings_task_voice_desc),
-                        checked = prefs.taskVoiceOn,
-                        onChange = viewModel::setTaskVoice
-                    )
-                    if (prefs.taskVoiceOn) {
-                        VoiceGenderRow(
-                            selected = prefs.voiceGender,
-                            previewing = previewing,
-                            onSelect = viewModel::setVoiceGender,
-                            onPreview = { previewVoice(R.string.task_voice_preview_text) }
-                        )
-                    }
-                    Divider()
                     ValueRow(
                         stringResource(R.string.settings_task_second),
                         if (prefs.taskSecondReminderMinutes == 0) stringResource(R.string.editor_reminder_off)
@@ -365,6 +357,14 @@ fun SettingsScreen(
                             onClick = onOpenAllowedApps
                         )
                     }
+                    Divider()
+                    val grayPermitted = remember { NightGrayscale.isPermitted(context) }
+                    SwitchRow(
+                        title = stringResource(R.string.grayscale_switch),
+                        subtitle = stringResource(if (grayPermitted) R.string.grayscale_desc else R.string.grayscale_no_permission),
+                        checked = prefs.nightGrayscale && grayPermitted,
+                        onChange = { on -> if (grayPermitted) viewModel.setNightGrayscale(on) }
+                    )
                 }
             }
 
@@ -489,7 +489,7 @@ fun SettingsScreen(
 }
 
 @Composable
-private fun VoiceGenderRow(
+internal fun VoiceGenderRow(
     selected: VoiceGender,
     previewing: Boolean,
     onSelect: (VoiceGender) -> Unit,
@@ -562,7 +562,7 @@ private fun ValueRow(title: String, value: String, onClick: () -> Unit) {
 }
 
 @Composable
-private fun SwitchRow(title: String, subtitle: String?, checked: Boolean, onChange: (Boolean) -> Unit) {
+internal fun SwitchRow(title: String, subtitle: String?, checked: Boolean, onChange: (Boolean) -> Unit) {
     val colors = RejaTheme.colors
     Row(
         modifier = Modifier
@@ -644,7 +644,7 @@ fun LanguageCard(name: String, selected: Boolean, onClick: () -> Unit, modifier:
 }
 
 @Composable
-private fun BackgroundChips(selected: BackgroundStyle, onSelect: (BackgroundStyle) -> Unit) {
+internal fun BackgroundChips(selected: BackgroundStyle, onSelect: (BackgroundStyle) -> Unit) {
     val options = listOf(
         BackgroundStyle.POWER to R.string.background_power,
         BackgroundStyle.GREEN to R.string.background_green,
@@ -680,7 +680,7 @@ private fun BackgroundPreview(style: BackgroundStyle) {
 
 /** Sanalar: ikkalasi (milodiy + hijriy) / faqat milodiy / faqat hijriy. */
 @Composable
-private fun DateDisplayChips(selected: DateDisplay, onSelect: (DateDisplay) -> Unit) {
+internal fun DateDisplayChips(selected: DateDisplay, onSelect: (DateDisplay) -> Unit) {
     val options = listOf(
         DateDisplay.BOTH to R.string.date_display_both,
         DateDisplay.GREGORIAN to R.string.date_display_gregorian,

@@ -21,6 +21,10 @@ object ReminderSound {
 
     private const val RINGTONE_PLAY_MS = 4_000L
     private const val TTS_TIMEOUT_MS = 15_000L
+    private val FALLBACK_UZ: Locale = Locale.forLanguageTag("tr-TR")
+
+    private fun isMissing(result: Int) =
+        result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED
 
     /** Ovozli o'qish natijasi ("Eshitib ko'rish" tugmasi foydalanuvchiga aniq aytishi uchun). */
     enum class SpeakResult { SPOKEN, LANGUAGE_MISSING, ENGINE_MISSING }
@@ -73,14 +77,19 @@ object ReminderSound {
                         if (status != TextToSpeech.SUCCESS || tts == null) {
                             finish()
                         } else {
-                            val languageResult = tts.setLanguage(locale)
-                            if (languageResult == TextToSpeech.LANG_MISSING_DATA ||
-                                languageResult == TextToSpeech.LANG_NOT_SUPPORTED
-                            ) {
+                            var voiceLocale = locale
+                            var languageResult = tts.setLanguage(locale)
+                            // Ko'p telefonlarda o'zbek ovozi yo'q — eski versiyada shu sabab ovoz chiqmasdi.
+                            // O'zbekcha lotin matnini turkcha ovoz ancha to'g'ri o'qiydi.
+                            if (isMissing(languageResult) && locale.language == "uz") {
+                                voiceLocale = FALLBACK_UZ
+                                languageResult = tts.setLanguage(FALLBACK_UZ)
+                            }
+                            if (isMissing(languageResult)) {
                                 result.set(SpeakResult.LANGUAGE_MISSING)
                                 finish()
                             } else {
-                                applyVoice(tts, locale, gender)
+                                applyVoice(tts, voiceLocale, gender)
                                 tts.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
                                     override fun onStart(utteranceId: String?) = Unit
                                     override fun onDone(utteranceId: String?) = finish()

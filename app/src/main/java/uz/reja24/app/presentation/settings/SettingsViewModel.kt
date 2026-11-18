@@ -84,8 +84,14 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch { safely { userPreferencesRepository.setDateDisplay(display) } }
     }
 
-    fun setTaskVoice(enabled: Boolean) {
-        viewModelScope.launch { safely { userPreferencesRepository.setTaskVoice(enabled) } }
+    /** Bitta kalit: rejim eslatmalari ham, har bir reja eslatmasi ham ovoz bilan o'qiladi. */
+    fun setVoiceAll(enabled: Boolean) {
+        viewModelScope.launch {
+            safely {
+                userPreferencesRepository.setTaskVoice(enabled)
+                routineSettingsRepository.saveSettings(routineSettingsRepository.getSettings().copy(isVoiceReminderOn = enabled))
+            }
+        }
     }
 
     /** Ikkinchi eslatma vaqti o'zgarsa — rejalar eslatmalari qayta qo'yiladi. */
@@ -124,6 +130,10 @@ class SettingsViewModel @Inject constructor(
     }
 
     /** "Faqat kerakli" rejimni o'chirish — blokni bo'shashtiradi: qulf vaqtida mumkin emas. */
+    fun setNightGrayscale(enabled: Boolean) {
+        viewModelScope.launch { safely { userPreferencesRepository.setNightGrayscale(enabled) } }
+    }
+
     fun setNightAllowOnly(enabled: Boolean) {
         val routine = uiState.value?.routine
         if (!enabled && routine != null && lockedNow(routine)) {

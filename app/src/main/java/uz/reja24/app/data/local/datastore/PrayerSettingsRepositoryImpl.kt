@@ -56,6 +56,7 @@ class PrayerSettingsRepositoryImpl @Inject constructor(
             adjustments = decodeAdjustments(this[Keys.ADJUSTMENTS]),
             reminderMinutes = (this[Keys.REMINDER] ?: PrayerSettings.DEFAULT_REMINDER_MINUTES).coerceIn(0, 60),
             notifyAtTime = this[Keys.NOTIFY_AT_TIME] ?: true,
+            azkarOn = this[Keys.AZKAR] ?: true,
             mutedPrayers = decodePrayers(this[Keys.MUTED]),
             alarmPrayers = decodePrayers(this[Keys.ALARMS]),
             alarmSoundUri = this[Keys.ALARM_SOUND],
@@ -97,6 +98,7 @@ class PrayerSettingsRepositoryImpl @Inject constructor(
             .entries.joinToString(",") { "${it.key.name}:${it.value}" }
         this[Keys.REMINDER] = s.reminderMinutes
         this[Keys.NOTIFY_AT_TIME] = s.notifyAtTime
+        this[Keys.AZKAR] = s.azkarOn
         this[Keys.MUTED] = s.mutedPrayers.map { it.name }.toSet()
         this[Keys.ALARMS] = s.alarmPrayers.map { it.name }.toSet()
         setOrRemove(Keys.ALARM_SOUND, s.alarmSoundUri)
@@ -141,6 +143,7 @@ class PrayerSettingsRepositoryImpl @Inject constructor(
         val ADJUSTMENTS = stringPreferencesKey("prayer_adjustments")
         val REMINDER = intPreferencesKey("prayer_reminder_minutes")
         val NOTIFY_AT_TIME = booleanPreferencesKey("prayer_notify_at_time")
+        val AZKAR = booleanPreferencesKey("prayer_azkar_on")
         val MUTED = stringSetPreferencesKey("prayer_muted")
         val ALARMS = stringSetPreferencesKey("prayer_alarms")
         val ALARM_SOUND = stringPreferencesKey("prayer_alarm_sound")

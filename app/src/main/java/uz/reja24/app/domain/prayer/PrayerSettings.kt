@@ -40,7 +40,9 @@ data class PrayerSettings(
     val mutedPrayers: Set<Prayer> = emptySet(),
     val alarmPrayers: Set<Prayer> = emptySet(),
     val alarmSoundUri: String? = null,
-    val hijriAdjustmentDays: Int = 0
+    val hijriAdjustmentDays: Int = 0,
+    /** Bomdod va asrdan keyin ertalabki/kechki zikr (kun tartibida va eslatma). */
+    val azkarOn: Boolean = true
 ) {
     companion object {
         const val DEFAULT_REMINDER_MINUTES = 15

@@ -44,9 +44,20 @@ class PrayerAlarmPlannerTest {
     fun alarm_replaces_at_time_notification_and_muted_prayer_keeps_alarm() {
         val settings = PrayerSettings(alarmPrayers = setOf(Prayer.FAJR), mutedPrayers = setOf(Prayer.FAJR, Prayer.ASR))
         val alarms = AlarmPlanner.prayerAlarms(today.atTime(0, 0), days, settings)
-        val fajrToday = alarms.filter { it.prayer == Prayer.FAJR && it.dayIndex == 0 }
+        // Zikr eslatmasi namoz bildirishnomasidan alohida (namoz ovozsiz bo'lsa ham zikr qoladi)
+        val fajrToday = alarms.filter { it.prayer == Prayer.FAJR && it.dayIndex == 0 && it.kind != PrayerAlarmKind.AZKAR }
         assertEquals(listOf(PrayerAlarmKind.ALARM), fajrToday.map { it.kind })
-        assertTrue(alarms.none { it.prayer == Prayer.ASR })
+        assertTrue(alarms.none { it.prayer == Prayer.ASR && it.kind != PrayerAlarmKind.AZKAR })
+    }
+
+    @Test
+    fun azkar_after_fajr_and_asr_only_and_can_be_turned_off() {
+        val alarms = AlarmPlanner.prayerAlarms(today.atTime(0, 0), days, PrayerSettings())
+        val azkar = alarms.filter { it.kind == PrayerAlarmKind.AZKAR }
+        assertEquals(setOf(Prayer.FAJR, Prayer.ASR), azkar.map { it.prayer }.toSet())
+        assertEquals(4, azkar.size)
+        azkar.forEach { a -> assertEquals(days[a.dayIndex].time(a.prayer).plusMinutes(20), a.triggerAt) }
+        assertTrue(AlarmPlanner.prayerAlarms(today.atTime(0, 0), days, PrayerSettings(azkarOn = false)).none { it.kind == PrayerAlarmKind.AZKAR })
     }
 
     @Test

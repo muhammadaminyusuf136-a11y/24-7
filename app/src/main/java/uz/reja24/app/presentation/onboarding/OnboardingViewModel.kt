@@ -1,5 +1,11 @@
 package uz.reja24.app.presentation.onboarding
 
+import uz.reja24.app.domain.repository.PrayerSettingsRepository
+import uz.reja24.app.domain.prayer.PrayerSettings
+import uz.reja24.app.domain.model.VoiceGender
+import uz.reja24.app.domain.model.UserPreferences
+import uz.reja24.app.domain.model.DateDisplay
+import uz.reja24.app.domain.model.BackgroundStyle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,12 +28,18 @@ import uz.reja24.app.service.RoutineOrchestrator
 import java.time.LocalTime
 import javax.inject.Inject
 
-enum class OnboardingStep { WELCOME, PROBLEM, LANGUAGE, ROUTINE, APPS, PERMISSIONS }
+/**
+ * Birinchi ochilishdagi qadamlar. Til eng birinchi — keyingi hamma narsa shu tilda.
+ * Ilovaning barcha muhim sozlamalari shu yerda bir marta tartib bilan o'tiladi (keyin Sozlamalardan o'zgartirsa bo'ladi).
+ */
+enum class OnboardingStep { LANGUAGE, WELCOME, PROBLEM, LOOK, ROUTINE, VOICE, NIGHT, PRAYER, APPS, PERMISSIONS }
 
 data class OnboardingState(
-    val step: OnboardingStep = OnboardingStep.WELCOME,
+    val step: OnboardingStep = OnboardingStep.LANGUAGE,
     val routine: RoutineSettings = RoutineSettings(),
     val language: AppLanguage? = null,
+    val preferences: UserPreferences = UserPreferences(),
+    val prayer: PrayerSettings = PrayerSettings(),
     val isFinishing: Boolean = false
 ) {
     val stepIndex: Int get() = step.ordinal
@@ -40,7 +52,8 @@ class OnboardingViewModel @Inject constructor(
     private val userPreferencesRepository: UserPreferencesRepository,
     private val routineSettingsRepository: RoutineSettingsRepository,
     private val reminderScheduler: ReminderScheduler,
-    private val routineOrchestrator: RoutineOrchestrator
+    private val routineOrchestrator: RoutineOrchestrator,
+    private val prayerSettingsRepository: PrayerSettingsRepository
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(OnboardingState())
@@ -57,6 +70,29 @@ class OnboardingViewModel @Inject constructor(
                 it.copy(routine = routine, language = prefs?.takeIf { p -> p.isLanguageChosen }?.language)
             }
         }
+        // Rang, sana, ovoz va namoz sozlamalari darhol saqlanadi — ekran shu zahoti o'zgaradi
+        viewModelScope.launch { userPreferencesRepository.preferences.collect { p -> _state.update { it.copy(preferences = p) } } }
+        viewModelScope.launch { prayerSettingsRepository.settings.collect { p -> _state.update { it.copy(prayer = p) } } }
+    }
+
+    fun setStyle(style: BackgroundStyle) = save { userPreferencesRepository.setBackgroundStyle(style) }
+    fun setDateDisplay(display: DateDisplay) = save { userPreferencesRepository.setDateDisplay(display) }
+    fun setVoiceGender(gender: VoiceGender) = save { userPreferencesRepository.setVoiceGender(gender) }
+    fun setAllowOnly(on: Boolean) = save { userPreferencesRepository.setNightAllowOnly(on) }
+    fun setGrayscale(on: Boolean) = save { userPreferencesRepository.setNightGrayscale(on) }
+    fun setPrayerEnabled(on: Boolean) = save { prayerSettingsRepository.update { it.copy(isEnabled = on) } }
+    fun setAzkar(on: Boolean) = save { prayerSettingsRepository.update { it.copy(azkarOn = on) } }
+
+    /** Ovozli eslatma: rejim eslatmalari va har bir reja eslatmasi birga. */
+    fun setVoice(on: Boolean) {
+        _state.update { it.copy(routine = it.routine.copy(isVoiceReminderOn = on)) }
+        save { userPreferencesRepository.setTaskVoice(on) }
+    }
+
+    fun setStrict(on: Boolean) = _state.update { it.copy(routine = it.routine.copy(isStrictModeOn = on)) }
+
+    private fun save(block: suspend () -> Unit) {
+        viewModelScope.launch { runCatching { block() } }
     }
 
     fun next() {

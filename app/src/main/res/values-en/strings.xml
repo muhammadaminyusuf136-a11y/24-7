@@ -116,8 +116,8 @@
     <string name="settings_stage_2">Stage 2</string>
     <string name="settings_stage_3">Stage 3</string>
     <string name="settings_stage_dialog_title">How long before blocking?</string>
-    <string name="settings_voice">Voice reminder</string>
-    <string name="settings_voice_desc">The message is read aloud (if your phone has a voice for this language)</string>
+    <string name="settings_voice">Read reminders aloud</string>
+    <string name="settings_voice_desc">Both routine reminders («30 minutes until blocking») and every plan reminder («10 minutes until Sport») are read aloud.</string>
     <string name="settings_ringtone">Ringtone</string>
     <string name="settings_ringtone_default">Default</string>
     <string name="settings_ringtone_custom">Custom</string>
@@ -475,8 +475,7 @@
     <string name="voice_male">Male voice</string>
     <string name="voice_preview">Preview</string>
     <string name="voice_previewing">Speaking…</string>
-    <string name="voice_preview_text">15 minutes until Dhuhr. Get ready.</string>
-    <string name="voice_result_language_missing">Your phone has no voice for this language. Download one in phone Settings → Text-to-speech, or change the app language.</string>
+    <string name="voice_result_language_missing">No text-to-speech voice was found on your phone. Enable the Google voice in phone Settings → Text-to-speech.</string>
     <string name="voice_result_engine_missing">No text-to-speech engine was found on this phone.</string>
 
     <!-- Vidjet -->
@@ -574,8 +573,6 @@
     <string name="muhosaba_ledger">Diary</string>
     <string name="muhosaba_ledger_hint">Green — all done, red — nothing done, yellow — partly, empty — not marked yet.</string>
     <string name="settings_task_reminders">Plan reminders</string>
-    <string name="settings_task_voice">Read reminders aloud</string>
-    <string name="settings_task_voice_desc">Every plan reminder is read aloud, for example: «Sport starts in 10 minutes. Get ready.»</string>
     <string name="settings_task_second">Second reminder</string>
     <string name="settings_task_second_dialog">How long before the start?</string>
     <string name="settings_task_reminders_hint">The first reminder time is set in each plan. The plan note (for example «Time to leave») is read aloud too.</string>
@@ -642,4 +639,38 @@
     <string name="backup_restored">Data restored. Restarting the app…</string>
     <string name="backup_invalid">This is not a 24/7 backup file or the file is damaged.</string>
     <string name="backup_newer">This file is from a newer version of the app. Update the app first.</string>
+    <string name="settings_voice_section">Voice reminders</string>
+    <string name="month_legend_done">all done</string>
+    <string name="month_legend_partial">partly</string>
+    <string name="month_legend_missed">not done</string>
+    <string name="azkar_morning">Morning adhkar</string>
+    <string name="azkar_evening">Evening adhkar</string>
+    <string name="azkar_morning_title">Time for morning adhkar</string>
+    <string name="azkar_evening_title">Time for evening adhkar</string>
+    <string name="azkar_now">adhkar time</string>
+    <string name="azkar_setting">Morning and evening adhkar</string>
+    <string name="azkar_setting_desc">Added to the schedule after Fajr and Asr automatically. When the time comes, a reminder with a verse or hadith about remembrance arrives.</string>
+    <string name="grayscale_switch">Black-and-white screen at night</string>
+    <string name="grayscale_desc">During the routine the screen loses its colors — the phone looks boring and you don\'t want to pick it up. Colors return at wake-up time.</string>
+    <string name="grayscale_no_permission">This needs one special permission given during installation — we grant it when installing from the computer.</string>
+    <string name="onboarding_look_title">Appearance</string>
+    <string name="onboarding_look_subtitle">Choose the app color and how dates are shown.</string>
+    <string name="onboarding_voice_title">Voice reminders</string>
+    <string name="onboarding_voice_subtitle">Even if you don\'t read a reminder in time, you will hear it — the app says it aloud.</string>
+    <string name="onboarding_night_title">Night protection</string>
+    <string name="onboarding_night_subtitle">How strict should the protection be so you don\'t get distracted at night?</string>
+    <string name="onboarding_prayer_title">Prayer and adhkar</string>
+    <string name="onboarding_prayer_subtitle">Prayer times are calculated automatically for your location and shown in your schedule.</string>
+    <string name="onboarding_prayer_switch">Prayer times</string>
+    <string name="onboarding_prayer_switch_desc">In the schedule, on the home screen and as reminders</string>
+    <string-array name="azkar_quotes">
+        <item>«So remember Me; I will remember you.» — Surah al-Baqarah, 2:152</item>
+        <item>«Verily, in the remembrance of Allah do hearts find rest.» — Surah ar-Raʼd, 13:28</item>
+        <item>«O you who believe, remember Allah with much remembrance and glorify Him morning and evening.» — Surah al-Ahzab, 33:41–42</item>
+        <item>«Glorify the praise of your Lord before the rising of the sun and before its setting.» — Surah Ta-Ha, 20:130</item>
+        <item>«The example of the one who remembers his Lord and the one who does not is like the living and the dead.» — al-Bukhari (6407)</item>
+        <item>«Whoever says “Subhan Allahi wa bihamdihi” a hundred times a day, his sins are erased even if they are like the foam of the sea.» — al-Bukhari and Muslim</item>
+        <item>«Let your tongue remain moist with the remembrance of Allah.» — at-Tirmidhi (3375)</item>
+        <item>«Remembrance is to the heart what water is to a fish. How would a fish be if it left the water?» — Ibn Taymiyyah (in Ibn al-Qayyim, al-Wabil as-Sayyib)</item>
+    </string-array>
 </resources>

@@ -116,8 +116,8 @@
     <string name="settings_stage_2">Этап 2</string>
     <string name="settings_stage_3">Этап 3</string>
     <string name="settings_stage_dialog_title">За сколько до блокировки?</string>
-    <string name="settings_voice">Голосовое напоминание</string>
-    <string name="settings_voice_desc">Сообщение читается вслух (если на телефоне есть голос для этого языка)</string>
+    <string name="settings_voice">Читать напоминания вслух</string>
+    <string name="settings_voice_desc">Вслух читаются и напоминания режима («До блокировки 30 минут»), и напоминания каждого плана («До спорта 10 минут»).</string>
     <string name="settings_ringtone">Мелодия</string>
     <string name="settings_ringtone_default">По умолчанию</string>
     <string name="settings_ringtone_custom">Выбранная</string>
@@ -481,8 +481,7 @@
     <string name="voice_male">Мужской голос</string>
     <string name="voice_preview">Прослушать</string>
     <string name="voice_previewing">Читаю…</string>
-    <string name="voice_preview_text">До намаза Зухр осталось 15 минут. Готовьтесь.</string>
-    <string name="voice_result_language_missing">На телефоне нет голоса для этого языка. Скачайте его в настройках телефона → «Синтез речи» или смените язык приложения.</string>
+    <string name="voice_result_language_missing">На телефоне не найден синтезатор речи. Включите голос Google в Настройках телефона → «Синтез речи».</string>
     <string name="voice_result_engine_missing">На телефоне не найден синтезатор речи.</string>
 
     <!-- Vidjet -->
@@ -580,8 +579,6 @@
     <string name="muhosaba_ledger">Дневник</string>
     <string name="muhosaba_ledger_hint">Зелёный — всё выполнено, красный — ничего, жёлтый — частично, пусто — ещё не отмечено.</string>
     <string name="settings_task_reminders">Напоминания о планах</string>
-    <string name="settings_task_voice">Озвучивать напоминания</string>
-    <string name="settings_task_voice_desc">Каждое напоминание о плане читается вслух, например: «Спорт — через 10 минут. Приготовьтесь.»</string>
     <string name="settings_task_second">Второе напоминание</string>
     <string name="settings_task_second_dialog">За сколько до начала?</string>
     <string name="settings_task_reminders_hint">Время первого напоминания задаётся в каждом плане. Заметка плана (например «Пора выходить») тоже читается вслух.</string>
@@ -648,4 +645,38 @@
     <string name="backup_restored">Данные восстановлены. Приложение перезапускается…</string>
     <string name="backup_invalid">Это не файл резервной копии 24/7 или файл повреждён.</string>
     <string name="backup_newer">Файл из более новой версии приложения. Сначала обновите приложение.</string>
+    <string name="settings_voice_section">Голосовые напоминания</string>
+    <string name="month_legend_done">всё выполнено</string>
+    <string name="month_legend_partial">частично</string>
+    <string name="month_legend_missed">не выполнено</string>
+    <string name="azkar_morning">Утренние зикры</string>
+    <string name="azkar_evening">Вечерние зикры</string>
+    <string name="azkar_morning_title">Время утренних зикров</string>
+    <string name="azkar_evening_title">Время вечерних зикров</string>
+    <string name="azkar_now">время зикра</string>
+    <string name="azkar_setting">Утренние и вечерние зикры</string>
+    <string name="azkar_setting_desc">Сами добавляются в распорядок после фаджра и аср. В нужное время приходит напоминание с аятом или хадисом о поминании Аллаха.</string>
+    <string name="grayscale_switch">Чёрно-белый экран ночью</string>
+    <string name="grayscale_desc">Во время режима экран становится бесцветным — телефон выглядит скучно, и его не хочется брать. Цвета возвращаются в время подъёма.</string>
+    <string name="grayscale_no_permission">Для этого при установке даётся одно специальное разрешение — мы выдадим его при установке с компьютера.</string>
+    <string name="onboarding_look_title">Внешний вид</string>
+    <string name="onboarding_look_subtitle">Выберите цвет приложения и формат дат.</string>
+    <string name="onboarding_voice_title">Голосовые напоминания</string>
+    <string name="onboarding_voice_subtitle">Даже если не успеете прочитать напоминание — услышите его: приложение скажет вслух.</string>
+    <string name="onboarding_night_title">Ночная защита</string>
+    <string name="onboarding_night_subtitle">Насколько строгой должна быть защита, чтобы ночью не отвлекаться?</string>
+    <string name="onboarding_prayer_title">Намаз и зикры</string>
+    <string name="onboarding_prayer_subtitle">Время намазов рассчитывается автоматически по вашему местоположению и видно в распорядке.</string>
+    <string name="onboarding_prayer_switch">Время намазов</string>
+    <string name="onboarding_prayer_switch_desc">В распорядке, на главном экране и в напоминаниях</string>
+    <string-array name="azkar_quotes">
+        <item>«Поминайте Меня, и Я буду помнить о вас.» — сура «аль-Бакара», 152</item>
+        <item>«Воистину, при поминании Аллаха успокаиваются сердца.» — сура «ар-Раад», 28</item>
+        <item>«О те, которые уверовали! Поминайте Аллаха многократно и прославляйте Его утром и вечером.» — сура «аль-Ахзаб», 41–42</item>
+        <item>«Прославляй хвалой своего Господа до восхода солнца и до его заката.» — сура «Та Ха», 130</item>
+        <item>«Поминающий своего Господа и не поминающий Его подобны живому и мёртвому.» — аль-Бухари (6407)</item>
+        <item>«Кто скажет сто раз в день “Субхана-Ллахи ва би-хамдихи”, тому простятся грехи, даже если их будет столько, сколько пены на море.» — аль-Бухари и Муслим</item>
+        <item>«Пусть твой язык не перестаёт быть влажным от поминания Аллаха.» — ат-Тирмизи (3375)</item>
+        <item>«Зикр для сердца — как вода для рыбы. Каково будет рыбе, если она покинет воду?» — Ибн Таймия (у Ибн аль-Каййима, «аль-Вабиль ас-сайиб»)</item>
+    </string-array>
 </resources>

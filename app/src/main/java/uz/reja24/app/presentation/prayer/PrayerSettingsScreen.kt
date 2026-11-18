@@ -332,6 +332,13 @@ private fun PrayerSettingsContent(
                 onChange = { on -> onUpdate { it.copy(notifyAtTime = on) } }
             )
             HorizontalDivider(color = colors.border, modifier = Modifier.padding(horizontal = 16.dp))
+            SwitchSettingRow(
+                title = stringResource(R.string.azkar_setting),
+                subtitle = stringResource(R.string.azkar_setting_desc),
+                checked = settings.azkarOn,
+                onChange = { on -> onUpdate { it.copy(azkarOn = on) } }
+            )
+            HorizontalDivider(color = colors.border, modifier = Modifier.padding(horizontal = 16.dp))
             AlarmSoundRow(
                 title = stringResource(R.string.prayer_alarm_sound),
                 soundUri = settings.alarmSoundUri,

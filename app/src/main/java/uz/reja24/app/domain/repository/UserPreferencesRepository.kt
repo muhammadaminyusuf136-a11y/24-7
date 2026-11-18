@@ -15,6 +15,7 @@ interface UserPreferencesRepository {
     suspend fun setOnboardingCompleted(completed: Boolean)
     suspend fun setVoiceGender(gender: VoiceGender)
     suspend fun setNightAllowOnly(enabled: Boolean)
+    suspend fun setNightGrayscale(enabled: Boolean)
     suspend fun setAllowedPackages(packages: Set<String>)
     suspend fun setTaskVoice(enabled: Boolean)
     suspend fun setTaskSecondReminder(minutes: Int)

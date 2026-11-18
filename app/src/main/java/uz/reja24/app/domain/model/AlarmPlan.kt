@@ -1,5 +1,6 @@
 package uz.reja24.app.domain.model
 
+import uz.reja24.app.domain.prayer.AzkarTime
 import uz.reja24.app.domain.prayer.Prayer
 import uz.reja24.app.domain.prayer.PrayerDay
 import uz.reja24.app.domain.prayer.PrayerSettings
@@ -38,7 +39,8 @@ data class PlannedTaskAlarm(
 enum class PrayerAlarmKind {
     REMINDER,   // vaqt kirishidan N daqiqa oldin
     AT_TIME,    // vaqt kirganda (bildirishnoma)
-    ALARM       // vaqt kirganda budilnik
+    ALARM,      // vaqt kirganda budilnik
+    AZKAR       // bomdod va asrdan keyin zikr eslatmasi (oxirida — eski so'rov kodlari o'zgarmasin)
 }
 
 data class PlannedPrayerAlarm(
@@ -131,6 +133,11 @@ object AlarmPlanner {
                 when {
                     rings -> result += PlannedPrayerAlarm(prayer, PrayerAlarmKind.ALARM, dayIndex, at)
                     !muted && settings.notifyAtTime -> result += PlannedPrayerAlarm(prayer, PrayerAlarmKind.AT_TIME, dayIndex, at)
+                }
+                if (settings.azkarOn) {
+                    AzkarTime.entries.firstOrNull { it.afterPrayer == prayer }?.let { azkar ->
+                        result += PlannedPrayerAlarm(prayer, PrayerAlarmKind.AZKAR, dayIndex, azkar.startAt(day))
+                    }
                 }
             }
         }

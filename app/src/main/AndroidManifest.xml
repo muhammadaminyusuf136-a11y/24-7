@@ -20,6 +20,10 @@
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Kechasi oq-qora ekran: oddiy ilovaga berilmaydi, USB orqali o'rnatishda bir marta beriladi (adb pm grant) -->
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
     <!-- Budilnik: qulflangan ekranda ham to'liq oyna ochiladi, ovoz o'chirilguncha chaladi -->
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />

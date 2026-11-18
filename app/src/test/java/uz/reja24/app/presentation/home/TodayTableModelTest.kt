@@ -64,4 +64,13 @@ class TodayTableModelTest {
         val rows = TodayTableModel.rows(listOf(task(1, "Revit", 11, 13)), settings.copy(isRoutineActive = false), null, today.atTime(9, 0))
         assertEquals(listOf("task-1"), rows.map { it.key })
     }
+
+    @Test
+    fun azkar_rows_follow_fajr_and_asr_when_enabled() {
+        val rows = TodayTableModel.rows(emptyList(), settings, prayers, today.atTime(12, 0), azkarOn = true)
+        val byKey = rows.associateBy { it.key }
+        assertEquals(LocalTime.of(6, 10), byKey.getValue("azkar-MORNING").startTime)
+        assertEquals(LocalTime.of(15, 20), byKey.getValue("azkar-EVENING").startTime)
+        assertTrue(TodayTableModel.rows(emptyList(), settings, prayers, today.atTime(12, 0)).none { it.kind == TableRowKind.AZKAR })
+    }
 }

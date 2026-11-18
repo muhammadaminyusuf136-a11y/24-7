@@ -1,5 +1,18 @@
 package uz.reja24.app.presentation.onboarding
 
+import uz.reja24.app.presentation.settings.VoiceGenderRow
+import uz.reja24.app.presentation.settings.SwitchRow
+import uz.reja24.app.presentation.settings.DateDisplayChips
+import uz.reja24.app.presentation.settings.BackgroundChips
+import uz.reja24.app.service.alarm.ReminderSound
+import uz.reja24.app.core.util.NightGrayscale
+import kotlinx.coroutines.launch
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.layout.PaddingValues
+import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateFloatAsState
@@ -124,6 +137,10 @@ fun OnboardingScreen(
                     onSleep = viewModel::setSleep,
                     onWake = viewModel::setWake
                 )
+                OnboardingStep.LOOK -> LookStep(state, viewModel)
+                OnboardingStep.VOICE -> VoiceStep(state, viewModel)
+                OnboardingStep.NIGHT -> NightStep(state, viewModel)
+                OnboardingStep.PRAYER -> PrayerStep(state, viewModel)
                 OnboardingStep.APPS -> AppsStep()
                 OnboardingStep.PERMISSIONS -> PermissionsStep()
             }
@@ -348,6 +365,122 @@ private fun RoutineStep(
             }
         )
     }
+}
+
+/** Ko'rinish: ilova rangi va sana (milodiy / hijriy). */
+@Composable
+private fun LookStep(state: OnboardingState, viewModel: OnboardingViewModel) {
+    Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        StepTitle(stringResource(R.string.onboarding_look_title), stringResource(R.string.onboarding_look_subtitle))
+        StepLabel(stringResource(R.string.settings_background))
+        BackgroundChips(selected = state.preferences.backgroundStyle, onSelect = viewModel::setStyle)
+        Spacer(Modifier.height(8.dp))
+        StepLabel(stringResource(R.string.settings_date))
+        DateDisplayChips(selected = state.preferences.dateDisplay, onSelect = viewModel::setDateDisplay)
+        Text(stringResource(R.string.settings_date_hint), style = MaterialTheme.typography.bodySmall, color = RejaTheme.colors.textMuted)
+    }
+}
+
+/** Ovozli eslatmalar: yoqish, ovoz turi va eshitib ko'rish. */
+@Composable
+private fun VoiceStep(state: OnboardingState, viewModel: OnboardingViewModel) {
+    val context = LocalContext.current
+    val locale = LocalConfiguration.current.locales[0]
+    val scope = rememberCoroutineScope()
+    var previewing by remember { mutableStateOf(false) }
+    val voiceOn = state.routine.isVoiceReminderOn || state.preferences.taskVoiceOn
+    Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        StepTitle(stringResource(R.string.onboarding_voice_title), stringResource(R.string.onboarding_voice_subtitle))
+        RejaCard(modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(0.dp)) {
+            SwitchRow(
+                title = stringResource(R.string.settings_voice),
+                subtitle = stringResource(R.string.settings_voice_desc),
+                checked = voiceOn,
+                onChange = viewModel::setVoice
+            )
+            if (voiceOn) {
+                VoiceGenderRow(
+                    selected = state.preferences.voiceGender,
+                    previewing = previewing,
+                    onSelect = viewModel::setVoiceGender,
+                    onPreview = {
+                        previewing = true
+                        scope.launch {
+                            val result = ReminderSound.speak(
+                                context, context.getString(R.string.task_voice_preview_text), locale, state.preferences.voiceGender
+                            )
+                            previewing = false
+                            if (result != ReminderSound.SpeakResult.SPOKEN) {
+                                Toast.makeText(context, R.string.voice_result_language_missing, Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                )
+            }
+        }
+    }
+}
+
+/** Tungi himoya: qattiq rejim, "faqat kerakli" ilovalar, oq-qora ekran. */
+@Composable
+private fun NightStep(state: OnboardingState, viewModel: OnboardingViewModel) {
+    val context = LocalContext.current
+    val grayPermitted = remember { NightGrayscale.isPermitted(context) }
+    Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        StepTitle(stringResource(R.string.onboarding_night_title), stringResource(R.string.onboarding_night_subtitle))
+        RejaCard(modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(0.dp)) {
+            SwitchRow(
+                title = stringResource(R.string.settings_strict_mode),
+                subtitle = stringResource(R.string.settings_strict_mode_desc),
+                checked = state.routine.isStrictModeOn,
+                onChange = viewModel::setStrict
+            )
+            HorizontalDivider(color = RejaTheme.colors.border, modifier = Modifier.padding(horizontal = 16.dp))
+            SwitchRow(
+                title = stringResource(R.string.allow_only_switch),
+                subtitle = stringResource(R.string.allow_only_desc),
+                checked = state.preferences.nightAllowOnly,
+                onChange = viewModel::setAllowOnly
+            )
+            HorizontalDivider(color = RejaTheme.colors.border, modifier = Modifier.padding(horizontal = 16.dp))
+            SwitchRow(
+                title = stringResource(R.string.grayscale_switch),
+                subtitle = stringResource(if (grayPermitted) R.string.grayscale_desc else R.string.grayscale_no_permission),
+                checked = state.preferences.nightGrayscale && grayPermitted,
+                onChange = { on -> if (grayPermitted) viewModel.setGrayscale(on) }
+            )
+        }
+    }
+}
+
+/** Namoz vaqtlari va zikrlar (joy telefondan avtomatik aniqlanadi). */
+@Composable
+private fun PrayerStep(state: OnboardingState, viewModel: OnboardingViewModel) {
+    Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        StepTitle(stringResource(R.string.onboarding_prayer_title), stringResource(R.string.onboarding_prayer_subtitle))
+        RejaCard(modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(0.dp)) {
+            SwitchRow(
+                title = stringResource(R.string.onboarding_prayer_switch),
+                subtitle = stringResource(R.string.onboarding_prayer_switch_desc),
+                checked = state.prayer.isEnabled,
+                onChange = viewModel::setPrayerEnabled
+            )
+            if (state.prayer.isEnabled) {
+                HorizontalDivider(color = RejaTheme.colors.border, modifier = Modifier.padding(horizontal = 16.dp))
+                SwitchRow(
+                    title = stringResource(R.string.azkar_setting),
+                    subtitle = stringResource(R.string.azkar_setting_desc),
+                    checked = state.prayer.azkarOn,
+                    onChange = viewModel::setAzkar
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun StepLabel(text: String) {
+    Text(text.uppercase(), style = MaterialTheme.typography.labelMedium, color = RejaTheme.colors.textMuted)
 }
 
 @Composable

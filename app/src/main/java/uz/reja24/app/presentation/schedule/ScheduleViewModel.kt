@@ -94,6 +94,10 @@ class ScheduleViewModel @Inject constructor(
         PrayerOverview.build(s, timeProvider.zone(), listOf(date)).days[date]
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
+    /** Ertalabki/kechki zikr kun tartibida ko'rsatiladimi. */
+    val azkarOn: StateFlow<Boolean> = prayerSettingsRepository.settings.map { it.isEnabled && it.azkarOn }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
     val dayTasks: StateFlow<List<DailyTask>> = _selectedDate
         .flatMapLatest { scheduleRepository.observeTasksForDate(it) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())

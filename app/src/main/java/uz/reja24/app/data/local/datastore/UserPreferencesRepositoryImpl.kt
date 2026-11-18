@@ -44,6 +44,7 @@ class UserPreferencesRepositoryImpl @Inject constructor(
                 isOnboardingCompleted = prefs[Keys.ONBOARDING_DONE] ?: false,
                 voiceGender = VoiceGender.fromName(prefs[Keys.VOICE_GENDER]),
                 nightAllowOnly = prefs[Keys.NIGHT_ALLOW_ONLY] ?: false,
+                nightGrayscale = prefs[Keys.NIGHT_GRAYSCALE] ?: false,
                 allowedPackages = prefs[Keys.ALLOWED_PACKAGES].orEmpty(),
                 taskVoiceOn = prefs[Keys.TASK_VOICE] ?: false,
                 taskSecondReminderMinutes = prefs[Keys.TASK_SECOND_REMINDER] ?: 0
@@ -71,6 +72,10 @@ class UserPreferencesRepositoryImpl @Inject constructor(
         dataStore.edit { it[Keys.VOICE_GENDER] = gender.name }
     }
 
+    override suspend fun setNightGrayscale(enabled: Boolean) {
+        dataStore.edit { it[Keys.NIGHT_GRAYSCALE] = enabled }
+    }
+
     override suspend fun setNightAllowOnly(enabled: Boolean) {
         dataStore.edit { it[Keys.NIGHT_ALLOW_ONLY] = enabled }
     }
@@ -91,6 +96,7 @@ class UserPreferencesRepositoryImpl @Inject constructor(
         val TASK_VOICE = booleanPreferencesKey("task_voice_on")
         val TASK_SECOND_REMINDER = intPreferencesKey("task_second_reminder_minutes")
         val NIGHT_ALLOW_ONLY = booleanPreferencesKey("night_allow_only")
+        val NIGHT_GRAYSCALE = booleanPreferencesKey("night_grayscale")
         val ALLOWED_PACKAGES = stringSetPreferencesKey("night_allowed_packages")
         val VOICE_GENDER = stringPreferencesKey("voice_gender")
         val LANGUAGE = stringPreferencesKey("language")
