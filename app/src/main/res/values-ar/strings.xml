@@ -610,4 +610,17 @@
     <string name="muhosaba_plans_empty">لا توجد خطط لهذا اليوم. أضفها في قسم «الخطة».</string>
     <string name="muhosaba_ledger">الدفتر</string>
     <string name="muhosaba_ledger_hint">الأخضر — أُنجز كل شيء، الأحمر — لم يُنجز شيء، الأصفر — جزئيًا، الفارغ — لم يُحدَّد بعد.</string>
+    <string name="settings_task_reminders">تذكيرات الخطط</string>
+    <string name="settings_task_voice">قراءة التذكيرات بصوت</string>
+    <string name="settings_task_voice_desc">يُقرأ كل تذكير بصوت مسموع، مثل: «الرياضة بعد 10 دقائق. استعد.»</string>
+    <string name="settings_task_second">تذكير ثانٍ</string>
+    <string name="settings_task_second_dialog">قبل البداية بكم؟</string>
+    <string name="settings_task_reminders_hint">يُحدَّد وقت التذكير الأول في كل خطة. وتُقرأ ملاحظة الخطة (مثل «حان وقت الخروج») بصوت أيضًا.</string>
+    <string name="task_voice_reminder">%1$s بعد %2$s.</string>
+    <string name="task_voice_ready">استعد.</string>
+    <string name="task_voice_preview_text">الرياضة بعد 10 دقائق. استعد.</string>
+    <string name="home_table_title">جدول اليوم</string>
+    <string name="home_table_time">الوقت</string>
+    <string name="home_table_plan">الخطة</string>
+    <string name="home_table_state">الحالة</string>
 </resources>

@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -16,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import uz.reja24.app.presentation.MainViewModel
+import uz.reja24.app.presentation.components.LocalHijriAdjustment
 import uz.reja24.app.presentation.navigation.RejaNavHost
 import uz.reja24.app.presentation.theme.RejaTheme
 import uz.reja24.app.presentation.theme.resolveRejaColors
@@ -58,11 +60,13 @@ class MainActivity : AppCompatActivity() {
                     enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
                 }
                 RejaTheme(themeMode = current.themeMode, backgroundStyle = current.backgroundStyle) {
-                    RejaNavHost(
-                        startWithOnboarding = !current.isOnboardingCompleted,
-                        backgroundStyle = current.backgroundStyle,
-                        muhosabaRequest = muhosabaRequest
-                    )
+                    CompositionLocalProvider(LocalHijriAdjustment provides current.hijriAdjustmentDays) {
+                        RejaNavHost(
+                            startWithOnboarding = !current.isOnboardingCompleted,
+                            backgroundStyle = current.backgroundStyle,
+                            muhosabaRequest = muhosabaRequest
+                        )
+                    }
                 }
             }
         }

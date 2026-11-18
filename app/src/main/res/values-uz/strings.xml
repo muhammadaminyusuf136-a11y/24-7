@@ -627,4 +627,17 @@
     <string name="muhosaba_plans_empty">Bu kunga reja yoʻq. Rejalarni «Reja» boʻlimida qoʻshasiz.</string>
     <string name="muhosaba_ledger">Daftar</string>
     <string name="muhosaba_ledger_hint">Yashil — hammasi bajarilgan, qizil — hech biri bajarilmagan, sariq — qisman, boʻsh — hali belgilanmagan.</string>
+    <string name="settings_task_reminders">Reja eslatmalari</string>
+    <string name="settings_task_voice">Ovoz bilan eslatish</string>
+    <string name="settings_task_voice_desc">Har bir reja eslatmasi ovoz chiqarib oʻqiladi, masalan: «Sport boshlanishiga 10 daqiqa qoldi. Tayyorlaning.»</string>
+    <string name="settings_task_second">Ikkinchi eslatma</string>
+    <string name="settings_task_second_dialog">Boshlanishidan qancha oldin?</string>
+    <string name="settings_task_reminders_hint">Birinchi eslatma vaqti har bir rejaning oʻzida tanlanadi. Reja izohiga yozilgan gap (masalan «Yoʻlga chiq») ovozda ham oʻqiladi.</string>
+    <string name="task_voice_reminder">%1$s boshlanishiga %2$s qoldi.</string>
+    <string name="task_voice_ready">Tayyorlaning.</string>
+    <string name="task_voice_preview_text">Sport boshlanishiga 10 daqiqa qoldi. Tayyorlaning.</string>
+    <string name="home_table_title">Bugungi jadval</string>
+    <string name="home_table_time">Vaqt</string>
+    <string name="home_table_plan">Reja</string>
+    <string name="home_table_state">Holat</string>
 </resources>

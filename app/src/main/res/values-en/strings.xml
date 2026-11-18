@@ -594,4 +594,17 @@
     <string name="muhosaba_plans_empty">No plans for this day. Add them in Plan.</string>
     <string name="muhosaba_ledger">Diary</string>
     <string name="muhosaba_ledger_hint">Green — all done, red — nothing done, yellow — partly, empty — not marked yet.</string>
+    <string name="settings_task_reminders">Plan reminders</string>
+    <string name="settings_task_voice">Read reminders aloud</string>
+    <string name="settings_task_voice_desc">Every plan reminder is read aloud, for example: «Sport starts in 10 minutes. Get ready.»</string>
+    <string name="settings_task_second">Second reminder</string>
+    <string name="settings_task_second_dialog">How long before the start?</string>
+    <string name="settings_task_reminders_hint">The first reminder time is set in each plan. The plan note (for example «Time to leave») is read aloud too.</string>
+    <string name="task_voice_reminder">%1$s starts in %2$s.</string>
+    <string name="task_voice_ready">Get ready.</string>
+    <string name="task_voice_preview_text">Sport starts in 10 minutes. Get ready.</string>
+    <string name="home_table_title">Today\'s schedule</string>
+    <string name="home_table_time">Time</string>
+    <string name="home_table_plan">Plan</string>
+    <string name="home_table_state">Status</string>
 </resources>

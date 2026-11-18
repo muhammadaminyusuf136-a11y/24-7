@@ -69,4 +69,20 @@ class AlarmPlannerTest {
         val alarms = AlarmPlanner.taskAlarms(today.atTime(8, 0), today, listOf(listOf(entry)))
         assertTrue(alarms.none { it.kind == TaskAlarmKind.REMINDER })
     }
+
+    @Test
+    fun `second reminder is added before start and skipped when equal to the first`() {
+        val entry = ScheduleEntry(
+            id = 3, title = "Ingliz tili",
+            startTime = LocalTime.of(17, 0), endTime = LocalTime.of(19, 0),
+            reminderMinutesBefore = 60
+        )
+        val alarms = AlarmPlanner.taskAlarms(today.atTime(8, 0), today, listOf(listOf(entry)), secondReminderMinutes = 5)
+        assertEquals(today.atTime(16, 0), alarms.single { it.kind == TaskAlarmKind.REMINDER }.triggerAt)
+        assertEquals(today.atTime(16, 55), alarms.single { it.kind == TaskAlarmKind.REMINDER_2 }.triggerAt)
+        val same = AlarmPlanner.taskAlarms(today.atTime(8, 0), today, listOf(listOf(entry.copy(reminderMinutesBefore = 5))), 5)
+        assertTrue(same.none { it.kind == TaskAlarmKind.REMINDER_2 })
+        val off = AlarmPlanner.taskAlarms(today.atTime(8, 0), today, listOf(listOf(entry)))
+        assertTrue(off.none { it.kind == TaskAlarmKind.REMINDER_2 })
+    }
 }

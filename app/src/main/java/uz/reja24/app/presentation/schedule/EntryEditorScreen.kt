@@ -2,6 +2,7 @@
 
 package uz.reja24.app.presentation.schedule
 
+import uz.reja24.app.presentation.components.hijriDateText
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -223,7 +224,7 @@ fun EntryEditorScreen(
                         }
                     ),
                     value = TimeFormat.dayMonth(state.date, LocalConfiguration.current.locales[0]) +
-                        " " + state.date.year,
+                        " " + state.date.year + (hijriDateText(state.date)?.let { " · $it" } ?: ""),
                     onClick = { pickDate = true },
                     modifier = Modifier.fillMaxWidth()
                 )

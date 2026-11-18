@@ -149,21 +149,24 @@ class AlarmHandler @Inject constructor(
         val res = context.resources
         val notificationId = NotificationHelper.taskNotificationId(entryId)
 
+        val prefs = userPreferencesRepository.preferences.first()
         when (kind) {
-            TaskAlarmKind.REMINDER -> alert(speech, settings, notificationId, entry.title,
-                context.getString(
-                    R.string.task_reminder,
-                    TimeFormat.time(entry.startTime),
-                    entry.title,
-                    DurationText.format(res, entry.reminderMinutesBefore)
-                ))
+            TaskAlarmKind.REMINDER, TaskAlarmKind.REMINDER_2 -> {
+                val minutes = if (kind == TaskAlarmKind.REMINDER) entry.reminderMinutesBefore else prefs.taskSecondReminderMinutes
+                val left = DurationText.format(res, minutes)
+                val text = context.getString(R.string.task_reminder, TimeFormat.time(entry.startTime), entry.title, left)
+                // Ovozda: "Sport boshlanishiga 10 daqiqa qoldi." + izoh (masalan "Yo'lga chiq") yoki "Tayyorlaning."
+                val spoken = context.getString(R.string.task_voice_reminder, entry.title, left) + " " +
+                    entry.description.trim().ifEmpty { context.getString(R.string.task_voice_ready) }
+                alert(speech, settings, notificationId, entry.title, text, voice = spoken.takeIf { prefs.taskVoiceOn })
+            }
             TaskAlarmKind.START -> {
                 val template = res.getStringArray(R.array.task_start_messages).random()
                 val text = String.format(Locale.ROOT, template, entry.title)
                 if (entry.alarmEnabled) {
                     AlarmRingService.start(appContext, entry.title, text, entry.alarmSoundUri)
                 } else {
-                    alert(speech, settings, notificationId, entry.title, text)
+                    alert(speech, settings, notificationId, entry.title, text, voice = text.takeIf { prefs.taskVoiceOn })
                 }
             }
             TaskAlarmKind.END -> {
@@ -217,7 +220,9 @@ class AlarmHandler @Inject constructor(
         id: Int,
         title: String,
         text: String,
-        contentIntent: PendingIntent? = null
+        contentIntent: PendingIntent? = null,
+        /** Ovoz chiqarib o'qiladigan matn (null — o'qilmaydi). Rejim va namozda — umumiy "Ovozli eslatma" sozlamasi. */
+        voice: String? = text.takeIf { settings.isVoiceReminderOn }
     ) {
         val context = speech.context
         val customSound = settings.ringtoneUri != null
@@ -227,6 +232,6 @@ class AlarmHandler @Inject constructor(
             contentIntent = contentIntent ?: NotificationHelper.openAppIntent(context)
         )
         if (customSound) ReminderSound.playRingtone(context, settings.ringtoneUri)
-        if (settings.isVoiceReminderOn) ReminderSound.speak(context, text, speech.locale, speech.gender)
+        if (voice != null) ReminderSound.speak(context, voice, speech.locale, speech.gender)
     }
 }

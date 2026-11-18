@@ -17,6 +17,7 @@ import uz.reja24.app.domain.model.BackgroundStyle
 import uz.reja24.app.domain.model.ThemeMode
 import uz.reja24.app.domain.model.TrophyLevel
 import uz.reja24.app.domain.repository.AppStateRepository
+import uz.reja24.app.domain.repository.PrayerSettingsRepository
 import uz.reja24.app.domain.repository.ReminderScheduler
 import uz.reja24.app.domain.repository.UserPreferencesRepository
 import uz.reja24.app.service.RoutineOrchestrator
@@ -27,6 +28,8 @@ data class MainUiState(
     val themeMode: ThemeMode,
     val backgroundStyle: BackgroundStyle,
     val isOnboardingCompleted: Boolean,
+    /** Hijriy sanani to'g'rilash (kun) — hamma ekrandagi hijriy sanalar uchun. */
+    val hijriAdjustmentDays: Int,
     val pendingTrophy: TrophyLevel?
 )
 
@@ -37,18 +40,21 @@ class MainViewModel @Inject constructor(
     private val routineOrchestrator: RoutineOrchestrator,
     private val prayerLocationUpdater: PrayerLocationUpdater,
     private val reminderScheduler: ReminderScheduler,
+    prayerSettingsRepository: PrayerSettingsRepository,
     @ApplicationScope private val applicationScope: CoroutineScope
 ) : ViewModel() {
 
     /** null — sozlamalar hali o'qilmoqda (bir lahza). */
     val uiState: StateFlow<MainUiState?> = combine(
         userPreferencesRepository.preferences,
-        appStateRepository.pendingTrophy
-    ) { prefs, trophy ->
+        appStateRepository.pendingTrophy,
+        prayerSettingsRepository.settings
+    ) { prefs, trophy, prayer ->
         MainUiState(
             themeMode = prefs.themeMode,
             backgroundStyle = prefs.backgroundStyle,
             isOnboardingCompleted = prefs.isOnboardingCompleted,
+            hijriAdjustmentDays = prayer.hijriAdjustmentDays,
             pendingTrophy = trophy
         )
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)

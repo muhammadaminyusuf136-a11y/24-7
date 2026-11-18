@@ -1,5 +1,6 @@
 package uz.reja24.app.presentation.schedule
 
+import uz.reja24.app.presentation.components.hijriRangeText
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -112,16 +113,20 @@ internal fun WeekGrid(viewModel: ScheduleViewModel) {
             IconButton(onClick = { viewModel.selectDate(selectedDate.minusWeeks(1)) }) {
                 Icon(Icons.AutoMirrored.Outlined.KeyboardArrowLeft, contentDescription = stringResource(R.string.cd_previous_week))
             }
-            Text(
-                text = if (weekStart.month == weekEnd.month) {
-                    "${weekStart.dayOfMonth}–${TimeFormat.dayMonth(weekEnd, locale)}"
-                } else {
-                    "${TimeFormat.dayMonth(weekStart, locale)} – ${TimeFormat.dayMonth(weekEnd, locale)}"
-                },
-                style = MaterialTheme.typography.titleMedium,
-                color = colors.textPrimary,
-                modifier = Modifier.weight(1f)
-            )
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text = if (weekStart.month == weekEnd.month) {
+                        "${weekStart.dayOfMonth}–${TimeFormat.dayMonth(weekEnd, locale)}"
+                    } else {
+                        "${TimeFormat.dayMonth(weekStart, locale)} – ${TimeFormat.dayMonth(weekEnd, locale)}"
+                    },
+                    style = MaterialTheme.typography.titleMedium,
+                    color = colors.textPrimary
+                )
+                hijriRangeText(weekStart, weekEnd)?.let { hijri ->
+                    Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.textMuted)
+                }
+            }
             IconButton(onClick = { viewModel.selectDate(selectedDate.plusWeeks(1)) }) {
                 Icon(Icons.AutoMirrored.Outlined.KeyboardArrowRight, contentDescription = stringResource(R.string.cd_next_week))
             }

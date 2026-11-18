@@ -101,14 +101,14 @@ fun HomeScreen(
             if (wide) {
                 // Planshet: lenta chapda, kartalar o'ngda
                 Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                    TimelineSection(current, modifier = Modifier.weight(1f))
+                    TodayTable(current, onOpenPlan, modifier = Modifier.weight(1f))
                     Column(
                         modifier = Modifier.weight(1f),
                         verticalArrangement = Arrangement.spacedBy(16.dp)
                     ) { InfoCards(current, onOpenPlan, onOpenPrayer, onOpenMuhosaba) }
                 }
             } else {
-                TimelineSection(current)
+                TodayTable(current, onOpenPlan)
                 InfoCards(current, onOpenPlan, onOpenPrayer, onOpenMuhosaba)
             }
         }

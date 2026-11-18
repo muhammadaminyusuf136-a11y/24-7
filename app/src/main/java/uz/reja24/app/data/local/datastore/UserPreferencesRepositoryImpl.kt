@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import kotlinx.coroutines.flow.Flow
@@ -43,7 +44,9 @@ class UserPreferencesRepositoryImpl @Inject constructor(
                 isOnboardingCompleted = prefs[Keys.ONBOARDING_DONE] ?: false,
                 voiceGender = VoiceGender.fromName(prefs[Keys.VOICE_GENDER]),
                 nightAllowOnly = prefs[Keys.NIGHT_ALLOW_ONLY] ?: false,
-                allowedPackages = prefs[Keys.ALLOWED_PACKAGES].orEmpty()
+                allowedPackages = prefs[Keys.ALLOWED_PACKAGES].orEmpty(),
+                taskVoiceOn = prefs[Keys.TASK_VOICE] ?: false,
+                taskSecondReminderMinutes = prefs[Keys.TASK_SECOND_REMINDER] ?: 0
             )
         }
         .distinctUntilChanged()
@@ -76,7 +79,17 @@ class UserPreferencesRepositoryImpl @Inject constructor(
         dataStore.edit { it[Keys.ALLOWED_PACKAGES] = packages }
     }
 
+    override suspend fun setTaskVoice(enabled: Boolean) {
+        dataStore.edit { it[Keys.TASK_VOICE] = enabled }
+    }
+
+    override suspend fun setTaskSecondReminder(minutes: Int) {
+        dataStore.edit { it[Keys.TASK_SECOND_REMINDER] = minutes.coerceIn(0, 60) }
+    }
+
     private object Keys {
+        val TASK_VOICE = booleanPreferencesKey("task_voice_on")
+        val TASK_SECOND_REMINDER = intPreferencesKey("task_second_reminder_minutes")
         val NIGHT_ALLOW_ONLY = booleanPreferencesKey("night_allow_only")
         val ALLOWED_PACKAGES = stringSetPreferencesKey("night_allowed_packages")
         val VOICE_GENDER = stringPreferencesKey("voice_gender")

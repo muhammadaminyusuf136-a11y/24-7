@@ -2,6 +2,9 @@
 
 package uz.reja24.app.presentation.schedule
 
+import uz.reja24.app.presentation.components.FullDateText
+import uz.reja24.app.presentation.components.hijriDateText
+import uz.reja24.app.presentation.components.hijriRangeText
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -229,6 +232,7 @@ private fun DayView(viewModel: ScheduleViewModel, onEditEntry: (Long) -> Unit) {
 
     Column(Modifier.fillMaxSize()) {
         WeekDayChips(selected = selectedDate, today = today, onSelect = viewModel::selectDate)
+        DayDateHeader(selectedDate)
         val rows = buildDayRows(tasks, settings, prayers, isToday = selectedDate == today, now = now)
         if (tasks.isEmpty()) {
             Text(
@@ -309,6 +313,25 @@ private fun buildDayRows(
     if (isToday) timed += now to DayRow.Now
     // "Hozir" bir xil vaqtdagi rejadan oldin turadi
     return timed.sortedWith(compareBy({ it.first }, { if (it.second is DayRow.Now) 0 else 1 })).map { it.second }
+}
+
+/** Tanlangan kun: "Seshanba, 17 noyabr 2026-yil" va ostida hijriy sana. */
+@Composable
+private fun DayDateHeader(date: LocalDate) {
+    val colors = RejaTheme.colors
+    val locale = LocalConfiguration.current.locales[0]
+    val resources = LocalContext.current.resources
+    Column(Modifier.padding(horizontal = 20.dp)) {
+        Text(
+            text = TimeFormat.weekday(date, locale).replaceFirstChar { it.titlecase(locale) } + ", " +
+                FullDateText.gregorian(resources, date),
+            style = MaterialTheme.typography.titleSmall,
+            color = colors.textPrimary
+        )
+        hijriDateText(date)?.let { hijri ->
+            Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.textMuted)
+        }
+    }
 }
 
 @Composable
@@ -564,12 +587,16 @@ private fun MonthView(viewModel: ScheduleViewModel) {
             IconButton(onClick = { viewModel.showMonth(month.minusMonths(1)) }) {
                 Icon(Icons.AutoMirrored.Outlined.KeyboardArrowLeft, contentDescription = stringResource(R.string.cd_previous_month))
             }
-            Text(
-                text = TimeFormat.monthYear(month.atDay(1), locale).replaceFirstChar { it.titlecase(locale) },
-                style = MaterialTheme.typography.titleLarge,
-                color = colors.textPrimary,
-                modifier = Modifier.weight(1f)
-            )
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text = TimeFormat.monthYear(month.atDay(1), locale).replaceFirstChar { it.titlecase(locale) },
+                    style = MaterialTheme.typography.titleLarge,
+                    color = colors.textPrimary
+                )
+                hijriRangeText(month.atDay(1), month.atEndOfMonth())?.let { hijri ->
+                    Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.textMuted)
+                }
+            }
             IconButton(onClick = { viewModel.showMonth(month.plusMonths(1)) }) {
                 Icon(Icons.AutoMirrored.Outlined.KeyboardArrowRight, contentDescription = stringResource(R.string.cd_next_month))
             }

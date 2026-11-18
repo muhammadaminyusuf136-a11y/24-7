@@ -602,4 +602,17 @@
     <string name="muhosaba_plans_empty">На этот день планов нет. Добавьте их в разделе «План».</string>
     <string name="muhosaba_ledger">Дневник</string>
     <string name="muhosaba_ledger_hint">Зелёный — всё выполнено, красный — ничего, жёлтый — частично, пусто — ещё не отмечено.</string>
+    <string name="settings_task_reminders">Напоминания о планах</string>
+    <string name="settings_task_voice">Озвучивать напоминания</string>
+    <string name="settings_task_voice_desc">Каждое напоминание о плане читается вслух, например: «Спорт — через 10 минут. Приготовьтесь.»</string>
+    <string name="settings_task_second">Второе напоминание</string>
+    <string name="settings_task_second_dialog">За сколько до начала?</string>
+    <string name="settings_task_reminders_hint">Время первого напоминания задаётся в каждом плане. Заметка плана (например «Пора выходить») тоже читается вслух.</string>
+    <string name="task_voice_reminder">%1$s — через %2$s.</string>
+    <string name="task_voice_ready">Приготовьтесь.</string>
+    <string name="task_voice_preview_text">Спорт — через 10 минут. Приготовьтесь.</string>
+    <string name="home_table_title">Расписание на сегодня</string>
+    <string name="home_table_time">Время</string>
+    <string name="home_table_plan">План</string>
+    <string name="home_table_state">Статус</string>
 </resources>

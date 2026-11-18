@@ -84,6 +84,20 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch { safely { userPreferencesRepository.setThemeMode(mode) } }
     }
 
+    fun setTaskVoice(enabled: Boolean) {
+        viewModelScope.launch { safely { userPreferencesRepository.setTaskVoice(enabled) } }
+    }
+
+    /** Ikkinchi eslatma vaqti o'zgarsa — rejalar eslatmalari qayta qo'yiladi. */
+    fun setTaskSecondReminder(minutes: Int) {
+        viewModelScope.launch {
+            safely {
+                userPreferencesRepository.setTaskSecondReminder(minutes)
+                reminderScheduler.rescheduleAll()
+            }
+        }
+    }
+
     fun setVoiceGender(gender: VoiceGender) {
         viewModelScope.launch { safely { userPreferencesRepository.setVoiceGender(gender) } }
     }

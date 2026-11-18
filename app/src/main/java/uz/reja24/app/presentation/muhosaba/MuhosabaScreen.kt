@@ -2,6 +2,7 @@
 
 package uz.reja24.app.presentation.muhosaba
 
+import uz.reja24.app.presentation.components.hijriDateText
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -166,6 +167,9 @@ internal fun MuhosabaContent(
                     style = MaterialTheme.typography.titleMedium,
                     color = colors.textPrimary
                 )
+                hijriDateText(current.date)?.let { hijri ->
+                    Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.textMuted)
+                }
             }
             IconButton(onClick = onNextDay, enabled = !current.isToday) {
                 Icon(

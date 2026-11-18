@@ -45,5 +45,9 @@ data class UserPreferences(
     val voiceGender: VoiceGender = VoiceGender.FEMALE,
     /** Tungi "faqat kerakli" rejim: bloklash vaqtida faqat allowedPackages ochiq (tizim ilovalaridan tashqari). */
     val nightAllowOnly: Boolean = false,
-    val allowedPackages: Set<String> = emptySet()
+    val allowedPackages: Set<String> = emptySet(),
+    /** Rejalar eslatmasi ovoz chiqarib o'qiladi ("Sport boshlanishiga 10 daqiqa qoldi"). */
+    val taskVoiceOn: Boolean = false,
+    /** Ikkinchi eslatma: boshlanishidan shuncha daqiqa oldin (0 — yo'q). */
+    val taskSecondReminderMinutes: Int = 0
 )

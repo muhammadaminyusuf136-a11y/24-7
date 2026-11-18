@@ -21,7 +21,8 @@ enum class RoutineAlarmKind {
 enum class TaskAlarmKind {
     REMINDER,   // boshlanishidan N daqiqa oldin
     START,      // boshlanganda
-    END         // tugaganda (bajarilmagan bo'lsa — yumshoq xabar)
+    END,        // tugaganda (bajarilmagan bo'lsa — yumshoq xabar)
+    REMINDER_2  // ikkinchi eslatma (sozlamalarda: 5 / 10 / 15 daqiqa oldin). Oxirida — so'rov kodlari o'zgarmasin
 }
 
 data class PlannedTaskAlarm(
@@ -80,7 +81,9 @@ object AlarmPlanner {
     fun taskAlarms(
         now: LocalDateTime,
         today: LocalDate,
-        tasksByDay: List<List<ScheduleEntry>>
+        tasksByDay: List<List<ScheduleEntry>>,
+        /** Ikkinchi eslatma (0 — yo'q). Birinchisi bilan bir xil bo'lsa — takrorlanmaydi. */
+        secondReminderMinutes: Int = 0
     ): List<PlannedTaskAlarm> {
         val result = mutableListOf<PlannedTaskAlarm>()
         tasksByDay.forEachIndexed { dayIndex, entries ->
@@ -92,6 +95,12 @@ object AlarmPlanner {
                     result += PlannedTaskAlarm(
                         entry.id, TaskAlarmKind.REMINDER, dayIndex,
                         start.minusMinutes(entry.reminderMinutesBefore.toLong())
+                    )
+                }
+                if (secondReminderMinutes > 0 && secondReminderMinutes != entry.reminderMinutesBefore) {
+                    result += PlannedTaskAlarm(
+                        entry.id, TaskAlarmKind.REMINDER_2, dayIndex,
+                        start.minusMinutes(secondReminderMinutes.toLong())
                     )
                 }
                 result += PlannedTaskAlarm(entry.id, TaskAlarmKind.START, dayIndex, start, rings = entry.alarmEnabled)

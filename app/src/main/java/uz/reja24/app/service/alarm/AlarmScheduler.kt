@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import uz.reja24.app.MainActivity
@@ -21,6 +22,7 @@ import uz.reja24.app.domain.repository.PrayerSettingsRepository
 import uz.reja24.app.domain.repository.ReminderScheduler
 import uz.reja24.app.domain.repository.RoutineSettingsRepository
 import uz.reja24.app.domain.repository.ScheduleRepository
+import uz.reja24.app.domain.repository.UserPreferencesRepository
 import uz.reja24.app.widget.DayPlanWidget
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -42,6 +44,7 @@ class AlarmScheduler @Inject constructor(
     private val routineSettingsRepository: RoutineSettingsRepository,
     private val scheduleRepository: ScheduleRepository,
     private val prayerSettingsRepository: PrayerSettingsRepository,
+    private val userPreferencesRepository: UserPreferencesRepository,
     private val timeProvider: TimeProvider
 ) : ReminderScheduler {
 
@@ -95,7 +98,8 @@ class AlarmScheduler @Inject constructor(
             .filterNot { it.isCompleted }
             .map { it.entry }
         val tomorrowEntries = scheduleRepository.getTasksForDate(today.plusDays(1)).map { it.entry }
-        val planned = AlarmPlanner.taskAlarms(timeProvider.now(), today, listOf(todayEntries, tomorrowEntries))
+        val second = userPreferencesRepository.preferences.first().taskSecondReminderMinutes
+        val planned = AlarmPlanner.taskAlarms(timeProvider.now(), today, listOf(todayEntries, tomorrowEntries), second)
 
         val codes = mutableSetOf<String>()
         planned.forEach { alarm ->

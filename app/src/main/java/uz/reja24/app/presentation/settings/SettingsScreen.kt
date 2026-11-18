@@ -114,6 +114,7 @@ fun SettingsScreen(
     val snackbar = remember { SnackbarHostState() }
     var timeTarget by remember { mutableStateOf<TimeTarget?>(null) }
     var stageTarget by remember { mutableStateOf<StageTarget?>(null) }
+    var secondReminderDialog by remember { mutableStateOf(false) }
     var previewing by remember { mutableStateOf(false) }
     val configuration = LocalConfiguration.current
     val scope = rememberCoroutineScope()
@@ -145,6 +146,25 @@ fun SettingsScreen(
     }
     val routine = current.routine
     val prefs = current.preferences
+
+    /** Tanlangan ovoz bilan namuna matnni o'qib beradi (rejim va rejalar eslatmasi uchun). */
+    fun previewVoice(@androidx.annotation.StringRes sampleRes: Int) {
+        if (previewing) return
+        previewing = true
+        val locale = configuration.locales[0]
+        val sample = context.getString(sampleRes)
+        scope.launch {
+            val result = ReminderSound.speak(context, sample, locale, prefs.voiceGender)
+            previewing = false
+            when (result) {
+                ReminderSound.SpeakResult.SPOKEN -> Unit
+                ReminderSound.SpeakResult.LANGUAGE_MISSING ->
+                    snackbar.showSnackbar(context.getString(R.string.voice_result_language_missing))
+                ReminderSound.SpeakResult.ENGINE_MISSING ->
+                    snackbar.showSnackbar(context.getString(R.string.voice_result_engine_missing))
+            }
+        }
+    }
 
     Box(Modifier.fillMaxSize()) {
         Column(
@@ -241,22 +261,7 @@ fun SettingsScreen(
                             selected = prefs.voiceGender,
                             previewing = previewing,
                             onSelect = viewModel::setVoiceGender,
-                            onPreview = {
-                                previewing = true
-                                val locale = configuration.locales[0]
-                                val sample = context.getString(R.string.voice_preview_text)
-                                scope.launch {
-                                    val result = ReminderSound.speak(context, sample, locale, prefs.voiceGender)
-                                    previewing = false
-                                    when (result) {
-                                        ReminderSound.SpeakResult.SPOKEN -> Unit
-                                        ReminderSound.SpeakResult.LANGUAGE_MISSING ->
-                                            snackbar.showSnackbar(context.getString(R.string.voice_result_language_missing))
-                                        ReminderSound.SpeakResult.ENGINE_MISSING ->
-                                            snackbar.showSnackbar(context.getString(R.string.voice_result_engine_missing))
-                                    }
-                                }
-                            }
+                            onPreview = { previewVoice(R.string.voice_preview_text) }
                         )
                     }
                     Divider()
@@ -275,6 +280,37 @@ fun SettingsScreen(
                         runCatching { ringtoneLauncher.launch(intent) }
                     }
                 }
+            }
+
+            // ---------- Reja eslatmalari ----------
+            Section(stringResource(R.string.settings_task_reminders)) {
+                RejaCard(modifier = Modifier.fillMaxWidth(), contentPadding = androidx.compose.foundation.layout.PaddingValues(0.dp)) {
+                    SwitchRow(
+                        title = stringResource(R.string.settings_task_voice),
+                        subtitle = stringResource(R.string.settings_task_voice_desc),
+                        checked = prefs.taskVoiceOn,
+                        onChange = viewModel::setTaskVoice
+                    )
+                    if (prefs.taskVoiceOn) {
+                        VoiceGenderRow(
+                            selected = prefs.voiceGender,
+                            previewing = previewing,
+                            onSelect = viewModel::setVoiceGender,
+                            onPreview = { previewVoice(R.string.task_voice_preview_text) }
+                        )
+                    }
+                    Divider()
+                    ValueRow(
+                        stringResource(R.string.settings_task_second),
+                        if (prefs.taskSecondReminderMinutes == 0) stringResource(R.string.editor_reminder_off)
+                        else DurationText.format(context.resources, prefs.taskSecondReminderMinutes)
+                    ) { secondReminderDialog = true }
+                }
+                Text(
+                    text = stringResource(R.string.settings_task_reminders_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = RejaTheme.colors.textMuted
+                )
             }
 
             // ---------- Bloklanadigan ilovalar ----------
@@ -378,6 +414,19 @@ fun SettingsScreen(
             onConfirm = { time ->
                 viewModel.updateRoutine { it.withTime(target, time) }
                 timeTarget = null
+            }
+        )
+    }
+
+    if (secondReminderDialog) {
+        StageDialog(
+            current = prefs.taskSecondReminderMinutes,
+            title = stringResource(R.string.settings_task_second_dialog),
+            options = listOf(0, 5, 10, 15),
+            onDismiss = { secondReminderDialog = false },
+            onSelect = { minutes ->
+                viewModel.setTaskSecondReminder(minutes)
+                secondReminderDialog = false
             }
         )
     }
@@ -653,21 +702,29 @@ private fun SwatchChip(
 }
 
 @Composable
-private fun StageDialog(current: Int, onDismiss: () -> Unit, onSelect: (Int) -> Unit) {
+private fun StageDialog(
+    current: Int,
+    onDismiss: () -> Unit,
+    onSelect: (Int) -> Unit,
+    title: String = stringResource(R.string.settings_stage_dialog_title),
+    /** 0 — "Yo'q" */
+    options: List<Int> = listOf(5, 10, 15, 20, 30, 45, 60, 90, 120)
+) {
     val context = LocalContext.current
     AlertDialog(
         onDismissRequest = onDismiss,
         containerColor = RejaTheme.colors.surface,
-        title = { Text(stringResource(R.string.settings_stage_dialog_title)) },
+        title = { Text(title) },
         text = {
             FlowRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                listOf(5, 10, 15, 20, 30, 45, 60, 90, 120).forEach { minutes ->
+                options.forEach { minutes ->
                     RejaChip(
                         selected = minutes == current,
-                        label = DurationText.format(context.resources, minutes),
+                        label = if (minutes == 0) stringResource(R.string.editor_reminder_off)
+                        else DurationText.format(context.resources, minutes),
                         onClick = { onSelect(minutes) }
                     )
                 }
