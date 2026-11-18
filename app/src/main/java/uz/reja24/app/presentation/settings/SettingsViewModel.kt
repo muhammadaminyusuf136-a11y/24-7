@@ -21,7 +21,7 @@ import uz.reja24.app.domain.model.AppLanguage
 import uz.reja24.app.domain.model.BackgroundStyle
 import uz.reja24.app.domain.model.BlockedApp
 import uz.reja24.app.domain.model.RoutineSettings
-import uz.reja24.app.domain.model.ThemeMode
+import uz.reja24.app.domain.model.DateDisplay
 import uz.reja24.app.domain.model.UserPreferences
 import uz.reja24.app.domain.model.VoiceGender
 import uz.reja24.app.domain.repository.BlockedAppRepository
@@ -80,8 +80,8 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun setTheme(mode: ThemeMode) {
-        viewModelScope.launch { safely { userPreferencesRepository.setThemeMode(mode) } }
+    fun setDateDisplay(display: DateDisplay) {
+        viewModelScope.launch { safely { userPreferencesRepository.setDateDisplay(display) } }
     }
 
     fun setTaskVoice(enabled: Boolean) {

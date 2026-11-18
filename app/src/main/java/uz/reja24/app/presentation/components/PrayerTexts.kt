@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalContext
 import uz.reja24.app.R
+import uz.reja24.app.domain.model.DateDisplay
 import uz.reja24.app.domain.prayer.AsrMadhab
 import uz.reja24.app.domain.prayer.CalculationMethod
 import uz.reja24.app.domain.prayer.HijriCalendar
@@ -39,19 +40,72 @@ fun madhabNameRes(madhab: AsrMadhab): Int = when (madhab) {
     AsrMadhab.SHAFII -> R.string.madhab_shafii
 }
 
-/** To'liq sanalar: kun, oy nomi va yil — qisqartirishsiz. */
-/** Hijriy sanani ±1 kunga to'g'rilash (Namoz vaqtlari sozlamasidan) — butun ilova uchun bitta qiymat. */
-val LocalHijriAdjustment = staticCompositionLocalOf { 0 }
+/** Sanalar qanday ko'rsatiladi (Sozlamalar → Sana) va hijriy sanani ±kun to'g'rilash. */
+data class DateStyle(val display: DateDisplay = DateDisplay.BOTH, val hijriAdjustment: Int = 0) {
+    val showGregorian: Boolean get() = display != DateDisplay.HIJRI
+    val showHijri: Boolean get() = display != DateDisplay.GREGORIAN
+    val showBoth: Boolean get() = display == DateDisplay.BOTH
+}
 
-/** "16 Rabiul oxir 1448-yil" — joriy to'g'rilash bilan. Taqvim chegarasidan tashqarida — null. */
-@Composable
-fun hijriDateText(date: LocalDate): String? =
-    FullDateText.hijri(LocalContext.current.resources, date, LocalHijriAdjustment.current)
+/** Butun ilova uchun bitta qiymat (MainActivity'da beriladi). */
+val LocalDateStyle = staticCompositionLocalOf { DateStyle() }
 
-/** Davr uchun hijriy sanalar: "20–26 Jumodul oxir 1448-yil" yoki "28 Jumodul avval – 4 Jumodul oxir 1448-yil". */
+/** "16 Rabiul oxir 1448-yil" — hijriy ko'rsatilsa. "Faqat milodiy" tanlanganda yoki taqvimdan tashqarida — null. */
 @Composable
-fun hijriRangeText(from: LocalDate, to: LocalDate): String? =
-    FullDateText.hijriRange(LocalContext.current.resources, from, to, LocalHijriAdjustment.current)
+fun hijriDateText(date: LocalDate): String? {
+    val style = LocalDateStyle.current
+    if (!style.showHijri) return null
+    return FullDateText.hijri(LocalContext.current.resources, date, style.hijriAdjustment)
+}
+
+/** Asosiy sana: milodiy "17 noyabr 2026-yil"; "faqat hijriy" tanlanganda — hijriy. */
+@Composable
+fun mainDateText(date: LocalDate): String {
+    val style = LocalDateStyle.current
+    val resources = LocalContext.current.resources
+    if (!style.showGregorian) FullDateText.hijri(resources, date, style.hijriAdjustment)?.let { return it }
+    return FullDateText.gregorian(resources, date)
+}
+
+/** Asosiy sana ostidagi ikkinchi sana — faqat "ikkalasi" tanlanganda (hijriy). */
+@Composable
+fun secondDateText(date: LocalDate): String? =
+    if (LocalDateStyle.current.showBoth) hijriDateText(date) else null
+
+/** Davr sarlavhasi: milodiy matn (tayyor holda beriladi) yoki "faqat hijriy"da — hijriy davr. */
+@Composable
+fun mainRangeText(from: LocalDate, to: LocalDate, gregorian: String): String {
+    val style = LocalDateStyle.current
+    if (!style.showGregorian) {
+        FullDateText.hijriRange(LocalContext.current.resources, from, to, style.hijriAdjustment)?.let { return it }
+    }
+    return gregorian
+}
+
+/** Davr sarlavhasi ostidagi hijriy davr — faqat "ikkalasi" tanlanganda. */
+@Composable
+fun secondRangeText(from: LocalDate, to: LocalDate): String? {
+    val style = LocalDateStyle.current
+    if (!style.showBoth) return null
+    return FullDateText.hijriRange(LocalContext.current.resources, from, to, style.hijriAdjustment)
+}
+
+/**
+ * Kalendar katagi uchun kun raqamlari: katta raqam (milodiy, "faqat hijriy"da — hijriy)
+ * va "ikkalasi"da ostida kichik, boshqa rangdagi hijriy kun.
+ */
+data class DayNumbers(val main: String, val hijriSmall: String?)
+
+@Composable
+fun dayNumbers(date: LocalDate): DayNumbers {
+    val style = LocalDateStyle.current
+    val hijriDay = HijriCalendar.from(date, style.hijriAdjustment)?.day?.toString()
+    return when {
+        style.showBoth -> DayNumbers(date.dayOfMonth.toString(), hijriDay)
+        style.showGregorian -> DayNumbers(date.dayOfMonth.toString(), null)
+        else -> DayNumbers(hijriDay ?: date.dayOfMonth.toString(), null)
+    }
+}
 
 object FullDateText {
 

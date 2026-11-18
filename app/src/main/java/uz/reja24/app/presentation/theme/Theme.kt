@@ -1,6 +1,5 @@
 package uz.reja24.app.presentation.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -12,7 +11,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import uz.reja24.app.domain.model.BackgroundStyle
-import uz.reja24.app.domain.model.ThemeMode
 
 /** RejaColors'ni Material 3 ColorScheme'ga o'giradi (standart komponentlar ham to'g'ri rangda bo'lsin). */
 private fun RejaColors.toColorScheme(): ColorScheme {
@@ -58,15 +56,14 @@ private fun RejaColors.toColorScheme(): ColorScheme {
 
 /**
  * 24/7Reja mavzusi. Barcha ekranlar shu funksiya ichida chiziladi.
- * themeMode — foydalanuvchi sozlamalarda tanlagan mavzu.
+ * backgroundStyle — foydalanuvchi sozlamalarda tanlagan rang.
  */
 @Composable
 fun RejaTheme(
-    themeMode: ThemeMode = ThemeMode.SYSTEM,
     backgroundStyle: BackgroundStyle = BackgroundStyle.PURE,
     content: @Composable () -> Unit
 ) {
-    val rejaColors = resolveRejaColors(themeMode, backgroundStyle, isSystemInDarkTheme())
+    val rejaColors = resolveRejaColors(backgroundStyle)
 
     // Joriy til arabchami — shriftni shunga qarab tanlaymiz
     val locales = LocalConfiguration.current.locales
@@ -83,23 +80,13 @@ fun RejaTheme(
     }
 }
 
-/**
- * Ranglar to'plamini tanlaydi.
- * Orqa fon o'z ranglariga ega: POWER — "To'q ko'k", GRACE — "Pushti".
- * PURE — "Qaymoq": unda foydalanuvchi tanlagan mavzu (Oq / Qora / Kulrang / Tizim) ishlatiladi.
- * (Nomlar bazada saqlangani uchun enum nomlari o'zgartirilmagan.)
- */
-fun resolveRejaColors(themeMode: ThemeMode, backgroundStyle: BackgroundStyle, systemDark: Boolean): RejaColors =
-    when (backgroundStyle) {
-        BackgroundStyle.POWER -> NavyRejaColors
-        BackgroundStyle.GRACE -> GraceRejaColors
-        BackgroundStyle.PURE -> when (themeMode) {
-            ThemeMode.LIGHT -> LightRejaColors
-            ThemeMode.DARK -> DarkRejaColors
-            ThemeMode.GRAY -> GrayRejaColors
-            ThemeMode.SYSTEM -> if (systemDark) DarkRejaColors else LightRejaColors
-        }
-    }
+/** Ranglar to'plami: tanlangan rang (Qaymoq / To'q ko'k / To'q yashil / To'q pushti). */
+fun resolveRejaColors(backgroundStyle: BackgroundStyle): RejaColors = when (backgroundStyle) {
+    BackgroundStyle.PURE -> LightRejaColors
+    BackgroundStyle.POWER -> NavyRejaColors
+    BackgroundStyle.GREEN -> GreenRejaColors
+    BackgroundStyle.GRACE -> GraceRejaColors
+}
 
 /** Qisqa murojaat: RejaTheme.colors.accent */
 object RejaTheme {

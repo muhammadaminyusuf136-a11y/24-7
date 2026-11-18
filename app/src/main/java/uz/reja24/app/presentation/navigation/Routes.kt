@@ -21,6 +21,8 @@ sealed interface Route {
     @Serializable data object Privacy : Route
     @Serializable data object PrayerSettings : Route
     @Serializable data object AllowedApps : Route
+    /** Kunduzgi nazorat: ilovalar uchun kunlik chegara va pauza. */
+    @Serializable data object AppLimits : Route
     /** Kechki muhosaba oynasi: hikmat + "Hisobni boshlash". */
     @Serializable data object MuhosabaEvening : Route
 

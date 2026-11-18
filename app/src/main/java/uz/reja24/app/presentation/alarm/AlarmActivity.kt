@@ -42,7 +42,6 @@ import kotlinx.coroutines.delay
 import uz.reja24.app.R
 import uz.reja24.app.core.util.TimeFormat
 import uz.reja24.app.domain.model.BackgroundStyle
-import uz.reja24.app.domain.model.ThemeMode
 import uz.reja24.app.presentation.theme.RejaTheme
 import uz.reja24.app.service.alarm.AlarmRingService
 import java.time.LocalTime
@@ -72,7 +71,7 @@ class AlarmActivity : AppCompatActivity() {
             // Budilnik boshqa joydan (bildirishnoma tugmasi, 10 daqiqa o'tishi) to'xtasa — oyna ham yopiladi
             LaunchedEffect(alarm) { if (alarm == null) finish() }
             val current = alarm ?: return@setContent
-            RejaTheme(themeMode = ThemeMode.DARK, backgroundStyle = BackgroundStyle.PURE) {
+            RejaTheme(backgroundStyle = BackgroundStyle.POWER) {
                 AlarmScreen(
                     title = current.title,
                     text = current.text,

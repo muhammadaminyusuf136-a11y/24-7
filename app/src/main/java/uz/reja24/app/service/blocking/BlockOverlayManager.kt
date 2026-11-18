@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.PixelFormat
 import android.provider.Settings
 import android.view.WindowManager
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.ComposeView
 import androidx.lifecycle.setViewTreeLifecycleOwner
@@ -12,28 +13,59 @@ import uz.reja24.app.core.util.LocaleHelper
 import uz.reja24.app.domain.model.AppLanguage
 import uz.reja24.app.presentation.block.BlockOverlayState
 import uz.reja24.app.presentation.block.BlockScreen
+import uz.reja24.app.presentation.block.DayControlScreen
+import uz.reja24.app.presentation.block.DayControlState
 
 /**
  * Blok ekranini boshqa ilovalar ustida ko'rsatadi.
  *  - "Ekran ustida ko'rsatish" ruxsati bo'lsa — TYPE_APPLICATION_OVERLAY
  *  - bo'lmasa — TYPE_ACCESSIBILITY_OVERLAY (Accessibility xizmati o'zi chiza oladi)
+ *
+ * Ikki xil oyna bor: tungi blok ekrani va kunduzgi nazorat ("o'ylab ko'r" pauzasi, "bugungi vaqt tugadi").
  */
 class BlockOverlayManager(private val serviceContext: Context) {
+
+    /** Hozir nima ko'rsatilmoqda. */
+    sealed interface Shown {
+        data object Night : Shown
+        data class Day(val state: DayControlState) : Shown
+    }
 
     private val windowManager: WindowManager? = serviceContext.getSystemService(WindowManager::class.java)
     private var composeView: ComposeView? = null
     private var lifecycleOwner: OverlayLifecycleOwner? = null
-    private val state = mutableStateOf<BlockOverlayState?>(null)
+    private val content = mutableStateOf<(@Composable () -> Unit)?>(null)
+
+    var shown: Shown? = null
+        private set
 
     val isShowing: Boolean get() = composeView != null
 
+    /** Tungi blok ekrani. */
     fun show(
         overlayState: BlockOverlayState,
         language: AppLanguage?,
         onEmergency: () -> Unit,
         onClose: () -> Unit
     ) {
-        state.value = overlayState
+        shown = Shown.Night
+        content.value = { BlockScreen(state = overlayState, onEmergency = onEmergency, onClose = onClose) }
+        attach(language)
+    }
+
+    /** Kunduzgi nazorat oynasi. */
+    fun showDay(
+        state: DayControlState,
+        language: AppLanguage?,
+        onOpen: () -> Unit,
+        onClose: () -> Unit
+    ) {
+        shown = Shown.Day(state)
+        content.value = { DayControlScreen(state = state, onOpen = onOpen, onClose = onClose) }
+        attach(language)
+    }
+
+    private fun attach(language: AppLanguage?) {
         if (composeView != null) return
         val manager = windowManager ?: return
 
@@ -58,11 +90,7 @@ class BlockOverlayManager(private val serviceContext: Context) {
         val view = ComposeView(localized).apply {
             setViewTreeLifecycleOwner(owner)
             setViewTreeSavedStateRegistryOwner(owner)
-            setContent {
-                state.value?.let { current ->
-                    BlockScreen(state = current, onEmergency = onEmergency, onClose = onClose)
-                }
-            }
+            setContent { content.value?.invoke() }
         }
         try {
             manager.addView(view, params)
@@ -71,10 +99,12 @@ class BlockOverlayManager(private val serviceContext: Context) {
         } catch (e: Exception) {
             // Ruxsat yo'q yoki oyna qo'shib bo'lmadi — bloklash "Bosh ekran" orqali baribir ishlaydi
             owner.destroy()
+            shown = null
         }
     }
 
     fun hide() {
+        shown = null
         val view = composeView ?: return
         try {
             windowManager?.removeViewImmediate(view)

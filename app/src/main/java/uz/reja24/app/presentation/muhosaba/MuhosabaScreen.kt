@@ -2,7 +2,16 @@
 
 package uz.reja24.app.presentation.muhosaba
 
-import uz.reja24.app.presentation.components.hijriDateText
+import uz.reja24.app.presentation.theme.PrayerGreen
+import uz.reja24.app.presentation.theme.MissedRed
+import uz.reja24.app.presentation.theme.MissedRedOnDark
+import uz.reja24.app.presentation.components.prayerNameRes
+import uz.reja24.app.domain.repository.DayNote
+import uz.reja24.app.domain.repository.PrayerStatus
+import uz.reja24.app.domain.prayer.Prayer
+import androidx.compose.material.icons.outlined.Schedule
+import uz.reja24.app.presentation.components.mainDateText
+import uz.reja24.app.presentation.components.secondDateText
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -64,7 +73,6 @@ import uz.reja24.app.R
 import uz.reja24.app.core.util.TimeFormat
 import uz.reja24.app.domain.model.DailyScore
 import uz.reja24.app.domain.repository.MuhosabaItem
-import uz.reja24.app.presentation.components.FullDateText
 import uz.reja24.app.presentation.components.RejaCard
 import uz.reja24.app.presentation.components.SectionLabel
 import uz.reja24.app.presentation.components.toComposeColor
@@ -74,7 +82,6 @@ import uz.reja24.app.presentation.theme.SuccessGreen
 import java.time.LocalDate
 
 /** «Bajarilmadi» rangi — ikkala mavzuda ham oq belgi aniq ko'rinadi. */
-private val MissedRed = Color(0xFFB3261E)
 
 /** Daftarda aralash kun (✓ ham, ✗ ham bor) — oq raqam ustida o'qiladigan to'q sariq. */
 private val PartialAmber = Color(0xFFB7791F)
@@ -108,7 +115,9 @@ fun MuhosabaScreen(viewModel: MuhosabaViewModel = hiltViewModel()) {
         onPlanMark = viewModel::setPlanMark,
         onRemove = viewModel::removeItem,
         onAdd = viewModel::addItem,
-        onAddSamples = { viewModel.addItems(resources.getStringArray(R.array.muhosaba_sample_items).toList()) }
+        onAddSamples = { viewModel.addItems(resources.getStringArray(R.array.muhosaba_sample_items).toList()) },
+        onPrayerMark = viewModel::setPrayerMark,
+        onSaveNote = viewModel::saveNote
     )
 }
 
@@ -121,11 +130,12 @@ internal fun MuhosabaContent(
     onPlanMark: (Long, Boolean) -> Unit,
     onRemove: (Long) -> Unit,
     onAdd: (String) -> Unit,
-    onAddSamples: () -> Unit
+    onAddSamples: () -> Unit,
+    onPrayerMark: (Prayer, PrayerStatus) -> Unit = { _, _ -> },
+    onSaveNote: (String, String) -> Unit = { _, _ -> }
 ) {
     val current = state
     val colors = RejaTheme.colors
-    val resources = LocalContext.current.resources
     val locale = LocalConfiguration.current.locales[0]
     var editing by rememberSaveable { mutableStateOf(false) }
     var monthly by rememberSaveable { mutableStateOf(false) }
@@ -163,12 +173,12 @@ internal fun MuhosabaContent(
                     color = colors.textMuted
                 )
                 Text(
-                    text = FullDateText.gregorian(resources, current.date),
+                    text = mainDateText(current.date),
                     style = MaterialTheme.typography.titleMedium,
                     color = colors.textPrimary
                 )
-                hijriDateText(current.date)?.let { hijri ->
-                    Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.textMuted)
+                secondDateText(current.date)?.let { hijri ->
+                    Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.hijri)
                 }
             }
             IconButton(onClick = onNextDay, enabled = !current.isToday) {
@@ -208,6 +218,20 @@ internal fun MuhosabaContent(
             )
         }
 
+        // 5 vaqt namoz: vaqtida / kechikib / qazo
+        SectionLabel(stringResource(R.string.muhosaba_prayers))
+        RejaCard(modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(vertical = 4.dp)) {
+            Prayer.OBLIGATORY.forEachIndexed { index, prayer ->
+                if (index > 0) HorizontalDivider(color = colors.border, modifier = Modifier.padding(horizontal = 16.dp))
+                PrayerMarkRow(prayer, current.prayers[prayer], onMark = { status -> onPrayerMark(prayer, status) })
+            }
+        }
+        Text(
+            text = stringResource(R.string.muhosaba_prayers_hint),
+            style = MaterialTheme.typography.bodySmall,
+            color = colors.textMuted
+        )
+
         // O'z ro'yxati
         Row(verticalAlignment = Alignment.CenterVertically) {
             SectionLabel(stringResource(R.string.muhosaba_my_list), modifier = Modifier.weight(1f))
@@ -245,9 +269,15 @@ internal fun MuhosabaContent(
         SectionLabel(stringResource(R.string.muhosaba_facts))
         FactsCard(current.facts)
 
+        // Kechki yozuv: bugun nima yaxshi bo'ldi, nimani tuzataman
+        SectionLabel(stringResource(R.string.muhosaba_note))
+        NoteCard(date = current.date, note = current.note, onSave = onSaveNote)
+
         // Hafta / oy xulosasi va daftar
         val planSummary = if (monthly) current.planMonth else current.planWeek
-        if (current.items.isNotEmpty() || planSummary.isNotEmpty()) {
+        val prayerTally = if (monthly) current.prayerMonth else current.prayerWeek
+        val hasPrayerMarks = current.prayerMonth.let { it.onTime + it.late + it.missed > 0 }
+        if (current.items.isNotEmpty() || planSummary.isNotEmpty() || hasPrayerMarks) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 SectionLabel(stringResource(R.string.muhosaba_summary), modifier = Modifier.weight(1f))
                 RejaChip(selected = !monthly, label = stringResource(R.string.muhosaba_week), onClick = { monthly = false })
@@ -266,6 +296,14 @@ internal fun MuhosabaContent(
                                 total = it.scheduled
                             )
                         }
+                    }
+                }
+            }
+            if (hasPrayerMarks) {
+                RejaCard(modifier = Modifier.fillMaxWidth()) {
+                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        SectionLabel(stringResource(R.string.muhosaba_prayers))
+                        PrayerTallyBar(prayerTally)
                     }
                 }
             }
@@ -501,6 +539,155 @@ private fun PlanRow(plan: PlanMark, onMark: (Boolean) -> Unit) {
             onClick = { onMark(false) }
         ) { tint -> Icon(Icons.Outlined.Close, contentDescription = null, tint = tint, modifier = Modifier.size(20.dp)) }
         Spacer(Modifier.width(4.dp))
+    }
+}
+
+/** Namoz qatori: nomi va uchta tugma — vaqtida (✓), kechikib (soat), qazo (✗). */
+@Composable
+private fun PrayerMarkRow(prayer: Prayer, status: PrayerStatus?, onMark: (PrayerStatus) -> Unit) {
+    val colors = RejaTheme.colors
+    val name = stringResource(prayerNameRes(prayer))
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 60.dp)
+            .padding(start = 16.dp, end = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            Modifier
+                .width(4.dp)
+                .height(30.dp)
+                .background(PrayerGreen, RoundedCornerShape(2.dp))
+        )
+        Spacer(Modifier.width(10.dp))
+        Column(
+            Modifier
+                .weight(1f)
+                .padding(end = 8.dp)
+        ) {
+            Text(text = name, style = MaterialTheme.typography.bodyLarge, color = colors.textPrimary)
+            val label = when (status) {
+                PrayerStatus.ON_TIME -> stringResource(R.string.prayer_status_on_time)
+                PrayerStatus.LATE -> stringResource(R.string.prayer_status_late)
+                PrayerStatus.MISSED -> stringResource(R.string.prayer_status_missed)
+                null -> null
+            }
+            if (label != null) {
+                Text(
+                    text = label,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = when (status) {
+                        PrayerStatus.ON_TIME -> SuccessGreen
+                        PrayerStatus.LATE -> PartialAmber
+                        else -> if (colors.isDark) MissedRedOnDark else MissedRed
+                    }
+                )
+            }
+        }
+        MarkButton(
+            selected = status == PrayerStatus.ON_TIME,
+            color = SuccessGreen,
+            description = stringResource(R.string.prayer_mark_on_time, name),
+            onClick = { onMark(PrayerStatus.ON_TIME) }
+        ) { tint -> Icon(Icons.Outlined.Check, contentDescription = null, tint = tint, modifier = Modifier.size(20.dp)) }
+        Spacer(Modifier.width(6.dp))
+        MarkButton(
+            selected = status == PrayerStatus.LATE,
+            color = PartialAmber,
+            description = stringResource(R.string.prayer_mark_late, name),
+            onClick = { onMark(PrayerStatus.LATE) }
+        ) { tint -> Icon(Icons.Outlined.Schedule, contentDescription = null, tint = tint, modifier = Modifier.size(20.dp)) }
+        Spacer(Modifier.width(6.dp))
+        MarkButton(
+            selected = status == PrayerStatus.MISSED,
+            color = MissedRed,
+            description = stringResource(R.string.prayer_mark_missed, name),
+            onClick = { onMark(PrayerStatus.MISSED) }
+        ) { tint -> Icon(Icons.Outlined.Close, contentDescription = null, tint = tint, modifier = Modifier.size(20.dp)) }
+        Spacer(Modifier.width(4.dp))
+    }
+}
+
+/** Namozlar xulosasi: "vaqtida 30 · kechikib 3 · qazo 1" va uch rangli chiziq. */
+@Composable
+private fun PrayerTallyBar(tally: PrayerTally) {
+    val colors = RejaTheme.colors
+    Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        Text(
+            text = stringResource(
+                R.string.muhosaba_prayer_tally,
+                tally.onTime.toString(), tally.late.toString(), tally.missed.toString(), tally.total.toString()
+            ),
+            style = MaterialTheme.typography.bodyMedium,
+            color = colors.textPrimary
+        )
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .height(8.dp)
+                .background(colors.timelineEmpty, RoundedCornerShape(4.dp))
+        ) {
+            listOf(tally.onTime to SuccessGreen, tally.late to PartialAmber, tally.missed to MissedRed).forEach { (count, color) ->
+                if (count > 0) {
+                    Box(
+                        Modifier
+                            .weight(count.toFloat())
+                            .height(8.dp)
+                            .background(color, RoundedCornerShape(4.dp))
+                    )
+                }
+            }
+            val rest = tally.total - tally.onTime - tally.late - tally.missed
+            if (rest > 0) Spacer(Modifier.weight(rest.toFloat()))
+        }
+    }
+}
+
+/** Kechki yozuv: ikki savol va "Saqlash". Kun almashsa — o'sha kunning yozuvi ko'rsatiladi. */
+@Composable
+private fun NoteCard(date: LocalDate, note: DayNote?, onSave: (String, String) -> Unit) {
+    val colors = RejaTheme.colors
+    var good by rememberSaveable(date, note) { mutableStateOf(note?.good.orEmpty()) }
+    var improve by rememberSaveable(date, note) { mutableStateOf(note?.improve.orEmpty()) }
+    val changed = good.trim() != note?.good.orEmpty() || improve.trim() != note?.improve.orEmpty()
+    RejaCard(modifier = Modifier.fillMaxWidth()) {
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            OutlinedTextField(
+                value = good,
+                onValueChange = { good = it.take(MuhosabaViewModel.MAX_NOTE) },
+                label = { Text(stringResource(R.string.muhosaba_note_good)) },
+                shape = RoundedCornerShape(14.dp),
+                minLines = 2,
+                modifier = Modifier.fillMaxWidth()
+            )
+            OutlinedTextField(
+                value = improve,
+                onValueChange = { improve = it.take(MuhosabaViewModel.MAX_NOTE) },
+                label = { Text(stringResource(R.string.muhosaba_note_improve)) },
+                shape = RoundedCornerShape(14.dp),
+                minLines = 2,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = stringResource(if (changed) R.string.muhosaba_note_unsaved else R.string.muhosaba_note_saved)
+                        .takeIf { changed || note != null }.orEmpty(),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = colors.textMuted,
+                    modifier = Modifier.weight(1f)
+                )
+                Button(
+                    onClick = { onSave(good, improve) },
+                    enabled = changed,
+                    shape = RoundedCornerShape(14.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = colors.textPrimary,
+                        contentColor = colors.background
+                    )
+                ) { Text(stringResource(R.string.action_save)) }
+            }
+        }
     }
 }
 

@@ -22,6 +22,11 @@ import uz.reja24.app.data.local.db.entity.ScheduleEntryEntity
 import uz.reja24.app.data.local.db.entity.StreakRecordEntity
 import uz.reja24.app.data.local.db.entity.TaskCompletionEntity
 import uz.reja24.app.data.local.db.entity.TaskMissEntity
+import uz.reja24.app.data.local.db.entity.PrayerMarkEntity
+import uz.reja24.app.data.local.db.entity.DayNoteEntity
+import uz.reja24.app.data.local.db.entity.AppRuleEntity
+import uz.reja24.app.data.local.db.entity.AppUsageEntity
+import uz.reja24.app.data.local.db.dao.AppRuleDao
 import uz.reja24.app.data.local.db.entity.WeeklyAwardEntity
 
 /**
@@ -41,7 +46,11 @@ import uz.reja24.app.data.local.db.entity.WeeklyAwardEntity
         GoalEntity::class,
         MuhosabaItemEntity::class,
         MuhosabaMarkEntity::class,
-        TaskMissEntity::class
+        TaskMissEntity::class,
+        PrayerMarkEntity::class,
+        DayNoteEntity::class,
+        AppRuleEntity::class,
+        AppUsageEntity::class
     ],
     version = RejaDatabase.VERSION,
     exportSchema = true
@@ -57,9 +66,10 @@ abstract class RejaDatabase : RoomDatabase() {
     abstract fun streakDao(): StreakDao
     abstract fun goalDao(): GoalDao
     abstract fun muhosabaDao(): MuhosabaDao
+    abstract fun appRuleDao(): AppRuleDao
 
     companion object {
         const val NAME = "reja24.db"
-        const val VERSION = 4
+        const val VERSION = 5
     }
 }

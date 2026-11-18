@@ -8,7 +8,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -17,7 +16,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import uz.reja24.app.presentation.MainViewModel
-import uz.reja24.app.presentation.components.LocalHijriAdjustment
+import uz.reja24.app.presentation.components.DateStyle
+import uz.reja24.app.presentation.components.LocalDateStyle
 import uz.reja24.app.presentation.navigation.RejaNavHost
 import uz.reja24.app.presentation.theme.RejaTheme
 import uz.reja24.app.presentation.theme.resolveRejaColors
@@ -47,9 +47,7 @@ class MainActivity : AppCompatActivity() {
             val state by viewModel.uiState.collectAsStateWithLifecycle()
             val current = state
             if (current != null) {
-                val isDark = resolveRejaColors(
-                    current.themeMode, current.backgroundStyle, isSystemInDarkTheme()
-                ).isDark
+                val isDark = resolveRejaColors(current.backgroundStyle).isDark
                 LaunchedEffect(isDark) {
                     // Status bar ikonkalari fon rangiga mos bo'lsin
                     val style = if (isDark) {
@@ -59,8 +57,8 @@ class MainActivity : AppCompatActivity() {
                     }
                     enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
                 }
-                RejaTheme(themeMode = current.themeMode, backgroundStyle = current.backgroundStyle) {
-                    CompositionLocalProvider(LocalHijriAdjustment provides current.hijriAdjustmentDays) {
+                RejaTheme(backgroundStyle = current.backgroundStyle) {
+                    CompositionLocalProvider(LocalDateStyle provides DateStyle(current.dateDisplay, current.hijriAdjustmentDays)) {
                         RejaNavHost(
                             startWithOnboarding = !current.isOnboardingCompleted,
                             backgroundStyle = current.backgroundStyle,

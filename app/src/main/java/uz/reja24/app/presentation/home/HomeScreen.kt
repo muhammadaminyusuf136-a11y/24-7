@@ -56,9 +56,10 @@ import uz.reja24.app.R
 import uz.reja24.app.core.util.PermissionChecker
 import uz.reja24.app.core.util.TimeFormat
 import uz.reja24.app.presentation.components.FullDateText
+import uz.reja24.app.presentation.components.LocalDateStyle
 import uz.reja24.app.presentation.components.RejaCard
 import uz.reja24.app.presentation.components.SectionLabel
-import uz.reja24.app.presentation.theme.DarkAccent
+import uz.reja24.app.presentation.theme.NavyAccent
 import uz.reja24.app.presentation.theme.InkBlack
 import uz.reja24.app.presentation.theme.RejaTheme
 import java.time.Duration
@@ -133,8 +134,11 @@ private fun HomeHeader(state: HomeUiState) {
             )
             StreakChip(days = state.streakDays)
         }
-        if (hijri != null) DateLine(label = stringResource(R.string.date_hijri_label), text = hijri)
-        DateLine(label = stringResource(R.string.date_gregorian_label), text = FullDateText.gregorian(resources, date))
+        val dateStyle = LocalDateStyle.current
+        if (hijri != null && dateStyle.showHijri) DateLine(label = stringResource(R.string.date_hijri_label), text = hijri)
+        if (dateStyle.showGregorian || hijri == null) {
+            DateLine(label = stringResource(R.string.date_gregorian_label), text = FullDateText.gregorian(resources, date))
+        }
     }
 }
 
@@ -266,7 +270,7 @@ private fun NextCard(state: HomeUiState, onOpenPlan: () -> Unit) {
                 Text(
                     text = TimeFormat.hoursMinutes(minutes),
                     style = MaterialTheme.typography.titleLarge,
-                    color = DarkAccent,
+                    color = NavyAccent,
                     fontWeight = FontWeight.Medium
                 )
             }

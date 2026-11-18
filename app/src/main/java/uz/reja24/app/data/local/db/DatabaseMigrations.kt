@@ -54,5 +54,27 @@ object DatabaseMigrations {
         }
     }
 
-    val ALL: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+    /** 5-versiya: namoz belgilari, kechki yozuv, kunduzgi nazorat (ilova chegarasi va foydalanish vaqti). */
+    val MIGRATION_4_5 = object : Migration(4, 5) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL(
+                "CREATE TABLE IF NOT EXISTS `prayer_marks` (`date` INTEGER NOT NULL, `prayer` TEXT NOT NULL, " +
+                    "`status` TEXT NOT NULL, PRIMARY KEY(`date`, `prayer`))"
+            )
+            db.execSQL(
+                "CREATE TABLE IF NOT EXISTS `day_notes` (`date` INTEGER NOT NULL, `good` TEXT NOT NULL, " +
+                    "`improve` TEXT NOT NULL, PRIMARY KEY(`date`))"
+            )
+            db.execSQL(
+                "CREATE TABLE IF NOT EXISTS `app_rules` (`packageName` TEXT NOT NULL, `appName` TEXT NOT NULL, " +
+                    "`dailyLimitMinutes` INTEGER NOT NULL, `pauseOn` INTEGER NOT NULL, PRIMARY KEY(`packageName`))"
+            )
+            db.execSQL(
+                "CREATE TABLE IF NOT EXISTS `app_usage` (`date` INTEGER NOT NULL, `packageName` TEXT NOT NULL, " +
+                    "`seconds` INTEGER NOT NULL, PRIMARY KEY(`date`, `packageName`))"
+            )
+        }
+    }
+
+    val ALL: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
 }

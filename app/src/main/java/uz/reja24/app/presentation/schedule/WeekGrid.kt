@@ -1,6 +1,8 @@
 package uz.reja24.app.presentation.schedule
 
-import uz.reja24.app.presentation.components.hijriRangeText
+import uz.reja24.app.presentation.components.dayNumbers
+import uz.reja24.app.presentation.components.mainRangeText
+import uz.reja24.app.presentation.components.secondRangeText
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -69,7 +71,7 @@ import java.time.LocalTime
 import java.util.Locale
 
 private val HOUR_WIDTH: Dp = 46.dp
-private val ROW_HEIGHT: Dp = 52.dp
+private val ROW_HEIGHT: Dp = 60.dp
 private val HEADER_HEIGHT: Dp = 26.dp
 private val DAY_COLUMN_WIDTH: Dp = 88.dp
 private const val MINUTES_IN_DAY = 24 * 60
@@ -115,16 +117,19 @@ internal fun WeekGrid(viewModel: ScheduleViewModel) {
             }
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = if (weekStart.month == weekEnd.month) {
-                        "${weekStart.dayOfMonth}–${TimeFormat.dayMonth(weekEnd, locale)}"
-                    } else {
-                        "${TimeFormat.dayMonth(weekStart, locale)} – ${TimeFormat.dayMonth(weekEnd, locale)}"
-                    },
+                    text = mainRangeText(
+                        weekStart, weekEnd,
+                        if (weekStart.month == weekEnd.month) {
+                            "${weekStart.dayOfMonth}–${TimeFormat.dayMonth(weekEnd, locale)}"
+                        } else {
+                            "${TimeFormat.dayMonth(weekStart, locale)} – ${TimeFormat.dayMonth(weekEnd, locale)}"
+                        }
+                    ),
                     style = MaterialTheme.typography.titleMedium,
                     color = colors.textPrimary
                 )
-                hijriRangeText(weekStart, weekEnd)?.let { hijri ->
-                    Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.textMuted)
+                secondRangeText(weekStart, weekEnd)?.let { hijri ->
+                    Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.hijri)
                 }
             }
             IconButton(onClick = { viewModel.selectDate(selectedDate.plusWeeks(1)) }) {
@@ -188,6 +193,24 @@ internal fun WeekGrid(viewModel: ScheduleViewModel) {
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
                             )
+                            // Sana: raqam va yonida kichik, boshqa rangdagi hijriy kun
+                            val numbers = dayNumbers(day.date)
+                            Row(verticalAlignment = Alignment.Bottom) {
+                                Text(
+                                    text = numbers.main,
+                                    style = MaterialTheme.typography.labelMedium.copy(letterSpacing = 0.sp),
+                                    color = colors.textSecondary,
+                                    maxLines = 1
+                                )
+                                numbers.hijriSmall?.let { hijriDay ->
+                                    Text(
+                                        text = " · $hijriDay",
+                                        style = MaterialTheme.typography.labelSmall.copy(letterSpacing = 0.sp),
+                                        color = colors.hijri,
+                                        maxLines = 1
+                                    )
+                                }
+                            }
                             Text(
                                 text = stringResource(R.string.week_tasks_done, day.completedCount.toString(), day.taskCount.toString()),
                                 style = MaterialTheme.typography.labelSmall.copy(letterSpacing = 0.sp),

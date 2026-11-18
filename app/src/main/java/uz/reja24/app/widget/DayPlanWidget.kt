@@ -67,7 +67,8 @@ private val ROW_HEIGHT = 30.dp
 private val MORE_HEIGHT = 18.dp
 
 // Ranglar kun va tun rejimi uchun (telefon mavzusiga qarab)
-private val Background = ColorProvider(day = Color(0xF2FBF8F3), night = Color(0xF2171A1F))
+// Kunduzi qaymoq (oq emas — ko'zni og'ritmaydi), tunda to'q
+private val Background = ColorProvider(day = Color(0xF2E7E1D5), night = Color(0xF2171A1F))
 private val TextPrimary = ColorProvider(day = Color(0xFF16181C), night = Color(0xFFF2EFE9))
 private val TextMuted = ColorProvider(day = Color(0xFF766F63), night = Color(0xFF9B958A))
 private val NowBackground = ColorProvider(day = Color(0x1FD9663D), night = Color(0x33E2703A))
@@ -98,7 +99,7 @@ private fun WidgetContent(data: WidgetData) {
                     maxLines = 1
                 )
                 if (data.hijri != null) {
-                    Text(text = data.hijri, style = TextStyle(color = TextMuted, fontSize = 11.sp), maxLines = 1)
+                    Text(text = data.hijri, style = TextStyle(color = PrayerColor, fontSize = 11.sp), maxLines = 1)
                 }
             }
             if (data.nextPrayer != null) {

@@ -17,6 +17,8 @@ import uz.reja24.app.data.repository.BlockedAppRepositoryImpl
 import uz.reja24.app.data.repository.GoalRepositoryImpl
 import uz.reja24.app.data.repository.MuhosabaRepositoryImpl
 import uz.reja24.app.domain.repository.MuhosabaRepository
+import uz.reja24.app.data.repository.AppRuleRepositoryImpl
+import uz.reja24.app.domain.repository.AppRuleRepository
 import uz.reja24.app.data.repository.RoutineSettingsRepositoryImpl
 import uz.reja24.app.data.repository.ScheduleRepositoryImpl
 import uz.reja24.app.data.repository.ScoreRepositoryImpl
@@ -41,6 +43,7 @@ abstract class RepositoryModule {
     @Binds abstract fun bindStreakRepository(impl: StreakRepositoryImpl): StreakRepository
     @Binds abstract fun bindGoalRepository(impl: GoalRepositoryImpl): GoalRepository
     @Binds abstract fun bindMuhosabaRepository(impl: MuhosabaRepositoryImpl): MuhosabaRepository
+    @Binds abstract fun bindAppRuleRepository(impl: AppRuleRepositoryImpl): AppRuleRepository
     @Binds abstract fun bindUserPreferencesRepository(impl: UserPreferencesRepositoryImpl): UserPreferencesRepository
     @Binds abstract fun bindAppStateRepository(impl: AppStateRepositoryImpl): AppStateRepository
     @Binds abstract fun bindPrayerSettingsRepository(impl: PrayerSettingsRepositoryImpl): PrayerSettingsRepository

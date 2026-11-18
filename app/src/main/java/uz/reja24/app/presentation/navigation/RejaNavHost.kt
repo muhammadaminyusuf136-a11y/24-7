@@ -45,6 +45,7 @@ import uz.reja24.app.presentation.muhosaba.MuhosabaScreen
 import uz.reja24.app.presentation.schedule.EntryEditorScreen
 import uz.reja24.app.presentation.schedule.ScheduleScreen
 import uz.reja24.app.presentation.settings.AllowedAppsScreen
+import uz.reja24.app.presentation.settings.AppLimitsScreen
 import uz.reja24.app.presentation.settings.AppPickerScreen
 import uz.reja24.app.presentation.settings.PrivacyPolicyScreen
 import uz.reja24.app.presentation.settings.ReliabilityScreen
@@ -143,7 +144,8 @@ fun RejaNavHost(
                         onOpenReliability = { navController.navigate(Route.Reliability) },
                         onOpenPrivacy = { navController.navigate(Route.Privacy) },
                         onOpenPrayer = { navController.navigate(Route.PrayerSettings) },
-                        onOpenAllowedApps = { navController.navigate(Route.AllowedApps) }
+                        onOpenAllowedApps = { navController.navigate(Route.AllowedApps) },
+                        onOpenAppLimits = { navController.navigate(Route.AppLimits) }
                     )
                 }
                 composable<Route.EntryEditor> { EntryEditorScreen(onBack = { navController.popBackStack() }) }
@@ -151,6 +153,7 @@ fun RejaNavHost(
                 composable<Route.Reliability> { ReliabilityScreen(onBack = { navController.popBackStack() }) }
                 composable<Route.Privacy> { PrivacyPolicyScreen(onBack = { navController.popBackStack() }) }
                 composable<Route.AllowedApps> { AllowedAppsScreen(onBack = { navController.popBackStack() }) }
+                composable<Route.AppLimits> { AppLimitsScreen(onBack = { navController.popBackStack() }) }
                 composable<Route.PrayerSettings> { PrayerSettingsScreen(onBack = { navController.popBackStack() }) }
             }
         }

@@ -8,6 +8,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.flow.first
 import androidx.compose.ui.graphics.toArgb
 import uz.reja24.app.R
+import uz.reja24.app.domain.model.DateDisplay
 import uz.reja24.app.core.util.LocaleHelper
 import uz.reja24.app.core.util.TimeFormat
 import uz.reja24.app.core.util.TimeProvider
@@ -88,10 +89,14 @@ object WidgetDataLoader {
         val next = overview?.let { o -> PrayerSchedule.next(o.days.values.sortedBy { it.date }, now) }
         val nextText = next?.let { (prayer, at) -> "${localized.getString(prayerNameRes(prayer))} ${TimeFormat.time(at.toLocalTime())}" }
 
+        // Sana: sozlamadagidek — ikkalasi / faqat milodiy / faqat hijriy
+        val gregorianText = FullDateText.gregorian(res, today)
+        val hijriText = FullDateText.hijri(res, today, prayerSettings?.hijriAdjustmentDays ?: 0)
+        val display = prefs?.dateDisplay ?: DateDisplay.BOTH
         return WidgetData(
             weekday = TimeFormat.weekday(today, locale).uppercase(locale),
-            gregorian = FullDateText.gregorian(res, today),
-            hijri = FullDateText.hijri(res, today, prayerSettings?.hijriAdjustmentDays ?: 0),
+            gregorian = if (display == DateDisplay.HIJRI && hijriText != null) hijriText else gregorianText,
+            hijri = hijriText.takeIf { display == DateDisplay.BOTH },
             nextPrayerLabel = localized.getString(R.string.widget_next_prayer),
             nextPrayer = nextText,
             items = buildItems(tasks, todayPrayers, now) { localized.getString(prayerNameRes(it)) },

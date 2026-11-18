@@ -15,7 +15,10 @@ import kotlinx.coroutines.launch
 import uz.reja24.app.core.util.TimeProvider
 import uz.reja24.app.domain.model.DailyScore
 import uz.reja24.app.domain.model.DailyTask
+import uz.reja24.app.domain.prayer.Prayer
+import uz.reja24.app.domain.repository.DayNote
 import uz.reja24.app.domain.repository.MuhosabaItem
+import uz.reja24.app.domain.repository.PrayerStatus
 import uz.reja24.app.domain.repository.MuhosabaRepository
 import uz.reja24.app.domain.repository.ReminderScheduler
 import uz.reja24.app.domain.repository.RoutineSettingsRepository
@@ -40,6 +43,9 @@ data class PlanSummary(
     val scheduled: Int
 )
 
+/** Namozlar davr bo'yicha: necha marta vaqtida, kechikib, qazo; total — davrdagi jami farz namozlar. */
+data class PrayerTally(val onTime: Int, val late: Int, val missed: Int, val total: Int)
+
 /** "Daftar" — bitta kunning yakuni (kun tartibi + o'z ro'yxati birga). */
 data class DayLedger(val date: LocalDate, val done: Int, val missed: Int, val total: Int)
 
@@ -59,7 +65,13 @@ data class MuhosabaUiState(
     val planWeek: List<PlanSummary>,
     val planMonth: List<PlanSummary>,
     /** Oxirgi 30 kun, eskisi birinchi. */
-    val ledger: List<DayLedger>
+    val ledger: List<DayLedger>,
+    /** Shu kunning 5 vaqt namozi belgilari. */
+    val prayers: Map<Prayer, PrayerStatus> = emptyMap(),
+    val prayerWeek: PrayerTally = PrayerTally(0, 0, 0, 0),
+    val prayerMonth: PrayerTally = PrayerTally(0, 0, 0, 0),
+    /** Kechki yozuv. */
+    val note: DayNote? = null
 )
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -106,6 +118,15 @@ class MuhosabaViewModel @Inject constructor(
                 planMonth = MuhosabaSummary.summarizePlans(tasks, misses, today, MONTH_DAYS),
                 ledger = MuhosabaSummary.ledger(tasks, misses, items, marks, today, MONTH_DAYS)
             )
+        }.let { base ->
+            combine(base, repository.observePrayerMarks(from, today), repository.observeNote(day)) { state, prayerMarks, note ->
+                state.copy(
+                    prayers = prayerMarks[day].orEmpty(),
+                    prayerWeek = MuhosabaSummary.prayerTally(prayerMarks, today, WEEK_DAYS),
+                    prayerMonth = MuhosabaSummary.prayerTally(prayerMarks, today, MONTH_DAYS),
+                    note = note
+                )
+            }
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
@@ -147,6 +168,19 @@ class MuhosabaViewModel @Inject constructor(
         }
     }
 
+    /** Namozga belgi: vaqtida / kechikib / qazo. Xuddi shu belgi yana bosilsa — olib tashlanadi. */
+    fun setPrayerMark(prayer: Prayer, status: PrayerStatus) {
+        val state = uiState.value ?: return
+        val next = if (state.prayers[prayer] == status) null else status
+        viewModelScope.launch { runCatching { repository.setPrayerMark(state.date, prayer, next) } }
+    }
+
+    /** Kechki yozuvni saqlaydi (shu kun uchun). */
+    fun saveNote(good: String, improve: String) {
+        val state = uiState.value ?: return
+        viewModelScope.launch { runCatching { repository.saveNote(state.date, good.take(MAX_NOTE), improve.take(MAX_NOTE)) } }
+    }
+
     fun addItem(title: String) {
         viewModelScope.launch { runCatching { repository.addItem(title.take(MAX_TITLE)) } }
     }
@@ -163,6 +197,7 @@ class MuhosabaViewModel @Inject constructor(
         const val WEEK_DAYS = 7
         const val MONTH_DAYS = 30
         const val MAX_TITLE = 60
+        const val MAX_NOTE = 1000
     }
 }
 
@@ -222,6 +257,23 @@ object MuhosabaSummary {
                 )
             }
             .sortedBy { it.title.lowercase() }
+    }
+
+    /** Oxirgi `days` kundagi namozlar: vaqtida, kechikib, qazo (belgilanmaganlar hisoblanmaydi). */
+    fun prayerTally(
+        marks: Map<LocalDate, Map<Prayer, PrayerStatus>>,
+        today: LocalDate,
+        days: Int
+    ): PrayerTally {
+        val from = today.minusDays(days - 1L)
+        val values = marks.filterKeys { !it.isBefore(from) && !it.isAfter(today) }
+            .values.flatMap { day -> day.filterKeys { it.isObligatory }.values }
+        return PrayerTally(
+            onTime = values.count { it == PrayerStatus.ON_TIME },
+            late = values.count { it == PrayerStatus.LATE },
+            missed = values.count { it == PrayerStatus.MISSED },
+            total = days * Prayer.OBLIGATORY.size
+        )
     }
 
     /** Daftar: har kuni nechta ✓, nechta ✗ va jami nechta reja/band bo'lgan (eskisi birinchi). */

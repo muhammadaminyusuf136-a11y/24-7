@@ -12,7 +12,7 @@ import uz.reja24.app.presentation.theme.RejaTheme
 
 /**
  * Orqa fon — har doim tanlangan ranglar to'plamining tekis foni:
- * To'q ko'k (POWER), Pushti (GRACE), Qaymoq (PURE, tanlangan mavzu bilan).
+ * Qaymoq (PURE), To'q ko'k (POWER), To'q yashil (GREEN), To'q pushti (GRACE).
  *
  * Avval "Kuch" va "Nafosat" gradient va chiziqlar bilan chizilardi, lekin kartalar, pastki
  * menyu, lenta chetlari va dialoglar tekis rangda edi — fon bilan mos tushmay, telefonda

@@ -74,7 +74,6 @@ import kotlinx.coroutines.launch
 import uz.reja24.app.R
 import uz.reja24.app.core.util.TimeFormat
 import uz.reja24.app.domain.model.BackgroundStyle
-import uz.reja24.app.domain.model.ThemeMode
 import uz.reja24.app.presentation.components.RejaBackground
 import uz.reja24.app.presentation.components.backgroundTopColor
 import uz.reja24.app.presentation.theme.RejaTheme
@@ -93,7 +92,6 @@ data class BlockOverlayState(
     val unlockTime: LocalTime,
     val streakDays: Int,
     val messageSeed: Int,
-    val themeMode: ThemeMode = ThemeMode.SYSTEM,
     val backgroundStyle: BackgroundStyle = BackgroundStyle.PURE
 )
 
@@ -109,7 +107,7 @@ fun BlockScreen(
     onEmergency: () -> Unit,
     onClose: () -> Unit
 ) {
-    RejaTheme(themeMode = state.themeMode, backgroundStyle = state.backgroundStyle) {
+    RejaTheme(backgroundStyle = state.backgroundStyle) {
         val now by produceState(initialValue = LocalDateTime.now()) {
             while (true) {
                 value = LocalDateTime.now()

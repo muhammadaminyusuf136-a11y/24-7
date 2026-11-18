@@ -35,6 +35,7 @@ import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material.icons.outlined.Mosque
+import androidx.compose.material.icons.outlined.HourglassBottom
 import androidx.compose.material.icons.outlined.Policy
 import androidx.compose.material.icons.outlined.Shield
 import androidx.compose.material3.AlertDialog
@@ -76,17 +77,16 @@ import uz.reja24.app.core.util.TimeFormat
 import uz.reja24.app.domain.model.AppLanguage
 import uz.reja24.app.domain.model.BackgroundStyle
 import uz.reja24.app.domain.model.RoutineSettings
-import uz.reja24.app.domain.model.ThemeMode
+import uz.reja24.app.domain.model.DateDisplay
 import uz.reja24.app.domain.model.VoiceGender
 import uz.reja24.app.presentation.components.LockBanner
 import uz.reja24.app.presentation.components.RejaCard
 import uz.reja24.app.presentation.components.RejaTimePickerDialog
 import uz.reja24.app.presentation.components.SectionLabel
 import uz.reja24.app.presentation.schedule.RejaChip
-import uz.reja24.app.presentation.theme.DarkBackground
-import uz.reja24.app.presentation.theme.GraceBackgroundTop
+import uz.reja24.app.presentation.theme.GraceBackground
+import uz.reja24.app.presentation.theme.GreenBackground
 import uz.reja24.app.presentation.theme.NavyBackground
-import uz.reja24.app.presentation.theme.GrayBackground
 import uz.reja24.app.presentation.theme.LightBackground
 import uz.reja24.app.presentation.theme.PrayerGreen
 import uz.reja24.app.presentation.theme.RejaTheme
@@ -107,6 +107,7 @@ fun SettingsScreen(
     onOpenPrivacy: () -> Unit,
     onOpenPrayer: () -> Unit,
     onOpenAllowedApps: () -> Unit,
+    onOpenAppLimits: () -> Unit = {},
     viewModel: SettingsViewModel = hiltViewModel()
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -185,16 +186,21 @@ fun SettingsScreen(
                 LanguageGrid(selected = prefs.language.takeIf { prefs.isLanguageChosen }, onSelect = viewModel::setLanguage)
             }
 
-            // ---------- Mavzu ----------
-            Section(stringResource(R.string.settings_theme)) {
-                ThemeChips(selected = prefs.themeMode, onSelect = viewModel::setTheme)
-            }
-
-            // ---------- Orqa fon ----------
+            // ---------- Rang (mavzu va fon bitta tanlov) ----------
             Section(stringResource(R.string.settings_background)) {
                 BackgroundChips(selected = prefs.backgroundStyle, onSelect = viewModel::setBackgroundStyle)
                 Text(
                     text = stringResource(R.string.settings_background_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = RejaTheme.colors.textMuted
+                )
+            }
+
+            // ---------- Sana: ikkalasi / milodiy / hijriy ----------
+            Section(stringResource(R.string.settings_date)) {
+                DateDisplayChips(selected = prefs.dateDisplay, onSelect = viewModel::setDateDisplay)
+                Text(
+                    text = stringResource(R.string.settings_date_hint),
                     style = MaterialTheme.typography.bodySmall,
                     color = RejaTheme.colors.textMuted
                 )
@@ -360,6 +366,34 @@ fun SettingsScreen(
                         )
                     }
                 }
+            }
+
+            // ---------- Kunduzgi nazorat: kunlik chegara va "o'ylab ko'r" pauzasi ----------
+            Section(stringResource(R.string.day_control_section)) {
+                RejaCard(onClick = onOpenAppLimits, modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(Icons.Outlined.HourglassBottom, contentDescription = null, tint = RejaTheme.colors.accent)
+                        Spacer(Modifier.width(12.dp))
+                        Column(Modifier.weight(1f)) {
+                            Text(
+                                text = stringResource(R.string.day_control_title),
+                                style = MaterialTheme.typography.titleSmall,
+                                color = RejaTheme.colors.textPrimary
+                            )
+                            Text(
+                                text = stringResource(R.string.day_control_card_desc),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = RejaTheme.colors.textMuted
+                            )
+                        }
+                        Icon(Icons.AutoMirrored.Outlined.KeyboardArrowRight, contentDescription = null, tint = RejaTheme.colors.textMuted)
+                    }
+                }
+            }
+
+            // ---------- Zaxira nusxa ----------
+            Section(stringResource(R.string.backup_section)) {
+                BackupSection()
             }
 
             // ---------- Ishonchlilik ----------
@@ -610,41 +644,12 @@ fun LanguageCard(name: String, selected: Boolean, onClick: () -> Unit, modifier:
 }
 
 @Composable
-private fun ThemeChips(selected: ThemeMode, onSelect: (ThemeMode) -> Unit) {
-    val options = listOf(
-        Triple(ThemeMode.LIGHT, R.string.theme_light, LightBackground),
-        Triple(ThemeMode.DARK, R.string.theme_dark, DarkBackground),
-        Triple(ThemeMode.GRAY, R.string.theme_gray, GrayBackground),
-        Triple(ThemeMode.SYSTEM, R.string.theme_system, null)
-    )
-    FlowRow(
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        options.forEach { (mode, label, swatch) ->
-            SwatchChip(
-                label = stringResource(label),
-                selected = mode == selected,
-                onClick = { onSelect(mode) },
-                swatch = {
-                    if (swatch != null) {
-                        Box(Modifier.fillMaxSize().background(swatch))
-                    } else {
-                        // Tizim bo'yicha — yarmi oq, yarmi qora
-                        Box(Modifier.fillMaxSize().background(Brush.horizontalGradient(0.5f to LightBackground, 0.5f to DarkBackground)))
-                    }
-                }
-            )
-        }
-    }
-}
-
-@Composable
 private fun BackgroundChips(selected: BackgroundStyle, onSelect: (BackgroundStyle) -> Unit) {
     val options = listOf(
-        BackgroundStyle.PURE to R.string.background_pure,
         BackgroundStyle.POWER to R.string.background_power,
-        BackgroundStyle.GRACE to R.string.background_grace
+        BackgroundStyle.GREEN to R.string.background_green,
+        BackgroundStyle.GRACE to R.string.background_grace,
+        BackgroundStyle.PURE to R.string.background_pure
     )
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -666,10 +671,29 @@ private fun BackgroundChips(selected: BackgroundStyle, onSelect: (BackgroundStyl
 private fun BackgroundPreview(style: BackgroundStyle) {
     val color = when (style) {
         BackgroundStyle.POWER -> NavyBackground
-        BackgroundStyle.GRACE -> GraceBackgroundTop
+        BackgroundStyle.GREEN -> GreenBackground
+        BackgroundStyle.GRACE -> GraceBackground
         BackgroundStyle.PURE -> LightBackground
     }
     Box(Modifier.fillMaxSize().background(color))
+}
+
+/** Sanalar: ikkalasi (milodiy + hijriy) / faqat milodiy / faqat hijriy. */
+@Composable
+private fun DateDisplayChips(selected: DateDisplay, onSelect: (DateDisplay) -> Unit) {
+    val options = listOf(
+        DateDisplay.BOTH to R.string.date_display_both,
+        DateDisplay.GREGORIAN to R.string.date_display_gregorian,
+        DateDisplay.HIJRI to R.string.date_display_hijri
+    )
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        options.forEach { (display, label) ->
+            RejaChip(selected = display == selected, label = stringResource(label), onClick = { onSelect(display) })
+        }
+    }
 }
 
 @Composable

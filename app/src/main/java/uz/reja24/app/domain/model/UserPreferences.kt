@@ -14,14 +14,28 @@ enum class AppLanguage(val tag: String) {
     }
 }
 
-/** Orqa fon uslubi: Kuch / Nafosat / Sof. */
+/**
+ * Ilova rangi (mavzu va fon bitta tanlov). Nomlar bazada saqlangani uchun enum nomlari eski.
+ */
 enum class BackgroundStyle {
-    POWER,   // Kuch — to'q ko'k-grafit, diagonal chiziqlar
-    GRACE,   // Nafosat — pushti-binafsha, to'lqinlar
-    PURE;    // Sof — gradientsiz
+    PURE,    // Qaymoq — ko'zni og'ritmaydigan kulrang-qaymoq, yorug'
+    POWER,   // To'q ko'k
+    GREEN,   // To'q yashil
+    GRACE;   // To'q pushti
 
     companion object {
         fun fromName(name: String?): BackgroundStyle = entries.firstOrNull { it.name == name } ?: PURE
+    }
+}
+
+/** Sanalar qanday ko'rsatiladi: ikkalasi, faqat milodiy yoki faqat hijriy. */
+enum class DateDisplay {
+    BOTH,
+    GREGORIAN,
+    HIJRI;
+
+    companion object {
+        fun fromName(name: String?): DateDisplay = entries.firstOrNull { it.name == name } ?: BOTH
     }
 }
 
@@ -39,8 +53,8 @@ enum class VoiceGender {
 data class UserPreferences(
     val language: AppLanguage = AppLanguage.UZBEK,
     val isLanguageChosen: Boolean = false,   // foydalanuvchi tilni o'zi tanlaganmi
-    val themeMode: ThemeMode = ThemeMode.SYSTEM,
     val backgroundStyle: BackgroundStyle = BackgroundStyle.PURE,
+    val dateDisplay: DateDisplay = DateDisplay.BOTH,
     val isOnboardingCompleted: Boolean = false,
     val voiceGender: VoiceGender = VoiceGender.FEMALE,
     /** Tungi "faqat kerakli" rejim: bloklash vaqtida faqat allowedPackages ochiq (tizim ilovalaridan tashqari). */

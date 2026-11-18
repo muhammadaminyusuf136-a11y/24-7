@@ -19,6 +19,8 @@ data class RejaColors(
     val accent: Color,
     val accentText: Color,
     val timelineEmpty: Color,
+    /** Hijriy sana rangi — milodiydan ajralib tursin. */
+    val hijri: Color,
     val isDark: Boolean
 )
 
@@ -32,45 +34,7 @@ val LightRejaColors = RejaColors(
     accent = LightAccent,
     accentText = LightAccentText,
     timelineEmpty = LightTimelineEmpty,
-    isDark = false
-)
-
-val DarkRejaColors = RejaColors(
-    background = DarkBackground,
-    surface = DarkSurface,
-    border = DarkBorder,
-    textPrimary = DarkTextPrimary,
-    textSecondary = DarkTextSecondary,
-    textMuted = DarkTextMuted,
-    accent = DarkAccent,
-    accentText = DarkAccentText,
-    timelineEmpty = DarkTimelineEmpty,
-    isDark = true
-)
-
-val GrayRejaColors = RejaColors(
-    background = GrayBackground,
-    surface = GraySurface,
-    border = GrayBorder,
-    textPrimary = GrayTextPrimary,
-    textSecondary = GrayTextSecondary,
-    textMuted = GrayTextMuted,
-    accent = GrayAccent,
-    accentText = GrayAccentText,
-    timelineEmpty = GrayTimelineEmpty,
-    isDark = true
-)
-
-val GraceRejaColors = RejaColors(
-    background = GraceBackgroundTop,
-    surface = GraceSurface,
-    border = GraceBorder,
-    textPrimary = GraceTextPrimary,
-    textSecondary = GraceTextSecondary,
-    textMuted = GraceTextMuted,
-    accent = GraceAccent,
-    accentText = GraceAccentText,
-    timelineEmpty = GraceTimelineEmpty,
+    hijri = LightHijri,
     isDark = false
 )
 
@@ -84,7 +48,36 @@ val NavyRejaColors = RejaColors(
     accent = NavyAccent,
     accentText = NavyAccentText,
     timelineEmpty = NavyTimelineEmpty,
+    hijri = NavyHijri,
     isDark = true
 )
 
-val LocalRejaColors =staticCompositionLocalOf { LightRejaColors }
+val GreenRejaColors = RejaColors(
+    background = GreenBackground,
+    surface = GreenSurface,
+    border = GreenBorder,
+    textPrimary = GreenTextPrimary,
+    textSecondary = GreenTextSecondary,
+    textMuted = GreenTextMuted,
+    accent = GreenAccent,
+    accentText = GreenAccentText,
+    timelineEmpty = GreenTimelineEmpty,
+    hijri = GreenHijri,
+    isDark = true
+)
+
+val GraceRejaColors = RejaColors(
+    background = GraceBackground,
+    surface = GraceSurface,
+    border = GraceBorder,
+    textPrimary = GraceTextPrimary,
+    textSecondary = GraceTextSecondary,
+    textMuted = GraceTextMuted,
+    accent = GraceAccent,
+    accentText = GraceAccentText,
+    timelineEmpty = GraceTimelineEmpty,
+    hijri = GraceHijri,
+    isDark = true
+)
+
+val LocalRejaColors = staticCompositionLocalOf { LightRejaColors }

@@ -59,7 +59,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import uz.reja24.app.R
 import uz.reja24.app.domain.model.BackgroundStyle
-import uz.reja24.app.domain.model.ThemeMode
 import uz.reja24.app.presentation.components.RejaBackground
 import uz.reja24.app.presentation.theme.RejaTheme
 import java.util.Locale
@@ -76,7 +75,7 @@ class EmergencyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            RejaTheme(themeMode = ThemeMode.DARK, backgroundStyle = BackgroundStyle.POWER) {
+            RejaTheme(backgroundStyle = BackgroundStyle.POWER) {
                 RejaBackground(style = BackgroundStyle.POWER) {
                     EmergencyScreen(onFinish = { finish() })
                 }

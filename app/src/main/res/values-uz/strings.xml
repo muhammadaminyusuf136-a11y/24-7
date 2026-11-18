@@ -29,7 +29,6 @@
     <string name="cd_back">Orqaga</string>
     <string name="cd_open">Ochish</string>
     <string name="cd_streak">Ketma-ketlik</string>
-    <string name="cd_timeline">Kun tartibi lentasi, bugun %1$s ta reja. Chapga-oʻngga surib koʻring.</string>
     <string name="cd_add_entry">Yangi reja qoʻshish</string>
     <string name="cd_mark_done">Bajarildi deb belgilash</string>
     <string name="cd_mark_not_done">Belgini olib tashlash</string>
@@ -48,24 +47,13 @@
     <string name="nav_settings">Sozlama</string>
 
     <!-- Bosh sahifa -->
-    <string name="home_free_time">Boʻsh vaqt</string>
     <string name="home_time_left">%1$s qoldi</string>
     <string name="home_next">Keyingi</string>
     <string name="home_next_routine">Rejim boshlanadi</string>
     <string name="home_no_next">Bugun boshqa reja yoʻq</string>
     <string name="banner_blocking_off">Bloklash ishlamayapti — ruxsat bering</string>
-    <string name="home_viewing_now">hozir</string>
-    <string name="home_time_ago">%1$s oldin</string>
-    <string name="home_time_later">%1$s keyin</string>
-    <string name="home_back_to_now">Hozirga</string>
-    <string name="home_at_this_time">Shu vaqtda</string>
-    <string name="home_now_label">Hozir</string>
-    <string name="timeline_yesterday">Kecha</string>
     <string name="timeline_today">Bugun</string>
-    <string name="timeline_tomorrow">Ertaga</string>
     <string name="home_state_done">tugagan</string>
-    <string name="home_state_starts_in">%1$sdan keyin boshlanadi</string>
-    <string name="home_free_hint">Rejalashtirilmagan vaqt</string>
 
     <!-- Toifalar -->
     <string name="category_work">Ish</string>
@@ -133,16 +121,11 @@
     <!-- Sozlamalar -->
     <string name="settings_title">Sozlamalar</string>
     <string name="settings_language">Til</string>
-    <string name="settings_theme">Mavzu</string>
-    <string name="settings_background">Orqa fon uslubi</string>
-    <string name="theme_light">Oq</string>
-    <string name="theme_dark">Qora</string>
-    <string name="theme_gray">Kulrang</string>
-    <string name="theme_system">Tizim boʻyicha</string>
+    <string name="settings_background">Ilova rangi</string>
     <string name="settings_routine">Rejim</string>
     <string name="settings_routine_active">Rejim yoqilgan</string>
     <string name="settings_strict_mode">Qattiq rejim</string>
-    <string name="settings_strict_mode_desc">Favqulodda kirish kuniga faqat 1 marta</string>
+    <string name="settings_strict_mode_desc">Favqulodda kirish kechasiga 1 marta. Rejim vaqtida Sozlamalar, ilova oʻchirish oynasi va Play Market ham yopiladi (qoʻngʻiroq, SMS, soat va yuqoridagi tez panel ochiq qoladi).</string>
     <string name="settings_reminders">Eslatma bosqichlari</string>
     <string name="settings_stage_1">1-bosqich</string>
     <string name="settings_stage_2">2-bosqich</string>
@@ -285,10 +268,6 @@
     <plurals name="days_count">
         <item quantity="one">%1$s kun</item>
         <item quantity="other">%1$s kun</item>
-    </plurals>
-    <plurals name="weeks_count">
-        <item quantity="one">%1$s hafta</item>
-        <item quantity="other">%1$s hafta</item>
     </plurals>
     <plurals name="duration_hours">
         <item quantity="one">%1$s soat</item>
@@ -618,9 +597,9 @@
     <string name="emergency_penalty_note">Toʻgʻri javob — 5 daqiqalik ruxsat. Muhosabada ✗ belgisi qoladi.</string>
     <string name="emergency_granted_text">Keyin ilovalar yana bloklanadi. Bugungi Muhosabaga ✗ belgisi qoʻyildi.</string>
     <string name="background_power">Toʻq koʻk</string>
-    <string name="background_grace">Pushti</string>
+    <string name="background_grace">Toʻq pushti</string>
     <string name="background_pure">Qaymoq</string>
-    <string name="settings_background_hint">«Qaymoq» fonida yuqoridagi mavzu (oq, qora, kulrang) ishlaydi. «Toʻq koʻk» va «Pushti» — oʻz ranglari bilan.</string>
+    <string name="settings_background_hint">Rang butun ilovaga — fon, kartalar va menyuga birdaniga qoʻllanadi. «Qaymoq» — yorugʻ, koʻzni ogʻritmaydigan rang.</string>
     <string name="muhosaba_fact_bypass">Favqulodda kirish</string>
     <string name="widget_earlier">Oʻtgan: %1$s</string>
     <string name="muhosaba_plans">Kun tartibi</string>
@@ -640,4 +619,60 @@
     <string name="home_table_time">Vaqt</string>
     <string name="home_table_plan">Reja</string>
     <string name="home_table_state">Holat</string>
+    <string name="background_green">Toʻq yashil</string>
+    <string name="settings_date">Sana</string>
+    <string name="date_display_both">Ikkalasi</string>
+    <string name="date_display_gregorian">Faqat milodiy</string>
+    <string name="date_display_hijri">Faqat hijriy</string>
+    <string name="settings_date_hint">«Ikkalasi»da milodiy sana katta, hijriy sana yonida kichik va boshqa rangda koʻrinadi.</string>
+    <string name="schedule_missed">bajarilmadi</string>
+    <string name="muhosaba_prayers">5 vaqt namoz</string>
+    <string name="muhosaba_prayers_hint">✓ — vaqtida, soat belgisi — kechikib (vaqti chiqmasdan), ✗ — qazo boʻldi.</string>
+    <string name="prayer_status_on_time">Vaqtida</string>
+    <string name="prayer_status_late">Kechikib</string>
+    <string name="prayer_status_missed">Qazo</string>
+    <string name="prayer_mark_on_time">%1$s: vaqtida oʻqildi</string>
+    <string name="prayer_mark_late">%1$s: kechikib oʻqildi</string>
+    <string name="prayer_mark_missed">%1$s: qazo boʻldi</string>
+    <string name="muhosaba_prayer_tally">Vaqtida %1$s · kechikib %2$s · qazo %3$s (jami %4$s)</string>
+    <string name="muhosaba_note">Kechki yozuv</string>
+    <string name="muhosaba_note_good">Bugun nima yaxshi boʻldi?</string>
+    <string name="muhosaba_note_improve">Nimani tuzataman?</string>
+    <string name="muhosaba_note_saved">Saqlangan</string>
+    <string name="muhosaba_note_unsaved">Saqlanmagan oʻzgarish bor</string>
+    <string name="pause_title">Bir nafas oling</string>
+    <string name="pause_text">%1$s ni ochmoqchisiz. Rostdan hozir kerakmi?</string>
+    <string name="pause_usage">Bugun: %1$s / %2$s daqiqa</string>
+    <string name="pause_skip">Kerak emas</string>
+    <string name="pause_open">%1$s ni ochish</string>
+    <string name="pause_open_wait">Ochish (%1$s)</string>
+    <string name="limit_title">Bugungi vaqt tugadi</string>
+    <string name="limit_text">%1$s uchun kunlik %2$s daqiqa ishlatildi. Ertaga yana ochiladi.</string>
+    <string name="limit_home">Bosh ekranga</string>
+    <string name="day_control_section">Kunduzgi nazorat</string>
+    <string name="day_control_title">Ilovalar uchun chegara</string>
+    <string name="day_control_card_desc">Kunlik daqiqa va ochishdan oldin «oʻylab koʻr»</string>
+    <string name="day_control_hint">Har bir ilova uchun alohida: kuniga necha daqiqa ishlatish mumkin (vaqt tugasa — ertagacha yopiladi) va ochishdan oldin %1$s soniyalik «oʻylab koʻr» pauzasi. Kunduzi ishlaydi; kechasi tungi rejim qoidasi amal qiladi.</string>
+    <string name="day_control_rules">Qoida qoʻyilgan ilovalar</string>
+    <string name="day_control_add">Ilova qoʻshish</string>
+    <string name="day_control_used_of">Bugun: %1$s / %2$s daqiqa</string>
+    <string name="day_control_used">Bugun: %1$s daqiqa</string>
+    <string name="day_control_remove">%1$s — qoidani olib tashlash</string>
+    <string name="day_control_limit">Kunlik chegara</string>
+    <string name="day_control_no_limit">Yoʻq</string>
+    <string name="day_control_minutes">%1$s daq</string>
+    <string name="day_control_pause">«Oʻylab koʻr» pauzasi</string>
+    <string name="day_control_pause_desc">Ochishdan oldin %1$s soniya kutiladi</string>
+    <string name="day_control_add_app">%1$s ni qoʻshish</string>
+    <string name="backup_section">Zaxira nusxa</string>
+    <string name="backup_hint">Barcha rejalar, Muhosaba yozuvlari va sozlamalar bitta faylga saqlanadi. Faylni Google Drive yoki Telegramʼga (oʻzingizga) yuborib qoʻying — telefon almashsa, shu fayldan tiklaysiz.</string>
+    <string name="backup_save">Faylga saqlash</string>
+    <string name="backup_restore">Fayldan tiklash</string>
+    <string name="backup_restore_title">Fayldan tiklash</string>
+    <string name="backup_restore_confirm">Hozirgi barcha maʼlumotlar fayldagilar bilan almashtiriladi va ilova qayta ochiladi. Davom etasizmi?</string>
+    <string name="backup_saved">Zaxira nusxa saqlandi</string>
+    <string name="backup_failed">Saqlab boʻlmadi. Boshqa joyni tanlab koʻring.</string>
+    <string name="backup_restored">Maʼlumotlar tiklandi. Ilova qayta ochilmoqda…</string>
+    <string name="backup_invalid">Bu 24/7 zaxira fayli emas yoki fayl buzilgan.</string>
+    <string name="backup_newer">Bu fayl ilovaning yangiroq versiyasidan. Avval ilovani yangilang.</string>
 </resources>

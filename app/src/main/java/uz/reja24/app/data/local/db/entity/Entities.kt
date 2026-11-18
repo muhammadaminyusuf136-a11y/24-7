@@ -180,3 +180,39 @@ data class TaskMissEntity(
     val entryId: Long,
     val date: LocalDate
 )
+
+/** Muhosabada namoz belgisi: vaqtida / kechikib / qazo. 5-versiyada qo'shilgan. */
+@Entity(tableName = "prayer_marks", primaryKeys = ["date", "prayer"])
+data class PrayerMarkEntity(
+    val date: LocalDate,
+    /** Prayer enum nomi (FAJR, DHUHR, ...). */
+    val prayer: String,
+    /** PrayerStatus enum nomi. */
+    val status: String
+)
+
+/** Kechki qisqa yozuv: "bugun nima yaxshi bo'ldi" va "nimani tuzataman". 5-versiyada qo'shilgan. */
+@Entity(tableName = "day_notes")
+data class DayNoteEntity(
+    @PrimaryKey val date: LocalDate,
+    val good: String,
+    val improve: String
+)
+
+/** Kunduzgi nazorat: ilova uchun kunlik vaqt chegarasi va "o'ylab ko'r" pauzasi. 5-versiyada qo'shilgan. */
+@Entity(tableName = "app_rules")
+data class AppRuleEntity(
+    @PrimaryKey val packageName: String,
+    val appName: String,
+    /** 0 — chegara yo'q. */
+    val dailyLimitMinutes: Int,
+    val pauseOn: Boolean
+)
+
+/** Ilova bugun necha soniya ochiq turgani (faqat app_rules dagilar uchun hisoblanadi). */
+@Entity(tableName = "app_usage", primaryKeys = ["date", "packageName"])
+data class AppUsageEntity(
+    val date: LocalDate,
+    val packageName: String,
+    val seconds: Long
+)

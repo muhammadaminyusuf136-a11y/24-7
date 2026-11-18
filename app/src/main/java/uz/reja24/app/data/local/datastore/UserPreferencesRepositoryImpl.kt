@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import uz.reja24.app.domain.model.AppLanguage
 import uz.reja24.app.domain.model.BackgroundStyle
-import uz.reja24.app.domain.model.ThemeMode
+import uz.reja24.app.domain.model.DateDisplay
 import uz.reja24.app.domain.model.UserPreferences
 import uz.reja24.app.domain.model.VoiceGender
 import uz.reja24.app.domain.repository.UserPreferencesRepository
@@ -37,10 +37,10 @@ class UserPreferencesRepositoryImpl @Inject constructor(
             UserPreferences(
                 language = AppLanguage.fromTag(prefs[Keys.LANGUAGE]),
                 isLanguageChosen = prefs[Keys.LANGUAGE] != null,
-                themeMode = prefs[Keys.THEME]
-                    ?.let { name -> ThemeMode.entries.firstOrNull { it.name == name } }
-                    ?: ThemeMode.SYSTEM,
-                backgroundStyle = BackgroundStyle.fromName(prefs[Keys.BACKGROUND]),
+                backgroundStyle = prefs[Keys.BACKGROUND]?.let(BackgroundStyle::fromName)
+                    // Eski versiyada "Qora" mavzu tanlaganlar — to'q ko'k rangda davom etadi
+                    ?: if (prefs[Keys.THEME] == "DARK") BackgroundStyle.POWER else BackgroundStyle.PURE,
+                dateDisplay = DateDisplay.fromName(prefs[Keys.DATE_DISPLAY]),
                 isOnboardingCompleted = prefs[Keys.ONBOARDING_DONE] ?: false,
                 voiceGender = VoiceGender.fromName(prefs[Keys.VOICE_GENDER]),
                 nightAllowOnly = prefs[Keys.NIGHT_ALLOW_ONLY] ?: false,
@@ -55,8 +55,8 @@ class UserPreferencesRepositoryImpl @Inject constructor(
         dataStore.edit { it[Keys.LANGUAGE] = language.tag }
     }
 
-    override suspend fun setThemeMode(mode: ThemeMode) {
-        dataStore.edit { it[Keys.THEME] = mode.name }
+    override suspend fun setDateDisplay(display: DateDisplay) {
+        dataStore.edit { it[Keys.DATE_DISPLAY] = display.name }
     }
 
     override suspend fun setBackgroundStyle(style: BackgroundStyle) {
@@ -94,7 +94,9 @@ class UserPreferencesRepositoryImpl @Inject constructor(
         val ALLOWED_PACKAGES = stringSetPreferencesKey("night_allowed_packages")
         val VOICE_GENDER = stringPreferencesKey("voice_gender")
         val LANGUAGE = stringPreferencesKey("language")
+        /** Eski versiyadagi mavzu — faqat o'qiladi (yangi rang tanlovi BACKGROUND'da). */
         val THEME = stringPreferencesKey("theme_mode")
+        val DATE_DISPLAY = stringPreferencesKey("date_display")
         val BACKGROUND = stringPreferencesKey("background_style")
         val ONBOARDING_DONE = booleanPreferencesKey("onboarding_completed")
     }

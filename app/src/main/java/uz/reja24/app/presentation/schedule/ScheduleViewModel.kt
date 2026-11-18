@@ -98,6 +98,11 @@ class ScheduleViewModel @Inject constructor(
         .flatMapLatest { scheduleRepository.observeTasksForDate(it) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
+    /** Tanlangan kunda Muhosabada ✗ qo'yilgan rejalar (Reja bo'limida qizil ✗ bilan ko'rinadi). */
+    val dayMisses: StateFlow<Set<Long>> = _selectedDate
+        .flatMapLatest { date -> muhosabaRepository.observeTaskMisses(date, date).map { it[date].orEmpty() } }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptySet())
+
     val weekDays: StateFlow<List<DaySummary>> = _selectedDate
         .map { WeeklyEvaluator.weekStartOf(it) }
         .flatMapLatest { start -> summaries(start, start.plusDays(6)) }

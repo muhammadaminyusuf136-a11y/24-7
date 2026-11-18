@@ -22,6 +22,7 @@ import uz.reja24.app.data.local.db.dao.BlockedAppDao
 import uz.reja24.app.data.local.db.dao.DailyScoreDao
 import uz.reja24.app.data.local.db.dao.GoalDao
 import uz.reja24.app.data.local.db.dao.MuhosabaDao
+import uz.reja24.app.data.local.db.dao.AppRuleDao
 import uz.reja24.app.data.local.db.dao.RoutineSettingsDao
 import uz.reja24.app.data.local.db.dao.ScheduleDao
 import uz.reja24.app.data.local.db.dao.StreakDao
@@ -52,6 +53,7 @@ object DatabaseModule {
     @Provides fun provideStreakDao(db: RejaDatabase): StreakDao = db.streakDao()
     @Provides fun provideGoalDao(db: RejaDatabase): GoalDao = db.goalDao()
     @Provides fun provideMuhosabaDao(db: RejaDatabase): MuhosabaDao = db.muhosabaDao()
+    @Provides fun provideAppRuleDao(db: RejaDatabase): AppRuleDao = db.appRuleDao()
 
     @Provides
     @Singleton

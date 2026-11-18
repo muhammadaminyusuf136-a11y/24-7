@@ -8,6 +8,8 @@ import kotlinx.coroutines.flow.Flow
 import uz.reja24.app.data.local.db.entity.MuhosabaItemEntity
 import uz.reja24.app.data.local.db.entity.MuhosabaMarkEntity
 import uz.reja24.app.data.local.db.entity.TaskMissEntity
+import uz.reja24.app.data.local.db.entity.PrayerMarkEntity
+import uz.reja24.app.data.local.db.entity.DayNoteEntity
 import java.time.LocalDate
 
 @Dao
@@ -42,4 +44,22 @@ interface MuhosabaDao {
 
     @Query("DELETE FROM task_misses WHERE entryId = :entryId AND date = :date")
     suspend fun deleteTaskMiss(entryId: Long, date: LocalDate)
+
+    @Query("SELECT * FROM prayer_marks WHERE date BETWEEN :from AND :to")
+    fun observePrayerMarks(from: LocalDate, to: LocalDate): Flow<List<PrayerMarkEntity>>
+
+    @Upsert
+    suspend fun upsertPrayerMark(mark: PrayerMarkEntity)
+
+    @Query("DELETE FROM prayer_marks WHERE date = :date AND prayer = :prayer")
+    suspend fun deletePrayerMark(date: LocalDate, prayer: String)
+
+    @Query("SELECT * FROM day_notes WHERE date = :date")
+    fun observeNote(date: LocalDate): Flow<DayNoteEntity?>
+
+    @Upsert
+    suspend fun upsertNote(note: DayNoteEntity)
+
+    @Query("DELETE FROM day_notes WHERE date = :date")
+    suspend fun deleteNote(date: LocalDate)
 }

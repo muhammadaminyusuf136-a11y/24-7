@@ -2,9 +2,14 @@
 
 package uz.reja24.app.presentation.schedule
 
-import uz.reja24.app.presentation.components.FullDateText
-import uz.reja24.app.presentation.components.hijriDateText
-import uz.reja24.app.presentation.components.hijriRangeText
+import uz.reja24.app.presentation.components.dayNumbers
+import uz.reja24.app.presentation.theme.MissedRed
+import uz.reja24.app.presentation.theme.MissedRedOnDark
+import androidx.compose.material.icons.outlined.Cancel
+import uz.reja24.app.presentation.components.mainDateText
+import uz.reja24.app.presentation.components.mainRangeText
+import uz.reja24.app.presentation.components.secondDateText
+import uz.reja24.app.presentation.components.secondRangeText
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -77,6 +82,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import uz.reja24.app.R
@@ -226,6 +232,7 @@ private fun DayView(viewModel: ScheduleViewModel, onEditEntry: (Long) -> Unit) {
     val tasks by viewModel.dayTasks.collectAsStateWithLifecycle()
     val settings by viewModel.settings.collectAsStateWithLifecycle()
     val prayers by viewModel.dayPrayers.collectAsStateWithLifecycle()
+    val misses by viewModel.dayMisses.collectAsStateWithLifecycle()
     var toDelete by remember { mutableStateOf<DailyTask?>(null) }
     val today = viewModel.today
     val now = LocalTime.now()
@@ -258,6 +265,7 @@ private fun DayView(viewModel: ScheduleViewModel, onEditEntry: (Long) -> Unit) {
                     is DayRow.Task -> TaskRow(
                         task = row.task,
                         isCurrent = selectedDate == today && row.task.isRunningAt(now),
+                        isMissed = !row.task.isCompleted && row.task.entry.id in misses,
                         onToggle = { viewModel.toggleCompleted(row.task) },
                         onClick = { onEditEntry(row.task.entry.id) },
                         onLongClick = { toDelete = row.task }
@@ -320,16 +328,14 @@ private fun buildDayRows(
 private fun DayDateHeader(date: LocalDate) {
     val colors = RejaTheme.colors
     val locale = LocalConfiguration.current.locales[0]
-    val resources = LocalContext.current.resources
     Column(Modifier.padding(horizontal = 20.dp)) {
         Text(
-            text = TimeFormat.weekday(date, locale).replaceFirstChar { it.titlecase(locale) } + ", " +
-                FullDateText.gregorian(resources, date),
+            text = TimeFormat.weekday(date, locale).replaceFirstChar { it.titlecase(locale) } + ", " + mainDateText(date),
             style = MaterialTheme.typography.titleSmall,
             color = colors.textPrimary
         )
-        hijriDateText(date)?.let { hijri ->
-            Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.textMuted)
+        secondDateText(date)?.let { hijri ->
+            Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.hijri)
         }
     }
 }
@@ -354,7 +360,7 @@ private fun WeekDayChips(selected: LocalDate, today: LocalDate, onSelect: (Local
             val content = if (isToday) colors.background else colors.textPrimary
             Column(
                 modifier = Modifier
-                    .size(width = 46.dp, height = 62.dp)
+                    .size(width = 46.dp, height = 70.dp)
                     .background(background, RoundedCornerShape(14.dp))
                     .border(
                         width = if (isSelected) 1.5.dp else 1.dp,
@@ -371,11 +377,21 @@ private fun WeekDayChips(selected: LocalDate, today: LocalDate, onSelect: (Local
                     color = content.copy(alpha = 0.7f),
                     maxLines = 1
                 )
+                val numbers = dayNumbers(date)
                 Text(
-                    text = date.dayOfMonth.toString(),
+                    text = numbers.main,
                     style = MaterialTheme.typography.titleLarge,
                     color = content
                 )
+                numbers.hijriSmall?.let { hijriDay ->
+                    // Hijriy kun — kichik va boshqa rangda (bugungi to'q katakda och rang)
+                    Text(
+                        text = hijriDay,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = if (isToday) content.copy(alpha = 0.75f) else colors.hijri,
+                        maxLines = 1
+                    )
+                }
             }
         }
     }
@@ -385,6 +401,7 @@ private fun WeekDayChips(selected: LocalDate, today: LocalDate, onSelect: (Local
 private fun TaskRow(
     task: DailyTask,
     isCurrent: Boolean,
+    isMissed: Boolean,
     onToggle: () -> Unit,
     onClick: () -> Unit,
     onLongClick: () -> Unit
@@ -437,18 +454,28 @@ private fun TaskRow(
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "${TimeFormat.time(task.entry.startTime)} – ${TimeFormat.time(task.entry.endTime)}",
+                    text = "${TimeFormat.time(task.entry.startTime)} – ${TimeFormat.time(task.entry.endTime)}" +
+                        if (isMissed) " · " + stringResource(R.string.schedule_missed) else "",
                     style = MaterialTheme.typography.bodySmall,
-                    color = colors.textMuted
+                    color = if (isMissed) (if (colors.isDark) MissedRedOnDark else MissedRed) else colors.textMuted
                 )
             }
+            // ✓ — bajarildi, qizil ✗ — Muhosabada "bajarilmadi" deb belgilangan; bosilsa ✓ ga o'tadi
             IconButton(onClick = onToggle, modifier = Modifier.size(48.dp)) {
                 Icon(
-                    imageVector = if (task.isCompleted) Icons.Outlined.CheckCircle else Icons.Outlined.RadioButtonUnchecked,
+                    imageVector = when {
+                        task.isCompleted -> Icons.Outlined.CheckCircle
+                        isMissed -> Icons.Outlined.Cancel
+                        else -> Icons.Outlined.RadioButtonUnchecked
+                    },
                     contentDescription = stringResource(
                         if (task.isCompleted) R.string.cd_mark_not_done else R.string.cd_mark_done
                     ),
-                    tint = if (task.isCompleted) SuccessGreen else colors.textMuted
+                    tint = when {
+                        task.isCompleted -> SuccessGreen
+                        isMissed -> if (colors.isDark) MissedRedOnDark else MissedRed
+                        else -> colors.textMuted
+                    }
                 )
             }
         }
@@ -589,12 +616,15 @@ private fun MonthView(viewModel: ScheduleViewModel) {
             }
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = TimeFormat.monthYear(month.atDay(1), locale).replaceFirstChar { it.titlecase(locale) },
+                    text = mainRangeText(
+                        month.atDay(1), month.atEndOfMonth(),
+                        TimeFormat.monthYear(month.atDay(1), locale).replaceFirstChar { it.titlecase(locale) }
+                    ),
                     style = MaterialTheme.typography.titleLarge,
                     color = colors.textPrimary
                 )
-                hijriRangeText(month.atDay(1), month.atEndOfMonth())?.let { hijri ->
-                    Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.textMuted)
+                secondRangeText(month.atDay(1), month.atEndOfMonth())?.let { hijri ->
+                    Text(text = hijri, style = MaterialTheme.typography.bodySmall, color = colors.hijri)
                 }
             }
             IconButton(onClick = { viewModel.showMonth(month.plusMonths(1)) }) {
@@ -652,11 +682,20 @@ private fun MonthCell(day: DaySummary, isToday: Boolean, onClick: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        val numbers = dayNumbers(day.date)
         Text(
-            text = day.date.dayOfMonth.toString(),
+            text = numbers.main,
             style = MaterialTheme.typography.labelLarge,
             color = colors.textPrimary
         )
+        numbers.hijriSmall?.let { hijriDay ->
+            Text(
+                text = hijriDay,
+                style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp, lineHeight = 11.sp),
+                color = colors.hijri,
+                maxLines = 1
+            )
+        }
         // Nuqtalar: rejalar soni (ko'pi bilan 3 ta)
         Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.height(6.dp)) {
             repeat(day.taskCount.coerceAtMost(3)) {

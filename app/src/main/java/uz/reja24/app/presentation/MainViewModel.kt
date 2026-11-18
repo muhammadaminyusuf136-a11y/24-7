@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import uz.reja24.app.core.di.ApplicationScope
 import uz.reja24.app.core.util.LocaleHelper
 import uz.reja24.app.domain.model.BackgroundStyle
-import uz.reja24.app.domain.model.ThemeMode
+import uz.reja24.app.domain.model.DateDisplay
 import uz.reja24.app.domain.model.TrophyLevel
 import uz.reja24.app.domain.repository.AppStateRepository
 import uz.reja24.app.domain.repository.PrayerSettingsRepository
@@ -25,11 +25,12 @@ import uz.reja24.app.service.prayer.PrayerLocationUpdater
 import javax.inject.Inject
 
 data class MainUiState(
-    val themeMode: ThemeMode,
     val backgroundStyle: BackgroundStyle,
     val isOnboardingCompleted: Boolean,
     /** Hijriy sanani to'g'rilash (kun) — hamma ekrandagi hijriy sanalar uchun. */
     val hijriAdjustmentDays: Int,
+    /** Sanalar: ikkalasi / faqat milodiy / faqat hijriy. */
+    val dateDisplay: DateDisplay,
     val pendingTrophy: TrophyLevel?
 )
 
@@ -51,7 +52,7 @@ class MainViewModel @Inject constructor(
         prayerSettingsRepository.settings
     ) { prefs, trophy, prayer ->
         MainUiState(
-            themeMode = prefs.themeMode,
+            dateDisplay = prefs.dateDisplay,
             backgroundStyle = prefs.backgroundStyle,
             isOnboardingCompleted = prefs.isOnboardingCompleted,
             hijriAdjustmentDays = prayer.hijriAdjustmentDays,
